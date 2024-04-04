@@ -1,47 +1,39 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
-using System.Linq;
-using Mysqlx.Crud;
+using System.Data.SqlClient;
+
 
 namespace WindowsFormsApp4
 {
     public partial class Nest : Form
     {
-        private MySQLDatabaseHelper dbHelper;
+        private int _restaurant;
+        private SQLDatabaseHelper dbHelper;
         private DataTable Nest_1 = new DataTable();
-        private DataTable Nest_2 = new DataTable();
-        private DataTable Nest_3 = new DataTable();
-        private DataTable Nest_4 = new DataTable();
-        private DataTable Nest_5 = new DataTable();
-        private DataTable Nest_6 = new DataTable();
-        private DataTable Nest_7 = new DataTable();
-        private DataTable Nest_8 = new DataTable();
-        private DataTable Nest_9 = new DataTable();
-        private DataTable Nest_10 = new DataTable();
         private DataTable Nest_Group = new DataTable();
         private DataTable Resize = new DataTable();
         private DataTable Exist = new DataTable();
+        private DataTable Table_Rest = new DataTable();
         private DataView dataView;
-        public Nest()
+        public Nest(int restaurant)
         {
+            _restaurant = restaurant;
             InitializeComponent();
 
-            dbHelper = new MySQLDatabaseHelper("localhost", "kafe_arm", "root", "");
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
 
 
-            string query1 = $"SELECT `Nest`,`Service`,`Discount`,`Group`,`Holl` FROM `tablenest` WHERE `Holl`=1 ";
+            string query1 = $"SELECT Nest,Service,Discount,Groupp,Holl," +
+                $"Restaurant,Ocupied,Forbidden,Printed,Taxprinted,Ticket," +
+                $"Person,Tipmoney FROM Tablenest WHERE Holl='{numericUpDown1.Value}' AND Restaurant='{_restaurant}' ";
             Nest_1 = dbHelper.ExecuteQuery(query1);
             dataGridView1.DataSource = Nest_1;
             dataGridView1.Columns[0].DataPropertyName = "Nest";
             dataGridView1.Columns[1].DataPropertyName = "Service";
             dataGridView1.Columns[2].DataPropertyName = "Discount";
-            dataGridView1.Columns[3].DataPropertyName = "Group";
+            dataGridView1.Columns[3].DataPropertyName = "Groupp";
             dataGridView1.DataSource = Nest_1;
             foreach (DataGridViewColumn column in dataGridView1.Columns)
             {
@@ -50,25 +42,8 @@ namespace WindowsFormsApp4
                     column.Visible = false;
                 }
             }
-            string query2 = $"SELECT `Nest`,`Service`,`Discount`,`Group`,`Holl` FROM `tablenest` WHERE `Holl`=2 ";
-            Nest_2 = dbHelper.ExecuteQuery(query2);
-            string query3 = $"SELECT `Nest`,`Service`,`Discount`,`Group`,`Holl` FROM `tablenest` WHERE `Holl`=3 ";
-            Nest_3 = dbHelper.ExecuteQuery(query3);
-            string query4 = $"SELECT `Nest`,`Service`,`Discount`,`Group`,`Holl` FROM `tablenest` WHERE `Holl`=4 ";
-            Nest_4 = dbHelper.ExecuteQuery(query4);
-            string query5 = $"SELECT `Nest`,`Service`,`Discount`,`Group`,`Holl` FROM `tablenest` WHERE `Holl`=5 ";
-            Nest_5 = dbHelper.ExecuteQuery(query5);
-            string query6 = $"SELECT `Nest`,`Service`,`Discount`,`Group`,`Holl` FROM `tablenest` WHERE `Holl`=6 ";
-            Nest_6 = dbHelper.ExecuteQuery(query6);
-            string query7 = $"SELECT `Nest`,`Service`,`Discount`,`Group`,`Holl` FROM `tablenest` WHERE `Holl`=7 ";
-            Nest_7 = dbHelper.ExecuteQuery(query7);
-            string query8 = $"SELECT `Nest`,`Service`,`Discount`,`Group`,`Holl` FROM `tablenest` WHERE `Holl`=8 ";
-            Nest_8 = dbHelper.ExecuteQuery(query8);
-            string query9 = $"SELECT `Nest`,`Service`,`Discount`,`Group`,`Holl` FROM `tablenest` WHERE `Holl`=9 ";
-            Nest_9 = dbHelper.ExecuteQuery(query9);
-            string query10 = $"SELECT `Nest`,`Service`,`Discount`,`Group`,`Holl` FROM `tablenest` WHERE `Holl`=10 ";
-            Nest_10 = dbHelper.ExecuteQuery(query10);
-            string query11 = $"SELECT `Groupp`,`Name_1` FROM `NestGroup` WHERE 1 ";
+
+            string query11 = $"SELECT Groupp,Name_1 FROM NestGroup  ";
             Nest_Group = dbHelper.ExecuteQuery(query11);
 
 
@@ -92,10 +67,26 @@ namespace WindowsFormsApp4
 
             label2.Text = "";
             label3.Text = "";
+            Load();
         }
-
+        private void Load()
+        {
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
+            connection.Open();
+            string query1 = $"SELECT * FROM Restaurants WHERE Id = '{_restaurant}'";
+            Table_Rest = dbHelper.ExecuteQuery(query1);
+            foreach (DataRow row in Table_Rest.Rows)
+            {
+                this.Text = row["Name_1"].ToString()+"  Նստատեղեր";
+            }
+        }
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
+
             if (Savebutton1.Visible)
             {
                 numericUpDown1.Value = int.Parse(numericUpDown1.Tag.ToString());
@@ -103,25 +94,11 @@ namespace WindowsFormsApp4
             }
             else
             {
-                if (numericUpDown1.Value == 1) dataGridView1.DataSource = Nest_1;
-                if (numericUpDown1.Value == 2)
-                {
-                    dataGridView1.DataSource = Nest_2;
-                    dataGridView1.Columns[0].DataPropertyName = "Nest";
-                    dataGridView1.Columns[1].DataPropertyName = "Service";
-                    dataGridView1.Columns[2].DataPropertyName = "Discount";
-                    dataGridView1.Columns[3].DataPropertyName = "Group";
-                }
-
-                if (numericUpDown1.Value == 3) dataGridView1.DataSource = Nest_3;
-                if (numericUpDown1.Value == 4) dataGridView1.DataSource = Nest_4;
-                if (numericUpDown1.Value == 5) dataGridView1.DataSource = Nest_5;
-                if (numericUpDown1.Value == 6) dataGridView1.DataSource = Nest_6;
-                if (numericUpDown1.Value == 7) dataGridView1.DataSource = Nest_7;
-                if (numericUpDown1.Value == 8) dataGridView1.DataSource = Nest_8;
-                if (numericUpDown1.Value == 9) dataGridView1.DataSource = Nest_9;
-                if (numericUpDown1.Value == 10) dataGridView1.DataSource = Nest_10;
-                numericUpDown1.Tag = numericUpDown1.Value.ToString();
+                int prev = 0;
+                if (checkBox1.Checked) prev = 1;
+                string query1 = $"SELECT Nest,Service,Discount,Groupp,Holl,Restaurant FROM Tablenest WHERE Holl='{numericUpDown1.Value}' AND Restaurant='{_restaurant}' AND Previous='{prev}'  ";
+                Nest_1 = dbHelper.ExecuteQuery(query1);
+                dataGridView1.DataSource = Nest_1;
             }
         }
 
@@ -172,184 +149,35 @@ namespace WindowsFormsApp4
             Savebutton1.Visible = true;
             int nest = 0;
             string s = "";
-            if (numericUpDown1.Value == 1)
+            int prev = 0;
+            if (checkBox1.Checked) prev = 1;
+            foreach (DataRow row in Nest_1.Rows)
             {
-
-                foreach (DataRow row in Nest_1.Rows)
-                {
-                    s = row["Nest"].ToString() + "   ";
-                    if (int.Parse(s.Substring(2, 3)) > nest) { nest++; }
-                }
-                string l = numericUpDown1.Value.ToString() + "-" + (nest + 1).ToString();
-                DataRow newRow = Nest_1.NewRow();
-                newRow["Nest"] = l; newRow["Service"] = 0; newRow["Discount"] = 0; newRow["Group"] = 0;
-                Nest_1.Rows.Add(newRow);
-
-                int lastRowIndex = Nest_1.Rows.Count - 1;
-                dataGridView1.CurrentCell = dataGridView1.Rows[lastRowIndex].Cells[0];
-
-                dataGridView1.BeginEdit(true);
+                s = row["Nest"].ToString() + "   ";
+                if (int.Parse(s.Substring(2, 3)) > nest) { nest++; }
             }
-            //*******************************
-            if (numericUpDown1.Value == 2)
-            {
+            string l = numericUpDown1.Value.ToString() + "-" + (nest + 1).ToString();
+            DataRow newRow = Nest_1.NewRow();
+            newRow["Nest"] = l; newRow["Service"] = 0; newRow["Discount"] = 0; newRow["Groupp"] = 1;newRow["Ocupied"] = 0; newRow["Forbidden"] = 0; newRow["Printed"] = 0; newRow["Taxprinted"] = 0;
+            newRow["Ticket"] = 0; newRow["Person"] = 0; newRow["Tipmoney"] = 0;
+            newRow["Holl"] = numericUpDown1.Value; newRow["Restaurant"] = _restaurant;
+            Nest_1.Rows.Add(newRow);
 
-                foreach (DataRow row in Nest_2.Rows)
-                {
-                    s = row["Nest"].ToString() + "   ";
-                    if (int.Parse(s.Substring(2, 3)) > nest) { nest++; }
-                }
-                string l = numericUpDown1.Value.ToString() + "-" + (nest + 1).ToString();
-                DataRow newRow = Nest_2.NewRow();
-                newRow["Nest"] = l; newRow["Service"] = 0; newRow["Discount"] = 0; newRow["Group"] = 0;
-                Nest_2.Rows.Add(newRow);
-                int lastRowIndex = Nest_2.Rows.Count - 1;
-                dataGridView1.CurrentCell = dataGridView1.Rows[lastRowIndex].Cells[0];
-                dataGridView1.BeginEdit(true);
-            }
-            //*********************************
-            if (numericUpDown1.Value == 3)
-            {
+            int lastRowIndex = Nest_1.Rows.Count - 1;
+            dataGridView1.CurrentCell = dataGridView1.Rows[lastRowIndex].Cells[0];
 
-                foreach (DataRow row in Nest_3.Rows)
-                {
-                    s = row["Nest"].ToString() + "   ";
-                    if (int.Parse(s.Substring(2, 3)) > nest) { nest++; }
-                }
-                string l = numericUpDown1.Value.ToString() + "-" + (nest + 1).ToString();
-                DataRow newRow = Nest_3.NewRow();
-                newRow["Nest"] = l; newRow["Service"] = 0; newRow["Discount"] = 0; newRow["Group"] = 0;
-                Nest_3.Rows.Add(newRow);
-                int lastRowIndex = Nest_3.Rows.Count - 1;
-                dataGridView1.CurrentCell = dataGridView1.Rows[lastRowIndex].Cells[0];
-                dataGridView1.BeginEdit(true);
-            }
-            //*********************************************
-            if (numericUpDown1.Value == 4)
-            {
+            dataGridView1.BeginEdit(true);
 
-                foreach (DataRow row in Nest_4.Rows)
-                {
-                    s = row["Nest"].ToString() + "   ";
-                    if (int.Parse(s.Substring(2, 3)) > nest) { nest++; }
-                }
-                string l = numericUpDown1.Value.ToString() + "-" + (nest + 1).ToString();
-                DataRow newRow = Nest_4.NewRow();
-                newRow["Nest"] = l; newRow["Service"] = 0; newRow["Discount"] = 0; newRow["Group"] = 0;
-                int lastRowIndex = Nest_4.Rows.Count - 1;
-                dataGridView1.CurrentCell = dataGridView1.Rows[lastRowIndex].Cells[0];
-                dataGridView1.BeginEdit(true);
-            }
-            //*********************************************
-            if (numericUpDown1.Value == 5)
-            {
-
-                foreach (DataRow row in Nest_5.Rows)
-                {
-                    s = row["Nest"].ToString() + "   ";
-                    if (int.Parse(s.Substring(2, 3)) > nest) { nest++; }
-                }
-                string l = numericUpDown1.Value.ToString() + "-" + (nest + 1).ToString();
-                DataRow newRow = Nest_5.NewRow();
-                newRow["Nest"] = l; newRow["Service"] = 0; newRow["Discount"] = 0; newRow["Group"] = 0;
-                Nest_5.Rows.Add(newRow);
-                int lastRowIndex = Nest_5.Rows.Count - 1;
-                dataGridView1.CurrentCell = dataGridView1.Rows[lastRowIndex].Cells[0];
-                dataGridView1.BeginEdit(true);
-            }
-            //*********************************************
-            if (numericUpDown1.Value == 6)
-            {
-
-                foreach (DataRow row in Nest_6.Rows)
-                {
-                    s = row["Nest"].ToString() + "   ";
-                    if (int.Parse(s.Substring(2, 3)) > nest) { nest++; }
-                }
-                string l = numericUpDown1.Value.ToString() + "-" + (nest + 1).ToString();
-                DataRow newRow = Nest_6.NewRow();
-                newRow["Nest"] = l; newRow["Service"] = 0; newRow["Discount"] = 0; newRow["Group"] = 0;
-                Nest_6.Rows.Add(newRow);
-                int lastRowIndex = Nest_6.Rows.Count - 1;
-                dataGridView1.CurrentCell = dataGridView1.Rows[lastRowIndex].Cells[0];
-                dataGridView1.BeginEdit(true);
-            }
-            //*********************************************
-            if (numericUpDown1.Value == 7)
-            {
-
-                foreach (DataRow row in Nest_7.Rows)
-                {
-                    s = row["Nest"].ToString() + "   ";
-                    if (int.Parse(s.Substring(2, 3)) > nest) { nest++; }
-                }
-                string l = numericUpDown1.Value.ToString() + "-" + (nest + 1).ToString();
-                DataRow newRow = Nest_7.NewRow();
-                newRow["Nest"] = l; newRow["Service"] = 0; newRow["Discount"] = 0; newRow["Group"] = 0;
-                Nest_7.Rows.Add(newRow);
-                int lastRowIndex = Nest_7.Rows.Count - 1;
-                dataGridView1.CurrentCell = dataGridView1.Rows[lastRowIndex].Cells[0];
-                dataGridView1.BeginEdit(true);
-            }
-            //*********************************************
-            if (numericUpDown1.Value == 8)
-            {
-
-                foreach (DataRow row in Nest_8.Rows)
-                {
-                    s = row["Nest"].ToString() + "   ";
-                    if (int.Parse(s.Substring(2, 3)) > nest) { nest++; }
-                }
-                string l = numericUpDown1.Value.ToString() + "-" + (nest + 1).ToString();
-                DataRow newRow = Nest_8.NewRow();
-                newRow["Nest"] = l; newRow["Service"] = 0; newRow["Discount"] = 0; newRow["Group"] = 0;
-                Nest_8.Rows.Add(newRow);
-                int lastRowIndex = Nest_8.Rows.Count - 1;
-                dataGridView1.CurrentCell = dataGridView1.Rows[lastRowIndex].Cells[0];
-                dataGridView1.BeginEdit(true);
-            }
-            //*********************************************
-            if (numericUpDown1.Value == 9)
-            {
-
-                foreach (DataRow row in Nest_9.Rows)
-                {
-                    s = row["Nest"].ToString() + "   ";
-                    if (int.Parse(s.Substring(2, 3)) > nest) { nest++; }
-                }
-                string l = numericUpDown1.Value.ToString() + "-" + (nest + 1).ToString();
-                DataRow newRow = Nest_9.NewRow();
-                newRow["Nest"] = l; newRow["Service"] = 0; newRow["Discount"] = 0; newRow["Group"] = 0;
-                Nest_9.Rows.Add(newRow);
-                int lastRowIndex = Nest_9.Rows.Count - 1;
-                dataGridView1.CurrentCell = dataGridView1.Rows[lastRowIndex].Cells[0];
-                dataGridView1.BeginEdit(true);
-            }
-            //*********************************************
-            if (numericUpDown1.Value == 10)
-            {
-
-                foreach (DataRow row in Nest_10.Rows)
-                {
-                    s = row["Nest"].ToString() + "   ";
-                    if (int.Parse(s.Substring(2, 3)) > nest) { nest++; }
-                }
-                string l = numericUpDown1.Value.ToString() + "-" + (nest + 1).ToString();
-                DataRow newRow = Nest_10.NewRow();
-                newRow["Nest"] = l; newRow["Service"] = 0; newRow["Discount"] = 0; newRow["Group"] = 0; newRow["Holl"] = int.Parse(numericUpDown1.Value.ToString());
-                Nest_10.Rows.Add(newRow);
-                int lastRowIndex = Nest_10.Rows.Count - 1;
-                dataGridView1.CurrentCell = dataGridView1.Rows[lastRowIndex].Cells[0];
-                dataGridView1.BeginEdit(true);
-            }
         }
 
         private void Savebutton1_Click(object sender, EventArgs e)
         {
-            MySqlConnection connection = dbHelper.GetConnection();
+            int prev = 0;
+            if (checkBox1.Checked) prev = 1;
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
             connection.Open();
-            dbHelper = new MySQLDatabaseHelper("localhost", "kafe_arm", "root", "");
-
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
                 if (dataGridView1.Rows[i].Cells[0].Value != null)
@@ -359,29 +187,33 @@ namespace WindowsFormsApp4
                     string nest = dataGridView1.Rows[i].Cells[0].Value.ToString();
                     float service = float.Parse(dataGridView1.Rows[i].Cells[1].Value.ToString());
                     float discount = float.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString());
-                    int group = int.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString());
+                    int groupp = int.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString());
                     int holl = int.Parse(numericUpDown1.Value.ToString());
 
-                    string query = $"SELECT * FROM `tablenest` WHERE `Nest` = '{nest}' AND `Holl`='{holl}' ";
+                    string query = $"SELECT * FROM TableNest WHERE Nest = '{nest}' AND Holl='{holl}'  AND Restaurant='{_restaurant}' AND Previous='{prev}'";
                     Exist = dbHelper.ExecuteQuery(query);
                     int count = Exist.Rows.Count;
                     if (count > 0)
                     {
-                        string UpdateQuery = $"UPDATE `tablenest` SET `Service`= '{service}',`Discount`= '{discount}',`Group`= '{group}'" +
-                            $" WHERE `Nest`= '{nest}' AND `Holl`= '{holl}'";
-                        using (MySqlCommand updatCommand = new MySqlCommand(UpdateQuery, connection))
+                        string UpdateQuery = $"UPDATE TableNest SET Service= '{service}',Discount= '{discount}',Groupp= '{groupp}'" +
+                            $" WHERE Nest= '{nest}' AND Holl= '{holl}' AND Restaurant='{_restaurant}' AND Previous='{prev}'";
+                        using (SqlCommand updatCommand = new SqlCommand(UpdateQuery, connection))
                             updatCommand.ExecuteNonQuery();
                     }
                     else
                     {
-                        string InsertQuery = $"INSERT `tablenest` SET `Nest`= '{nest}',`Holl`= '{holl}',`Service`= '{service}',`Discount`= '{discount}',`Group`= '{group}'";
-                        using (MySqlCommand updatCommand = new MySqlCommand(InsertQuery, connection))
+                        string InsertQuery = $"INSERT INTO TableNest (Nest ,Holl ,Service ,Discount ,Groupp,Restaurant" +
+                            $"Ocupied,Forbidden,Printed,Taxprinted,Ticket,Person,Tipmoney,Previous )" +
+                            $" VALUES ('{nest}','{holl}','{service}','{discount}','{groupp}','{_restaurant}'," +
+                            $"'{0}','{0}','{0}','{0}','{0}','{0}','{0}','{0}')";
+                        using (SqlCommand updatCommand = new SqlCommand(InsertQuery, connection))
                             updatCommand.ExecuteNonQuery();
                     }
                 }
             }
             Savebutton1.Visible = false;
             DontsaveButton.Visible = false;
+            connection.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -389,7 +221,7 @@ namespace WindowsFormsApp4
             if (label2.Text.Length > 0 && label3.Text.Length > 0)
             {
                 int rowindex = int.Parse(label3.Tag.ToString());
-                dataGridView1.Rows[rowindex].Cells["Group"].Value = int.Parse(label2.Text);
+                dataGridView1.Rows[rowindex].Cells["Groupp"].Value = int.Parse(label2.Text);
                 label3.Text = "";
                 dataGridView1.Refresh();
                 Savebutton1.Visible = true;
@@ -433,37 +265,39 @@ namespace WindowsFormsApp4
 
         private void Savebutton2_Click(object sender, EventArgs e)
         {
-            MySqlConnection connection = dbHelper.GetConnection();
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
             connection.Open();
-            dbHelper = new MySQLDatabaseHelper("localhost", "kafe_arm", "root", "");
-
-            for (int i = 0; i < dataGridView2.Rows.Count-1; i++)
+            for (int i = 0; i < dataGridView2.Rows.Count; i++)
             {
                 if (dataGridView2.Rows[i].Cells[0].Value != null)
                 {
 
                     Exist = new DataTable();
-                    int group = int.Parse(dataGridView2.Rows[i].Cells[0].Value.ToString());
+                    int groupp = int.Parse(dataGridView2.Rows[i].Cells[0].Value.ToString());
                     string name = dataGridView2.Rows[i].Cells[1].Value.ToString();
 
-                    string query = $"SELECT * FROM `nestgroup` WHERE `Groupp` = '{group}' ";
+                    string query = $"SELECT * FROM NestGroup WHERE Groupp = '{groupp}' ";
                     Exist = dbHelper.ExecuteQuery(query);
                     int count = Exist.Rows.Count;
                     if (count > 0)
                     {
-                        string UpdateQuery = $"UPDATE `nestgroup` SET `Name_1`= '{name}' WHERE `Groupp`= '{group}'";
-                        using (MySqlCommand updatCommand = new MySqlCommand(UpdateQuery, connection))
+                        string UpdateQuery = $"UPDATE NestGroup SET Name_1= '{name}' WHERE Groupp= '{groupp}'";
+                        using (SqlCommand updatCommand = new SqlCommand(UpdateQuery, connection))
                             updatCommand.ExecuteNonQuery();
                     }
                     else
                     {
-                        string InsertQuery = $"INSERT `nestgroup` SET `Groupp`= '{group}',`Name_1`= '{name}'";
-                        using (MySqlCommand updatCommand = new MySqlCommand(InsertQuery, connection))
+                        string InsertQuery = $"INSERT INTO NestGroup (Groupp ,Name_1 ) Values ('{groupp}','{name}') ";
+                        using (SqlCommand updatCommand = new SqlCommand(InsertQuery, connection))
                             updatCommand.ExecuteNonQuery();
                     }
 
                 }
+                
             }
+            connection.Close();
             Savebutton2.Visible = false;
         }
 

@@ -26,11 +26,11 @@ namespace WindowsFormsApp4.images
 
         private DataTable Table_215 = new DataTable(); 
 
-        private DataTable Table_215_groups = new DataTable();
+        private DataTable FoodGroupp = new DataTable();
 
         private DataTable Department = new DataTable();
 
-        private DataTable Current_order = new DataTable();   
+        private DataTable CurrentOrder = new DataTable();   
 
         private DataTable Table_Restaurants = new DataTable();  
         public Standart(int restaurant)

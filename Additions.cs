@@ -1,29 +1,40 @@
-﻿using MySql.Data.MySqlClient;
+﻿
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Reflection.Emit;
-using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.Diagnostics;
 
 namespace WindowsFormsApp4
 {
     public partial class Additions : Form
     {
-        private MySQLDatabaseHelper dbHelper;
-        private DataTable Tablte_Names = new DataTable();
-        private DataTable Table_Groups = new DataTable();
-        private DataTable Resize = new DataTable();
-        private DataTable Exist = new DataTable();
-        private DataView dataView;
-        public Additions()
-        {
-            InitializeComponent();
+        private int _editor;
 
-            dbHelper = new MySQLDatabaseHelper("localhost", "kafe_arm", "root", "");
-            string query1 = $"SELECT `Id`,`Name_1`,`Name_2`,`Name_3`,`Number` FROM `AdditionNames` WHERE 1 ";
+        private int _restaurant;
+
+        private SQLDatabaseHelper dbHelper;
+
+        private DataTable Tablte_Names = new DataTable();
+
+        private DataTable Table_Groups = new DataTable();
+
+        private DataTable Resize = new DataTable();
+
+        private DataTable Exist = new DataTable(); 
+
+        private DataTable Table_Rest = new DataTable(); 
+
+        private DataView dataView;
+        public Additions(int restaurant, int editor)
+        {
+            _editor = editor;
+            _restaurant = restaurant;
+            InitializeComponent();
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
+            string query1 = $"SELECT Id,Name_1,Name_2,Name_3,Number FROM AdditionNames ";
             Tablte_Names = dbHelper.ExecuteQuery(query1);
             dataGridView1.DataSource = Tablte_Names;
             dataGridView1.Columns[0].DataPropertyName = "Id";
@@ -40,7 +51,7 @@ namespace WindowsFormsApp4
                 }
             }
 
-            string query2 = $"SELECT `Id`,`Name_1`,`Name_2`,`Name_3` FROM `AdditionGroups` WHERE 1 ";
+            string query2 = $"SELECT Id,Name_1,Name_2,Name_3 FROM AdditionGroups ";
             Table_Groups = dbHelper.ExecuteQuery(query2);
             dataGridView2.DataSource = Table_Groups;
             dataGridView2.Columns[0].DataPropertyName = "Id";
@@ -54,6 +65,14 @@ namespace WindowsFormsApp4
                     column.Visible = false;
                 }
             }
+
+            string query3 = $"SELECT * FROM Restaurants WHERE Id = '{_restaurant}'";
+            Table_Rest = dbHelper.ExecuteQuery(query3);
+            foreach (DataRow row in Table_Rest.Rows)
+            {
+                this.Text = row["Name_1"].ToString();
+            }
+
             Resize.Columns.Add("BeginWidth", typeof(float));
             Resize.Columns.Add("BeginHeight", typeof(float));
             Resize.Columns.Add("EndWidth", typeof(float));
@@ -62,6 +81,12 @@ namespace WindowsFormsApp4
 
             label2.Text = "";
             label3.Text = "";
+
+            if (_editor == 0)
+            {
+                Savebutton1.Enabled = false;
+                Savebutton2.Enabled = false;
+            }
         }
 
         private void Additions_ResizeBegin(object sender, EventArgs e)
@@ -156,12 +181,65 @@ namespace WindowsFormsApp4
         {
             Savebutton2.Visible = true;
         }
+        private void Savebutton1_Click(object sender, EventArgs e)
+        {
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
+            connection.Open();
 
+            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            {
+                if (dataGridView1.Rows[i].Cells[0].Value != null)
+                {
+
+                    Exist = new DataTable();
+                    int id = int.Parse(dataGridView1.Rows[i].Cells[0].Value.ToString());
+                    string name1 = dataGridView1.Rows[i].Cells[1].Value.ToString();
+                    string name2 = dataGridView1.Rows[i].Cells[2].Value.ToString();
+                    string name3 = dataGridView1.Rows[i].Cells[3].Value.ToString();
+                    int number = int.Parse(dataGridView1.Rows[i].Cells[4].Value.ToString());
+                    string query = $"SELECT * FROM AdditionNames WHERE Id = '{id}' ";
+                    Exist = dbHelper.ExecuteQuery(query);
+                    int count = Exist.Rows.Count;
+                    if (count > 0)
+                    {
+                        string UpdateQuery = $"UPDATE AdditionNames  SET Name_1= @Name_1,Name_2= @Name_2,Name_3= @Name_3,Number= @Number,Restaurant= @Restaurant WHERE Id= '{id}'";
+                        using (SqlCommand command = new SqlCommand(UpdateQuery, connection))
+                        {
+                            command.Parameters.AddWithValue("@Name_1", name1);
+                            command.Parameters.AddWithValue("@Name_2", name2);
+                            command.Parameters.AddWithValue("@Name_3", name3);
+                            command.Parameters.AddWithValue("@Number", number);
+                            command.Parameters.AddWithValue("@Restaurant", _restaurant);
+                            command.ExecuteNonQuery();
+                        }
+                    }
+                    else
+                    {
+                        string InsertQuery = $"INSERT INTO AdditionNames SET  ( Name_1 ,Name_2,Name_3,Restaurant ) VALUES (@Name_1 ,@Name_2, @Name_3, @Number,@Restaurant)";
+                        using (SqlCommand command = new SqlCommand(InsertQuery, connection))
+                        {
+                            command.Parameters.AddWithValue("@Name_1", name1);
+                            command.Parameters.AddWithValue("@Name_2", name2);
+                            command.Parameters.AddWithValue("@Name_3", name3);
+                            command.Parameters.AddWithValue("@Number", number);
+                            command.Parameters.AddWithValue("@Restaurant", _restaurant);
+                            command.ExecuteNonQuery();
+                        }
+                    }
+
+                }
+            }
+            connection.Close();
+            Savebutton1.Visible = false;
+        }
         private void Savebutton2_Click(object sender, EventArgs e)
         {
-            MySqlConnection connection = dbHelper.GetConnection();
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
             connection.Open();
-            dbHelper = new MySQLDatabaseHelper("localhost", "kafe_arm", "root", "");
 
             for (int i = 0; i < dataGridView2.Rows.Count - 1; i++)
             {
@@ -173,24 +251,37 @@ namespace WindowsFormsApp4
                     string name1 = dataGridView2.Rows[i].Cells[1].Value.ToString();
                     string name2 = dataGridView2.Rows[i].Cells[2].Value.ToString();
                     string name3 = dataGridView2.Rows[i].Cells[3].Value.ToString();
-                    string query = $"SELECT * FROM `AdditionGroups` WHERE `Id` = '{id}' ";
+                    string query = $"SELECT * FROM AdditionGroups WHERE Id = '{id}' and Restaurant='{_restaurant}' ";
                     Exist = dbHelper.ExecuteQuery(query);
                     int count = Exist.Rows.Count;
                     if (count > 0)
                     {
-                        string UpdateQuery = $"UPDATE `AdditionGroups` SET `Name_1`= '{name1}',`Name_2`= '{name2}',`Name_3`= '{name3}' WHERE `Id`= '{id}'";
-                        using (MySqlCommand updatCommand = new MySqlCommand(UpdateQuery, connection))
-                            updatCommand.ExecuteNonQuery();
+                        string UpdateQuery = $"UPDATE AdditionGroups SET Name_1= @Name_1,Name_2= @Name_2,Name_3= @Name_3,Restaurant= @Restaurant WHERE Id= '{id}'";
+                        using (SqlCommand command = new SqlCommand(UpdateQuery, connection))
+                        {
+                            command.Parameters.AddWithValue("@Name_1", name1);
+                            command.Parameters.AddWithValue("@Name_2", name2);
+                            command.Parameters.AddWithValue("@Name_3", name3);
+                            command.Parameters.AddWithValue("@Restaurant", _restaurant);
+                            command.ExecuteNonQuery();
+                        }
                     }
                     else
                     {
-                        string InsertQuery = $"INSERT `AdditionGroups` SET `Name_1`= '{name1}',`Name_2`= '{name2}',`Name_3`= '{name3}'";
-                        using (MySqlCommand updatCommand = new MySqlCommand(InsertQuery, connection))
-                            updatCommand.ExecuteNonQuery();
+                        string InsertQuery = $"INSERT INTO AdditionGroups ( Name_1 ,Name_2,Name_3,Restaurant ) VALUES (@Name_1 ,@Name_2,@Name_3, @Restaurant)";
+                        using (SqlCommand command = new SqlCommand(InsertQuery, connection))
+                        {
+                            command.Parameters.AddWithValue("@Name_1", name1);
+                            command.Parameters.AddWithValue("@Name_2", name2);
+                            command.Parameters.AddWithValue("@Name_3", name3);
+                            command.Parameters.AddWithValue("@Restaurant", _restaurant);
+                            command.ExecuteNonQuery();
+                        }
                     }
 
                 }
             }
+            connection.Close();
             Savebutton2.Visible = false;
         }
 
@@ -206,42 +297,7 @@ namespace WindowsFormsApp4
             }
         }
 
-        private void Savebutton1_Click(object sender, EventArgs e)
-        {
-            MySqlConnection connection = dbHelper.GetConnection();
-            connection.Open();
-            dbHelper = new MySQLDatabaseHelper("localhost", "kafe_arm", "root", "");
 
-            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
-            {
-                if (dataGridView1.Rows[i].Cells[0].Value != null)
-                {
-
-                    Exist = new DataTable();
-                    int id = int.Parse(dataGridView1.Rows[i].Cells[0].Value.ToString());
-                    string name1 = dataGridView1.Rows[i].Cells[1].Value.ToString();
-                    string name2 = dataGridView1.Rows[i].Cells[2].Value.ToString();
-                    string name3 = dataGridView1.Rows[i].Cells[3].Value.ToString();
-                    string query = $"SELECT * FROM `AdditionNames` WHERE `Id` = '{id}' ";
-                    Exist = dbHelper.ExecuteQuery(query);
-                    int count = Exist.Rows.Count;
-                    if (count > 0)
-                    {
-                        string UpdateQuery = $"UPDATE `AdditionNames` SET `Name_1`= '{name1}',`Name_2`= '{name2}',`Name_3`= '{name3}' WHERE `Id`= '{id}'";
-                        using (MySqlCommand updatCommand = new MySqlCommand(UpdateQuery, connection))
-                            updatCommand.ExecuteNonQuery();
-                    }
-                    else
-                    {
-                        string InsertQuery = $"INSERT `AdditionNames` SET `Name_1`= '{name1}',`Name_2`= '{name2}',`Name_3`= '{name3}'";
-                        using (MySqlCommand updatCommand = new MySqlCommand(InsertQuery, connection))
-                            updatCommand.ExecuteNonQuery();
-                    }
-
-                }
-            }
-            Savebutton1.Visible = false;
-        }
         private void SearchBox_TextChanged(object sender, EventArgs e)
         {
             string txt = SearchBox.Text.Trim();

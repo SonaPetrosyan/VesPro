@@ -1,13 +1,8 @@
-﻿using MySql.Data.MySqlClient;
-using MySqlX.XDevAPI.Relational;
+﻿using System.Data.SqlClient;
 using System;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
-using System.Reflection;
-using System.Security.Cryptography;
-using System.Security.Policy;
 using System.Windows.Forms;
 
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
@@ -16,27 +11,43 @@ namespace WindowsFormsApp4
     public partial class Materials : Form
 
     {
-        private MySQLDatabaseHelper dbHelper;
+        private int _restaurant;
+
+        private int _editor;
+
+        private SQLDatabaseHelper dbHelper;
+
         private DataTable Table_211 = new DataTable();
+
         private DataTable Table_213 = new DataTable();
+
         private DataTable Table_111 = new DataTable();
+
         private DataTable Resize = new DataTable();
+
+        private DataTable Table_Rest = new DataTable();
+        
         private DataView dataView;
-        public Materials()
+        public Materials(int restaurant,int editor)
         {
+            _restaurant = restaurant;
+            _editor = editor;
             InitializeComponent();
             //InitForm();
 
-            dbHelper = new MySQLDatabaseHelper("localhost", "kafe_arm", "root", "");
-            string query1 = $"SELECT * FROM `table_211` WHERE 1 ";
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
+
+            string query1 = $"SELECT * FROM table_211";
             Table_211 = dbHelper.ExecuteQuery(query1);
             Table_211.Columns.Add("Changed", typeof(int));
 
-            string query2 = $"SELECT * FROM `table_213` WHERE 1 ";
+            string query2 = $"SELECT * FROM table_213  ";
             Table_213 = dbHelper.ExecuteQuery(query2);
             Table_213.Columns.Add("Changed", typeof(int));
 
-            string query3 = $"SELECT * FROM `table_111` WHERE 1 ";
+            string query3 = $"SELECT * FROM table_111  ";
             Table_111 = dbHelper.ExecuteQuery(query3);
             Table_111.Columns.Add("Changed", typeof(int));
 
@@ -63,6 +74,19 @@ namespace WindowsFormsApp4
             Resize.Columns.Add("EndWidth", typeof(float));
             Resize.Columns.Add("EndHeight", typeof(float));
             Resize.Rows.Add(0,0,0,0);
+            if (editor == 0)
+            {
+                AddButton.Enabled = false;
+                SaveButton1.Enabled = false;
+            }
+            string query4 = $"SELECT * FROM Restaurants WHERE Id = '{_restaurant}'";
+            Table_Rest = dbHelper.ExecuteQuery(query4);
+            foreach (DataRow row in Table_Rest.Rows)
+            {
+                this.Text = row["Name_1"].ToString();
+            }
+
+
         }
 
 
@@ -126,6 +150,9 @@ namespace WindowsFormsApp4
 
         private void radioButton1_Click(object sender, EventArgs e)
         {
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
             if (SaveButton1.Visible)
             {
                 SaveButton2.Visible = true; SaveButton3.Visible = true;
@@ -134,52 +161,60 @@ namespace WindowsFormsApp4
             }
             else
             {
-                string query1 = $"SELECT * FROM `table_211` WHERE 1 ";
+                string query1 = $"SELECT * FROM table_211 ";
                 Table_211 = dbHelper.ExecuteQuery(query1);
                 Table_211.Columns.Add("Changed", typeof(int));// DB - ում ֆայլը խմբագրելու համար է
                 dataView = new DataView(Table_211);
                 dataGridView1.Visible = true;
                 dataGridView1.DataSource = dataView;
-                dataGridView1.Columns[3].Visible = true;
                 dataGridView1.Columns[4].Visible = true;
+                dataGridView1.Columns[5].Visible = true;
             }
         }
 
         private void radioButton2_Click(object sender, EventArgs e)
         {
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
             if (SaveButton1.Visible)
             {
                 SaveButton2.Visible = true; SaveButton3.Visible = true;
             }
             else
             {
-                string query1 = $"SELECT * FROM `table_213` WHERE 1 ";
+                string query1 = $"SELECT * FROM table_213 ";
+
                 Table_213 = dbHelper.ExecuteQuery(query1);
+
                 Table_213.Columns.Add("Changed", typeof(int));// DB - ում ֆայլը խմբագրելու համար է
                 dataView = new DataView(Table_213);
                 dataGridView1.Visible = true;
                 dataGridView1.DataSource = dataView;
-                dataGridView1.Columns[3].Visible = false;
                 dataGridView1.Columns[4].Visible = false;
+                dataGridView1.Columns[5].Visible = false;
             }
         }
 
         private void radioButton3_Click(object sender, EventArgs e)
         {
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
             if (SaveButton1.Visible)
             {
                 SaveButton2.Visible = true; SaveButton3.Visible = true;
             }
             else
             {
-                string query1 = $"SELECT * FROM `table_111` WHERE 1 ";
+                string query1 = $"SELECT * FROM table_111 ";
                 Table_111 = dbHelper.ExecuteQuery(query1);
                 Table_111.Columns.Add("Changed", typeof(int));// DB - ում ֆայլը խմբագրելու համար է
                 dataView = new DataView(Table_111);
                 dataGridView1.Visible = true;
                 dataGridView1.DataSource = dataView;
-                dataGridView1.Columns[3].Visible = false;
                 dataGridView1.Columns[4].Visible = false;
+                dataGridView1.Columns[5].Visible = false;
             }
         }
         private void AddButton_Click(object sender, EventArgs e)
@@ -233,24 +268,26 @@ namespace WindowsFormsApp4
                 SaveButton1.Visible = true;
             }
             SaveButton1.BackColor = Color.LightGreen;
-            SaveButton1.Enabled = true;
+            SaveButton1.Visible = true;
         }
 
         private void SaveButton1_Click(object sender, EventArgs e)
         {
-            string connectionString = "Server=localhost;Database=kafe_arm;User ID=root;Password='';CharSet = utf8mb4;";
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
             if (dataGridView1.DataSource== Table_211)
             {
 
-                Save.UpdateTableFromDatatable(connectionString, Table_211, "211");
+                Save.UpdateTableFromDatatable(connectionString, Table_211, "211", _restaurant);
             }
             if (dataGridView1.DataSource == Table_213)
             {
-                Save.UpdateTableFromDatatable(connectionString, Table_213, "213");
+                Save.UpdateTableFromDatatable(connectionString, Table_213, "213", _restaurant);
             }
             if (dataGridView1.DataSource == Table_111)
             {
-                Save.UpdateTableFromDatatable(connectionString, Table_111, "111");
+                Save.UpdateTableFromDatatable(connectionString, Table_111, "111", _restaurant);
             }
             SaveButton1.Visible=false;
         }
@@ -330,9 +367,6 @@ namespace WindowsFormsApp4
             }
         }
 
-        private void SaveButton2_Click(object sender, EventArgs e)
-        {
 
-        }
     }
 }

@@ -1,26 +1,19 @@
-﻿using Amazon.DynamoDBv2;
-using MySql.Data.MySqlClient;
-using Mysqlx.Session;
-using MySqlX.XDevAPI.Relational;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Globalization;
-using System.Security.Cryptography;
-using System.Text;
+using System.Data.SqlClient;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
+
 
 namespace WindowsFormsApp4
 {
     public partial class Purchase : Form
     {
         private int _parameter1;
-        private int _parameter3;
-        private MySQLDatabaseHelper dbHelper;
+        private int _restaurant;
+        private int _editor;
+        private SQLDatabaseHelper dbHelper;
 
         private DataTable Table_215 = new DataTable();
 
@@ -48,16 +41,19 @@ namespace WindowsFormsApp4
 
         private DataView dataView;
 
-        public Purchase(int ooperator, int restaurant)
+        public Purchase(int ooperator, int restaurant, int editor)
         {
             _parameter1 = ooperator;
-            _parameter3 = restaurant;
+            _restaurant = restaurant;
+            _editor = editor;
             InitializeComponent();
             //InitForm();
             dateTimePicker1.Value = DateTime.Now;
-            dbHelper = new MySQLDatabaseHelper("localhost", "kafe_arm", "root", "");
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
 
-            string query1 = $"SELECT `Code`,`Name_1`,`Unit`,`CostPrice` FROM `table_211` WHERE 1 ";
+            string query1 = $"SELECT Code,Name_1,Unit,CostPrice FROM table_211  ";
             Table_211 = dbHelper.ExecuteQuery(query1);
             Table_211.Columns.Add("Quantity", typeof(float));
             Table_211.Columns.Add("Amount", typeof(float));
@@ -84,6 +80,7 @@ namespace WindowsFormsApp4
             Table_Purchase.Columns.Add("RestaurantIn", typeof(int));
             Table_Purchase.Columns.Add("RestaurantOut", typeof(int));
             Table_Purchase.Columns.Add("Restaurant", typeof(int));
+            Table_Purchase.Columns.Add("Note", typeof(string));
 
             dataView = new DataView(Table_211);
             dataGridView1.DataSource = dataView;
@@ -137,7 +134,7 @@ namespace WindowsFormsApp4
             }
 
 
-            string query2 = $"SELECT `Code`,`Name_1`,`Department`,`CostPrice` FROM `table_215` WHERE 1 ";
+            string query2 = $"SELECT Code,Name_1,Department,CostPrice FROM table_215  where Restaurant='{_restaurant}'  ";
             Table_215 = dbHelper.ExecuteQuery(query2);
             Table_215.Columns.Add("Quantity", typeof(float));
             Table_215.Columns.Add("Amount", typeof(float));
@@ -148,7 +145,7 @@ namespace WindowsFormsApp4
                 row["Amount"] = 0;
             }
 
-            string query3 = $"SELECT `Code`,`Name_1`,`Unit`,`CostPrice` FROM `table_213` WHERE 1 ";
+            string query3 = $"SELECT Code,Name_1,Unit,CostPrice FROM table_213  where Restaurant='{_restaurant}'  ";
             Table_213 = dbHelper.ExecuteQuery(query3);
             Table_213.Columns.Add("Quantity", typeof(float));
             Table_213.Columns.Add("Amount", typeof(float));
@@ -160,7 +157,7 @@ namespace WindowsFormsApp4
                 row["Changed"] = 0;
             }
 
-            string query7 = $"SELECT `Code`,`Name_1`,`Unit`,`CostPrice` FROM `table_111` WHERE 1 ";
+            string query7 = $"SELECT Code,Name_1,Unit,CostPrice FROM table_111  where Restaurant='{_restaurant}'  ";
             Table_111 = dbHelper.ExecuteQuery(query7);
             Table_111.Columns.Add("Quantity", typeof(float));
             Table_111.Columns.Add("Amount", typeof(float));
@@ -172,7 +169,7 @@ namespace WindowsFormsApp4
                 row["Changed"] = 0;
             }
 
-            string query4 = $"SELECT * FROM `department` WHERE `Alloved`=true ";
+            string query4 = $"SELECT * FROM department  where Restaurant='{_restaurant}' ";
             Table_Department = dbHelper.ExecuteQuery(query4);
             Table_Department_ = dbHelper.ExecuteQuery(query4);
             DepartmentComboBox.DataSource = Table_Department.DefaultView;
@@ -180,7 +177,7 @@ namespace WindowsFormsApp4
             DepartmentComboBox.DisplayMember = "Name_1";
 
 
-            string query5 = $"SELECT * FROM `partners` WHERE 1 ";
+            string query5 = $"SELECT * FROM partners where Restaurant='{_restaurant}' AND Groupp='{0}'  ";
             Table_Partners = dbHelper.ExecuteQuery(query5);
 
 
@@ -188,7 +185,7 @@ namespace WindowsFormsApp4
             PartnersComboBox.DataSource = Table_Partners.DefaultView;
             PartnersComboBox.Text = "";
 
-            string query6 = $"SELECT * FROM `outgo` WHERE 1 ";
+            string query6 = $"SELECT * FROM partners  where Restaurant='{_restaurant}' AND Groupp='{1}' ";
             Table_Outgo = dbHelper.ExecuteQuery(query6);
 
             Resize.Columns.Add("BeginWidth", typeof(float));
@@ -422,8 +419,10 @@ namespace WindowsFormsApp4
                 int kreditor = 0;
                 string debet = "";
                 string kredit = "";
+                string note = "";
                 if (radioButton1.Checked)
                 {
+                    note = "purchased";
                     departmentin = int.Parse(DepartmentIdBox.Text);
                     kreditor = int.Parse(PartnersIdBox.Text);
 
@@ -456,6 +455,7 @@ namespace WindowsFormsApp4
                 }
                 if (radioButton2.Checked)
                 {
+                    note = "moved";
                     departmentin = int.Parse(DepartmentIdBox.Text);
                     departmentout = int.Parse(PartnersIdBox.Text);
                     if (dataGridView1.DataSource is DataView dataView && dataView.Table == Table_211)
@@ -474,8 +474,30 @@ namespace WindowsFormsApp4
                         kredit = "1111";
                     }
                 }
+                if (radioButton3.Checked)
+                {
+                    note = "spent";
+                    departmentin = int.Parse(DepartmentIdBox.Text);
+                    departmentout = int.Parse(PartnersIdBox.Text);
+                    if (dataGridView1.DataSource is DataView dataView && dataView.Table == Table_211)
+                    {
+                        debet = "7111";
+                        kredit = "2111";
+                    }
+                    if (dataGridView1.DataSource is DataView dataView1 && dataView1.Table == Table_213)
+                    {
+                        debet = "7131";
+                        kredit = "2131";
+                    }
+                    if (dataGridView1.DataSource is DataView dataView2 && dataView2.Table == Table_111)
+                    {
+                        debet = "7111";
+                        kredit = "1111";
+                    }
+                }
                 if (radioButton4.Checked)
                 {
+                    note = "sold";
                     departmentout = int.Parse(PartnersIdBox.Text);
                     debitor = int.Parse(DepartmentIdBox.Text);
                     if (dataGridView1.DataSource is DataView dataView && dataView.Table == Table_211)
@@ -501,6 +523,7 @@ namespace WindowsFormsApp4
                 }
                 if (radioButton5.Checked)
                 {
+                    note = "fromnest";
                     departmentin = int.Parse(DepartmentIdBox.Text);
                     if (dataGridView1.DataSource is DataView dataView3 && dataView3.Table == Table_215)
                     {
@@ -523,13 +546,14 @@ namespace WindowsFormsApp4
                     newRow["Amount"] = amount;
                     newRow["SalesAmount"] = salesamount;
                     newRow["Operator"] = _parameter1;
-                    newRow["Restaurant"] = _parameter3;
+                    newRow["Restaurant"] = _restaurant;
                     newRow["Debet"] = debet;
                     newRow["Kredit"] = kredit;
                     newRow["DepartmentIn"] = departmentin;
                     newRow["DepartmentOut"] = departmentout;
                     newRow["Kreditor"] = kreditor;
                     newRow["Debitor"] = debitor;
+                    newRow["Note"] = note;
                     newRow["Date"] = dateTimePicker1.Value;
                     newRow["DateOfEntry"] = DateTime.Now;
                     newRow["RestaurantIn"] = 0;
@@ -1084,7 +1108,45 @@ namespace WindowsFormsApp4
 
         private void Purchase_ResizeEnd(object sender, EventArgs e)
         {
+            float kw = 0;
+            float kh = 0;
+            foreach (DataRow row in Resize.Rows)
+            {
+                row["EndWidth"] = this.Width;
+                row["EndHeight"] = this.Height;
+                kw = float.Parse(row["EndWidth"].ToString()) / float.Parse(row["BeginWidth"].ToString());
+                kh = float.Parse(row["EndHeight"].ToString()) / float.Parse(row["BeginHeight"].ToString());
+            }
+            foreach (Control control in this.Controls)
+            {
+                control.Left = (int)(control.Left * (double)kw);
+                control.Top = (int)(control.Top * (double)kh);
+                control.Width = (int)(control.Width * (double)kw);
+                control.Height = (int)(control.Height * (double)kh);
+            }
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                column.Width = (int)(column.Width * kw);
+            }
+            foreach (DataGridViewColumn column in dataGridView2.Columns)
+            {
+                column.Width = (int)(column.Width * kw);
+            }
 
+            foreach (Control control in panel1.Controls)
+            {
+                control.Width = (int)(control.Width * kw);
+                control.Height = (int)(control.Height * kh);
+                control.Top = (int)(control.Top * kh);
+                control.Left = (int)(control.Left * kw);
+            }
+            foreach (Control control in panel2.Controls)
+            {
+                control.Width = (int)(control.Width * kw);
+                control.Height = (int)(control.Height * kh);
+                control.Top = (int)(control.Top * kh);
+                control.Left = (int)(control.Left * kw);
+            }
         }
 
         private void DepartmentComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -1094,9 +1156,9 @@ namespace WindowsFormsApp4
                 DataRow[] foundRows = Table_Department.Select($"Name_1 = '{DepartmentComboBox.Text}' ");
                 DepartmentIdBox.Text = foundRows[0]["Id"].ToString();
             }
-            if (DepartmentComboBox.DataSource == Table_Outgo.DefaultView)
+            if (DepartmentComboBox.DataSource == Table_Partners.DefaultView)
             {
-                DataRow[] foundRows = Table_Outgo.Select($"Name_1 = '{DepartmentComboBox.Text}' ");
+                DataRow[] foundRows = Table_Partners.Select($"Name_1 = '{DepartmentComboBox.Text}' ");
                 DepartmentIdBox.Text = foundRows[0]["Id"].ToString();
             }
             if (DepartmentComboBox.DataSource == Table_Partners.DefaultView)
@@ -1157,10 +1219,11 @@ namespace WindowsFormsApp4
 
         private void SaveButton1_Click(object sender, EventArgs e)
         {
-            MySqlConnection connection = dbHelper.GetConnection();
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
             connection.Open();
-            dbHelper = new MySQLDatabaseHelper("localhost", "kafe_arm", "root", "");
-            string query = $"SELECT `Number` FROM `actions` WHERE `Restaurant`=  {_parameter3}";
+             string query = $"SELECT Number FROM actions WHERE Restaurant=  {_restaurant}";
             Table_Number = dbHelper.ExecuteQuery(query);
             int number = 0;
             foreach (DataRow row in Table_Number.Rows)
@@ -1175,11 +1238,11 @@ namespace WindowsFormsApp4
             {
 
                 row["Number"] = number;
-                string InsertQuery = $"INSERT INTO `actions`  (`Number`,`Code`,`Date`,`DateOfEntry`,`DepartmentIn`," +
-                    $" `DepartmentOut`,`Debitor`, `Kreditor`,`Debet`,`Kredit`,`Quantity`,`CostAmount`,`SalesAmount`, `Operator`, " +
-                    $"`RestaurantIn`,`RestaurantOut`, `Restaurant`) VALUES  (@number, @code, @date, @dateofentry, @departmentin,@departmentout," +
-                    $" @debitor, @kreditor, @debet, @kredit, @quantity, @costamount, @salesamount, @operator, @restaurantin, @restaurantout, @restaurant)";
-                using (MySqlCommand updatCommand = new MySqlCommand(InsertQuery, connection))
+                string InsertQuery = $"INSERT INTO actions  (Number,Code,Date,DateOfEntry,DepartmentIn," +
+                    $" DepartmentOut,Debitor, Kreditor,Debet,Kredit,Quantity,CostAmount,SalesAmount, Operator, " +
+                    $"RestaurantIn,RestaurantOut, Restaurant, Note) VALUES  (@number, @code, @date, @dateofentry, @departmentin,@departmentout," +
+                    $" @debitor, @kreditor, @debet, @kredit, @quantity, @costamount, @salesamount, @operator, @restaurantin, @restaurantout, @restaurant, @note)";
+                using (SqlCommand updatCommand = new SqlCommand(InsertQuery, connection))
                 {
                     updatCommand.Parameters.AddWithValue("@number", row["Number"]);
                     updatCommand.Parameters.AddWithValue("@code", row["Code"]);
@@ -1197,27 +1260,26 @@ namespace WindowsFormsApp4
                     updatCommand.Parameters.AddWithValue("@operator", _parameter1);
                     updatCommand.Parameters.AddWithValue("@restaurantin", row["RestaurantIn"]);
                     updatCommand.Parameters.AddWithValue("@restaurantout", row["RestaurantOut"]);
-                    updatCommand.Parameters.AddWithValue("@restaurant", _parameter3);
-
+                    updatCommand.Parameters.AddWithValue("@restaurant", _restaurant);
+                    updatCommand.Parameters.AddWithValue("@note", row["Note"]);
                     updatCommand.ExecuteNonQuery();
                 }
 
             }
-            string connectionString = "Server=localhost;Database=kafe_arm;User ID=root;Password='';CharSet = utf8mb4;";
-  //          Save.UpdateTableFromDatatable(connectionString, Table_Purchase, "Table_Purchase");
+
             if (radioButton1.Checked)
             {
                 if (dataGridView1.DataSource is DataView dataView && dataView.Table == Table_211)
                 {
-                    Save.UpdateTableFromDatatable(connectionString, Table_211, "211_cost");
+                    Save.UpdateTableFromDatatable(connectionString, Table_211, "211_cost", _restaurant);
                 }
                 if (dataGridView1.DataSource is DataView dataView1 && dataView1.Table == Table_213)
                 {
-                    Save.UpdateTableFromDatatable(connectionString, Table_213, "213_cost");
+                    Save.UpdateTableFromDatatable(connectionString, Table_213, "213_cost", _restaurant);
                 }
                 if (dataGridView1.DataSource is DataView dataView2 && dataView2.Table == Table_111)
                 {
-                    Save.UpdateTableFromDatatable(connectionString, Table_111, "111_cost");
+                    Save.UpdateTableFromDatatable(connectionString, Table_111, "111_cost", _restaurant);
                 }
             }
 
@@ -1289,6 +1351,8 @@ namespace WindowsFormsApp4
                 e.FormattingApplied = true; // Indicate that the formatting is applied
             }
         }
+
+
     }
 }
 

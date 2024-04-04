@@ -39,6 +39,43 @@
     <Reference Include="AWSSDK.DynamoDBv2, Version=3.3.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604, processorArchitecture=MSIL">
       <HintPath>packages\AWSSDK.DynamoDBv2.3.7.301.11\lib\net45\AWSSDK.DynamoDBv2.dll</HintPath>
     </Reference>
+    <Reference Include="EPPlus, Version=7.0.10.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>packages\EPPlus.7.0.10\lib\net462\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.Interfaces, Version=6.1.1.0, Culture=neutral, PublicKeyToken=a694d7f3b0907a61, processorArchitecture=MSIL">
+      <HintPath>packages\EPPlus.Interfaces.6.1.1\lib\net462\EPPlus.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.System.Drawing, Version=6.1.1.0, Culture=neutral, PublicKeyToken=2308d35469c9bac0, processorArchitecture=MSIL">
+      <HintPath>packages\EPPlus.System.Drawing.6.1.1\lib\net462\EPPlus.System.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IO.RecyclableMemoryStream.3.0.0\lib\netstandard2.0\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebDesign, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\Microsoft.ReportViewer.WebDesign.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\Microsoft.ReportViewer.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1620.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data, Version=8.3.0.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\MySQL\MySQL Connector NET 8.3.0\MySql.Data.dll</HintPath>
@@ -49,8 +86,29 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.ComponentModel.Annotations.5.0.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -67,6 +125,14 @@
     </Compile>
     <Compile Include="Additions.Designer.cs">
       <DependentUpon>Additions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BillReport.cs">
+      <DependentUpon>BillReport.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="BillReport.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BillReport.xsd</DependentUpon>
     </Compile>
     <Compile Include="Foods.cs">
       <SubType>Form</SubType>
@@ -116,6 +182,7 @@
     <Compile Include="Materials.Designer.cs">
       <DependentUpon>Materials.cs</DependentUpon>
     </Compile>
+    <Compile Include="Microsoft\Office.cs" />
     <Compile Include="MySQLDatabaseHelper.cs" />
     <Compile Include="Nest.cs">
       <SubType>Form</SubType>
@@ -123,11 +190,23 @@
     <Compile Include="Nest.Designer.cs">
       <DependentUpon>Nest.cs</DependentUpon>
     </Compile>
+    <Compile Include="Observation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Observation.Designer.cs">
+      <DependentUpon>Observation.cs</DependentUpon>
+    </Compile>
     <Compile Include="order.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="order.Designer.cs">
       <DependentUpon>order.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Partners.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Partners.Designer.cs">
+      <DependentUpon>Partners.cs</DependentUpon>
     </Compile>
     <Compile Include="Powers.cs">
       <SubType>Form</SubType>
@@ -135,14 +214,10 @@
     <Compile Include="Powers.Designer.cs">
       <DependentUpon>Powers.cs</DependentUpon>
     </Compile>
+    <Compile Include="PrintingBill.cs" />
+    <Compile Include="PrintManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="provisional.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="provisional.Designer.cs">
-      <DependentUpon>provisional.cs</DependentUpon>
-    </Compile>
     <Compile Include="Purchase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,11 +226,20 @@
     </Compile>
     <Compile Include="ReplaceFields.cs" />
     <Compile Include="Save.cs" />
+    <Compile Include="SQLDatabaseHelper.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="SQLUpdater.cs" />
     <Compile Include="Standart.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Standart.Designer.cs">
       <DependentUpon>Standart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Stocktaking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Stocktaking.Designer.cs">
+      <DependentUpon>Stocktaking.cs</DependentUpon>
     </Compile>
     <Compile Include="TableUpdater.cs" />
     <Compile Include="Update_composits.cs" />
@@ -165,9 +249,16 @@
     <Compile Include="users.Designer.cs">
       <DependentUpon>users.cs</DependentUpon>
     </Compile>
+    <Compile Include="Workplace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Workplace.Designer.cs">
+      <DependentUpon>Workplace.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Additions.resx">
       <DependentUpon>Additions.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BillReport.rdlc" />
     <EmbeddedResource Include="Foods.resx">
       <DependentUpon>Foods.cs</DependentUpon>
     </EmbeddedResource>
@@ -187,6 +278,7 @@
     <EmbeddedResource Include="Inventory.resx">
       <DependentUpon>Inventory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="InventoryReport.rdlc" />
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -197,9 +289,15 @@
     <EmbeddedResource Include="Nest.resx">
       <DependentUpon>Nest.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Observation.resx">
+      <DependentUpon>Observation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="order.resx">
       <DependentUpon>order.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Partners.resx">
+      <DependentUpon>Partners.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Powers.resx">
       <DependentUpon>Powers.cs</DependentUpon>
@@ -210,23 +308,71 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="provisional.resx">
-      <DependentUpon>provisional.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Purchase.resx">
       <DependentUpon>Purchase.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Report1.rdlc" />
     <EmbeddedResource Include="Standart.resx">
       <DependentUpon>Standart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Stocktaking.resx">
+      <DependentUpon>Stocktaking.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="users.resx">
       <DependentUpon>users.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Workplace.resx">
+      <DependentUpon>Workplace.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="BillReport.xsc">
+      <DependentUpon>BillReport.xsd</DependentUpon>
+    </None>
+    <None Include="BillReport.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BillReport.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="BillReport.xss">
+      <DependentUpon>BillReport.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Additions.datasource" />
+    <None Include="Properties\DataSources\BillReport.BillReportDataTable.datasource" />
+    <None Include="Properties\DataSources\BillReport.BillReportRow.datasource" />
+    <None Include="Properties\DataSources\BillReport.BillReportRowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\BillReport.BillReportRowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\BillReport.datasource" />
+    <None Include="Properties\DataSources\Foods.datasource" />
+    <None Include="Properties\DataSources\FoodsGroup.datasource" />
+    <None Include="Properties\DataSources\Form1.datasource" />
+    <None Include="Properties\DataSources\GoodsMovement.datasource" />
+    <None Include="Properties\DataSources\Inventory.datasource" />
+    <None Include="Properties\DataSources\InventoryPrint.datasource" />
+    <None Include="Properties\DataSources\Login.datasource" />
+    <None Include="Properties\DataSources\Materials.datasource" />
+    <None Include="Properties\DataSources\Microsoft.Office.datasource" />
+    <None Include="Properties\DataSources\MySQLDatabaseHelper.datasource" />
+    <None Include="Properties\DataSources\Nest.datasource" />
     <None Include="Properties\DataSources\Newtonsoft.Json.DefaultJsonNameTable.datasource" />
-    <None Include="Properties\DataSources\order.datasource" />
+    <None Include="Properties\DataSources\order3.datasource" />
+    <None Include="Properties\DataSources\Powers.datasource" />
+    <None Include="Properties\DataSources\Program.datasource" />
+    <None Include="Properties\DataSources\Purchase.datasource" />
+    <None Include="Properties\DataSources\ReplaceFields.datasource" />
+    <None Include="Properties\DataSources\ReportPrinter.ReportManager.datasource" />
+    <None Include="Properties\DataSources\Save.datasource" />
+    <None Include="Properties\DataSources\SQLDatabaseHelper.datasource" />
+    <None Include="Properties\DataSources\SqlServerTypes.Utilities.datasource" />
+    <None Include="Properties\DataSources\SQLUpdater.datasource" />
+    <None Include="Properties\DataSources\Standart.datasource" />
+    <None Include="Properties\DataSources\Stocktaking.datasource" />
+    <None Include="Properties\DataSources\TableUpdater.datasource" />
+    <None Include="Properties\DataSources\Update_composits.datasource" />
+    <None Include="Properties\DataSources\users.datasource" />
+    <None Include="Properties\DataSources\WindowsFormsApp4.images.Standart.datasource" />
+    <None Include="Properties\DataSources\WindowsFormsApp4.Properties.Resources.datasource" />
+    <None Include="Properties\DataSources\WindowsFormsApp4.Properties.Settings.datasource" />
+    <None Include="Properties\DataSources\Workplace.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -249,11 +395,27 @@
     <None Include="images\look.png" />
     <None Include="images\ARW02LT.ICO" />
     <Content Include="ReadMe__and__eMeL_ForkInfo.txt" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="xbase.txt" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="packages\AWSSDK.DynamoDBv2.3.7.301.11\analyzers\dotnet\cs\AWSSDK.DynamoDBv2.CodeAnalysis.dll" />
     <Analyzer Include="packages\AWSSDK.DynamoDBv2.3.7.301.11\analyzers\dotnet\cs\SharedAnalysisCode.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

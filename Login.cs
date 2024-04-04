@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using System.Resources;
-using MySql.Data.MySqlClient;
-using System.Xml.Linq;
+using System.Data.SqlClient;
 
 namespace WindowsFormsApp4
 {
@@ -15,7 +10,7 @@ namespace WindowsFormsApp4
 
     public partial class Login : Form
     {
-        private MySQLDatabaseHelper dbHelper;
+        private SQLDatabaseHelper dbHelper;
 
         public Login()
         {
@@ -32,7 +27,7 @@ namespace WindowsFormsApp4
         private void Login_FormClosing(object sender, FormClosingEventArgs e)
         {
             // Close the database connection when the form is closing
-            dbHelper.CloseConnection();
+          //  dbHelper.CloseConnection();
         }
 
         private void loginfield_Enter(object sender, EventArgs e)
@@ -99,11 +94,14 @@ namespace WindowsFormsApp4
         private void buttonlogin_Click(object sender, EventArgs e)
         {
 
-            dbHelper = new MySQLDatabaseHelper("localhost", "kafe_arm", "root", "");
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
+            connection.Open();
             string log = loginfield.Text;
             string pass = passfield.Text;
 
-            string query = $"SELECT * FROM `users` WHERE `Login` = '{log}' AND `Password` = '{pass}' ";
+            string query = $"SELECT * FROM Users WHERE Login = '{log}' AND Password = '{pass}' ";
             DataTable Table_Login = dbHelper.ExecuteQuery(query);
             string q = Table_Login.Rows.Count.ToString();
 
@@ -111,6 +109,12 @@ namespace WindowsFormsApp4
             int opperator = 0;
             int holl = 0;
             int restaurant = 0;
+            int editor = 0;
+            int previous = 0;
+            int orderer = 0;
+            int observer = 0;
+            int workplace = 0;
+
             if (Table_Login.Rows.Count > 0) //user - ը գոյություն ունի
             {
                 foreach (DataRow row in Table_Login.Rows)//ստուգում ենք լիազորությունը
@@ -118,17 +122,15 @@ namespace WindowsFormsApp4
                     opperator = Convert.ToInt32(row["Id"]);// աշխատակցի Id-ն
                     holl = Convert.ToInt32(row["Holl"]);//Սրահի համարը
                     restaurant = Convert.ToInt32(row["Restaurant"]);//ռեստորանի համարը
-                    //this.Tag = "id" + id + ";" + pow;
+                    if (row["Editor"] != DBNull.Value) editor = Convert.ToInt32(row["Editor"]); //խմբագրող
+                    if (row["orderer"] != DBNull.Value) orderer = Convert.ToInt32(row["orderer"]);//պատվիրող
+                    if (row["previous"] != DBNull.Value) previous = Convert.ToInt32(row["previous"]);//նախնական
+                    if (row["observer"] != DBNull.Value) observer = Convert.ToInt32(row["observer"]);//դիտորդ
+                    if (row["Workplace"] != DBNull.Value) workplace = Convert.ToInt32(row["observer"]);//աշխատատեղ
 
                 }
-                if (pow == "1" || pow == "2")
-                {
-                   // DataSynchronization();
-                   // AccessForm1Controls();//Form1-ի կոճակները հասանելի է դարձնում
-
-                }
-                dbHelper.CloseConnection();
-                Form1 form1 = new Form1(opperator, holl, restaurant);
+                connection.Close();
+                Form1 form1 = new Form1(opperator, holl, restaurant, editor, orderer, previous, observer, workplace);
 
                 form1.Show();
             }
@@ -138,7 +140,7 @@ namespace WindowsFormsApp4
                 int porc = int.Parse(message.Tag.ToString()) - 1;
                 if (porc == 0)
                 {
-                    dbHelper.CloseConnection();
+                    connection.Close();
                     this.Close();
                 }
                 string mnac = porc.ToString();

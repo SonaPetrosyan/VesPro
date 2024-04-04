@@ -1276,6 +1276,9 @@
             this.Controls.Add(this.amount);
             this.Controls.Add(this.dataGridView2);
             this.Name = "Standart";
+            this.Load += new System.EventHandler(this.Standart_Load);
+            this.ResizeBegin += new System.EventHandler(this.Standart_ResizeBegin);
+            this.ResizeEnd += new System.EventHandler(this.Standart_ResizeEnd);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.panel1.ResumeLayout(false);

@@ -5,17 +5,9 @@ using Mysqlx.Crud;
 using MySqlX.XDevAPI.Relational;
 using System;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Reflection;
-using System.Security.Cryptography;
-using System.Security.Policy;
+using System.Data.SqlClient;
 using System.Windows.Forms;
-using static Mysqlx.Notice.SessionStateChanged.Types;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 using Button = System.Windows.Forms.Button;
 
 
@@ -24,31 +16,44 @@ namespace WindowsFormsApp4
     public partial class Standart : Form
     {
         private int _restaurant;
+        private int _editor;
         private DataTable Department = new DataTable();
+
         private DataTable Table_215 = new DataTable();
+
         private DataTable Standart_215 = new DataTable();
-        private DataTable Table_215_groups = new DataTable();
-        private DataTable Current_order = new DataTable();  
-        private DataTable Table_Restaurants = new DataTable();
-        private MySQLDatabaseHelper dbHelper;
+
+        private DataTable FoodGroupp = new DataTable();
+
+        private DataTable CurrentOrder = new DataTable();
+
+        private DataTable Resize = new DataTable();
+
+
+        private DataTable Table_Rest = new DataTable();
+//
+        private SQLDatabaseHelper dbHelper;
         private DataView dataView;
-        public Standart(int restaurant)
+        public Standart(int restaurant, int editor)
         {
             InitializeComponent();
             _restaurant = restaurant;
-            dbHelper = new MySQLDatabaseHelper("localhost", "kafe_arm", "root", "");
+            _editor= editor;
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
 
-            string query6 = $"SELECT * FROM `standart_215` WHERE  `Restaurant`='{_restaurant}' ";
+            string query6 = $"SELECT * FROM standart_215 WHERE  Restaurant='{_restaurant}' ";
             Standart_215 = dbHelper.ExecuteQuery(query6);
 
-            string query5 = $"SELECT * FROM `department` WHERE `Restaurant`='{_restaurant}' ";
+            string query5 = $"SELECT * FROM department WHERE Restaurant='{_restaurant}' ";
             Department = dbHelper.ExecuteQuery(query5);
 
-            string query4 = $"SELECT * FROM `table_215_groups` WHERE  `Restaurant`='{_restaurant}' ";
-            Table_215_groups = dbHelper.ExecuteQuery(query4);
+            string query4 = $"SELECT * FROM FoodGroupp WHERE  Restaurant='{_restaurant}' ";
+            FoodGroupp = dbHelper.ExecuteQuery(query4);
 
 
-            string query1 = $"SELECT * FROM `table_215` WHERE `Price`>0 AND `Restaurant`='{_restaurant}' ";
+            string query1 = $"SELECT * FROM table_215 WHERE Price>0 AND Restaurant='{_restaurant}' ";
             Table_215 = dbHelper.ExecuteQuery(query1);
             foreach (DataRow row in Table_215.Rows)
             {
@@ -63,27 +68,48 @@ namespace WindowsFormsApp4
 
 
 
-            Current_order.Columns.Add("name", typeof(string));
-            Current_order.Columns.Add("price", typeof(float));
-            Current_order.Columns.Add("qanak", typeof(string));
-            Current_order.Columns.Add("salesamount", typeof(float));
-            Current_order.Columns.Add("printer", typeof(int));
-            Current_order.Columns.Add("departmentout", typeof(int));
-            Current_order.Columns.Add("code", typeof(string));
-            Current_order.Columns.Add("quantity", typeof(float));
-            Current_order.Columns.Add("number", typeof(int));
-            Current_order.Columns.Add("accepted", typeof(bool));
-            Current_order.Columns.Add("current", typeof(bool));
-            Current_order.Columns.Add("debet", typeof(string));
-            Current_order.Columns.Add("kredit", typeof(string));
-            Current_order.Columns.Add("id", typeof(int));
-            Current_order.Columns.Add("restaurant", typeof(int));
+            CurrentOrder.Columns.Add("name", typeof(string));
+            CurrentOrder.Columns.Add("price", typeof(float));
+            CurrentOrder.Columns.Add("qanak", typeof(string));
+            CurrentOrder.Columns.Add("salesamount", typeof(float));
+            CurrentOrder.Columns.Add("printer", typeof(int));
+            CurrentOrder.Columns.Add("departmentout", typeof(int));
+            CurrentOrder.Columns.Add("code", typeof(string));
+            CurrentOrder.Columns.Add("quantity", typeof(float));
+            CurrentOrder.Columns.Add("number", typeof(int));
+            CurrentOrder.Columns.Add("accepted", typeof(bool));
+            CurrentOrder.Columns.Add("current", typeof(bool));
+            CurrentOrder.Columns.Add("debet", typeof(string));
+            CurrentOrder.Columns.Add("kredit", typeof(string));
+            CurrentOrder.Columns.Add("id", typeof(int));
+            CurrentOrder.Columns.Add("restaurant", typeof(int));
 
-            dataGridView2.DataSource = Current_order;
+            dataGridView2.DataSource = CurrentOrder;
             dataGridView2.Columns[0].DataPropertyName = "name";
             dataGridView2.Columns[1].DataPropertyName = "Price";
             dataGridView2.Columns[2].DataPropertyName = "qanak";
             dataGridView2.Columns[3].DataPropertyName = "salesamount";
+
+
+            Resize.Columns.Add("BeginWidth", typeof(float));
+            Resize.Columns.Add("BeginHeight", typeof(float));
+            Resize.Columns.Add("EndWidth", typeof(float));
+            Resize.Columns.Add("EndHeight", typeof(float));
+            Resize.Rows.Add(0, 0, 0, 0);
+
+            if (_editor == 0)
+            {
+                dataGridView1.Enabled = false;
+                accept.Enabled = false;
+            }
+
+            string query7 = $"SELECT * FROM Restaurants WHERE Id = '{_restaurant}'";
+            Table_Rest = dbHelper.ExecuteQuery(query7);
+            foreach (DataRow row in Table_Rest.Rows)
+            {
+                this.Text = row["Name_1"].ToString();
+            }
+
 
         }
 
@@ -314,7 +340,7 @@ namespace WindowsFormsApp4
         private void GroupClick_Click(object sender, EventArgs e)
         {
             dataView = new DataView(Table_215);
-            dataView.RowFilter = $"department = " + DepartmentClick.Tag.ToString() + " AND group = " + GroupClick.Tag.ToString();//բաժինը և խումբը ընտրվածներն են
+            dataView.RowFilter = $"department = " + DepartmentClick.Tag.ToString() + " AND Groupp = " + GroupClick.Tag.ToString();//բաժինը և խումբը ընտրվածներն են
 
             dataGridView1.DataSource = dataView;
         }
@@ -356,18 +382,18 @@ namespace WindowsFormsApp4
                 if (i < 29)
                 {
                     DataRow row = rowView.Row;
-                    DataRow[] matchingRows = Table_215_groups.Select($"group = {row["group"]}");
+                    DataRow[] matchingRows = FoodGroupp.Select($"Groupp = {row["Groupp"]}");
                     if (matchingRows.Length > 0)
                     {
                         k = 0;
                         for (int j = 0; j < 29; j++)
                         {
-                            if (matchingRows[0]["group"].ToString() == groupArray[j].Tag.ToString()) k = 1;
+                            if (matchingRows[0]["Groupp"].ToString() == groupArray[j].Tag.ToString()) k = 1;
                         }
                         if (k == 1) continue;
                         i++;
                         groupArray[i].Text = matchingRows[0]["Name_1"].ToString();
-                        groupArray[i].Tag = matchingRows[0]["Group"].ToString();
+                        groupArray[i].Tag = matchingRows[0]["Groupp"].ToString();
                         groupArray[i].Visible = true;
                     }
                 }
@@ -393,17 +419,17 @@ namespace WindowsFormsApp4
                 int printer = int.Parse(printerValue.ToString());
                 int department = int.Parse(departmentValue.ToString());
                 string exist = existValue.ToString();
-                DataRow[] foundRows = Current_order.Select("current = true");  // Locate for current = true
+                DataRow[] foundRows = CurrentOrder.Select("current = true");  // Locate for current = true
 
 
                 if (foundRows.Length == 0) 
                 {
-                    DataRow newRow = Current_order.NewRow(); // Append the new row to the Current_order և լրացնում է ընտրվածով
-                    Current_order.Rows.Add(newRow);
+                    DataRow newRow = CurrentOrder.NewRow(); // Append the new row to the CurrentOrder և լրացնում է ընտրվածով
+                    CurrentOrder.Rows.Add(newRow);
                     newRow["current"] = true;
                     newRow["accepted"] = false;
-                    newRow["id"] = Current_order.Rows.Count;
-                    dataGridView2.Tag = Current_order.Rows.Count;
+                    newRow["id"] = CurrentOrder.Rows.Count;
+                    dataGridView2.Tag = CurrentOrder.Rows.Count;
                     newRow["code"] = code;
                     newRow["name"] = name;
                     newRow["price"] = price;
@@ -430,7 +456,7 @@ namespace WindowsFormsApp4
                 }
 
 
-                foreach (DataRow row in Current_order.Rows)//ընթացիկ տողը փոխարինում է նոր ընտրվածով
+                foreach (DataRow row in CurrentOrder.Rows)//ընթացիկ տողը փոխարինում է նոր ընտրվածով
                 {
                     if (row["current"].ToString().ToLower() == "true")
                     {
@@ -452,7 +478,7 @@ namespace WindowsFormsApp4
         {
           //  if (command.Text == "number" && dataGridView1.Tag.ToString() == "inorder")//պատվերի ընթացքի մեջ ենք և թիվ ենք սեղմել
          //   {
-                foreach (DataRow row in Current_order.Rows)
+                foreach (DataRow row in CurrentOrder.Rows)
                 {
 
                     if (bool.Parse(row["current"].ToString()) == true)
@@ -562,7 +588,7 @@ namespace WindowsFormsApp4
 
         private void backspace_Click(object sender, EventArgs e)
         {
-            foreach (DataRow row in Current_order.Rows)
+            foreach (DataRow row in CurrentOrder.Rows)
             {
                 if (row["id"].ToString() == dataGridView2.Tag.ToString())
                 {
@@ -585,7 +611,7 @@ namespace WindowsFormsApp4
                 bool acc = false;
                 accept.Visible = false;
 
-                foreach (DataRow row in Current_order.Rows)
+                foreach (DataRow row in CurrentOrder.Rows)
                 {
                     if (bool.Parse(row["current"].ToString()) == true && row["qanak"].ToString().Length > 0 && row["qanak"].ToString() != "-")
                     {
@@ -609,18 +635,22 @@ namespace WindowsFormsApp4
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-            string query6 = $"SELECT * FROM `standart_215` WHERE  `Restaurant`='{_restaurant}' ";
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
+            connection.Open();
+            string query6 = $"SELECT * FROM standart_215 WHERE  Restaurant='{_restaurant}' ";
             Standart_215 = dbHelper.ExecuteQuery(query6);
 
-            if (numericUpDown1.Value>0) dataGridView1.Enabled= true;
-            Current_order.Clear();
+            if (numericUpDown1.Value > 0 && _editor == 1) dataGridView1.Enabled= true;
+            CurrentOrder.Clear();
             int i = 0;
             foreach (DataRow row in Standart_215.Rows)
             {
                 if ((int.Parse(row["Number"].ToString()) != numericUpDown1.Value) || int.Parse(row["Restaurant"].ToString()) != _restaurant) continue;
                 i = i + 1;
-                DataRow newRow = Current_order.NewRow(); // Append the new row to the Current_order և լրացնում է ընտրվածով
-                Current_order.Rows.Add(newRow);
+                DataRow newRow = CurrentOrder.NewRow(); // Append the new row to the CurrentOrder և լրացնում է ընտրվածով
+                CurrentOrder.Rows.Add(newRow);
                 newRow["id"] = i;
                 newRow["Number"] = numericUpDown1.Value;
                 newRow["Code"] = row["Code"];
@@ -630,7 +660,7 @@ namespace WindowsFormsApp4
                 newRow["Debet"] = row["Debet"];
                 newRow["Kredit"] = row["Kredit"];
                 newRow["Current"] = false;
-                DataRow[] foundRows = Table_215.Select($"`Code`= '{row["Code"]}' AND `Restaurant`= '{_restaurant}' ");
+                DataRow[] foundRows = Table_215.Select($"Code= '{row["Code"]}' AND Restaurant= '{_restaurant}' ");
                 if (foundRows.Length > 0)
                 {
                     newRow["name"] = foundRows[0]["Name_1"];
@@ -640,24 +670,26 @@ namespace WindowsFormsApp4
                 newRow["qanak"] = row["Quantity"].ToString();
             }
 
+            connection.Close();
         }
 
         private void accept_Click(object sender, EventArgs e)
         {
-            MySqlConnection connection = dbHelper.GetConnection();
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
             connection.Open();
-            string DeleteQuery = $"DELETE FROM `standart_215` WHERE `Number`='{numericUpDown1.Value}' AND `Restaurant`='{_restaurant}'";
-            using (MySqlCommand deleteCommand = new MySqlCommand(DeleteQuery, connection))
+            string DeleteQuery = $"DELETE FROM standart_215 WHERE Number='{numericUpDown1.Value}' AND Restaurant='{_restaurant}'";
+            using (SqlCommand deleteCommand = new SqlCommand(DeleteQuery, connection))
                 deleteCommand.ExecuteNonQuery();
-
-            foreach (DataRow row in Current_order.Rows)
+            foreach (DataRow row in CurrentOrder.Rows)
             {
                 if (float.Parse(row["Quantity"].ToString()) == 0) { continue; }
-                string InsertQuery = $"INSERT INTO `standart_215`  (`Number`,`Code`,`DateOfEntry`," +
-                    $" `DepartmentOut`,`Debet`,`Kredit`,`Quantity`,`SalesAmount`, " +
-                    $" `Restaurant`) VALUES  (@number, @code, @dateofentry, @departmentout," +
+                string InsertQuery = $"INSERT INTO standart_215  (Number,Code,DateOfEntry," +
+                    $" DepartmentOut,Debet,Kredit,Quantity,SalesAmount, " +
+                    $" Restaurant) VALUES  (@number, @code, @dateofentry, @departmentout," +
                     $" @debet, @kredit, @quantity, @salesamount, @restaurant)";
-                using (MySqlCommand updatCommand = new MySqlCommand(InsertQuery, connection))
+                using (SqlCommand updatCommand = new SqlCommand(InsertQuery, connection))
                 {
                     updatCommand.Parameters.AddWithValue("@number", numericUpDown1.Value);
                     updatCommand.Parameters.AddWithValue("@code", row["Code"]);
@@ -668,7 +700,6 @@ namespace WindowsFormsApp4
                     updatCommand.Parameters.AddWithValue("@quantity", row["Quantity"]);
                     updatCommand.Parameters.AddWithValue("@salesamount", row["SalesAmount"]);
                     updatCommand.Parameters.AddWithValue("@restaurant", _restaurant);
-
                     updatCommand.ExecuteNonQuery();
                 }
 
@@ -683,7 +714,7 @@ namespace WindowsFormsApp4
         private void number_delete_Click(object sender, EventArgs e)
         {
             int idd = int.Parse(number_delete.Tag.ToString());
-            DataRow[] foundRows = Current_order.Select($"id = '{idd}'");
+            DataRow[] foundRows = CurrentOrder.Select($"id = '{idd}'");
             foundRows[0]["quantity"] = 0;
             foundRows[0]["qanak"] = "";
             number_delete.Enabled = false;
@@ -701,6 +732,88 @@ namespace WindowsFormsApp4
                 object idValue = dataGridView.Rows[e.RowIndex].Cells["id"].Value;
                 number_delete.Tag=idValue.ToString();
                 number_delete.Enabled = true;
+            }
+        }
+        private bool DoesButtonExist(string buttonName)
+        {
+            // Check if the button with the specified name exists in the form's Controls collection
+            return Controls.ContainsKey(buttonName);
+        }
+        private void Standart_Load(object sender, EventArgs e)
+        {
+            int j = -1;
+            Button[] departmentArray = new Button[2] {department1, department2 };
+            foreach (DataRow row in Department.Rows)//բաժինների կոճակների անուններն ենք տեղադրում
+            {
+                if (row["Alloved"].ToString() == "0") continue;
+                j++;
+                if (DoesButtonExist(departmentArray[j].Name))
+                {
+                    departmentArray[j].Text = row["Name_1"].ToString();
+                    departmentArray[j].Visible = true;
+                }
+            }
+
+            this.command.Left = this.Width + 5;
+            this.DepartmentClick.Left = this.Width + 5;
+            this.GroupClick.Left = this.Width + 5;
+            this.AdditionClick.Left = this.Width + 5;
+
+            //NestUpdate();
+        }
+
+        private void Standart_ResizeEnd(object sender, EventArgs e)
+        {
+
+            float kw = 0;
+            float kh = 0;
+            foreach (DataRow row in Resize.Rows)
+            {
+                row["EndWidth"] = this.Width;
+                row["EndHeight"] = this.Height;
+                kw = float.Parse(row["EndWidth"].ToString()) / float.Parse(row["BeginWidth"].ToString());
+                kh = float.Parse(row["EndHeight"].ToString()) / float.Parse(row["BeginHeight"].ToString());
+            }
+            foreach (Control control in this.Controls)
+            {
+                control.Left = (int)(control.Left * (double)kw);
+                control.Top = (int)(control.Top * (double)kh);
+                control.Width = (int)(control.Width * (double)kw);
+                control.Height = (int)(control.Height * (double)kh);
+            }
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                column.Width = (int)(column.Width * kw);
+            }
+            foreach (DataGridViewColumn column in dataGridView2.Columns)
+            {
+                column.Width = (int)(column.Width * kw);
+            }
+
+            foreach (Control control in panel1.Controls)
+            {
+                control.Width = (int)(control.Width * kw);
+                control.Height = (int)(control.Height * kh);
+                control.Top = (int)(control.Top * kh);
+                control.Left = (int)(control.Left * kw);
+            }
+            foreach (Control control in panel2.Controls)
+            {
+                control.Width = (int)(control.Width * kw);
+                control.Height = (int)(control.Height * kh);
+                control.Top = (int)(control.Top * kh);
+                control.Left = (int)(control.Left * kw);
+            }
+
+
+        }
+
+        private void Standart_ResizeBegin(object sender, EventArgs e)
+        {
+            foreach (DataRow row in Resize.Rows)
+            {
+                row["BeginWidth"] = this.Width;
+                row["BeginHeight"] = this.Height;
             }
         }
     }

@@ -1,49 +1,63 @@
-﻿using MySql.Data.MySqlClient;
+﻿using System.Data.SqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp4
 {
     public partial class FoodsGroup : Form
     {
-        private MySQLDatabaseHelper dbHelper;
+        private int _restaurant;
+
+        private int _editor;
+
+        private SQLDatabaseHelper dbHelper;
+
         private DataTable Tablte_215 = new DataTable();
+
         private DataTable Food_Group = new DataTable();
+
         private DataTable Resize = new DataTable();
+
+        private DataTable Table_Rest = new DataTable();
+
         private DataTable Exist = new DataTable();
+
         private DataView dataView;
-        public FoodsGroup()
+        public FoodsGroup(int editor, int restaurant)
         {
+            _editor = editor;
+
+            _restaurant = restaurant;
+
             InitializeComponent();
 
-            dbHelper = new MySQLDatabaseHelper("localhost", "kafe_arm", "root", "");
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
 
 
-            string query1 = $"SELECT `Code`,`Name_1`,`Department`,`Group` FROM `table_215` WHERE 1 ";
+            string query1 = $"SELECT Code,Name_1,Department,Free,Groupp FROM table_215 WHERE Restaurant='{_restaurant}'" ;
             Tablte_215 = dbHelper.ExecuteQuery(query1);
             dataGridView1.DataSource = Tablte_215;
             dataGridView1.Columns[0].DataPropertyName = "Code";
             dataGridView1.Columns[1].DataPropertyName = "Name_1";
             dataGridView1.Columns[2].DataPropertyName = "Department";
-            dataGridView1.Columns[3].DataPropertyName = "Group";
+            dataGridView1.Columns[3].DataPropertyName = "Free";
+            dataGridView1.Columns[4].DataPropertyName = "Groupp";
             dataGridView1.DataSource = Tablte_215;
             foreach (DataGridViewColumn column in dataGridView1.Columns)
             {
-                if (column.Index > 3)
+                if (column.Index > 4)
                 {
                     column.Visible = false;
                 }
             }
 
-            string query2 = $"SELECT `Group`,`Name_1`,`Name_2`,`Name_3` FROM `foodgroupp` WHERE `Group`>0 ";
+            string query2 = $"SELECT Groupp,Name_1,Name_2,Name_3 FROM FoodGroupp WHERE Restaurant='{_restaurant}'";
             Food_Group = dbHelper.ExecuteQuery(query2);
             dataGridView2.DataSource = Food_Group;
-            dataGridView2.Columns[0].DataPropertyName = "Group";
+            dataGridView2.Columns[0].DataPropertyName = "Groupp";
             dataGridView2.Columns[1].DataPropertyName = "Name_1";
             dataGridView2.Columns[2].DataPropertyName = "Name_2";
             dataGridView2.Columns[3].DataPropertyName = "Name_3";
@@ -54,6 +68,14 @@ namespace WindowsFormsApp4
                     column.Visible = false;
                 }
             }
+
+            string query3 = $"SELECT * FROM Restaurants WHERE Id = '{_restaurant}'";
+            Table_Rest = dbHelper.ExecuteQuery(query3);
+            foreach (DataRow row in Table_Rest.Rows)
+            {
+                this.Text = row["Name_1"].ToString();
+            }
+
             Resize.Columns.Add("BeginWidth", typeof(float));
             Resize.Columns.Add("BeginHeight", typeof(float));
             Resize.Columns.Add("EndWidth", typeof(float));
@@ -62,6 +84,12 @@ namespace WindowsFormsApp4
 
             label2.Text = "";
             label3.Text = "";
+
+            if (_editor == 0)
+            {
+                Savebutton1.Enabled=false;
+                Savebutton2.Enabled = false;
+            }
         }
 
         private void FoodsGroup_ResizeBegin(object sender, EventArgs e)
@@ -118,11 +146,11 @@ namespace WindowsFormsApp4
 
             foreach (DataRow row in Food_Group.Rows)
             {
-                groupp = int.Parse(row["Group"].ToString());
-                if (int.Parse(row["Group"].ToString()) > groupp) { groupp++; }
+                groupp = int.Parse(row["Groupp"].ToString());
+                if (int.Parse(row["Groupp"].ToString()) > groupp) { groupp++; }
             }
             DataRow newRow = Food_Group.NewRow();
-            newRow["Group"] = groupp + 1;
+            newRow["Groupp"] = groupp + 1;
             Food_Group.Rows.Add(newRow);
             int lastRowIndex = Food_Group.Rows.Count - 1;
             dataGridView2.CurrentCell = dataGridView2.Rows[lastRowIndex].Cells[0];
@@ -131,22 +159,29 @@ namespace WindowsFormsApp4
 
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridView dataGridView = (DataGridView)sender;
-            DataGridViewCell currentCell = dataGridView.CurrentCell;
-            label2.Text = dataGridView.Rows[e.RowIndex].Cells["Group"].Value.ToString();
-            label2.Tag = e.RowIndex.ToString();
-            button1.Enabled = true;
+            if (e.RowIndex >= 0 && e.RowIndex <= dataGridView1.Rows.Count)
+            {
+                DataGridView dataGridView = (DataGridView)sender;
+                DataGridViewCell currentCell = dataGridView.CurrentCell;
+                label2.Text = dataGridView.Rows[e.RowIndex].Cells["Groupp"].Value.ToString();
+                label2.Tag = e.RowIndex.ToString();
+                button1.Enabled = true;
+            }
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridView dataGridView = (DataGridView)sender;
-            DataGridViewCell currentCell = dataGridView.CurrentCell;
-            label3.Text = dataGridView.Rows[e.RowIndex].Cells["Code"].Value.ToString();
-            label3.Tag = e.RowIndex.ToString();
-            button1.Enabled = true;
-        }
+            if (e.RowIndex >= 0 && e.RowIndex <= dataGridView1.Rows.Count)
+            {
+                    DataGridView dataGridView = (DataGridView)sender;
+                    DataGridViewCell currentCell = dataGridView.CurrentCell;
 
+                    label3.Text = dataGridView.Rows[e.RowIndex].Cells["Code"].Value.ToString();
+                    label3.Tag = e.RowIndex.ToString();
+                    button1.Enabled = true;
+                  
+            }
+        }
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             Savebutton1.Visible = true;
@@ -159,9 +194,10 @@ namespace WindowsFormsApp4
 
         private void Savebutton2_Click(object sender, EventArgs e)
         {
-            MySqlConnection connection = dbHelper.GetConnection();
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
             connection.Open();
-            dbHelper = new MySQLDatabaseHelper("localhost", "kafe_arm", "root", "");
 
             for (int i = 0; i < dataGridView2.Rows.Count - 1; i++)
             {
@@ -169,24 +205,43 @@ namespace WindowsFormsApp4
                 {
 
                     Exist = new DataTable();
-                    int group = int.Parse(dataGridView2.Rows[i].Cells[0].Value.ToString());
+                    int groupp = int.Parse(dataGridView2.Rows[i].Cells[0].Value.ToString());
                     string name1 = dataGridView2.Rows[i].Cells[1].Value.ToString();
                     string name2 = dataGridView2.Rows[i].Cells[2].Value.ToString();
                     string name3 = dataGridView2.Rows[i].Cells[3].Value.ToString();
-                    string query = $"SELECT * FROM `FoodGroupp` WHERE `Group` = '{group}'  ";
+                    string query = $"SELECT * FROM FoodGroupp WHERE Groupp = '{groupp}' AND Restaurant='{_restaurant}'";
                     Exist = dbHelper.ExecuteQuery(query);
                     int count = Exist.Rows.Count;
                     if (count > 0)
                     {
-                        string UpdateQuery = $"UPDATE `FoodGroupp` SET `Name_1`= '{name1}',`Name_2`= '{name2}',`Name_3`= '{name3}' WHERE `Group`= '{group}'";
-                        using (MySqlCommand updatCommand = new MySqlCommand(UpdateQuery, connection))
-                            updatCommand.ExecuteNonQuery();
+                        string UpdateQuery = $"UPDATE FoodGroupp SET Name_1= @Name_1,Name_2= @Name_2,Name_3= @Name_3 WHERE Groupp= @Groupp ";
+                        using (SqlCommand command = new SqlCommand(UpdateQuery, connection))
+                        {
+                            command.Parameters.AddWithValue("@Name_1", name1);
+                            command.Parameters.AddWithValue("@Name_2", name2);
+                            command.Parameters.AddWithValue("@Name_3", name3);
+                            command.Parameters.AddWithValue("@Groupp", groupp);
+                              command.ExecuteNonQuery();
+                        }
+
+
+
                     }
                     else
                     {
-                        string InsertQuery = $"INSERT `FoodGroupp` SET `Group`= '{group}',`Name_1`= '{name1}',`Name_2`= '{name2}',`Name_3`= '{name3}'";
-                        using (MySqlCommand updatCommand = new MySqlCommand(InsertQuery, connection))
-                            updatCommand.ExecuteNonQuery();
+                        string InsertQuery = $"INSERT INTO FoodGroupp SET (Groupp, Name_1, Name_2,Name_3,Restaurant) VALUES (@Groupp, @Name_1, @Name_2, @Name_3,@Restaurant)";
+                        using (SqlCommand command = new SqlCommand(InsertQuery, connection))
+                        {
+                            command.Parameters.AddWithValue("@Groupp", groupp);
+                            command.Parameters.AddWithValue("@Name_1", name1);
+                            command.Parameters.AddWithValue("@Name_2", name2);
+                            command.Parameters.AddWithValue("@Name_3", name3);
+                            command.Parameters.AddWithValue("@Restaurant", _restaurant);
+                            command.ExecuteNonQuery();
+                        }
+
+
+
                     }
 
                 }
@@ -199,7 +254,7 @@ namespace WindowsFormsApp4
             if (label2.Text.Length > 0 && label3.Text.Length > 0)
             {
                 int rowindex = int.Parse(label3.Tag.ToString());
-                dataGridView1.Rows[rowindex].Cells["Group"].Value = int.Parse(label2.Text);
+                dataGridView1.Rows[rowindex].Cells["Groupp"].Value = int.Parse(label2.Text);
                 label3.Text = "";
                 dataGridView1.Refresh();
                 Savebutton1.Visible = true;
@@ -208,27 +263,33 @@ namespace WindowsFormsApp4
 
         private void Savebutton1_Click(object sender, EventArgs e)
         {
-            MySqlConnection connection = dbHelper.GetConnection();
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
             connection.Open();
-            dbHelper = new MySQLDatabaseHelper("localhost", "kafe_arm", "root", "");
             for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
             {
                 if (dataGridView1.Rows[i].Cells[0].Value != null)
                 {
                     string code = dataGridView1.Rows[i].Cells[0].Value.ToString();
-                    int group = int.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString());
-                    string UpdateQuery = $"UPDATE `table_215` SET `Group`= '{group}' WHERE `Code`= '{code}'";
-                    using (MySqlCommand updatCommand = new MySqlCommand(UpdateQuery, connection))
+                    int free = int.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString());
+                    int group = int.Parse(dataGridView1.Rows[i].Cells[4].Value.ToString());
+                    string UpdateQuery = $"UPDATE table_215 SET Groupp= '{group}',Free= '{free}' WHERE Code= '{code}' AND Restaurant='{_restaurant}' ";
+                    using (SqlCommand updatCommand = new SqlCommand(UpdateQuery, connection))
                     updatCommand.ExecuteNonQuery();
                 }
             }
+            Savebutton1.Visible=false;
         }
 
         private void SearchBox_TextChanged(object sender, EventArgs e)
         {
+            dataView = new DataView(Tablte_215);
             string txt = SearchBox.Text.Trim();
             dataView.RowFilter = $"(Code+Name_1) LIKE '%{txt}%'";
             dataGridView1.DataSource = dataView;
         }
+
+
     }
 }

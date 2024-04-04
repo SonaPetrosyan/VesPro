@@ -34,20 +34,20 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.HelpButton = new System.Windows.Forms.Button();
             this.Savebutton1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.SearchBox1 = new System.Windows.Forms.TextBox();
             this.DepartmentIdBox = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.DateLabel = new System.Windows.Forms.Label();
             this.DepartmentComboBox = new System.Windows.Forms.ComboBox();
             this.DepartmentLabel = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.radioButton11 = new System.Windows.Forms.RadioButton();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.Savebutton2 = new System.Windows.Forms.Button();
             this.SearchBox = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -76,6 +76,7 @@
             this.execute = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
             this.button10 = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -89,23 +90,52 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.panel1.Controls.Add(this.dateTimePicker1);
+            this.panel1.Controls.Add(this.HelpButton);
             this.panel1.Controls.Add(this.Savebutton1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.SearchBox1);
             this.panel1.Controls.Add(this.DepartmentIdBox);
-            this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Controls.Add(this.DateLabel);
             this.panel1.Controls.Add(this.DepartmentComboBox);
             this.panel1.Controls.Add(this.DepartmentLabel);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.Savebutton2);
             this.panel1.Controls.Add(this.SearchBox);
             this.panel1.Cursor = System.Windows.Forms.Cursors.Default;
             this.panel1.Location = new System.Drawing.Point(-7, -1);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1121, 77);
             this.panel1.TabIndex = 39;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.CalendarForeColor = System.Drawing.Color.IndianRed;
+            this.dateTimePicker1.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.dateTimePicker1.CustomFormat = "dd-MM-yyyy HH:mm";
+            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(172, 23);
+            this.dateTimePicker1.MinDate = new System.DateTime(2024, 1, 1, 0, 0, 0, 0);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(170, 27);
+            this.dateTimePicker1.TabIndex = 63;
+            this.dateTimePicker1.Value = new System.DateTime(2024, 1, 1, 5, 30, 0, 0);
+            // 
+            // HelpButton
+            // 
+            this.HelpButton.BackColor = System.Drawing.Color.Orange;
+            this.HelpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.HelpButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HelpButton.ForeColor = System.Drawing.Color.White;
+            this.HelpButton.Location = new System.Drawing.Point(13, 1);
+            this.HelpButton.Name = "HelpButton";
+            this.HelpButton.Size = new System.Drawing.Size(35, 33);
+            this.HelpButton.TabIndex = 62;
+            this.HelpButton.Text = "?";
+            this.HelpButton.UseVisualStyleBackColor = false;
+            this.HelpButton.Click += new System.EventHandler(this.HelpButton_Click);
             // 
             // Savebutton1
             // 
@@ -149,25 +179,11 @@
             // 
             this.DepartmentIdBox.BackColor = System.Drawing.Color.Linen;
             this.DepartmentIdBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.DepartmentIdBox.Location = new System.Drawing.Point(317, 27);
+            this.DepartmentIdBox.Location = new System.Drawing.Point(346, 27);
             this.DepartmentIdBox.Name = "DepartmentIdBox";
-            this.DepartmentIdBox.Size = new System.Drawing.Size(45, 22);
+            this.DepartmentIdBox.Size = new System.Drawing.Size(30, 22);
             this.DepartmentIdBox.TabIndex = 48;
             this.DepartmentIdBox.Text = "1";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.dateTimePicker1.CustomFormat = "";
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(174, 24);
-            this.dateTimePicker1.MinDate = new System.DateTime(2020, 1, 1, 0, 0, 0, 0);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(137, 27);
-            this.dateTimePicker1.TabIndex = 44;
-            this.dateTimePicker1.Value = new System.DateTime(2024, 2, 23, 0, 0, 0, 0);
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // DateLabel
             // 
@@ -189,7 +205,7 @@
             this.DepartmentComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.DepartmentComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DepartmentComboBox.FormattingEnabled = true;
-            this.DepartmentComboBox.Location = new System.Drawing.Point(363, 25);
+            this.DepartmentComboBox.Location = new System.Drawing.Point(379, 25);
             this.DepartmentComboBox.Name = "DepartmentComboBox";
             this.DepartmentComboBox.Size = new System.Drawing.Size(132, 26);
             this.DepartmentComboBox.TabIndex = 47;
@@ -201,7 +217,7 @@
             this.DepartmentLabel.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.DepartmentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DepartmentLabel.ForeColor = System.Drawing.Color.White;
-            this.DepartmentLabel.Location = new System.Drawing.Point(329, 2);
+            this.DepartmentLabel.Location = new System.Drawing.Point(392, 2);
             this.DepartmentLabel.Name = "DepartmentLabel";
             this.DepartmentLabel.Size = new System.Drawing.Size(64, 20);
             this.DepartmentLabel.TabIndex = 46;
@@ -211,55 +227,55 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel3.Controls.Add(this.radioButton11);
-            this.panel3.Controls.Add(this.radioButton7);
-            this.panel3.Controls.Add(this.radioButton6);
-            this.panel3.Location = new System.Drawing.Point(508, 3);
+            this.panel3.Controls.Add(this.radioButton3);
+            this.panel3.Controls.Add(this.radioButton2);
+            this.panel3.Controls.Add(this.radioButton1);
+            this.panel3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panel3.Location = new System.Drawing.Point(518, 3);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(123, 69);
             this.panel3.TabIndex = 43;
             this.panel3.Tag = "radioButton6";
-            this.panel3.UseWaitCursor = true;
             // 
-            // radioButton11
+            // radioButton3
             // 
-            this.radioButton11.AutoSize = true;
-            this.radioButton11.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-            this.radioButton11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton11.Location = new System.Drawing.Point(9, 43);
-            this.radioButton11.Name = "radioButton11";
-            this.radioButton11.Size = new System.Drawing.Size(104, 22);
-            this.radioButton11.TabIndex = 11;
-            this.radioButton11.TabStop = true;
-            this.radioButton11.Text = "Հիմնական";
-            this.radioButton11.UseVisualStyleBackColor = true;
-            this.radioButton11.UseWaitCursor = true;
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.radioButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton3.Location = new System.Drawing.Point(9, 43);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(104, 22);
+            this.radioButton3.TabIndex = 11;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "Հիմնական";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
             // 
-            // radioButton7
+            // radioButton2
             // 
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton7.Location = new System.Drawing.Point(9, 24);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(118, 22);
-            this.radioButton7.TabIndex = 9;
-            this.radioButton7.TabStop = true;
-            this.radioButton7.Text = "Տնտեսական";
-            this.radioButton7.UseVisualStyleBackColor = true;
-            this.radioButton7.UseWaitCursor = true;
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton2.Location = new System.Drawing.Point(9, 24);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(118, 22);
+            this.radioButton2.TabIndex = 9;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Տնտեսական";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.Click += new System.EventHandler(this.radioButton2_Click);
             // 
-            // radioButton6
+            // radioButton1
             // 
-            this.radioButton6.Checked = true;
-            this.radioButton6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton6.Location = new System.Drawing.Point(9, 5);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(84, 22);
-            this.radioButton6.TabIndex = 8;
-            this.radioButton6.TabStop = true;
-            this.radioButton6.Text = "Նյութեր";
-            this.radioButton6.UseVisualStyleBackColor = true;
-            this.radioButton6.UseWaitCursor = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton1.Location = new System.Drawing.Point(9, 5);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(84, 22);
+            this.radioButton1.TabIndex = 8;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Նյութեր";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // label1
             // 
@@ -272,20 +288,6 @@
             this.label1.TabIndex = 42;
             this.label1.Text = "search";
             this.label1.UseWaitCursor = true;
-            // 
-            // Savebutton2
-            // 
-            this.Savebutton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.Savebutton2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Savebutton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Savebutton2.Location = new System.Drawing.Point(1041, 34);
-            this.Savebutton2.Name = "Savebutton2";
-            this.Savebutton2.Size = new System.Drawing.Size(67, 38);
-            this.Savebutton2.TabIndex = 30;
-            this.Savebutton2.Text = "Save";
-            this.Savebutton2.UseVisualStyleBackColor = false;
-            this.Savebutton2.Visible = false;
-            this.Savebutton2.Click += new System.EventHandler(this.Savebutton2_Click);
             // 
             // SearchBox
             // 
@@ -316,6 +318,7 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -338,7 +341,7 @@
             // 
             // Column1
             // 
-            this.Column1.HeaderText = "Code";
+            this.Column1.HeaderText = "կոդ";
             this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
@@ -346,7 +349,7 @@
             // 
             // Column2
             // 
-            this.Column2.HeaderText = "Name";
+            this.Column2.HeaderText = "անվանում";
             this.Column2.MinimumWidth = 6;
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
@@ -354,7 +357,7 @@
             // 
             // Column3
             // 
-            this.Column3.HeaderText = "Unit";
+            this.Column3.HeaderText = "միավ․";
             this.Column3.MinimumWidth = 6;
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
@@ -362,7 +365,7 @@
             // 
             // Column4
             // 
-            this.Column4.HeaderText = "CostPrice";
+            this.Column4.HeaderText = "ինքնարժեք";
             this.Column4.MinimumWidth = 6;
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
@@ -372,7 +375,7 @@
             // 
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Column5.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Column5.HeaderText = "Exist";
+            this.Column5.HeaderText = "առկա";
             this.Column5.MinimumWidth = 6;
             this.Column5.Name = "Column5";
             this.Column5.Width = 70;
@@ -381,7 +384,7 @@
             // 
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Column6.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Column6.HeaderText = "InFood";
+            this.Column6.HeaderText = "ճաշում";
             this.Column6.MinimumWidth = 6;
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
@@ -391,7 +394,7 @@
             // 
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Column7.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Column7.HeaderText = "Calcul";
+            this.Column7.HeaderText = "հաշված";
             this.Column7.MinimumWidth = 6;
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
@@ -401,7 +404,7 @@
             // 
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Column8.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Column8.HeaderText = "Over";
+            this.Column8.HeaderText = "ավելցուկ";
             this.Column8.MinimumWidth = 6;
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
@@ -411,7 +414,7 @@
             // 
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Column9.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Column9.HeaderText = "Lack";
+            this.Column9.HeaderText = "պակասորդ";
             this.Column9.MinimumWidth = 6;
             this.Column9.Name = "Column9";
             this.Column9.ReadOnly = true;
@@ -419,6 +422,7 @@
             // 
             // dataGridView2
             // 
+            this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column10,
@@ -436,7 +440,7 @@
             // 
             // Column10
             // 
-            this.Column10.HeaderText = "Code";
+            this.Column10.HeaderText = "կոդ";
             this.Column10.MinimumWidth = 6;
             this.Column10.Name = "Column10";
             this.Column10.ReadOnly = true;
@@ -444,7 +448,7 @@
             // 
             // Column11
             // 
-            this.Column11.HeaderText = "Name";
+            this.Column11.HeaderText = "անվանում";
             this.Column11.MinimumWidth = 6;
             this.Column11.Name = "Column11";
             this.Column11.ReadOnly = true;
@@ -452,7 +456,7 @@
             // 
             // Column12
             // 
-            this.Column12.HeaderText = "Unit";
+            this.Column12.HeaderText = "միավ․";
             this.Column12.MinimumWidth = 6;
             this.Column12.Name = "Column12";
             this.Column12.ReadOnly = true;
@@ -460,7 +464,7 @@
             // 
             // Column13
             // 
-            this.Column13.HeaderText = "Exist";
+            this.Column13.HeaderText = "առկա";
             this.Column13.MinimumWidth = 6;
             this.Column13.Name = "Column13";
             this.Column13.Width = 70;
@@ -592,11 +596,23 @@
             this.button10.TabIndex = 0;
             this.button10.Text = "Տպել";
             this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(76, 220);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(20, 3, 3, 3);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(34, 36);
+            this.richTextBox1.TabIndex = 66;
+            this.richTextBox1.Text = "";
+            this.richTextBox1.Visible = false;
             // 
             // Inventory
             // 
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(1113, 554);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.dataGridView2);
@@ -628,26 +644,20 @@
         #endregion
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button Savebutton2;
         private System.Windows.Forms.TextBox SearchBox;
         private System.Windows.Forms.TextBox DepartmentIdBox;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label DateLabel;
         private System.Windows.Forms.ComboBox DepartmentComboBox;
         private System.Windows.Forms.Label DepartmentLabel;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.RadioButton radioButton11;
-        private System.Windows.Forms.RadioButton radioButton7;
-        private System.Windows.Forms.RadioButton radioButton6;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox SearchBox1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button Savebutton1;
         private System.Windows.Forms.Panel panel2;
@@ -658,6 +668,10 @@
         private System.Windows.Forms.Button execute;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label LastLabel;
+        private System.Windows.Forms.Button HelpButton;
+        private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -667,7 +681,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label LastLabel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

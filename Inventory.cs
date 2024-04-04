@@ -1,77 +1,104 @@
-﻿using Amazon.DynamoDBv2;
-using Amazon.DynamoDBv2.Model;
-using MySql.Data.MySqlClient;
-using Mysqlx.Crud;
-using Mysqlx.Session;
-using MySqlX.XDevAPI.Common;
-using MySqlX.XDevAPI.Relational;
+﻿using System.Data.SqlClient;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
-using System.Security.Cryptography;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
+using System.IO;
+using ReportPrinter;
+using System.Collections.Generic;
 
 namespace WindowsFormsApp4
 {
     public partial class Inventory : Form
     {
         private int _parameter1;
-        private int _parameter3;
-        private int _parameter4;
-        private MySQLDatabaseHelper dbHelper;
+        private int _restaurant;
+        private int _update;
+        private int _editor;
+        private SQLDatabaseHelper dbHelper;
 
         private DataTable Table_215 = new DataTable();
+
         private DataTable Table_211 = new DataTable();
+
         private DataTable Table_213 = new DataTable();
+
         private DataTable Table_111 = new DataTable();
+
         private DataTable Table_Inventory = new DataTable();
+
         private DataTable Table_Inventory215 = new DataTable();
+
         private DataTable Table_Department = new DataTable();
+
+        private DataTable Table_Restaurant = new DataTable();
+
         private DataTable Resize = new DataTable();
+
         private DataTable Exist = new DataTable();
+
         private DataTable Table_Number = new DataTable();
+
         private DataTable Table_LastInventory = new DataTable();
+
         private DataTable Table_Action = new DataTable();
+
         private DataTable Table_Composite = new DataTable();
         
         private DataView dataView;
-        public Inventory(int ooperator, int restaurant, int update)
+        public Inventory(int ooperator, int restaurant, int update, int editor)
         {
             _parameter1 = ooperator;
-            _parameter3 = restaurant;
-            _parameter4 = update;
+            _editor = editor;
+            _restaurant = restaurant;
+            _update = update;
             InitializeComponent();
 
-
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
 
             dateTimePicker1.Value = DateTime.Now;
-            dbHelper = new MySQLDatabaseHelper("localhost", "kafe_arm", "root", "");
-
-            string query1 = $"SELECT * FROM `department` WHERE `Alloved`=true ";
+     
+            string query1 = $"SELECT * FROM department WHERE Alloved=1 ";
             Table_Department = dbHelper.ExecuteQuery(query1);
             DepartmentComboBox.DataSource = Table_Department.DefaultView;
             DepartmentComboBox.Text = "";
             DepartmentComboBox.DisplayMember = "Name_1";
 
-            string query2 = $"SELECT `Code`,`Name_1`,`Unit`,`CostPrice` FROM `table_211` WHERE `Restaurant`= '{_parameter3}' ";
+            string query2 = $"SELECT Code,Name_1,Name_2,Name_3,Unit,CostPrice FROM table_211 WHERE Restaurant= '{_restaurant}' ";
             Table_211 = dbHelper.ExecuteQuery(query2);
 
-            string query3 = $"SELECT `Code`,`Name_1`,`Unit` FROM `table_215` WHERE `Restaurant`= '{_parameter3}' ";
+            string query3 = $"SELECT Code,Name_1,Name_2,Name_3,Unit FROM table_215 WHERE Restaurant= '{_restaurant}' ";
             Table_215 = dbHelper.ExecuteQuery(query3);
-            if (_parameter4 == 1) UpdateInventory();
 
-            string query4 = $"SELECT `Code`,`Name_1`,`Unit`,`CostPrice`,`Actually1`,`Actually2`,`Actually3`,`Actually4`,`Actually5`," +
-    $"`Act215_1`,`Act215_2`,`Act215_3`,`Act215_4`,`Act215_5` FROM `inventory` WHERE `Restaurant`='{_parameter3}' ";
-            Table_Inventory = dbHelper.ExecuteQuery(query4);
+  
+            // if (_update == 1) // թարմացնում ենք են գույքագրումների աղյուսակները
+            //  {
+            UpdateInventory_211();
+                UpdateInventory_213();
+                UpdateInventory_111();
+          //  }
+            if (radioButton1.Checked)
+            {
+                string query4 = $"SELECT Code,Name_1,Unit,CostPrice,Actually1,Actually2,Actually3,Actually4,Actually5," +
+                  $"Act215_1,Act215_2,Act215_3,Act215_4,Act215_5 FROM inventory WHERE Restaurant='{_restaurant}' and Groupp='2111' ";
+                Table_Inventory = dbHelper.ExecuteQuery(query4);
+            }
+            if (radioButton2.Checked)
+            {
+                string query4 = $"SELECT Code,Name_1,Unit,CostPrice,Actually1,Actually2,Actually3,Actually4,Actually5," +
+                  $"Act215_1,Act215_2,Act215_3,Act215_4,Act215_5 FROM inventory WHERE Restaurant='{_restaurant}' and Groupp='2131' ";
+                Table_Inventory = dbHelper.ExecuteQuery(query4);
+            }
+            if (radioButton3.Checked)
+            {
+                string query4 = $"SELECT Code,Name_1,Unit,CostPrice,Actually1,Actually2,Actually3,Actually4,Actually5," +
+                  $"Act215_1,Act215_2,Act215_3,Act215_4,Act215_5 FROM inventory WHERE Restaurant='{_restaurant}' and Groupp='1111' ";
+                Table_Inventory = dbHelper.ExecuteQuery(query4);
+            }
+            
             Table_Inventory.Columns.Add("Calcul", typeof(float));
             Table_Inventory.Columns.Add("Over", typeof(float));
             Table_Inventory.Columns.Add("Lack", typeof(float));
@@ -102,7 +129,7 @@ namespace WindowsFormsApp4
 
             }
 
-            string query5 = $"SELECT `Code`,`Name_1`,`Unit`,`Act215_1`,`Act215_2`,`Act215_3`,`Act215_4`,`Act215_5` FROM `inventory_215` WHERE `Restaurant`='{_parameter3}' ";
+            string query5 = $"SELECT Code,Name_1,Unit,Act215_1,Act215_2,Act215_3,Act215_4,Act215_5 FROM inventory_215 WHERE Restaurant='{_restaurant}' ";
             Table_Inventory215 = dbHelper.ExecuteQuery(query5);
             int co = Table_Inventory215.Rows.Count;
             dataView = new DataView(Table_Inventory215);
@@ -119,100 +146,313 @@ namespace WindowsFormsApp4
                 }
 
             }
+            dataGridView2.Visible = false;
+            if (radioButton1.Checked) dataGridView2.Visible = true;
+            if (_editor == 0)//խմբագրելն արգելված է
+            {
+                dataGridView1.Enabled = false;
+                dataGridView2.Enabled = false;
+                button2.Enabled = false;
+                button4.Enabled = false;
+                execute.Enabled = false;
+            }
+            //************************** ֆորմայի սկզբնական չափերն են 
             Resize.Columns.Add("BeginWidth", typeof(float));
             Resize.Columns.Add("BeginHeight", typeof(float));
             Resize.Columns.Add("EndWidth", typeof(float));
             Resize.Columns.Add("EndHeight", typeof(float));
             Resize.Rows.Add(0, 0, 0, 0);
-
-            string SelectQuery = "SELECT * FROM `actions`";
+            //*****************************
+            string SelectQuery = "SELECT * FROM actions WHERE Note='INVENTORY' ";//վերջին գույքագրման ամսաթվի համար է
             Table_LastInventory = dbHelper.ExecuteQuery(SelectQuery);
             int co1 = Table_LastInventory.Rows.Count;
 
 
         }
 
-        private void UpdateInventory()
+        private void UpdateInventory_211() // գույքագրման աղյուսակը ճշգրտում ենք։
+                                           // Եթե նյութի կոդ է պակաս ավելացնում ենք։
+                                           //ինքնարժեքներն ու անվանումներն ենք նորացնում
         {
-            MySqlConnection connection = dbHelper.GetConnection();
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
             connection.Open();
-            dbHelper = new MySQLDatabaseHelper("localhost", "kafe_arm", "root", "");
-            int c = Table_211.Rows.Count;
+            string gr = "2111";
             foreach (DataRow row in Table_211.Rows)
             {
-                string query = $"SELECT * FROM `inventory` WHERE `Code` = '{row["Code"]}' AND `Restaurant` = '{_parameter3}' ";
+                string query = $"SELECT * FROM inventory WHERE Code = '{row["Code"]}' AND Restaurant = '{_restaurant}' AND Groupp='{gr}' ";
                 Exist = dbHelper.ExecuteQuery(query);
                 int count = Exist.Rows.Count;
                 if (count > 0)
                 {
-                    string UpdateQuery = $"UPDATE `inventory` SET `Name_1`= '{row["Name_1"]}'," +
-                    $"`Unit`= '{row["Unit"]}',`CostPrice`= '{row["CostPrice"]}' WHERE `Code` = '{row["Code"]}' AND `Restaurant` = '{_parameter3}'";
-                    using (MySqlCommand updatCommand = new MySqlCommand(UpdateQuery, connection))
-                        updatCommand.ExecuteNonQuery();
+
+                    string InsertQuery = $"UPDATE inventory SET Name_1=@Name_1, Name_2=@Name_2, Name_3=@Name_3," +
+                        $" Unit=@Unit, CostPrice=@CostPrice, groupp=@groupp  WHERE Code=@Code AND Restaurant=@Restaurant";
+
+                    using (SqlCommand updateCommand = new SqlCommand(InsertQuery, connection))
+                    {
+                        updateCommand.Parameters.AddWithValue("@Name_1", row["Name_1"].ToString());
+                        updateCommand.Parameters.AddWithValue("@Name_2", row["Name_2"].ToString());
+                        updateCommand.Parameters.AddWithValue("@Name_3", row["Name_3"].ToString());
+                        updateCommand.Parameters.AddWithValue("@Unit", row["Unit"].ToString());
+                        updateCommand.Parameters.AddWithValue("@Code", row["Code"].ToString());
+                        updateCommand.Parameters.AddWithValue("@CostPrice", float.Parse(row["CostPrice"].ToString()));
+                        updateCommand.Parameters.AddWithValue("@groupp", "2111");
+                        updateCommand.Parameters.AddWithValue("@Restaurant", _restaurant);
+                        updateCommand.ExecuteNonQuery();
+                    }
                 }
                 else
                 {
-                    string InsertQuery = $"INSERT `inventory` SET `Code`= '{row["Code"]}',`Name_1`= '{row["Name_1"]}'," +
-                    $"`Unit`= '{row["Unit"]}',`CostPrice`= '{row["CostPrice"]}',`Restaurant` = '{_parameter3}' ";
-                    using (MySqlCommand updatCommand = new MySqlCommand(InsertQuery, connection))
-                        updatCommand.ExecuteNonQuery();
-                }
-                connection.Close();
-            }
+                    string InsertQuery = $"INSERT INTO inventory (Code, Name_1, Name_2, Name_3, Unit, CostPrice, Restaurant, groupp,calcul," +
+                        $"Actually1,Actually2,Actually3,Actually4,Actually5,Act215_1,Act215_2,Act215_3,Act215_4,Act215_5)" +
+                        $" VALUES (@Code, @Name_1, @Name_2, @Name_3, @Unit, @CostPrice ,@Restaurant, @groupp,@calcul," +
+                        $"@Actually1,@Actually2,@Actually3,@Actually4,@Actually5,@Act215_1,@Act215_2,@Act215_3,@Act215_4,@Act215_5)";
+                    using (SqlCommand insertCommand = new SqlCommand(InsertQuery, connection))
+                    {
+                        insertCommand.Parameters.AddWithValue("@Name_1", row["Name_1"].ToString());
+                        insertCommand.Parameters.AddWithValue("@Name_2", row["Name_2"].ToString());
+                        insertCommand.Parameters.AddWithValue("@Name_3", row["Name_3"].ToString());
+                        insertCommand.Parameters.AddWithValue("@Unit", row["Unit"].ToString());
+                        insertCommand.Parameters.AddWithValue("@CostPrice", float.Parse(row["CostPrice"].ToString()));
+                        insertCommand.Parameters.AddWithValue("@Code", row["Code"].ToString());
+                        insertCommand.Parameters.AddWithValue("@groupp", "2111");
+                        insertCommand.Parameters.AddWithValue("@Restaurant", _restaurant);
+                        insertCommand.Parameters.AddWithValue("@Actually1", 0);
+                        insertCommand.Parameters.AddWithValue("@Actually2", 0);
+                        insertCommand.Parameters.AddWithValue("@Actually3", 0);
+                        insertCommand.Parameters.AddWithValue("@Actually4", 0);
+                        insertCommand.Parameters.AddWithValue("@Actually5", 0);
+                        insertCommand.Parameters.AddWithValue("@Act215_1", 0);
+                        insertCommand.Parameters.AddWithValue("@Act215_2", 0);
+                        insertCommand.Parameters.AddWithValue("@Act215_3", 0);
+                        insertCommand.Parameters.AddWithValue("@Act215_4", 0);
+                        insertCommand.Parameters.AddWithValue("@Act215_5", 0);
+                        insertCommand.Parameters.AddWithValue("@calcul", 0);
 
-            c = Table_215.Rows.Count;
+                        insertCommand.ExecuteNonQuery();
+                    }
+
+                }
+            }
             foreach (DataRow row in Table_215.Rows)
             {
-                string query = $"SELECT * FROM `inventory_215` WHERE `Code` = '{row["Code"]}' AND `Restaurant` = '{_parameter3}' ";
+                string query = $"SELECT * FROM inventory_215 WHERE Code = '{row["Code"]}' AND Restaurant = '{_restaurant}' ";
                 Exist = dbHelper.ExecuteQuery(query);
                 int count = Exist.Rows.Count;
                 if (count > 0)
                 {
-                    string UpdateQuery = $"UPDATE `inventory_215` SET `Name_1`= '{row["Name_1"]}'," +
-                    $"`Unit`= '{row["Unit"]}' WHERE `Code` = '{row["Code"]}' AND `Restaurant` = '{_parameter3}'";
-                    using (MySqlCommand updatCommand = new MySqlCommand(UpdateQuery, connection))
-                        updatCommand.ExecuteNonQuery();
+                    string InsertQuery = $"UPDATE inventory_215 SET Name_1=@Name_1,Name_2=@Name_2,Name_3=@Name_3,Unit=@Unit " +
+                        $" WHERE Code=@Code AND Restaurant=@Restaurant";
+
+                    using (SqlCommand updateCommand = new SqlCommand(InsertQuery, connection))
+                    {
+                        updateCommand.Parameters.AddWithValue("@Name_1", row["Name_1"].ToString());
+                        updateCommand.Parameters.AddWithValue("@Name_2", row["Name_2"].ToString());
+                        updateCommand.Parameters.AddWithValue("@Name_3", row["Name_3"].ToString());
+                        updateCommand.Parameters.AddWithValue("@Unit", row["Unit"].ToString());
+                        updateCommand.Parameters.AddWithValue("@Code", row["Code"].ToString());
+                        updateCommand.Parameters.AddWithValue("@Restaurant", _restaurant);
+                        updateCommand.ExecuteNonQuery();
+                    }
+
                 }
                 else
                 {
-                    string InsertQuery = $"INSERT `inventory_215` SET `Code`= '{row["Code"]}',`Name_1`= '{row["Name_1"]}'," +
-                    $"`Unit`= '{row["Unit"]}',`Restaurant` = '{_parameter3}' ";
-                    using (MySqlCommand updatCommand = new MySqlCommand(InsertQuery, connection))
-                        updatCommand.ExecuteNonQuery();
-                }
-            }
-        }
-        private void LastInventory(int parameter)
-        {
-            execute.BackColor = Color.Snow;
-            execute.Enabled=true;
-            DateTime last = DateTime.Parse("01-01-1900 00:00:00");
-            string connectionString = "Server=localhost;Database=kafe_arm;User ID=root;Password='';CharSet = utf8mb4;";
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
-            {
-                dbHelper = new MySQLDatabaseHelper("localhost", "kafe_arm", "root", "");
-                int department = parameter;
-                string inv = "INVENTORY";
-                connection.Open();
-                string SelectQuery = $"SELECT `Date` FROM `actions`  WHERE `Note`='{inv}' AND (`DepartmentIn`='{department}' OR `DepartmentOut`='{department}')  ORDER BY `Date`";
-                Table_LastInventory = dbHelper.ExecuteQuery(SelectQuery);
-                int count = Table_LastInventory.Rows.Count;
-                LastLabel.Text = "";
-                foreach (DataRow row in Table_LastInventory.Rows)
-                {
-                    last = DateTime.Parse(row["Date"].ToString());
-                    LastLabel.Text = last.ToString();//"yyyy-MM-dd HH:mm:ss");
+                    string InsertQuery = $"INSERT INTO inventory_215 (Code,Name_1,Name_2,Name_3,Unit,Restaurant) " +
+                        $"VALUES (@Code,@Name_1,@Name_2,@Name_3,@Unit,@Restaurant)";
+                    using (SqlCommand insertCommand = new SqlCommand(InsertQuery, connection))
+                    {
+                        insertCommand.Parameters.AddWithValue("@Code", row["Code"].ToString());
+                        insertCommand.Parameters.AddWithValue("@Name_1", row["Name_1"].ToString());
+                        insertCommand.Parameters.AddWithValue("@Name_2", row["Name_2"].ToString());
+                        insertCommand.Parameters.AddWithValue("@Name_3", row["Name_3"].ToString());
+                        insertCommand.Parameters.AddWithValue("@Unit", row["Unit"].ToString());
 
+                        insertCommand.Parameters.AddWithValue("@Restaurant", _restaurant);
+                        insertCommand.ExecuteNonQuery();
+                    }
                 }
-                if (dateTimePicker1.Value <= last)
-                {
-                    execute.BackColor = Color.Orange;
-                    execute.Enabled = false;
-                }
-                connection.Close();
             }
+            connection.Close();
         }
-        private void Over_Lack()
+
+        private void UpdateInventory_213() // գույքագրման աղյուսակը ճշգրտում ենք։
+                                           // Եթե տնտեսականի կոդ է պակաս ավելացնում ենք։
+                                           //ինքնարժեքներն ու անվանումներն ենք նորացնում
+        {
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
+            string query2 = $"SELECT Code,Name_1,Name_2,Name_3,Unit,CostPrice FROM table_213 WHERE Restaurant= '{_restaurant}' ";
+            Table_213 = dbHelper.ExecuteQuery(query2);
+            connection.Open();
+            string gr = "2131";
+            this.Text = Table_213.Rows.Count.ToString();
+            foreach (DataRow row in Table_213.Rows)
+            {
+                string query = $"SELECT * FROM inventory WHERE Code = '{row["Code"]}' AND Restaurant = '{_restaurant}' AND Groupp = '{gr}' ";
+                Exist = dbHelper.ExecuteQuery(query);
+                int count = Exist.Rows.Count;
+                if (count > 0)
+                {
+
+                    string InsertQuery = $"UPDATE inventory SET Name_1=@Name_1, Name_2=@Name_2, Name_3=@Name_3," +
+                        $" Unit=@Unit, CostPrice=@CostPrice, groupp=@groupp  WHERE Code=@Code AND Restaurant=@Restaurant";
+
+                    using (SqlCommand updateCommand = new SqlCommand(InsertQuery, connection))
+                    {
+                        updateCommand.Parameters.AddWithValue("@Name_1", row["Name_1"].ToString());
+                        updateCommand.Parameters.AddWithValue("@Name_2", row["Name_2"].ToString());
+                        updateCommand.Parameters.AddWithValue("@Name_3", row["Name_3"].ToString());
+                        updateCommand.Parameters.AddWithValue("@Unit", row["Unit"].ToString());
+                        updateCommand.Parameters.AddWithValue("@CostPrice", float.Parse(row["CostPrice"].ToString()));
+                        updateCommand.Parameters.AddWithValue("@Code", row["Code"].ToString());
+                        updateCommand.Parameters.AddWithValue("@groupp", "2131");
+                        updateCommand.Parameters.AddWithValue("@Restaurant", _restaurant);
+                        updateCommand.ExecuteNonQuery();
+                    }
+                }
+                else
+                {
+                    string InsertQuery = $"INSERT INTO inventory (Code, Name_1, Name_2, Name_3, Unit, CostPrice, Restaurant, groupp,calcul," +
+                        $"Actually1,Actually2,Actually3,Actually4,Actually5,Act215_1,Act215_2,Act215_3,Act215_4,Act215_5)" +
+                        $" VALUES (@Code, @Name_1, @Name_2, @Name_3, @Unit, @CostPrice ,@Restaurant, @groupp,@calcul," +
+                        $"@Actually1,@Actually2,@Actually3,@Actually4,@Actually5,@Act215_1,@Act215_2,@Act215_3,@Act215_4,@Act215_5)";
+                    using (SqlCommand insertCommand = new SqlCommand(InsertQuery, connection))
+                    {
+                        insertCommand.Parameters.AddWithValue("@Name_1", row["Name_1"].ToString());
+                        insertCommand.Parameters.AddWithValue("@Name_2", row["Name_2"].ToString());
+                        insertCommand.Parameters.AddWithValue("@Name_3", row["Name_3"].ToString());
+                        insertCommand.Parameters.AddWithValue("@Unit", row["Unit"].ToString());
+                        insertCommand.Parameters.AddWithValue("@CostPrice", float.Parse(row["CostPrice"].ToString()));
+                        insertCommand.Parameters.AddWithValue("@Code", row["Code"].ToString());
+                        insertCommand.Parameters.AddWithValue("@groupp", "2131");
+                        insertCommand.Parameters.AddWithValue("@Restaurant", _restaurant);
+                        insertCommand.Parameters.AddWithValue("@Actually1", 0);
+                        insertCommand.Parameters.AddWithValue("@Actually2", 0);
+                        insertCommand.Parameters.AddWithValue("@Actually3", 0);
+                        insertCommand.Parameters.AddWithValue("@Actually4", 0);
+                        insertCommand.Parameters.AddWithValue("@Actually5", 0);
+                        insertCommand.Parameters.AddWithValue("@Act215_1", 0);
+                        insertCommand.Parameters.AddWithValue("@Act215_2", 0);
+                        insertCommand.Parameters.AddWithValue("@Act215_3", 0);
+                        insertCommand.Parameters.AddWithValue("@Act215_4", 0);
+                        insertCommand.Parameters.AddWithValue("@Act215_5", 0);
+                        insertCommand.Parameters.AddWithValue("@calcul", 0);
+
+                        insertCommand.ExecuteNonQuery();
+                    }
+                }
+            }
+            connection.Close();
+        }
+        private void UpdateInventory_111() // գույքագրման աղյուսակը ճշգրտում ենք։
+                                           // Եթե հիմնականի կոդ է պակաս ավելացնում ենք։
+                                           //ինքնարժեքներն ու անվանումներն ենք նորացնում
+        {
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
+            connection.Open();
+            string query2 = $"SELECT Code,Name_1,Name_2,Name_3,Unit,CostPrice FROM table_111 WHERE Restaurant= '{_restaurant}' ";
+            Table_111 = dbHelper.ExecuteQuery(query2);
+            string gr = "1111";
+            foreach (DataRow row in Table_111.Rows)
+            {
+                string query = $"SELECT * FROM inventory WHERE Code = '{row["Code"]}' AND Restaurant = '{_restaurant}' AND Groupp='{gr}' ";
+                Exist = dbHelper.ExecuteQuery(query);
+                int count = Exist.Rows.Count;
+                if (count > 0)
+                {
+
+                    string InsertQuery = $"UPDATE inventory SET Name_1=@Name_1, Name_2=@Name_2, Name_3=@Name_3," +
+                        $" Unit=@Unit, CostPrice=@CostPrice, groupp=@groupp  WHERE Code=@Code AND Restaurant=@Restaurant";
+
+                    using (SqlCommand updateCommand = new SqlCommand(InsertQuery, connection))
+                    {
+                        updateCommand.Parameters.AddWithValue("@Name_1", row["Name_1"].ToString());
+                        updateCommand.Parameters.AddWithValue("@Name_2", row["Name_2"].ToString());
+                        updateCommand.Parameters.AddWithValue("@Name_3", row["Name_3"].ToString());
+                        updateCommand.Parameters.AddWithValue("@Unit", row["Unit"].ToString());
+                        updateCommand.Parameters.AddWithValue("@CostPrice", float.Parse(row["CostPrice"].ToString()));
+                        updateCommand.Parameters.AddWithValue("@Code", row["Code"].ToString());
+                        updateCommand.Parameters.AddWithValue("@groupp", "1111");
+                        updateCommand.Parameters.AddWithValue("@Restaurant", _restaurant);
+                        updateCommand.ExecuteNonQuery();
+                    }
+                }
+                else
+                {
+                    string InsertQuery = $"INSERT INTO inventory (Code, Name_1, Name_2, Name_3, Unit, CostPrice, Restaurant, groupp,calcul," +
+                        $"Actually1,Actually2,Actually3,Actually4,Actually5,Act215_1,Act215_2,Act215_3,Act215_4,Act215_5)" +
+                        $" VALUES (@Code, @Name_1, @Name_2, @Name_3, @Unit, @CostPrice ,@Restaurant, @groupp,@calcul," +
+                        $"@Actually1,@Actually2,@Actually3,@Actually4,@Actually5,@Act215_1,@Act215_2,@Act215_3,@Act215_4,@Act215_5)";
+                    using (SqlCommand insertCommand = new SqlCommand(InsertQuery, connection))
+                    {
+                        insertCommand.Parameters.AddWithValue("@Name_1", row["Name_1"].ToString());
+                        insertCommand.Parameters.AddWithValue("@Name_2", row["Name_2"].ToString());
+                        insertCommand.Parameters.AddWithValue("@Name_3", row["Name_3"].ToString());
+                        insertCommand.Parameters.AddWithValue("@Unit", row["Unit"].ToString());
+                        insertCommand.Parameters.AddWithValue("@CostPrice", float.Parse(row["CostPrice"].ToString()));
+                        insertCommand.Parameters.AddWithValue("@Code", row["Code"].ToString());
+                        insertCommand.Parameters.AddWithValue("@groupp", "1111");
+                        insertCommand.Parameters.AddWithValue("@Restaurant", _restaurant);
+                        insertCommand.Parameters.AddWithValue("@Actually1", 0);
+                        insertCommand.Parameters.AddWithValue("@Actually2", 0);
+                        insertCommand.Parameters.AddWithValue("@Actually3", 0);
+                        insertCommand.Parameters.AddWithValue("@Actually4", 0);
+                        insertCommand.Parameters.AddWithValue("@Actually5", 0);
+                        insertCommand.Parameters.AddWithValue("@Act215_1", 0);
+                        insertCommand.Parameters.AddWithValue("@Act215_2", 0);
+                        insertCommand.Parameters.AddWithValue("@Act215_3", 0);
+                        insertCommand.Parameters.AddWithValue("@Act215_4", 0);
+                        insertCommand.Parameters.AddWithValue("@Act215_5", 0);
+                        insertCommand.Parameters.AddWithValue("@calcul", 0);
+
+                        insertCommand.ExecuteNonQuery();
+                    }
+                }
+            }
+            connection.Close();
+        }
+
+        private void LastInventory(int parameter) //վերջին գույքագրած ամսաթիվն ենք որոշում
+        {
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
+
+            execute.BackColor = Color.Snow;
+            execute.Enabled = true;
+            DateTime last = DateTime.Parse("01-01-1900 00:00:00");
+
+            int department = parameter;
+            string inv = "INVENTORY";
+            connection.Open();
+            string SelectQuery = $"SELECT Date FROM actions  WHERE Note='{inv}' AND " +
+            $"(DepartmentIn='{department}' OR DepartmentOut='{department}')  ORDER BY Date";
+            Table_LastInventory = dbHelper.ExecuteQuery(SelectQuery);
+            LastLabel.Text = "";
+            foreach (DataRow row in Table_LastInventory.Rows)
+            {
+                if (radioButton1.Checked && row["code"].ToString().Substring(0, 3) != "211") continue;
+                if (radioButton2.Checked && row["code"].ToString().Substring(0, 3) != "213") continue;
+                if (radioButton3.Checked && row["code"].ToString().Substring(0, 3) != "111") continue;
+                last = DateTime.Parse(row["Date"].ToString());
+                LastLabel.Text = last.ToString();//"yyyy-MM-dd HH:mm:ss");
+
+            }
+            if (dateTimePicker1.Value <= last)
+            {
+                execute.BackColor = Color.Orange;
+                execute.Enabled = false;
+            }
+            connection.Close();
+
+        }
+        private void Over_Lack() // ավելցուկն ու պակասորդն ենք հաշվարկում, երբ արդեն հաշվարկային մնացորդը հաշվվարկել ենք ենք
         {
             if (DepartmentComboBox.DataSource == Table_Department.DefaultView)
             {
@@ -220,10 +460,10 @@ namespace WindowsFormsApp4
                 DepartmentIdBox.Text = foundRows[0]["Id"].ToString();
                 if (DepartmentIdBox.Text == "1")
                 {
-                    dataGridView1.Columns[4].DataPropertyName = "Actually1";
-                    dataGridView1.Columns[9].DataPropertyName = "Act215_1";
+                    dataGridView1.Columns[4].DataPropertyName = "Actually1";//նյութի առկա փաստացի մնացորդի սյունակն է բաժնում
+                    dataGridView1.Columns[9].DataPropertyName = "Act215_1"; //նյութի  հաշվարկած մնացորդի սյունակն է պատրաստի ճաշերի մեջ
 
-                    dataGridView2.Columns[3].DataPropertyName = "Act215_1";
+                    dataGridView2.Columns[3].DataPropertyName = "Act215_1"; // ճաշի առկա մնացորդի սյունյակն է
 
                     foreach (DataRow row in Table_Inventory.Rows)
                     {
@@ -287,6 +527,7 @@ namespace WindowsFormsApp4
         private void DepartmentComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
                 DataRow[] foundRows = Table_Department.Select($"Name_1 = '{DepartmentComboBox.Text}' ");
+            if (foundRows.Length == 0) { return; }
                 DepartmentIdBox.Text = foundRows[0]["Id"].ToString();
                 calculation();
 
@@ -367,7 +608,7 @@ namespace WindowsFormsApp4
 
         }
 
-        private void Inventory_ResizeEnd(object sender, EventArgs e)
+        private void Inventory_ResizeEnd(object sender, EventArgs e)//ֆորմայի չափերն է փոփոխում
         {
             float kw = 0;
             float kh = 0;
@@ -460,19 +701,43 @@ namespace WindowsFormsApp4
             {
                 foreach (DataRow row in Table_Inventory215.Rows)
                 {
-                    if (DepartmentIdBox.Text == "1") row["Act215_1"] = 0;
-                    if (DepartmentIdBox.Text == "2") row["Act215_2"] = 0;
-                    if (DepartmentIdBox.Text == "3") row["Act215_3"] = 0;
-                    if (DepartmentIdBox.Text == "4") row["Act215_4"] = 0;
-                    if (DepartmentIdBox.Text == "5") row["Act215_5"] = 0;
+                    if (radioButton1.Checked)
+                    {
+                        if (DepartmentIdBox.Text == "1") row["Act215_1"] = 0;
+                        if (DepartmentIdBox.Text == "2") row["Act215_2"] = 0;
+                        if (DepartmentIdBox.Text == "3") row["Act215_3"] = 0;
+                        if (DepartmentIdBox.Text == "4") row["Act215_4"] = 0;
+                        if (DepartmentIdBox.Text == "5") row["Act215_5"] = 0;
+                    }
                 }
+                this.Text = "DepartmentIdBox.Text = " + DepartmentIdBox.Text;
                 foreach (DataRow row in Table_Inventory.Rows)
                 {
-                    if (DepartmentIdBox.Text == "1") row["Act215_1"] = 0; row["Actually1"] = 0;
-                    if (DepartmentIdBox.Text == "2") row["Act215_2"] = 0; row["Actually2"] = 0;
-                    if (DepartmentIdBox.Text == "3") row["Act215_3"] = 0; row["Actually3"] = 0;
-                    if (DepartmentIdBox.Text == "4") row["Act215_4"] = 0; row["Actually4"] = 0;
-                    if (DepartmentIdBox.Text == "5") row["Act215_5"] = 0; row["Actually5"] = 0;
+                    if (DepartmentIdBox.Text == "1")
+                    {
+                        row["Act215_1"] = 0; row["Actually1"] = 0;
+                    }
+
+                    if (DepartmentIdBox.Text == "2")
+                    {
+                        row["Act215_2"] = 0; row["Actually2"] = 0;
+                    }
+
+                    if (DepartmentIdBox.Text == "3")
+                    {
+                        row["Act215_3"] = 0; row["Actually3"] = 0;
+                    }
+
+                    if (DepartmentIdBox.Text == "4")
+                    {
+                        row["Act215_4"] = 0; row["Actually4"] = 0;
+                    }
+
+                    if (DepartmentIdBox.Text == "5")
+                    {
+                        row["Act215_5"] = 0; row["Actually5"] = 0;
+                    }
+
                 }
                 button2.Text = "Զրոյացնել բաժինը";
                 button2.BackColor = Color.White;
@@ -483,40 +748,38 @@ namespace WindowsFormsApp4
 
         private void dataGridView2_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            Savebutton2.Visible = true;
-        }
-
-        private void Savebutton2_Click(object sender, EventArgs e)
-        {
-            MySqlConnection connection = dbHelper.GetConnection();
-            if (connection.State != ConnectionState.Open) connection.Open();
-            foreach (DataRow row in Table_Inventory215.Rows)
-            {
-                string UpdateQuery = $"UPDATE `inventory_215` SET `Act215_1`= '{row["Act215_1"]}',`Act215_2`= '{row["Act215_2"]}'," +
-                    $"`Act215_3`= '{row["Act215_3"]}',`Act215_4`= '{row["Act215_4"]}',`Act215_5`= '{row["Act215_5"]}'" +
-                    $" WHERE `Code` = '{row["Code"]}' AND `Restaurant` = '{_parameter3}'";
-                using (MySqlCommand updatCommand = new MySqlCommand(UpdateQuery, connection))
-                    updatCommand.ExecuteNonQuery();
-
-            }
-            Savebutton2.Visible = false;
-            connection.Close();
+            Savebutton1.Visible = true;
         }
 
         private void Savebutton1_Click(object sender, EventArgs e)
         {
-            MySqlConnection connection = dbHelper.GetConnection();
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
+
             connection.Open();
             foreach (DataRow row in Table_Inventory.Rows)
             {
-                string UpdateQuery = $"UPDATE `inventory` SET  `Actually1`= '{row["Actually1"]}',`Actually2`= '{row["Actually2"]}'," +
-                    $" `Actually3`= '{row["Actually3"]}',`Actually4`= '{row["Actually4"]}',`Actually5`= '{row["Actually5"]}'," +
-                    $" `Act215_1`= '{row["Act215_1"]}',`Act215_2`= '{row["Act215_2"]}'," +
-                    $"`Act215_3`= '{row["Act215_3"]}',`Act215_4`= '{row["Act215_4"]}',`Act215_5`= '{row["Act215_5"]}'" +
-                    $" WHERE `Code` = '{row["Code"]}' AND `Restaurant` = '{_parameter3}'";
-                using (MySqlCommand updatCommand = new MySqlCommand(UpdateQuery, connection))
+                string UpdateQuery = $"UPDATE inventory SET  Actually1= '{row["Actually1"]}',Actually2= '{row["Actually2"]}'," +
+                    $" Actually3= '{row["Actually3"]}',Actually4= '{row["Actually4"]}',Actually5= '{row["Actually5"]}'," +
+                    $" Act215_1= '{row["Act215_1"]}',Act215_2= '{row["Act215_2"]}'," +
+                    $"Act215_3= '{row["Act215_3"]}',Act215_4= '{row["Act215_4"]}',Act215_5= '{row["Act215_5"]}'" +
+                    $" WHERE Code = '{row["Code"]}' AND Restaurant = '{_restaurant}'";
+                using (SqlCommand updatCommand = new SqlCommand(UpdateQuery, connection))
                     updatCommand.ExecuteNonQuery();
 
+            }
+            if (dataGridView2.Visible == true)
+            {
+                foreach (DataRow row in Table_Inventory215.Rows)
+                {
+                    string UpdateQuery = $"UPDATE inventory_215 SET Act215_1= '{row["Act215_1"]}',Act215_2= '{row["Act215_2"]}'," +
+                        $"Act215_3= '{row["Act215_3"]}',Act215_4= '{row["Act215_4"]}',Act215_5= '{row["Act215_5"]}'" +
+                        $" WHERE Code = '{row["Code"]}' AND Restaurant = '{_restaurant}'";
+                    using (SqlCommand updatCommand = new SqlCommand(UpdateQuery, connection))
+                        updatCommand.ExecuteNonQuery();
+
+                }
             }
             Savebutton1.Visible = false;
             connection.Close();
@@ -540,13 +803,16 @@ namespace WindowsFormsApp4
             }
         }
 
-        private void execute_Click(object sender, EventArgs e)
+        private void execute_Click(object sender, EventArgs e) //ձևակերպում ենք գույքագրման արդյունքները
+                                                               //ավելցուկները հանում ենք, պակասորդները՝ ավելացնում
         {
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
 
-            MySqlConnection connection = dbHelper.GetConnection();
             connection.Open();
-            dbHelper = new MySQLDatabaseHelper("localhost", "kafe_arm", "root", "");
-            string query = $"SELECT `Number` FROM `actions` WHERE `Restaurant`=  {_parameter3}";
+
+            string query = $"SELECT Number FROM actions WHERE Restaurant=  {_restaurant}";
             Table_Number = dbHelper.ExecuteQuery(query);
             int number = 0;
             foreach (DataRow row in Table_Number.Rows)
@@ -576,7 +842,7 @@ namespace WindowsFormsApp4
                 if (over == 0 && lack == 0) continue;
                 if (over > 0)
                 {
-                    debet = "2111";
+                    debet = row["Groupp"].ToString();
                     kredit = "6311";
                     departmentin = int.Parse(DepartmentIdBox.Text);
                     quantity = over;
@@ -586,16 +852,16 @@ namespace WindowsFormsApp4
                 if (lack > 0)
                 {
                     debet = "7166";
-                    kredit = "2111";
+                    kredit = row["Groupp"].ToString();
                     departmentout = int.Parse(DepartmentIdBox.Text);
                     quantity = lack;
                     costamount = quantity * float.Parse(row["Costprice"].ToString());
                 }
-                string InsertQuery = $"INSERT INTO `actions`  (`Number`,`Code`,`Date`,`DateOfEntry`,`DepartmentIn`," +
-                    $" `DepartmentOut`,`Debet`,`Kredit`,`Quantity`,`CostAmount`, `Operator`,`Note`, " +
-                    $"`RestaurantIn`,`RestaurantOut`, `Restaurant`) VALUES  (@number, @code, @date, @dateofentry, @departmentin,@departmentout," +
+                string InsertQuery = $"INSERT INTO actions  (Number,Code,Date,DateOfEntry,DepartmentIn," +
+                    $" DepartmentOut,Debet,Kredit,Quantity,CostAmount, Operator,Note, " +
+                    $"RestaurantIn,RestaurantOut, Restaurant) VALUES  (@number, @code, @date, @dateofentry, @departmentin,@departmentout," +
                     $"  @debet, @kredit, @quantity, @costamount, @operator, @note, @restaurantin, @restaurantout, @restaurant)";
-                using (MySqlCommand updatCommand = new MySqlCommand(InsertQuery, connection))
+                using (SqlCommand updatCommand = new SqlCommand(InsertQuery, connection))
                 {
                     updatCommand.Parameters.AddWithValue("@number", number);
                     updatCommand.Parameters.AddWithValue("@code", row["Code"]);
@@ -611,29 +877,33 @@ namespace WindowsFormsApp4
                     updatCommand.Parameters.AddWithValue("@note", note);
                     updatCommand.Parameters.AddWithValue("@restaurantin", 0);
                     updatCommand.Parameters.AddWithValue("@restaurantout", 0);
-                    updatCommand.Parameters.AddWithValue("@restaurant", _parameter3);
+                    updatCommand.Parameters.AddWithValue("@restaurant", _restaurant);
 
                     updatCommand.ExecuteNonQuery();
                 }
             }
             connection.Close();
         }
+
+
         private void calculation()
         {
-            MySqlConnection connection = dbHelper.GetConnection();
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
+
             connection.Open();
-            dbHelper = new MySQLDatabaseHelper("localhost", "kafe_arm", "root", "");
             execute.BackColor = Color.Snow;
             execute.Enabled = true;
             string deb = "";
             string code = "";
             float quantity = 0;
-            float quan = 0;
+            float quant = 0;
             DateTime dateTime = dateTimePicker1.Value;
             int dep = int.Parse(DepartmentIdBox.Text);
-            if (radioButton6.Checked) deb = "2111";
-            if (radioButton7.Checked) deb = "2131";
-            if (radioButton11.Checked) deb = "1111";
+            if (radioButton1.Checked) deb = "2111";
+            if (radioButton2.Checked) deb = "2131";
+            if (radioButton3.Checked) deb = "1111";
             foreach (DataRow row in Table_Inventory.Rows)
             {
                 if (dep == 1) row["Act215_1"] = 0;
@@ -642,8 +912,8 @@ namespace WindowsFormsApp4
                 if (dep == 4) row["Act215_4"] = 0;
                 if (dep == 5) row["Act215_5"] = 0;
                 quantity = 0;
-                code = row["Code"].ToString();
-                string query = $"SELECT `Quantity`,`Date` FROM `actions` WHERE `Restaurant`=  '{_parameter3}' AND `Debet`='{deb}' AND `DepartmentIn`='{dep}'  AND `Code`='{code}'";
+                code = row["Code"].ToString();// այս կոդի հե
+                string query = $"SELECT Quantity,Date FROM actions WHERE Restaurant=  '{_restaurant}' AND Debet='{deb}' AND DepartmentIn='{dep}'  AND Code='{code}'";
                 Table_Action = dbHelper.ExecuteQuery(query);
 
                 foreach (DataRow row1 in Table_Action.Rows)
@@ -654,7 +924,7 @@ namespace WindowsFormsApp4
                 }
                 row["Calcul"] = quantity;
 
-                string query1 = $"SELECT `Quantity`,`Date` FROM `actions` WHERE `Restaurant`=  '{_parameter3}' AND `Kredit`='{deb}' AND `DepartmentOut`='{dep}' AND `Code`='{code}'";
+                string query1 = $"SELECT Quantity,Date FROM actions WHERE Restaurant=  '{_restaurant}' AND Kredit='{deb}' AND DepartmentOut='{dep}' AND Code='{code}'";
                 Table_Action = dbHelper.ExecuteQuery(query1);
                 quantity = 0;
                 foreach (DataRow row1 in Table_Action.Rows)
@@ -665,42 +935,48 @@ namespace WindowsFormsApp4
                 }
                 row["Calcul"] = float.Parse(row["Calcul"].ToString()) - quantity;
             }
-            float quant = 0;
+
             foreach (DataRow row in Table_Inventory215.Rows)
             {
                 if (dep == 1)
                 {
+                    if (row["Act215_1"] == DBNull.Value) continue;
                     quant = float.Parse(row["Act215_1"].ToString());
                     if (quant == 0) continue;
                 }
                 if (dep == 2)
                 {
+                    if (row["Act215_2"] == DBNull.Value) continue;
                     quant = float.Parse(row["Act215_2"].ToString());
                     if (quant == 0) continue; 
                 }
                 if (dep == 3)
                 {
+                    if (row["Act215_3"] == DBNull.Value) continue;
                     quant = float.Parse(row["Act215_3"].ToString());
                     if (quant == 0) continue;
                 }
                 if (dep == 4)
                 {
+                    if (row["Act215_4"] == DBNull.Value) continue;
                     quant = float.Parse(row["Act215_4"].ToString());
                     if (quant == 0) continue;
                 }
                 if (dep == 5)
                 {
+                    if (row["Act215_5"] == DBNull.Value) continue;
                     quant = float.Parse(row["Act215_5"].ToString());
                     if (quant == 0) continue;
                 }
-                string query = $"SELECT `Code_215`,`Code_211`,`Quantity` FROM `composite` WHERE `Code_215`=  '{row["Code"]}' ";
+                string query = $"SELECT Code_215,Code_211,Quantity FROM composite WHERE Code_215=  '{row["Code"]}' ";
                 Table_Composite = dbHelper.ExecuteQuery(query);
                 string code215 = row["Code"].ToString();
+                float quan = 0;
                 foreach (DataRow row1 in Table_Composite.Rows)
                 {
                     string code_211 = row1["Code_211"].ToString();
                     float q = float.Parse(row1["Quantity"].ToString());
-                    quan = quant * float.Parse(row1["Quantity"].ToString());
+                    quan = quant * q;
                     DataRow[] foundRows = Table_Inventory.Select($"Code = '{row1["Code_211"]}' ");
                     string code211 = row1["Code_211"].ToString();
                     if (dep == 1) foundRows[0]["Act215_1"] = Math.Round(float.Parse(foundRows[0]["Act215_1"].ToString()) + quan, 5);
@@ -712,14 +988,13 @@ namespace WindowsFormsApp4
 
             }
             Over_Lack();
-            int paramrter = int.Parse(DepartmentIdBox.Text);
-            LastInventory(paramrter);
+            LastInventory(int.Parse(DepartmentIdBox.Text));
             connection.Close();
         }
         private void button1_Click(object sender, EventArgs e)
         {
             calculation();
-
+            LastInventory(int.Parse(DepartmentIdBox.Text));
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -736,6 +1011,9 @@ namespace WindowsFormsApp4
 
         private void button4_Click(object sender, EventArgs e)
         {
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
             if (button4.BackColor == Color.Snow)
             {
                 button4.Text = "Ջնջել ?";
@@ -744,12 +1022,10 @@ namespace WindowsFormsApp4
             else
             {
                 int dep = int.Parse(DepartmentIdBox.Text);
-                MySqlConnection connection = dbHelper.GetConnection();
                 connection.Open();
-                dbHelper = new MySQLDatabaseHelper("localhost", "kafe_arm", "root", "");
                 string query = "SELECT COLUMN_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = 'kafe_arm' AND TABLE_NAME = 'actions' AND COLUMN_NAME = 'Date'";
 
-                using (MySqlCommand command = new MySqlCommand(query, connection))
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     string columnType = (string)command.ExecuteScalar();
 
@@ -757,11 +1033,11 @@ namespace WindowsFormsApp4
 
                     DateTime myDate = DateTime.ParseExact(LastLabel.Text, dateFormat, CultureInfo.InvariantCulture);
 
-                    // Format myDate to match the datetime format expected by MySQL
+                    // Format myDate to match the datetime format expected by Sql
                     string formattedDate = myDate.ToString(dateFormat);
 
-                    string DeleteQuery = $"DELETE FROM `actions` WHERE `Date` = '{formattedDate}' AND  `Note` = 'INVENTORY' AND (`DepartmentIn`='{dep}' OR `DepartmentOut`='{dep}')";
-                    using (MySqlCommand deleteCommand = new MySqlCommand(DeleteQuery, connection))
+                    string DeleteQuery = $"DELETE FROM actions WHERE Date = '{formattedDate}' AND  Note = 'INVENTORY' AND (DepartmentIn='{dep}' OR DepartmentOut='{dep}')";
+                    using (SqlCommand deleteCommand = new SqlCommand(DeleteQuery, connection))
                     {
                         deleteCommand.ExecuteNonQuery();
                     }
@@ -769,6 +1045,192 @@ namespace WindowsFormsApp4
                 connection.Close();
                 button4.Text = "Ջնջել";
                 button4.BackColor = Color.Snow;
+            }
+        }
+
+         
+
+        private void radioButton2_Click(object sender, EventArgs e)
+        {
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
+            string query4 = $"SELECT Code,Name_1,Unit,CostPrice,Actually1,Actually2,Actually3,Actually4,Actually5," +
+  $"Act215_1,Act215_2,Act215_3,Act215_4,Act215_5 FROM inventory WHERE Restaurant='{_restaurant}' and Groupp='2131' ";
+            Table_Inventory = dbHelper.ExecuteQuery(query4);
+            Table_Inventory.Columns.Add("Calcul", typeof(float));
+            Table_Inventory.Columns.Add("Over", typeof(float));
+            Table_Inventory.Columns.Add("Lack", typeof(float));
+            dataView = new DataView(Table_Inventory);
+            dataGridView1.DataSource = dataView;
+            dataGridView2.Visible = false;
+        }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
+            string query4 = $"SELECT Code,Name_1,Unit,CostPrice,Actually1,Actually2,Actually3,Actually4,Actually5," +
+  $"Act215_1,Act215_2,Act215_3,Act215_4,Act215_5 FROM inventory WHERE Restaurant='{_restaurant}' and Groupp='1111' ";
+            Table_Inventory = dbHelper.ExecuteQuery(query4);
+
+            Table_Inventory.Columns.Add("Calcul", typeof(float));
+            Table_Inventory.Columns.Add("Over", typeof(float));
+            Table_Inventory.Columns.Add("Lack", typeof(float));
+            dataView = new DataView(Table_Inventory);
+            dataGridView1.DataSource = dataView;
+            dataGridView2.Visible = false;
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
+            string query4 = $"SELECT Code,Name_1,Unit,CostPrice,Actually1,Actually2,Actually3,Actually4,Actually5," +
+  $"Act215_1,Act215_2,Act215_3,Act215_4,Act215_5 FROM inventory WHERE Restaurant='{_restaurant}' and Groupp='2111' ";
+            Table_Inventory = dbHelper.ExecuteQuery(query4);
+
+            Table_Inventory.Columns.Add("Calcul", typeof(float));
+            Table_Inventory.Columns.Add("Over", typeof(float));
+            Table_Inventory.Columns.Add("Lack", typeof(float));
+            dataView = new DataView(Table_Inventory);
+            dataGridView1.DataSource = dataView;
+            dataGridView2.Visible=true;
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
+
+            string query5 = $"SELECT * FROM Restaurants WHERE Id = '{_restaurant}' ";
+            Table_Restaurant = dbHelper.ExecuteQuery(query5);
+            string restname = "";
+            DataRow[] foundRows = Table_Restaurant.Select($"Id = '{_restaurant}' ");
+            if (foundRows != null && foundRows.Length > 0) restname = foundRows[0]["Name_1"].ToString();
+
+            dataView = new DataView(Table_Inventory);
+            dataGridView1.DataSource = dataView;
+            dataGridView1.Columns[0].DataPropertyName = "Code";
+            dataGridView1.Columns[1].DataPropertyName = "Name_1";
+            dataGridView1.Columns[2].DataPropertyName = "Unit";
+            dataGridView1.Columns[3].DataPropertyName = "CostPrice";
+            dataGridView1.Columns[4].DataPropertyName = "Actually1";
+            dataGridView1.Columns[5].DataPropertyName = "Act215_1";
+            dataGridView1.Columns[6].DataPropertyName = "Calcul";
+            dataGridView1.Columns[7].DataPropertyName = "Over";
+            dataGridView1.Columns[8].DataPropertyName = "Lack";
+
+
+            DataTable InventoryReport = new DataTable();
+            InventoryReport.Columns.Add("Code", typeof(string));
+            InventoryReport.Columns.Add("Name1", typeof(string));
+            InventoryReport.Columns.Add("Unit", typeof(string));
+            InventoryReport.Columns.Add("CostPrice", typeof(decimal));
+            InventoryReport.Columns.Add("Actually", typeof(decimal));
+            InventoryReport.Columns.Add("Act215", typeof(decimal));
+            InventoryReport.Columns.Add("Calcul", typeof(decimal));
+            InventoryReport.Columns.Add("Over", typeof(decimal));
+            InventoryReport.Columns.Add("Lack", typeof(decimal));
+            Decimal actually = 0;
+            Decimal act215 = 0;
+            decimal sumover = 0;
+            decimal sumlack = 0;
+            foreach (DataRow row in Table_Inventory.Rows)
+            {
+                if (int.Parse(DepartmentIdBox.Text) == 1)
+                {
+                    actually = decimal.Parse(row["Actually1"].ToString());
+                    act215 = decimal.Parse(row["Act215_1"].ToString());
+                }
+                if (int.Parse(DepartmentIdBox.Text) == 2)
+                {
+                    actually = decimal.Parse(row["Actually2"].ToString());
+                    act215 = decimal.Parse(row["Act215_2"].ToString());
+                }
+                if (int.Parse(DepartmentIdBox.Text) == 3)
+                {
+                    actually = decimal.Parse(row["Actually3"].ToString());
+                    act215 = decimal.Parse(row["Act215_3"].ToString());
+                }
+                if (int.Parse(DepartmentIdBox.Text) == 4)
+                {
+                    actually = decimal.Parse(row["Actually4"].ToString());
+                    act215 = decimal.Parse(row["Act215_4"].ToString());
+                }
+                if (int.Parse(DepartmentIdBox.Text) == 5)
+                {
+                    actually = decimal.Parse(row["Actually5"].ToString());
+                    act215 = decimal.Parse(row["Act215_5"].ToString());
+                }
+
+                if (actually == 0 && act215 == 0 && decimal.Parse(row["Calcul"].ToString()) == 0) continue;
+
+                DataRow newRow = InventoryReport.NewRow();
+                InventoryReport.Rows.Add(newRow);
+                newRow["Code"] = row["Code"];
+                newRow["Name1"] = row["Name_1"];
+                newRow["Unit"] = row["Unit"];
+                newRow["CostPrice"] = decimal.Parse(row["CostPrice"].ToString());
+                newRow["Actually"] = actually;
+                newRow["Act215"] = act215;
+                newRow["Calcul"] = decimal.Parse(row["Calcul"].ToString());
+                newRow["Over"] = decimal.Parse(row["Over"].ToString());
+                newRow["Lack"] = decimal.Parse(row["Lack"].ToString());
+                sumover=sumover + decimal.Parse(row["Over"].ToString()) * decimal.Parse(row["CostPrice"].ToString());
+                sumlack = sumlack + decimal.Parse(row["Lack"].ToString()) * decimal.Parse(row["CostPrice"].ToString());
+            }
+            DataRow newRow1 = InventoryReport.NewRow();
+            InventoryReport.Rows.Add(newRow1);
+            DataRow newRow2 = InventoryReport.NewRow();
+            InventoryReport.Rows.Add(newRow2);
+            newRow2["Over"] = Math.Round(sumover,0);
+            newRow2["Lack"] = Math.Round(sumlack,0);
+
+
+            string reportname = "";
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            if (radioButton1.Checked) reportname = "Նյութեր";
+            if (radioButton2.Checked) reportname = "Տնտեսական";
+            if (radioButton3.Checked) reportname = "Հիմնական";
+            parameters.Add("RestaurantName", restname);
+            parameters.Add("time1", dateTimePicker1.Value);
+            parameters.Add("ReportName", reportname);
+            parameters.Add("department", DepartmentComboBox.Text);
+            parameters.Add("Lastinventory", "վերջին գրանցած "+LastLabel.Text);
+            
+
+
+
+            ReportManager reportManager = new ReportManager();
+             reportManager.PreviewReport("BillReport", $"d:\\hayrik\\sql\\windowsformsapp4\\InventoryReport.rdlc", InventoryReport, parameters, null);
+        }
+
+        private void HelpButton_Click(object sender, EventArgs e)
+        {
+            if (HelpButton.Text == "?")
+            {
+                HelpButton.Text = "X";
+                richTextBox1.Height = this.Height - 50;
+                richTextBox1.ReadOnly = true;
+
+                string filePath = "D:\\hayrik\\sql\\help\\Inventory.txt";
+                string fileContent = File.ReadAllText(filePath);
+                richTextBox1.Text = fileContent;
+                richTextBox1.Visible = true;
+                richTextBox1.Top = 0;
+                richTextBox1.Left = HelpButton.Width + 5;
+                richTextBox1.Width = Savebutton1.Left;
+                richTextBox1.Height=this.Height - 50;
+
+            }
+            else
+            {
+                richTextBox1.Visible = false;
+                HelpButton.Text = "?";
             }
         }
     }

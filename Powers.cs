@@ -22,7 +22,7 @@ namespace WindowsFormsApp4
             InitializeComponent();
             DataSynchronization();
             dbHelper = new MySQLDatabaseHelper("localhost", "kafe_arm", "root", "");
-            string query = $"SELECT `id`, `login`, `button11`, `button12`, `button13`, `button14`, `button15`,`button16`,`button17`,`button18`,`button19`,`button110` FROM `powers1` WHERE 1 ";
+            string query = $"SELECT id, login, button11, button12, button13, button14, button15,button16,button17,button18,button19,button110 FROM powers1 WHERE 1 ";
             dataTablePowers1 = dbHelper.ExecuteQuery(query);
             dataGridView1.DataSource = dataTablePowers1;
             dataGridView1.Refresh();
@@ -32,13 +32,13 @@ namespace WindowsFormsApp4
             Button[] TabArray = new Button[1] { Tab1button };
             TabArray[0].BackColor = Color.Lime;
 
-            string query2 = $"SELECT `id`, `login`, `button21`, `button22`, `button23`, `button24`, `button25`,`button26`,`button27`,`button28`,`button29`,`button210` FROM `powers2` WHERE 1 ";
+            string query2 = $"SELECT id, login, button21, button22, button23, button24, button25,button26,button27,button28,button29,button210 FROM powers2 WHERE 1 ";
             dataTablePowers2 = dbHelper.ExecuteQuery(query2);
 
-            string query3 = $"SELECT `id`, `login`, `button31`, `button32`, `button33`, `button34`, `button35`,`button36`,`button37`,`button38`,`button39`,`button310` FROM `powers3` WHERE 1 ";
+            string query3 = $"SELECT id, login, button31, button32, button33, button34, button35,button36,button37,button38,button39,button310 FROM powers3 WHERE 1 ";
             dataTablePowers3 = dbHelper.ExecuteQuery(query3);
 
-            string query4 = $"SELECT `id`, `login`, `button41`, `button42`, `button43`, `button44`, `button45`,`button46`,`button47`,`button48`,`button49`,`button410` FROM `powers4` WHERE 1 ";
+            string query4 = $"SELECT id, login, button41, button42, button43, button44, button45,button46,button47,button48,button49,button410 FROM powers4 WHERE 1 ";
             dataTablePowers4 = dbHelper.ExecuteQuery(query4);
 
             connection.Close();
@@ -47,7 +47,7 @@ namespace WindowsFormsApp4
         {
             dbHelper = new MySQLDatabaseHelper("localhost", "kafe_arm", "root", "");
             MySqlConnection connection = dbHelper.GetConnection();
-            string query = "SELECT * FROM `users` WHERE 1 ";
+            string query = "SELECT * FROM users WHERE 1 ";
             DataTable dataTableusers = dbHelper.ExecuteQuery(query);
             this.Text = "users.Rows.Count = " + dataTableusers.Rows.Count.ToString();
 
@@ -58,7 +58,7 @@ namespace WindowsFormsApp4
 
                 //---------------------------------
 
-                string selectTable1Query = $"SELECT `id` FROM powers1 WHERE id = {id}";
+                string selectTable1Query = $"SELECT id FROM powers1 WHERE id = {id}";
                 DataTable dataTable1 = dbHelper.ExecuteQuery(selectTable1Query);
                 this.Text = "powers1.Rows.Count = " + dataTable1.Rows.Count.ToString();
                 connection.Open();
@@ -78,7 +78,7 @@ namespace WindowsFormsApp4
 
                 //---------------------------------
 
-                string selectTable2Query = $"SELECT `id` FROM powers2 WHERE id = {id}";
+                string selectTable2Query = $"SELECT id FROM powers2 WHERE id = {id}";
                 DataTable dataTable2 = dbHelper.ExecuteQuery(selectTable2Query);
                 this.Text = "powers2.Rows.Count = " + dataTable2.Rows.Count.ToString();
                 connection.Open();
@@ -98,7 +98,7 @@ namespace WindowsFormsApp4
 
                 //---------------------------------
 
-                string selectTable3Query = $"SELECT `id` FROM powers3 WHERE id = {id}";
+                string selectTable3Query = $"SELECT id FROM powers3 WHERE id = {id}";
                 DataTable dataTable3 = dbHelper.ExecuteQuery(selectTable3Query);
                 this.Text = "powers3.Rows.Count = " + dataTable3.Rows.Count.ToString();
                 connection.Open();
@@ -117,7 +117,7 @@ namespace WindowsFormsApp4
 
                 //---------------------------------
 
-                string selectTable4Query = $"SELECT `id` FROM powers4 WHERE id = {id}";
+                string selectTable4Query = $"SELECT id FROM powers4 WHERE id = {id}";
                 DataTable dataTable4 = dbHelper.ExecuteQuery(selectTable4Query);
                 this.Text = "powers4.Rows.Count = " + dataTable4.Rows.Count.ToString();
                 connection.Open();
@@ -163,7 +163,7 @@ namespace WindowsFormsApp4
                     int b8 = Convert.ToInt32(row["button18"]);
                     int b9 = Convert.ToInt32(row["button19"]);
                     int b10 = Convert.ToInt32(row["button110"]);
-                    string query = $"UPDATE powers1 SET `button11` = '{b1}',`button12`='{b2}',`button13`='{b3}',`button14`='{b4}',`button15` = '{b5}',`button16`='{b6}',`button17`='{b7}',`button18`='{b8}',`button19`='{b9}',`button110`='{b10}' WHERE `id` = {id}";
+                    string query = $"UPDATE powers1 SET button11 = '{b1}',button12='{b2}',button13='{b3}',button14='{b4}',button15 = '{b5}',button16='{b6}',button17='{b7}',button18='{b8}',button19='{b9}',button110='{b10}' WHERE id = {id}";
                     using (MySqlCommand updatepowers1 = new MySqlCommand(query, connection))
                         updatepowers1.ExecuteNonQuery();
                     Savebutton.Visible = false;
@@ -188,7 +188,7 @@ namespace WindowsFormsApp4
                     string b8 = row["button28"].ToString();
                     string b9 = row["button29"].ToString();
                     string b10 = row["button210"].ToString();
-                    string query = $"UPDATE powers2 SET `button21` = '{b1}',`button22`='{b2}',`button23`='{b3}',`button24`='{b4}',`button25` = '{b5}',`button26`='{b6}',`button27`='{b7}',`button28`='{b8}',`button29`='{b9}',`button210`='{b10}' WHERE `id` = {id}";
+                    string query = $"UPDATE powers2 SET button21 = '{b1}',button22='{b2}',button23='{b3}',button24='{b4}',button25 = '{b5}',button26='{b6}',button27='{b7}',button28='{b8}',button29='{b9}',button210='{b10}' WHERE id = {id}";
                     using (MySqlCommand updatepowers2 = new MySqlCommand(query, connection))
                         updatepowers2.ExecuteNonQuery();
                     Savebutton.Visible = false;
@@ -213,7 +213,7 @@ namespace WindowsFormsApp4
                     string b8 = row["button38"].ToString();
                     string b9 = row["button39"].ToString();
                     string b10 = row["button310"].ToString();
-                    string query = $"UPDATE powers3 SET `button31` = '{b1}',`button32`='{b2}',`button33`='{b3}',`button34`='{b4}',`button35` = '{b5}',`button36`='{b6}',`button37`='{b7}',`button38`='{b8}',`button39`='{b9}',`button310`='{b10}' WHERE `id` = {id}";
+                    string query = $"UPDATE powers3 SET button31 = '{b1}',button32='{b2}',button33='{b3}',button34='{b4}',button35 = '{b5}',button36='{b6}',button37='{b7}',button38='{b8}',button39='{b9}',button310='{b10}' WHERE id = {id}";
                     using (MySqlCommand updatepowers3 = new MySqlCommand(query, connection))
                         updatepowers3.ExecuteNonQuery();
                     Savebutton.Visible = false;
@@ -238,7 +238,7 @@ namespace WindowsFormsApp4
                     string b8 = row["button48"].ToString();
                     string b9 = row["button49"].ToString();
                     string b10 = row["button410"].ToString();
-                    string query = $"UPDATE powers4 SET `button41` = '{b1}',`button42`='{b2}',`button43`='{b3}',`button44`='{b4}',`button45` = '{b5}',`button46`='{b6}',`button47`='{b7}',`button48`='{b8}',`button49`='{b9}',`button410`='{b10}' WHERE `id` = {id}";
+                    string query = $"UPDATE powers4 SET button41 = '{b1}',button42='{b2}',button43='{b3}',button44='{b4}',button45 = '{b5}',button46='{b6}',button47='{b7}',button48='{b8}',button49='{b9}',button410='{b10}' WHERE id = {id}";
                     using (MySqlCommand updatepowers4 = new MySqlCommand(query, connection))
                         updatepowers4.ExecuteNonQuery();
                     Savebutton.Visible = false;

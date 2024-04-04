@@ -1,31 +1,39 @@
-﻿//using System;
-
+﻿
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using System.Resources;
-using MySql.Data.MySqlClient;
-using System.Xml.Linq;
-using System.Linq;
+using System.Data.SqlClient;
 
 namespace WindowsFormsApp4
 {
     public partial class users : Form
     {
+        private int _restaurant;
+
+        private int _editor;
+
         private DataTable dataTableusers = new DataTable();
+
         private DataTable Resize = new DataTable();
-        private MySQLDatabaseHelper dbHelper;
+
+        private DataTable Table_Rest = new DataTable();
+
+        private SQLDatabaseHelper dbHelper;
+
         private DataView dataView;
 
-        public users()
+        public users(int restaurant, int editor)
         {
+            _restaurant = restaurant;
+
+            _editor = editor;
+
             InitializeComponent();
-            dbHelper = new MySQLDatabaseHelper("localhost", "kafe_arm", "root", "");
-            string query = $"SELECT `id`,`Login`, `Password`, `Passqart`, `Position`, `Name`, `Holl`,`Restaurant` FROM `users` WHERE 1 ";
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
+
+            string query = $"SELECT id,Login, Password, Passqart, Position, Name,editor,orderer,previous,observer, Holl,Restaurant,Workplace FROM users  ";
             dataTableusers = dbHelper.ExecuteQuery(query);
             dataGridView1.DataSource = dataTableusers;
             dataView = new DataView(dataTableusers);
@@ -35,12 +43,17 @@ namespace WindowsFormsApp4
             dataGridView1.Columns[3].DataPropertyName = "Passqart";
             dataGridView1.Columns[4].DataPropertyName = "Position";
             dataGridView1.Columns[5].DataPropertyName = "Name";
-            dataGridView1.Columns[6].DataPropertyName = "Holl";
-            dataGridView1.Columns[7].DataPropertyName = "Restaurant";
+            dataGridView1.Columns[6].DataPropertyName = "orderer";
+            dataGridView1.Columns[7].DataPropertyName = "editor";
+            dataGridView1.Columns[8].DataPropertyName = "previous";
+            dataGridView1.Columns[9].DataPropertyName = "observer";
+            dataGridView1.Columns[10].DataPropertyName = "Holl";
+            dataGridView1.Columns[11].DataPropertyName = "Restaurant";
+            dataGridView1.Columns[12].DataPropertyName = "Workplace";
             foreach (DataGridViewColumn column in dataGridView1.Columns)
             {
 
-                if (column.Index > 7)
+                if (column.Index > 12)
                 {
                     column.Visible = false;
                 }
@@ -53,8 +66,16 @@ namespace WindowsFormsApp4
             Resize.Columns.Add("EndHeight", typeof(float));
             Resize.Rows.Add(0, 0, 0, 0);
 
-            MySqlConnection connection = dbHelper.GetConnection();
+            string query1 = $"SELECT * FROM Restaurants WHERE Id = '{_restaurant}'";
+            Table_Rest = dbHelper.ExecuteQuery(query1);
+            foreach (DataRow row in Table_Rest.Rows)
+            {
+                this.Text = row["Name_1"].ToString();
+            }
+
             connection.Close();
+
+            if(_editor ==0 ) SaveButton.Enabled = false;
         }
 
 
@@ -65,32 +86,6 @@ namespace WindowsFormsApp4
 
         }
 
-        public void SaveButton_Click(object sender, EventArgs e)
-        {
-            MySqlConnection connection = dbHelper.GetConnection();
-
-            foreach (DataRow row in dataTableusers.Rows)
-            {
-                int id = Convert.ToInt32(row["id"]);
-                string log = row["login"].ToString();
-                string passw = row["password"].ToString();
-                string passq = row["passqart"].ToString();
-                string posi = row["position"].ToString();
-                string pow = row["powers"].ToString();
-                string end = row["end"].ToString();
-                this.Text= posi;
-                if (id > 0)
-                {
-                    connection.Open();
-                    //   string updateTable1Query = $"UPDATE users SET login = '{log}',password='{passw}',passqart='{passq}',position='{posi}',powers='{pow}',end='{end}' WHERE id = {id}";
-                    string updateTable1Query = $"UPDATE users SET `login` = '{log}',`password`='{passw}',`passqart`='{passq}',`position`='{posi}' WHERE `id` = {id}";
-                    using (MySqlCommand updateTable1Command = new MySqlCommand(updateTable1Query, connection))
-                        updateTable1Command.ExecuteNonQuery();
-                    connection.Close();
-                }
-                this.Close();
-            }
-        }
 
         private void users_ResizeBegin(object sender, EventArgs e)
         {
@@ -178,36 +173,48 @@ namespace WindowsFormsApp4
             }
             SaveButton.Visible = true;
         }
-        private void SaveButton_Click_1(object sender, EventArgs e)
+        private void SaveButton_Click(object sender, EventArgs e)
         {
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
             int count = 0;
-            MySqlConnection connection = dbHelper.GetConnection();
+            //SqlConnection connection = dbHelper.GetConnection();
             connection.Open();
             foreach (DataRow row in dataTableusers.Rows)
             {
                 string query = $"SELECT COUNT(*) FROM users WHERE Id = @Id ";
-                using (MySqlCommand command = new MySqlCommand(query, connection))
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@Id", row["Id"]);
                     count = Convert.ToInt32(command.ExecuteScalar());
                 }
                 if (count == 0)
                 {
-                  String query1= $"INSERT users SET `Id` = '{row["Id"]}',`Login` = '{row["Login"]}',`Password`='{row["Password"]}'," +
-                            $"`Passqart`='{row["Passqart"]}',`Name` = '{row["Name"]}',`Position`='{row["Position"]}'," +
-                            $"`Holl`='{row["Holl"]}',`Restaurant` = '{row["Restaurant"]}' ";
-                    using (MySqlCommand insertCommand = new MySqlCommand(query1, connection))
+                  String query1= $"INSERT INTO users (Login,Password,Passqart,Name,Position,editor,orderer,previous,observer,Holl,Restaurant ) " +
+                            $"VALUES ('{row["Login"]}','{row["Password"]}','{row["Passqart"]}'," +
+                            $"'{row["editor"]}','{row["orderer"]}','{row["previous"]}','{row["observer"]}','{row["Name"]}'," +
+                            $"'{row["Position"]}','{row["Holl"]}','{row["Restaurant"]}') ";
+                    using (SqlCommand insertCommand = new SqlCommand(query1, connection))
                         insertCommand.ExecuteNonQuery();
                 }
                 else
                 {
-                    String query1 = $"UPDATE users SET `Login` = '{row["Login"]}',`Password`='{row["Password"]}'," +
-                              $"`Passqart`='{row["Passqart"]}',`Name` = '{row["Name"]}',`Position`='{row["Position"]}'," +
-                              $"`Holl`='{row["Holl"]}',`Restaurant` = '{row["Restaurant"]}' WHERE `Id` = '{row["Id"]}' ";
-                    using (MySqlCommand insertCommand = new MySqlCommand(query1, connection))
+                    int prev = 1, obs = 1, ord = 1, edit = 1;
+                    this.Text = "previous " + row["previous"].ToString() + "observer " + row["observer"].ToString() + "orderer " + row["orderer"].ToString() + "editor " + row["editor"].ToString();
+                    if (row["previous"].ToString().Length == 0) prev = 0;
+                    if (row["editor"].ToString().Length == 0) edit = 0;
+                    if (row["observer"].ToString().Length == 0) obs = 0;
+                    if (row["orderer"].ToString().Length == 0) ord = 0;
+                    String query1 = $"UPDATE users SET Login = '{row["Login"]}',Password='{row["Password"]}'," +
+                              $"Passqart='{row["Passqart"]}',editor='{edit}',Name = '{row["Name"]}'," +
+                              $"Position='{row["Position"]}',orderer='{ord}',previous='{prev}',observer='{obs}'," +
+                              $"Holl='{row["Holl"]}',Restaurant = '{row["Restaurant"]}' WHERE Id = '{row["Id"]}' ";
+                    using (SqlCommand insertCommand = new SqlCommand(query1, connection))
                         insertCommand.ExecuteNonQuery();
                 }
             }
+            SaveButton.Visible=false;
             connection.Close();
         }
     }
