@@ -89,6 +89,8 @@ namespace WindowsFormsApp4
             string query4 = $"SELECT Code,Name_1 FROM Table_215  WHERE Restaurant='{_restaurant}'";
             Table_215 = dbHelper.ExecuteQuery(query4);
 
+
+
             string query5 = $"SELECT DateOfEntry,Seans,Ticket,Nest,Code,Quantity,Costamount,Salesamount,Service,Discount,Operator FROM Actions_215  WHERE Restaurant='{_restaurant}' AND Previous='{0}' ";
             Actions_215 = dbHelper.ExecuteQuery(query5);
             Actions_215.Columns.Add("Name", typeof(string));

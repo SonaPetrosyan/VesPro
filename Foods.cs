@@ -5,9 +5,6 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
-using System.Xml.Linq;
-using System.Reflection;
-using Amazon.DynamoDBv2.Model;
 
 
 namespace WindowsFormsApp4
@@ -66,7 +63,6 @@ namespace WindowsFormsApp4
             {
                 SaveButton.Enabled = false;
                 AddButton.Enabled = false;
-                EditButton.Enabled = false;
             }
 
             //*******************dataGridView4 - ն ենք կառուցում
@@ -92,7 +88,7 @@ namespace WindowsFormsApp4
 
             //******************* dataGridView3-ն ենք կառուցում
 
-            string query2_0 = $"SELECT Code,Name_1,Unit,Name_2,Name_3,CostPrice FROM table_215 WHERE SemiPrepared=1 ";
+            string query2_0 = $"SELECT Code,Name_1,Unit,Quantity,CostPrice FROM table_215 WHERE SemiPrepared=1 ";
             Table_215_Semi = dbHelper.ExecuteQuery(query2_0);
             Table_215_Semi.Columns.Add("quantity", typeof(float));
             dataView = new DataView(Table_215_Semi);
@@ -104,6 +100,11 @@ namespace WindowsFormsApp4
 
             foreach (DataGridViewColumn column in dataGridView3.Columns)
             {
+             //   if (column.DataPropertyName != "Code" && column.DataPropertyName != "Name_1" &&
+             //       column.DataPropertyName != "Unit" && column.DataPropertyName != "Quantity")
+             //   {
+             //       column.Visible = false;
+             //   }
                 string name = column.DataPropertyName;
                 if (column.Index > 3)
                 {
@@ -190,7 +191,7 @@ namespace WindowsFormsApp4
             Resize.Columns.Add("EndHeight", typeof(float));
             Resize.Rows.Add(0, 0, 0, 0);
 
-  
+
             string query5 = $"SELECT * FROM Restaurants WHERE Id = '{_restaurant}'";
             Table_Rest = dbHelper.ExecuteQuery(query5);
             foreach (DataRow row in Table_Rest.Rows)
@@ -224,7 +225,6 @@ namespace WindowsFormsApp4
                 dataGridView2.Enabled = true;
                 dataGridView3.Enabled = true;
                 dataGridView4.Enabled = true;
-                EditButton.BackColor = Color.LightGreen;
                 AddButton.Visible = true;
             }
             else
@@ -234,7 +234,6 @@ namespace WindowsFormsApp4
                 dataGridView2.Enabled = false;
                 dataGridView3.Enabled = false;
                 dataGridView4.Enabled = false;
-                EditButton.BackColor = Color.White;
                 AddButton.Visible = false;
             }
         }
@@ -271,7 +270,7 @@ namespace WindowsFormsApp4
 
 
                 // Add the new row to the DataTable
-                
+
 
 
                 if (dataGridView1.Rows.Count > 0)
@@ -574,7 +573,7 @@ namespace WindowsFormsApp4
         {
             DataGridView dgv = (DataGridView)sender;
             DataGridViewCell currentCell = dgv.CurrentCell;
-            
+
             if (currentCell != null)
             {
                 int rowIndex = currentCell.RowIndex;
@@ -619,7 +618,7 @@ namespace WindowsFormsApp4
 
 
                 }
-                int lastRowIndex = Math.Min(0,Table_Composition.Rows.Count-2);
+                int lastRowIndex = Math.Min(0, Table_Composition.Rows.Count - 2);
                 for (int colIndex = 0; colIndex < dataGridView2.Columns.Count; colIndex++)
                 {
                     if (dataGridView2.Columns[colIndex].Visible)
@@ -789,14 +788,56 @@ namespace WindowsFormsApp4
                 richTextBox1.Visible = true;
                 richTextBox1.Top = 0;
                 richTextBox1.Left = 0;
-                richTextBox1.Width = HelpButton.Left-5;
-                richTextBox1.Height = this.Height-20;
+                richTextBox1.Width = HelpButton.Left - 5;
+                richTextBox1.Height = this.Height - 20;
             }
             else
             {
                 richTextBox1.Visible = false;
                 HelpButton.Text = "?";
             }
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Get the current cell
+            DataGridViewCell currentCell = dataGridView1.CurrentCell;
+            dataGridView1.Tag = currentCell.RowIndex.ToString();// ֆիքսում ենք ընթացիկ բջիջի ինդեքսները
+            this.Text = currentCell.ColumnIndex.ToString();
+            button2.Tag = currentCell.ColumnIndex.ToString();
+            checkedListBox1.Tag=currentCell.RowIndex.ToString();
+            if (currentCell != null && (currentCell.ColumnIndex == 15 || currentCell.ColumnIndex == 18))
+            {
+                checkedListBox1.Visible = true;
+                button2.Visible = true;
+            }
+
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int rowindex = int.Parse(checkedListBox1.Tag.ToString());
+            int colindex = int.Parse(button2.Tag.ToString());
+            dataGridView1.Rows[rowindex].Cells[colindex].Value = "";
+            string val = "";
+            for (int i = 0; i < 10; i++)
+            {
+                if (checkedListBox1.GetItemChecked(i))
+                {
+                    val = val + (i+1).ToString() + ",";
+                }
+            }
+            dataGridView1.Rows[rowindex].Cells[colindex].Value =val;
+            this.Text = val;
+            checkedListBox1.Visible=false;
+            button2.Visible=false;
+
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
+using System.Linq;
 
 
 
@@ -22,6 +23,8 @@ namespace WindowsFormsApp4
         private DataTable Resize = new DataTable();
 
         private DataTable Table_Action_215 = new DataTable();
+
+        private DataTable Table_215 = new DataTable();
 
         private DataTable Table_Seans = new DataTable();
 
@@ -76,8 +79,30 @@ namespace WindowsFormsApp4
             numericUpDown2.Value = sseans;
             radioButton6.Tag = sseans.ToString();
 
-            string query3 = $"SELECT * FROM Seans  WHERE Previous='{0}' AND restaurant='{_restaurant}' ";
+            string query4 = $"SELECT Code,InHoll FROM Table_215  WHERE Restaurant='{_restaurant}'";
+            Table_215 = dbHelper.ExecuteQuery(query4);
+
+            string query3 = $"SELECT * FROM Seans  WHERE  restaurant='{_restaurant}' ";
             Table_Seans = dbHelper.ExecuteQuery(query3);
+
+            var query5 = from row1 in Table_Seans.AsEnumerable()  // տեղադրում ենք <Inholl> դաշտը, որպեսսզի որոշ սրահներից վաճառքի
+                                                                  // դեպքում բաղադրիչները չհանվի բաժնից
+                         join row2 in Table_215.AsEnumerable()
+                         on row1.Field<string>("Code") equals row2.Field<string>("Code") into gj
+                         from subRow2 in gj.DefaultIfEmpty()
+                         select new
+                         {
+                             Row1 = row1,
+                             Row2 = subRow2
+                         };
+
+            foreach (var item in query5)
+            {
+                if (item.Row2 != null)
+                {
+                    item.Row1["InHoll"] = item.Row2["InHoll"];
+                }
+            }
 
             string query2 = $"SELECT DateBegin,Seans,Ticket,Nest,Costamount,Salesamount," +
                 $"Delivery,Music,Service,Discount,Tipmoney,gid,cash,Nestgroup,Holl,Paid,cashless,Person,printed FROM TicketsOrdered WHERE Previous='{0}' AND Restaurant='{_restaurant}' ";
@@ -139,8 +164,8 @@ namespace WindowsFormsApp4
                 }
             }
 
-            string query4 = $"SELECT *  FROM NestGroup  ";
-            Table_NestGroup = dbHelper.ExecuteQuery(query4);
+            string query7 = $"SELECT *  FROM NestGroup  ";
+            Table_NestGroup = dbHelper.ExecuteQuery(query7);
             newNestGroup = Table_NestGroup.Clone();
             DataRow newRow = newNestGroup.NewRow();
             newNestGroup.Rows.Add(newRow);
@@ -156,8 +181,8 @@ namespace WindowsFormsApp4
                 newRow0["Name_3"] = row["Name_3"];
             }
 
-            string query5 = $"SELECT * FROM Restaurants WHERE Id = '{_restaurant}'";
-            Table_Rest = dbHelper.ExecuteQuery(query5);
+            string query6 = $"SELECT * FROM Restaurants WHERE Id = '{_restaurant}'";
+            Table_Rest = dbHelper.ExecuteQuery(query6);
             foreach (DataRow row in Table_Rest.Rows)
             {
                 this.Text = row["Name_1"].ToString();
@@ -950,6 +975,9 @@ namespace WindowsFormsApp4
 
             string query1 = $"SELECT * FROM Seans  WHERE Previous='{0}' AND restaurant='{_restaurant}' ";
             Table_Seans = dbHelper.ExecuteQuery(query1);
+
+
+
             string query2 = $"SELECT * FROM Composite  WHERE restaurant='{_restaurant}' ";
             Table_Composite = dbHelper.ExecuteQuery(query2);
             string query3 = $"SELECT * FROM Actions  WHERE  Id=0 ";

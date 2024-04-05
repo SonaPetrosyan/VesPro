@@ -29,6 +29,8 @@ namespace WindowsFormsApp4
 
         private DataTable TableSeans = new DataTable();   //Ընթացիկ սեանսն է։ Ամեն դրամարկղ իր սեփական սեանսն ունի, տարբեր մյուս դրամարկղերից։
 
+        private DataTable TablePrevious = new DataTable(); //Նախնական պատվերներն են 
+
         private DataTable Table_215 = new DataTable();   //Ճաշացուցակն է։ 
 
         private DataTable Table215 = new DataTable();  
@@ -96,6 +98,7 @@ namespace WindowsFormsApp4
             foreach (DataRow row in Table215.Rows) //տվյալ սրահի համար չնախատեսված ապրանքները հանում ենք
             {
                 string inholl = row["inholl"].ToString();
+                if (row["inholl"].ToString().Trim() == string.Empty) continue;
                 if (( row["inholl"].ToString().Trim() != "0") && inholl.IndexOf(inh) < 0) continue;
                 DataRow newRow = Table_215.NewRow();
                 Table_215.Rows.Add(newRow);
@@ -137,11 +140,21 @@ namespace WindowsFormsApp4
                 DataRow[] foundRows = Seans_State.Select($"id = '{_restaurant}'");
                 if (foundRows.Length > 0) seans_state = int.Parse(foundRows[0]["Seans"].ToString());
 
- 
 
+            if (_previous == 0)
+            {
                 string query9 = $"SELECT * FROM seans WHERE Holl='{_holl}' AND Restaurant='{_restaurant}' AND Previous='{_previous}' ";
                 TableSeans = dbHelper.ExecuteQuery(query9);
                 Seans.Text = seans_state.ToString();
+            }
+            else
+            {
+                string query9 = $"SELECT * FROM seans WHERE Holl='{_holl}' AND Restaurant='{_restaurant}' AND Previous='{_previous}' ";
+                TableSeans = dbHelper.ExecuteQuery(query9);
+                Seans.Text = seans_state.ToString();
+            }
+            
+
 
 
             dataGridView1.DataSource = Table_215;

@@ -1,13 +1,10 @@
-﻿using Amazon.DynamoDBv2;
-using Amazon.DynamoDBv2.Model;
-using MySql.Data.MySqlClient;
-using Mysqlx.Crud;
-using MySqlX.XDevAPI.Relational;
-using System;
+﻿using System;
 using System.Data;
 using System.Drawing;
-using System.Data.SqlClient;
+using System.Linq;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.IO;
 using Button = System.Windows.Forms.Button;
 
 
@@ -814,6 +811,30 @@ namespace WindowsFormsApp4
             {
                 row["BeginWidth"] = this.Width;
                 row["BeginHeight"] = this.Height;
+            }
+        }
+
+        private void HelpButton_Click(object sender, EventArgs e)
+        {
+            if (HelpButton.Text == "?")
+            {
+                HelpButton.Text = "X";
+                richTextBox1.Height = this.Height - 50;
+                richTextBox1.ReadOnly = true;
+
+                string filePath = "D:\\hayrik\\sql\\help\\Standart.txt";
+                string fileContent = File.ReadAllText(filePath);
+                richTextBox1.Text = fileContent;
+                richTextBox1.Visible = true;
+                richTextBox1.Top = 0;
+                richTextBox1.Left = 0;
+                richTextBox1.Width = HelpButton.Left + HelpButton.Width;
+                richTextBox1.Height = HelpButton.Top-5;
+            }
+            else
+            {
+                richTextBox1.Visible = false;
+                HelpButton.Text = "?";
             }
         }
     }
