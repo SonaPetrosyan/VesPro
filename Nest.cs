@@ -9,16 +9,19 @@ namespace WindowsFormsApp4
     public partial class Nest : Form
     {
         private int _restaurant;
+        private string _language;
         private SQLDatabaseHelper dbHelper;
         private DataTable Nest_1 = new DataTable();
         private DataTable Nest_Group = new DataTable();
         private DataTable Resize = new DataTable();
         private DataTable Exist = new DataTable();
+        private DataTable ControlsNestGroupp = new DataTable();
         private DataTable Table_Rest = new DataTable();
         private DataView dataView;
-        public Nest(int restaurant)
+        public Nest(int restaurant, string language)
         {
             _restaurant = restaurant;
+            _language = language;
             InitializeComponent();
 
             string connectionString = Properties.Settings.Default.CafeRestDB;
@@ -43,14 +46,18 @@ namespace WindowsFormsApp4
                 }
             }
 
-            string query11 = $"SELECT Groupp,Name_1 FROM NestGroup  ";
+            string query11 = $"SELECT* FROM NestGroup  ";
             Nest_Group = dbHelper.ExecuteQuery(query11);
 
 
 
             dataGridView2.DataSource = Nest_Group;
             dataGridView2.Columns[0].DataPropertyName = "Groupp";
-            dataGridView2.Columns[1].DataPropertyName = "Name_1";
+            dataGridView2.Columns[1].DataPropertyName = "Name";
+            foreach(DataRow row in Nest_Group.Rows)
+            {
+                row["Name"] = row[_language];
+            }
             foreach (DataGridViewColumn column in dataGridView2.Columns)
             {
                 if (column.Index > 1)
@@ -68,6 +75,67 @@ namespace WindowsFormsApp4
             label2.Text = "";
             label3.Text = "";
             Load();
+            SetLanguage(_language);
+        }
+        private void SetLanguage(string lang)
+        {
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
+            string rb = "";
+            string rbt = "";
+            connection.Open();
+            DataTable ControlsForm1 = new DataTable();
+            string query1 = $"SELECT * FROM ControlsNestGroupp  ";
+            ControlsNestGroupp = dbHelper.ExecuteQuery(query1);
+            foreach (Control control in this.Controls)
+            {
+                string columnName = control.Name.Trim();
+                DataRow[] foundRows = ControlsNestGroupp.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0)
+                {
+                    control.Text = foundRows[0][_language].ToString();
+                }
+            }
+            foreach (Control control in panel1.Controls)
+            {
+                string columnName = control.Name.Trim();
+                DataRow[] foundRows = ControlsNestGroupp.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0)
+                {
+                    control.Text = foundRows[0][_language].ToString();
+                }
+            }
+            for (int colIndex = 0; colIndex < dataGridView1.Columns.Count; colIndex++)
+            {
+                string columnName = dataGridView1.Columns[colIndex].DataPropertyName.Trim();
+                DataRow[] foundRows = ControlsNestGroupp.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0)
+                {
+                    dataGridView1.Columns[colIndex].HeaderText = foundRows[0][_language].ToString();
+                }
+            }
+
+            for (int colIndex = 0; colIndex < dataGridView1.Columns.Count; colIndex++)
+            {
+                string columnName = dataGridView1.Columns[colIndex].DataPropertyName.Trim();
+                DataRow[] foundRows = ControlsNestGroupp.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0)
+                {
+                    dataGridView1.Columns[colIndex].HeaderText = foundRows[0][_language].ToString();
+                }
+            }
+
+            for (int colIndex = 0; colIndex < dataGridView2.Columns.Count; colIndex++)
+            {
+                string columnName = dataGridView2.Columns[colIndex].DataPropertyName.Trim();
+                DataRow[] foundRows = ControlsNestGroupp.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0)
+                {
+                    dataGridView2.Columns[colIndex].HeaderText = foundRows[0][_language].ToString();
+                }
+            }
+            connection.Close();
         }
         private void Load()
         {
@@ -79,7 +147,7 @@ namespace WindowsFormsApp4
             Table_Rest = dbHelper.ExecuteQuery(query1);
             foreach (DataRow row in Table_Rest.Rows)
             {
-                this.Text = row["Name_1"].ToString()+"  Նստատեղեր";
+                this.Text = row["Name"].ToString()+"  Seats";
             }
         }
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
@@ -96,7 +164,10 @@ namespace WindowsFormsApp4
             {
                 int prev = 0;
                 if (checkBox1.Checked) prev = 1;
-                string query1 = $"SELECT Nest,Service,Discount,Groupp,Holl,Restaurant FROM Tablenest WHERE Holl='{numericUpDown1.Value}' AND Restaurant='{_restaurant}' AND Previous='{prev}'  ";
+                string query1 = $"SELECT Nest,Service,Discount,Groupp,Holl," +
+                $"Restaurant,Ocupied,Forbidden,Printed,Taxprinted,Ticket," +
+                $"Person,Tipmoney FROM Tablenest WHERE Holl='{numericUpDown1.Value}'" +
+                $" AND Restaurant='{_restaurant}' and Previous='{prev}' ";
                 Nest_1 = dbHelper.ExecuteQuery(query1);
                 dataGridView1.DataSource = Nest_1;
             }
@@ -199,10 +270,11 @@ namespace WindowsFormsApp4
                             $" WHERE Nest= '{nest}' AND Holl= '{holl}' AND Restaurant='{_restaurant}' AND Previous='{prev}'";
                         using (SqlCommand updatCommand = new SqlCommand(UpdateQuery, connection))
                             updatCommand.ExecuteNonQuery();
+
                     }
                     else
                     {
-                        string InsertQuery = $"INSERT INTO TableNest (Nest ,Holl ,Service ,Discount ,Groupp,Restaurant" +
+                        string InsertQuery = $"INSERT INTO TableNest (Nest ,Holl ,Service ,Discount ,Groupp,Restaurant," +
                             $"Ocupied,Forbidden,Printed,Taxprinted,Ticket,Person,Tipmoney,Previous )" +
                             $" VALUES ('{nest}','{holl}','{service}','{discount}','{groupp}','{_restaurant}'," +
                             $"'{0}','{0}','{0}','{0}','{0}','{0}','{0}','{0}')";
@@ -283,15 +355,26 @@ namespace WindowsFormsApp4
                     int count = Exist.Rows.Count;
                     if (count > 0)
                     {
-                        string UpdateQuery = $"UPDATE NestGroup SET Name_1= '{name}' WHERE Groupp= '{groupp}'";
-                        using (SqlCommand updatCommand = new SqlCommand(UpdateQuery, connection))
-                            updatCommand.ExecuteNonQuery();
+                        string UpdateQuery = $"UPDATE NestGroup SET {_language} = @language WHERE Groupp= @groupp";
+                        using (SqlCommand command = new SqlCommand(UpdateQuery, connection))
+                        {
+                            command.Parameters.AddWithValue("@language", name);
+                            command.Parameters.AddWithValue("@groupp", groupp);
+                            command.ExecuteNonQuery();
+                        }
+
+
+
                     }
                     else
                     {
-                        string InsertQuery = $"INSERT INTO NestGroup (Groupp ,Name_1 ) Values ('{groupp}','{name}') ";
-                        using (SqlCommand updatCommand = new SqlCommand(InsertQuery, connection))
-                            updatCommand.ExecuteNonQuery();
+                        string InsertQuery = $"INSERT INTO NestGroup (Groupp ,{_language} ) Values (@groupp,@language) ";
+                        using (SqlCommand command = new SqlCommand(InsertQuery, connection))
+                        {
+                            command.Parameters.AddWithValue("@language", name);
+                            command.Parameters.AddWithValue("@groupp", groupp);
+                            command.ExecuteNonQuery();
+                        }
                     }
 
                 }

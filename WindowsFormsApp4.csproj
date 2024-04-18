@@ -242,6 +242,8 @@
       <DependentUpon>Stocktaking.cs</DependentUpon>
     </Compile>
     <Compile Include="TableUpdater.cs" />
+    <Compile Include="Translate.cs" />
+    <Compile Include="Translation.cs" />
     <Compile Include="Update_composits.cs" />
     <Compile Include="users.cs">
       <SubType>Form</SubType>
@@ -292,6 +294,7 @@
     <EmbeddedResource Include="Observation.resx">
       <DependentUpon>Observation.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="OrderReport.rdlc" />
     <EmbeddedResource Include="order.resx">
       <DependentUpon>order.cs</DependentUpon>
       <SubType>Designer</SubType>

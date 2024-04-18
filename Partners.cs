@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Data;
-using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using System.Data.SqlClient;
@@ -37,9 +37,9 @@ namespace WindowsFormsApp4
             dataView = new DataView(Table_Partners);
             dataGridView1.DataSource = dataView;
             dataGridView1.Columns[0].DataPropertyName = "Id";
-            dataGridView1.Columns[1].DataPropertyName = "Name_1";
-            dataGridView1.Columns[2].DataPropertyName = "Name_2";
-            dataGridView1.Columns[3].DataPropertyName = "Name_3";
+            dataGridView1.Columns[1].DataPropertyName = "Name";
+            dataGridView1.Columns[2].DataPropertyName = "Eng";
+            dataGridView1.Columns[3].DataPropertyName = "Rus";
             dataGridView1.Columns[4].DataPropertyName = "Note";
             dataGridView1.Columns[5].DataPropertyName = "Groupp";
 
@@ -56,7 +56,7 @@ namespace WindowsFormsApp4
             Table_Rest = dbHelper.ExecuteQuery(query7);
             foreach (DataRow row in Table_Rest.Rows)
             {
-                this.Text = this.Text+"  "+row["Name_1"].ToString();
+                this.Text = this.Text+"  "+row["Name"].ToString();
             }
 
             Resize.Columns.Add("BeginWidth", typeof(float));
@@ -124,9 +124,9 @@ namespace WindowsFormsApp4
 
                 DataRow newRow = Table_Partners.NewRow();
                 newRow["Id"] = maxId;
-                newRow["Name_1"] = "";
-                newRow["Name_2"] = "";
-                newRow["Name_3"] = "";
+                newRow["Name"] = "";
+                newRow["Eng"] = "";
+                newRow["Rus"] = "";
                 newRow["Note"] = ""; 
                 newRow["Groupp"] = 0;
                 newRow["Restaurant"] = _restaurant;
@@ -160,12 +160,12 @@ namespace WindowsFormsApp4
                 Tp = dbHelper.ExecuteQuery(query);
                 if (Tp.Rows.Count > 0)
                 {
-                    string UpdateQuery = $"UPDATE Partners SET Name_1 = @Name_1, Name_2 = @Name_2, Name_3 = @Name_3, Note = @Note, Groupp = @Groupp  WHERE Id = @Id  ";
+                    string UpdateQuery = $"UPDATE Partners SET Name = @Name, Eng = @Eng, Rus = @Rus, Note = @Note, Groupp = @Groupp  WHERE Id = @Id  ";
                     using (SqlCommand command = new SqlCommand(UpdateQuery, connection))
                     {
-                        command.Parameters.AddWithValue("@Name_1", row["Name_1"]);
-                        command.Parameters.AddWithValue("@Name_2", row["Name_2"]);
-                        command.Parameters.AddWithValue("@Name_3", row["Name_3"]);
+                        command.Parameters.AddWithValue("@Name", row["Name"]);
+                        command.Parameters.AddWithValue("@Eng", row["Eng"]);
+                        command.Parameters.AddWithValue("@Rus", row["Rus"]);
                         command.Parameters.AddWithValue("@Note", row["Note"]);
                         command.Parameters.AddWithValue("@Groupp", row["Groupp"]);
                         command.Parameters.AddWithValue("@Id", row["Id"]);
@@ -174,13 +174,13 @@ namespace WindowsFormsApp4
                 }
                 else
                 {
-                    string InsertQuery = $"INSERT INTO Partners (Name_1, Name_2, Name_3, Note, Groupp,  Restaurant) " +
-       $"VALUES (@Name_1, @Name_2, @Name_3, @Note, @Groupp  @Restaurant)";
+                    string InsertQuery = $"INSERT INTO Partners (Name, Eng, Rus, Note, Groupp,  Restaurant) " +
+       $"VALUES (@Name, @Eng, @Rus, @Note, @Groupp  @Restaurant)";
                     using (SqlCommand command = new SqlCommand(InsertQuery, connection))
                     {
-                        command.Parameters.AddWithValue("@Name_1", row["Name_1"]);
-                        command.Parameters.AddWithValue("@Name_2", row["Name_2"]);
-                        command.Parameters.AddWithValue("@Name_3", row["Name_3"]);
+                        command.Parameters.AddWithValue("@Name", row["Name"]);
+                        command.Parameters.AddWithValue("@Eng", row["Eng"]);
+                        command.Parameters.AddWithValue("@Rus", row["Rus"]);
                         command.Parameters.AddWithValue("@Note", row["Note"]);
                         command.Parameters.AddWithValue("@Groupp", row["Groupp"]);
                         command.Parameters.AddWithValue("@Restaurant", _restaurant);
@@ -196,6 +196,29 @@ namespace WindowsFormsApp4
         private void dataGridView1_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
                 Savebutton.Visible = true;
+        }
+
+        private void HelpButton_Click(object sender, EventArgs e)
+        {
+            if (HelpButton.Text == "?")
+            {
+                HelpButton.Text = "X";
+                richTextBox1.Height = this.Height - 50;
+                richTextBox1.Top = 0;
+                richTextBox1.Left = HelpButton.Width+2;
+                richTextBox1.Width = this.Width / 2;
+                richTextBox1.ReadOnly = true;
+
+                string filePath = "D:\\hayrik\\sql\\help\\Partners.txt";
+                string fileContent = File.ReadAllText(filePath);
+                richTextBox1.Text = fileContent;
+                richTextBox1.Visible = true;
+            }
+            else
+            {
+                richTextBox1.Visible = false;
+                HelpButton.Text = "?";
+            }
         }
     }
 }

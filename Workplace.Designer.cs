@@ -29,8 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.powerbox = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.HelpButton = new System.Windows.Forms.Button();
             this.getprinterbox = new System.Windows.Forms.ListBox();
             this.HollUpDown = new System.Windows.Forms.NumericUpDown();
             this.comboBoxRest = new System.Windows.Forms.ComboBox();
@@ -41,7 +40,6 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,6 +59,7 @@
             this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HollUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -69,8 +68,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel1.Controls.Add(this.powerbox);
-            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.HelpButton);
             this.panel1.Controls.Add(this.getprinterbox);
             this.panel1.Controls.Add(this.HollUpDown);
             this.panel1.Controls.Add(this.comboBoxRest);
@@ -78,39 +76,24 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.savebutton);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Location = new System.Drawing.Point(2, 1);
+            this.panel1.Location = new System.Drawing.Point(0, -3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1636, 111);
+            this.panel1.Size = new System.Drawing.Size(1549, 111);
             this.panel1.TabIndex = 9;
             // 
-            // powerbox
+            // HelpButton
             // 
-            this.powerbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.powerbox.FormattingEnabled = true;
-            this.powerbox.Items.AddRange(new object[] {
-            "ամեն ինչ R/W",
-            "ամեն ինչ R",
-            "պատվեր R/W",
-            "պատվեր և մարող R/W",
-            "պատվեր R",
-            "պատվեր, շարժ  R",
-            "տեղեկատուներ  R"});
-            this.powerbox.Location = new System.Drawing.Point(323, 50);
-            this.powerbox.Name = "powerbox";
-            this.powerbox.Size = new System.Drawing.Size(242, 28);
-            this.powerbox.TabIndex = 17;
-            this.powerbox.Visible = false;
-            this.powerbox.SelectedIndexChanged += new System.EventHandler(this.powerbox_SelectedIndexChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(383, 22);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(122, 20);
-            this.label3.TabIndex = 16;
-            this.label3.Text = "հնարավորույթ";
+            this.HelpButton.BackColor = System.Drawing.Color.Orange;
+            this.HelpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.HelpButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HelpButton.ForeColor = System.Drawing.Color.White;
+            this.HelpButton.Location = new System.Drawing.Point(3, 7);
+            this.HelpButton.Name = "HelpButton";
+            this.HelpButton.Size = new System.Drawing.Size(35, 35);
+            this.HelpButton.TabIndex = 69;
+            this.HelpButton.Text = "?";
+            this.HelpButton.UseVisualStyleBackColor = false;
+            this.HelpButton.Click += new System.EventHandler(this.HelpButton_Click);
             // 
             // getprinterbox
             // 
@@ -146,6 +129,7 @@
             0,
             0,
             0});
+            this.HollUpDown.ValueChanged += new System.EventHandler(this.HollUpDown_ValueChanged);
             // 
             // comboBoxRest
             // 
@@ -181,7 +165,7 @@
             this.savebutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.savebutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.savebutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.savebutton.Location = new System.Drawing.Point(109, 37);
+            this.savebutton.Location = new System.Drawing.Point(144, 61);
             this.savebutton.Name = "savebutton";
             this.savebutton.Size = new System.Drawing.Size(75, 42);
             this.savebutton.TabIndex = 10;
@@ -195,21 +179,22 @@
             this.button1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(13, 37);
+            this.button1.Location = new System.Drawing.Point(48, 61);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 42);
             this.button1.TabIndex = 9;
-            this.button1.Text = "Add";
+            this.button1.Text = "Add +";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // dataGridView1
             // 
-            this.dataGridView1.ColumnHeadersHeight = 29;
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersHeight = 35;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
-            this.Column3,
             this.Column4,
             this.Column5,
             this.Column6,
@@ -232,7 +217,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 6;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1475, 620);
+            this.dataGridView1.Size = new System.Drawing.Size(1546, 620);
             this.dataGridView1.TabIndex = 10;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
@@ -252,14 +237,6 @@
             this.Column2.MinimumWidth = 6;
             this.Column2.Name = "Column2";
             this.Column2.Width = 125;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "հնարավորույթ";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 150;
             // 
             // Column4
             // 
@@ -387,15 +364,26 @@
             this.Column21.Name = "Column21";
             this.Column21.Width = 125;
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox1.Location = new System.Drawing.Point(1488, 422);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(20, 3, 3, 3);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(52, 29);
+            this.richTextBox1.TabIndex = 70;
+            this.richTextBox1.Text = "";
+            this.richTextBox1.Visible = false;
+            // 
             // Workplace
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(1834, 737);
+            this.ClientSize = new System.Drawing.Size(1550, 745);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
-            this.HelpButton = true;
             this.Name = "Workplace";
             this.Text = "Workplace";
             this.Load += new System.EventHandler(this.Workplace_Load);
@@ -419,11 +407,11 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ListBox getprinterbox;
-        private System.Windows.Forms.ComboBox powerbox;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.HelpProvider helpProvider1;
+        private System.Windows.Forms.Button HelpButton;
+        private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
@@ -442,6 +430,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column20;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column21;
-        private System.Windows.Forms.HelpProvider helpProvider1;
     }
 }

@@ -34,14 +34,14 @@ namespace WindowsFormsApp4
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.group1 = new System.Windows.Forms.Button();
             this.process1 = new System.Diagnostics.Process();
             this.group2 = new System.Windows.Forms.Button();
@@ -243,6 +243,11 @@ namespace WindowsFormsApp4
             this.HelpButton = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.TipMoney = new System.Windows.Forms.TextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -849,7 +854,7 @@ namespace WindowsFormsApp4
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 23);
             this.label3.TabIndex = 37;
-            this.label3.Text = "հաշիվ No";
+            this.label3.Text = "Bill N#";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // bill
@@ -958,7 +963,7 @@ namespace WindowsFormsApp4
             this.ManagerBox.Name = "ManagerBox";
             this.ManagerBox.Size = new System.Drawing.Size(193, 22);
             this.ManagerBox.TabIndex = 43;
-            this.ManagerBox.Text = "կառավ․քարտ";
+            this.ManagerBox.Text = "manager";
             this.ManagerBox.Enter += new System.EventHandler(this.ManagerBox_Enter);
             this.ManagerBox.Leave += new System.EventHandler(this.ManagerBox_Leave);
             // 
@@ -1104,7 +1109,7 @@ namespace WindowsFormsApp4
             this.remove.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.remove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.remove.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.remove.Location = new System.Drawing.Point(641, 65);
+            this.remove.Location = new System.Drawing.Point(691, 65);
             this.remove.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.remove.Name = "remove";
             this.remove.Size = new System.Drawing.Size(85, 25);
@@ -1121,11 +1126,11 @@ namespace WindowsFormsApp4
             this.radioButton1.Location = new System.Drawing.Point(460, 67);
             this.radioButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(47, 15);
+            this.radioButton1.Size = new System.Drawing.Size(70, 19);
             this.radioButton1.TabIndex = 53;
             this.radioButton1.TabStop = true;
             this.radioButton1.Tag = "0";
-            this.radioButton1.Text = "կա";
+            this.radioButton1.Text = "there is";
             this.radioButton1.UseVisualStyleBackColor = false;
             this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
@@ -2188,8 +2193,8 @@ namespace WindowsFormsApp4
             // 
             this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.dataGridView2.ColumnHeadersHeight = 29;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -2214,13 +2219,13 @@ namespace WindowsFormsApp4
             // 
             // dataGridViewTextBoxColumn1
             // 
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridViewTextBoxColumn1.FillWeight = 10F;
             this.dataGridViewTextBoxColumn1.Frozen = true;
-            this.dataGridViewTextBoxColumn1.HeaderText = "անվանում";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Name";
             this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
@@ -2229,13 +2234,13 @@ namespace WindowsFormsApp4
             // 
             // dataGridViewTextBoxColumn2
             // 
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
+            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle12;
             this.dataGridViewTextBoxColumn2.Frozen = true;
-            this.dataGridViewTextBoxColumn2.HeaderText = "գին";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Price";
             this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
@@ -2243,12 +2248,12 @@ namespace WindowsFormsApp4
             // 
             // dataGridViewTextBoxColumn3
             // 
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle7;
-            this.dataGridViewTextBoxColumn3.HeaderText = "քանակ";
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Black;
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle13;
+            this.dataGridViewTextBoxColumn3.HeaderText = "quantity";
             this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
@@ -2256,11 +2261,11 @@ namespace WindowsFormsApp4
             // 
             // dataGridViewTextBoxColumn4
             // 
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dataGridViewTextBoxColumn4.HeaderText = "արժեք";
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
+            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle14;
+            this.dataGridViewTextBoxColumn4.HeaderText = "amount";
             this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
@@ -2547,7 +2552,7 @@ namespace WindowsFormsApp4
             this.accept.Size = new System.Drawing.Size(76, 29);
             this.accept.TabIndex = 130;
             this.accept.Tag = "none";
-            this.accept.Text = "Ընդունել";
+            this.accept.Text = "Save";
             this.accept.UseVisualStyleBackColor = false;
             this.accept.Visible = false;
             this.accept.Click += new System.EventHandler(this.accept_Click);
@@ -2566,7 +2571,7 @@ namespace WindowsFormsApp4
             this.printbutton1.Size = new System.Drawing.Size(76, 29);
             this.printbutton1.TabIndex = 131;
             this.printbutton1.Tag = "none";
-            this.printbutton1.Text = "Տպել";
+            this.printbutton1.Text = "Print";
             this.printbutton1.UseVisualStyleBackColor = false;
             this.printbutton1.Visible = false;
             this.printbutton1.Click += new System.EventHandler(this.printbutton1_Click);
@@ -2585,7 +2590,7 @@ namespace WindowsFormsApp4
             this.printbutton2.Size = new System.Drawing.Size(76, 29);
             this.printbutton2.TabIndex = 132;
             this.printbutton2.Tag = "none";
-            this.printbutton2.Text = "նախահաշիվ";
+            this.printbutton2.Text = "Preview";
             this.printbutton2.UseVisualStyleBackColor = false;
             this.printbutton2.Visible = false;
             this.printbutton2.Click += new System.EventHandler(this.printbutton2_Click);
@@ -2604,7 +2609,7 @@ namespace WindowsFormsApp4
             this.cancel.Size = new System.Drawing.Size(80, 29);
             this.cancel.TabIndex = 133;
             this.cancel.Tag = "none";
-            this.cancel.Text = "մարել";
+            this.cancel.Text = "Release";
             this.cancel.UseVisualStyleBackColor = false;
             this.cancel.Visible = false;
             this.cancel.Click += new System.EventHandler(this.cancel_Click);
@@ -2659,6 +2664,7 @@ namespace WindowsFormsApp4
             // 
             // label2
             // 
+            this.label2.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(1170, 404);
             this.label2.Name = "label2";
@@ -2669,6 +2675,7 @@ namespace WindowsFormsApp4
             // 
             // label8
             // 
+            this.label8.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(1189, 427);
             this.label8.Name = "label8";
@@ -2679,6 +2686,7 @@ namespace WindowsFormsApp4
             // 
             // label9
             // 
+            this.label9.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(1189, 448);
             this.label9.Name = "label9";
@@ -2689,6 +2697,7 @@ namespace WindowsFormsApp4
             // 
             // label10
             // 
+            this.label10.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(1186, 492);
             this.label10.Name = "label10";
@@ -2720,14 +2729,14 @@ namespace WindowsFormsApp4
             // 
             this.radioButton2.BackColor = System.Drawing.Color.Yellow;
             this.radioButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.radioButton2.Location = new System.Drawing.Point(516, 67);
+            this.radioButton2.Location = new System.Drawing.Point(539, 67);
             this.radioButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(55, 15);
+            this.radioButton2.Size = new System.Drawing.Size(55, 18);
             this.radioButton2.TabIndex = 143;
             this.radioButton2.TabStop = true;
             this.radioButton2.Tag = "0";
-            this.radioButton2.Text = "չկա";
+            this.radioButton2.Text = "none";
             this.radioButton2.UseVisualStyleBackColor = false;
             this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
@@ -2735,14 +2744,14 @@ namespace WindowsFormsApp4
             // 
             this.radioButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.radioButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.radioButton3.Location = new System.Drawing.Point(576, 67);
+            this.radioButton3.Location = new System.Drawing.Point(600, 66);
             this.radioButton3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(55, 15);
+            this.radioButton3.Size = new System.Drawing.Size(59, 19);
             this.radioButton3.TabIndex = 144;
             this.radioButton3.TabStop = true;
             this.radioButton3.Tag = "0";
-            this.radioButton3.Text = "վաճառել";
+            this.radioButton3.Text = "tosell";
             this.radioButton3.UseVisualStyleBackColor = false;
             this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
             // 
@@ -3153,8 +3162,8 @@ namespace WindowsFormsApp4
             // 
             this.dataGridView3.AllowUserToAddRows = false;
             this.dataGridView3.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridView3.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridView3.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridView3.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.dataGridView3.ColumnHeadersHeight = 4;
             this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -3185,7 +3194,7 @@ namespace WindowsFormsApp4
             // 
             // label13
             // 
-            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.label13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(1170, 522);
@@ -3216,15 +3225,16 @@ namespace WindowsFormsApp4
             this.dataGridView1.Tag = "inorder";
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
+            this.dataGridView1.MouseEnter += new System.EventHandler(this.dataGridView1_MouseEnter);
             // 
             // dataGridViewTextBoxColumn
             // 
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            this.dataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewTextBoxColumn.HeaderText = "անվանում";
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black;
+            this.dataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle15;
+            this.dataGridViewTextBoxColumn.HeaderText = "Name";
             this.dataGridViewTextBoxColumn.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn.Name = "dataGridViewTextBoxColumn";
             this.dataGridViewTextBoxColumn.ReadOnly = true;
@@ -3232,12 +3242,12 @@ namespace WindowsFormsApp4
             // 
             // Column2
             // 
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Column2.HeaderText = "գին";
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.Black;
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle16;
+            this.Column2.HeaderText = "Price";
             this.Column2.MinimumWidth = 6;
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
@@ -3250,7 +3260,7 @@ namespace WindowsFormsApp4
             this.ShtrichCode.Name = "ShtrichCode";
             this.ShtrichCode.Size = new System.Drawing.Size(220, 22);
             this.ShtrichCode.TabIndex = 200;
-            this.ShtrichCode.Text = "շտրիխկոդ";
+            this.ShtrichCode.Text = "barcode";
             this.ShtrichCode.Enter += new System.EventHandler(this.ShtrichCode_Enter);
             this.ShtrichCode.Leave += new System.EventHandler(this.ShtrichCode_Leave);
             // 
@@ -3261,7 +3271,7 @@ namespace WindowsFormsApp4
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(67, 23);
             this.label12.TabIndex = 204;
-            this.label12.Text = "Սեանս";
+            this.label12.Text = "Session";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Seans
@@ -3325,18 +3335,18 @@ namespace WindowsFormsApp4
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(37, 18);
             this.label16.TabIndex = 238;
-            this.label16.Text = "անձ";
+            this.label16.Text = "pers";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(7, 88);
+            this.label15.Location = new System.Drawing.Point(2, 88);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(34, 18);
+            this.label15.Size = new System.Drawing.Size(43, 18);
             this.label15.TabIndex = 237;
-            this.label15.Text = "գիդ";
+            this.label15.Text = "guide";
             // 
             // numericUpDown1
             // 
@@ -3426,9 +3436,9 @@ namespace WindowsFormsApp4
             this.label14.ForeColor = System.Drawing.Color.White;
             this.label14.Location = new System.Drawing.Point(2, 1);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(93, 18);
+            this.label14.Size = new System.Drawing.Size(69, 18);
             this.label14.TabIndex = 234;
-            this.label14.Text = "Պատվեր No";
+            this.label14.Text = "Order N#";
             // 
             // gid
             // 
@@ -3449,14 +3459,14 @@ namespace WindowsFormsApp4
             this.tab69.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
             this.tab69.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.tab69.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.tab69.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tab69.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab69.ForeColor = System.Drawing.Color.Black;
             this.tab69.Location = new System.Drawing.Point(319, 459);
             this.tab69.Margin = new System.Windows.Forms.Padding(0);
             this.tab69.Name = "tab69";
             this.tab69.Size = new System.Drawing.Size(59, 39);
             this.tab69.TabIndex = 213;
-            this.tab69.Text = "արգելք";
+            this.tab69.Text = "X";
             this.tab69.UseVisualStyleBackColor = false;
             this.tab69.Click += new System.EventHandler(this.tab69_Click);
             // 
@@ -3575,6 +3585,7 @@ namespace WindowsFormsApp4
             // 
             // label18
             // 
+            this.label18.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.Location = new System.Drawing.Point(1187, 470);
             this.label18.Name = "label18";
@@ -3593,6 +3604,7 @@ namespace WindowsFormsApp4
             this.legend.Size = new System.Drawing.Size(91, 23);
             this.legend.TabIndex = 215;
             this.legend.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.legend.Visible = false;
             // 
             // cancel2
             // 
@@ -3608,7 +3620,7 @@ namespace WindowsFormsApp4
             this.cancel2.Size = new System.Drawing.Size(80, 29);
             this.cancel2.TabIndex = 216;
             this.cancel2.Tag = "none";
-            this.cancel2.Text = "մարել";
+            this.cancel2.Text = "release";
             this.cancel2.UseVisualStyleBackColor = false;
             this.cancel2.Visible = false;
             this.cancel2.Click += new System.EventHandler(this.cancel2_Click);
@@ -3642,9 +3654,9 @@ namespace WindowsFormsApp4
             this.label17.ForeColor = System.Drawing.Color.White;
             this.label17.Location = new System.Drawing.Point(981, 67);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(37, 18);
+            this.label17.Size = new System.Drawing.Size(41, 18);
             this.label17.TabIndex = 240;
-            this.label17.Text = "անձ";
+            this.label17.Text = "pers.";
             // 
             // department5
             // 
@@ -3703,6 +3715,46 @@ namespace WindowsFormsApp4
             this.TipMoney.TabIndex = 244;
             this.TipMoney.Enter += new System.EventHandler(this.TipMoney_Enter);
             this.TipMoney.Leave += new System.EventHandler(this.TipMoney_Leave);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.panel2.Location = new System.Drawing.Point(-1, 2);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1226, 56);
+            this.panel2.TabIndex = 245;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.panel3.Location = new System.Drawing.Point(2, 61);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(437, 30);
+            this.panel3.TabIndex = 246;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.RosyBrown;
+            this.panel4.Location = new System.Drawing.Point(438, 59);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(347, 31);
+            this.panel4.TabIndex = 247;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.panel5.Location = new System.Drawing.Point(-1, 501);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1169, 50);
+            this.panel5.TabIndex = 247;
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.panel6.Location = new System.Drawing.Point(1168, 400);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(158, 151);
+            this.panel6.TabIndex = 248;
             // 
             // order
             // 
@@ -3897,6 +3949,11 @@ namespace WindowsFormsApp4
             this.Controls.Add(this.addition3);
             this.Controls.Add(this.addition4);
             this.Controls.Add(this.addition1);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel5);
+            this.Controls.Add(this.panel6);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "order";
@@ -4121,10 +4178,6 @@ namespace WindowsFormsApp4
         private Button AdditionClick;
         private DataGridView dataGridView3;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private Label label13;
         private DataGridView dataGridView1;
         private TextBox ShtrichCode;
@@ -4147,8 +4200,6 @@ namespace WindowsFormsApp4
         private Button tab64;
         private Label label18;
         private Label legend;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn Column2;
         private Button cancel2;
         private NumericUpDown numericUpDown3;
         private Label label17;
@@ -4157,5 +4208,16 @@ namespace WindowsFormsApp4
         private RichTextBox richTextBox1;
         private TextBox TipMoney;
         private Button group2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private Panel panel2;
+        private Panel panel3;
+        private Panel panel4;
+        private Panel panel5;
+        private Panel panel6;
     }
 }

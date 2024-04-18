@@ -18,6 +18,8 @@ namespace WindowsFormsApp4
 
         private int _editor;
 
+        private string _language;
+
         private DataTable Table_Department = new DataTable();
 
         private DataTable Resize = new DataTable();
@@ -34,6 +36,8 @@ namespace WindowsFormsApp4
 
         private DataTable Table_NestGroup = new DataTable();
 
+        private DataTable ControlsStocktaking = new DataTable();
+
         private DataTable newNestGroup = new DataTable();
 
         private DataTable Table_SeansState = new DataTable();
@@ -48,6 +52,7 @@ namespace WindowsFormsApp4
 
         private DataTable Table_Rest = new DataTable();
 
+
         private DataTable Table_Composite = new DataTable();
 
         private DataTable Table_Actions = new DataTable();
@@ -58,11 +63,11 @@ namespace WindowsFormsApp4
 
         private DataView dataView;
 
-        public Stocktaking(int restaurant, int editor)
+        public Stocktaking(int restaurant, int editor, string language)
         {
             _restaurant = restaurant;
             _editor = editor;
-
+            _language = language;
             InitializeComponent();
 
             string connectionString = Properties.Settings.Default.CafeRestDB;
@@ -79,7 +84,7 @@ namespace WindowsFormsApp4
             numericUpDown2.Value = sseans;
             radioButton6.Tag = sseans.ToString();
 
-            string query4 = $"SELECT Code,InHoll FROM Table_215  WHERE Restaurant='{_restaurant}'";
+            string query4 = $"SELECT * FROM Table_215  WHERE Restaurant='{_restaurant}'";
             Table_215 = dbHelper.ExecuteQuery(query4);
 
             string query3 = $"SELECT * FROM Seans  WHERE  restaurant='{_restaurant}' ";
@@ -100,7 +105,7 @@ namespace WindowsFormsApp4
             {
                 if (item.Row2 != null)
                 {
-                    item.Row1["InHoll"] = item.Row2["InHoll"];
+                    item.Row1["NonComposite"] = item.Row2["NonComposite"];
                 }
             }
 
@@ -166,31 +171,30 @@ namespace WindowsFormsApp4
 
             string query7 = $"SELECT *  FROM NestGroup  ";
             Table_NestGroup = dbHelper.ExecuteQuery(query7);
-            newNestGroup = Table_NestGroup.Clone();
-            DataRow newRow = newNestGroup.NewRow();
-            newNestGroup.Rows.Add(newRow);
-            newRow["Name_1"] = "Բոլորը";
-
+            comboBox2.DataSource = Table_NestGroup.DefaultView;
+            comboBox2.Text = "";
+            comboBox2.DisplayMember = "Name";
             foreach (DataRow row in Table_NestGroup.Rows)
             {
-                DataRow newRow0 = newNestGroup.NewRow();
-                newNestGroup.Rows.Add(newRow0);
-                newRow0["Groupp"] = row["Groupp"];
-                newRow0["Name_1"] = row["Name_1"];
-                newRow0["Name_2"] = row["Name_2"];
-                newRow0["Name_3"] = row["Name_3"];
+                row["Name"] = row[_language];
             }
+            string query = $"SELECT * FROM Department WHERE Restaurant= '{_restaurant}' ";
+            Table_Department = dbHelper.ExecuteQuery(query);
+            DepartmentComboBox.DataSource = Table_Department.DefaultView;
+            DepartmentComboBox.Text = "";
+            DepartmentComboBox.DisplayMember = "Name";
+
 
             string query6 = $"SELECT * FROM Restaurants WHERE Id = '{_restaurant}'";
             Table_Rest = dbHelper.ExecuteQuery(query6);
             foreach (DataRow row in Table_Rest.Rows)
             {
-                this.Text = row["Name_1"].ToString();
+                row["Name"] = row[_language];
+                this.Text = row["Name"].ToString();
             }
 
 
-            comboBox2.DataSource = newNestGroup.DefaultView;
-            comboBox2.DisplayMember = "Name_1";
+   
 
             Resize.Columns.Add("BeginWidth", typeof(float));
             Resize.Columns.Add("BeginHeight", typeof(float));
@@ -208,8 +212,75 @@ namespace WindowsFormsApp4
 
                 dateTimePicker2.Value = DateTime.Now;
 
+            SetLanguage(_language);
+        }
+        private void SetLanguage(string lang)
+        {
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
+            string rb = "";
+            string rbt = "";
+            connection.Open();
+            DataTable ControlsForm1 = new DataTable();
+            string query1 = $"SELECT * FROM ControlsStocktaking  ";
+            ControlsStocktaking = dbHelper.ExecuteQuery(query1);
+            foreach (Control control in panel1.Controls)
+            {
+                string columnName = control.Name.Trim();
+                DataRow[] foundRows = ControlsStocktaking.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0)
+                {
+                    control.Text = foundRows[0][_language].ToString();
+                }
+            }
+            foreach (Control control in panel3.Controls)
+            {
+                string columnName = control.Name.Trim();
+                DataRow[] foundRows = ControlsStocktaking.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0)
+                {
+                    control.Text = foundRows[0][_language].ToString();
+                }
+            }
+            foreach (Control control in panel4.Controls)
+            {
+                string columnName = control.Name.Trim();
+                DataRow[] foundRows = ControlsStocktaking.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0)
+                {
+                    control.Text = foundRows[0][_language].ToString();
+                }
+            }
+            //foreach (Control control in panel5.Controls)
+            //{
+            //    string columnName = control.Name.Trim();
+            //    DataRow[] foundRows = ControlsStocktaking.Select($"TRIM(Name) = '{columnName}'");
+            //    if (foundRows.Length > 0)
+            //    {
+            //        control.Text = foundRows[0][_language].ToString();
+            //    }
+            //}
+            for (int colIndex = 0; colIndex < dataGridView1.Columns.Count; colIndex++)
+            {
+                string columnName = dataGridView1.Columns[colIndex].DataPropertyName.Trim();
+                DataRow[] foundRows = ControlsStocktaking.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0)
+                {
+                    dataGridView1.Columns[colIndex].HeaderText = foundRows[0][_language].ToString();
+                }
+            }
 
-
+            for (int colIndex = 0; colIndex < dataGridView2.Columns.Count; colIndex++)
+            {
+                string columnName = dataGridView2.Columns[colIndex].DataPropertyName.Trim();
+                DataRow[] foundRows = ControlsStocktaking.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0)
+                {
+                    dataGridView2.Columns[colIndex].HeaderText = foundRows[0][_language].ToString();
+                }
+            }
+            connection.Close();
         }
 
         private void Stocktaking_ResizeBegin(object sender, EventArgs e)
@@ -882,31 +953,51 @@ namespace WindowsFormsApp4
             }
             if (seans == int.Parse(radioButton6.Tag.ToString()))
             {
-                string query = $"SELECT * FROM Seans Where Seans='{seans}' AND Ticket='{ticket}' AND Nest='{nest}' AND Restaurant='{_restaurant}' AND Previous='{0}'  ";
+                string query = $"SELECT * FROM Seans Where Seans='{seans}' AND Ticket='{ticket}' AND Nest='{nest}' AND Restaurant='{_restaurant}' ";
                 Print_Seans = dbHelper.ExecuteQuery(query);
             }
             else
             {
-                string query = $"SELECT * FROM Actions_215 Where Seans='{seans}' AND Ticket='{ticket}' AND Nest='{nest}' AND Restaurant='{_restaurant}' AND Previous='{0}'  ";
+                string query = $"SELECT * FROM Actions_215 Where Seans='{seans}' AND Ticket='{ticket}' AND Nest='{nest}' AND Restaurant='{_restaurant}' ";
                 Print_Seans = dbHelper.ExecuteQuery(query);
+
             }
-            
             if (Print_Seans.Rows.Count > 0)
             {
+                String code = "";
                 foreach (DataRow row in Print_Seans.Rows)
                 {
-                    DataRow newRow = CurrentOrder.NewRow();
-                    CurrentOrder.Rows.Add(newRow);
-                    newRow["code"] = row["Code"].ToString();
-                    newRow["name"] = row["Name"].ToString();
-                    newRow["price"] = float.Parse(row["Price"].ToString());
-                    newRow["salesamount"] = float.Parse(row["Salesamount"].ToString());
-                    newRow["quantity"] = float.Parse(row["Quantity"].ToString());
-                    newRow["service"] = float.Parse(row["service"].ToString());
-                    newRow["discount"] = float.Parse(row["discount"].ToString());
-                    newRow["free"] = int.Parse(row["Free"].ToString());
-
+                    code = row["code"].ToString();
+                    DataRow[] foundRows1 = CurrentOrder.Select($"Code = '{code}'");
+                    if (foundRows1.Length > 0)
+                    {
+                        foundRows1[0]["quantity"] = float.Parse(foundRows1[0]["quantity"].ToString()) + float.Parse(row["quantity"].ToString());
+                        foundRows1[0]["salesamount"] = float.Parse(foundRows1[0]["salesamount"].ToString()) + float.Parse(row["salesamount"].ToString());
+                    }
+                    else
+                    {
+                        DataRow newRow = CurrentOrder.NewRow();
+                        CurrentOrder.Rows.Add(newRow);
+                        newRow["code"] = row["Code"].ToString();
+                        newRow["name"] = "";
+                        newRow["price"] = float.Parse(row["Price"].ToString());
+                        newRow["salesamount"] = float.Parse(row["Salesamount"].ToString());
+                        newRow["quantity"] = float.Parse(row["Quantity"].ToString());
+                        newRow["service"] = float.Parse(row["service"].ToString());
+                        newRow["discount"] = float.Parse(row["discount"].ToString());
+                        newRow["free"] = int.Parse(row["Free"].ToString());
+                    }
                 }
+                //հեռացնում ենք 0 քանակով տողերը
+                foreach (DataRow row in CurrentOrder.Rows.Cast<DataRow>().ToList())
+                {
+                    if (float.Parse(row["Quantity"].ToString()) == 0)
+                    {
+                        row.Delete();
+                    }
+                }
+                //անուններն ենք տեղադրում 
+                Translate.translation(Table_215, CurrentOrder, _language, "1");
             }
             string query1 = $"SELECT * FROM TicketsOrdered Where Seans='{seans}' AND Ticket='{ticket}' AND Nest='{nest}' AND Restaurant='{_restaurant}'  AND Previous='{0}'  ";
             Print_TicketsOrder = dbHelper.ExecuteQuery(query1);
@@ -923,7 +1014,8 @@ namespace WindowsFormsApp4
                 Paid = decimal.Parse(row["Paid"].ToString());
             }
             connection.Close();
-            PrintingBill.PrintBill(ticket.ToString(), nest, Gid.ToString(), Tipmoney.ToString(), Paid, 1, DateBegin, DateEnd, CurrentOrder);
+
+            PrintingBill.PrintBill(ticket.ToString(), nest, Gid.ToString(), Tipmoney.ToString(), Paid, 1, DateBegin, DateEnd, CurrentOrder, "", _language);
         }
 
         private void radioButton6_CheckedChanged(object sender, EventArgs e)
@@ -985,10 +1077,9 @@ namespace WindowsFormsApp4
             connection.Open();
             foreach (DataRow row in Table_Seans.Rows)
             {
-                if (connection.State == ConnectionState.Closed)
-                {
-                    connection.Open();
-                }
+                string noncomp = row["Holl"].ToString().Trim() + ",";
+                if (row["NonComposite"].ToString().IndexOf(noncomp) >= 0) continue; //տվյալ սրահում չի բաղադրվում ճաշատեսակը
+
                 string InsertQuery = $"INSERT INTO Actions_215 ( Code , Groupp, DateOfEntry, Seans, Ticket, Paid," +
                     $"Nest ,Quantity , Price, Costamount, Salesamount, Service, Discount, Free, Taxpaid, Restaurant, Holl, Operator, Previous, DepartmentOut)" +
                     $" values (@Code , @Groupp, @DateOfEntry, @Seans, @Ticket, @Paid, @Nest ," +
@@ -1083,13 +1174,18 @@ namespace WindowsFormsApp4
 
         private void HelpButton_Click(object sender, EventArgs e)
         {
+            string filePath = "";
             if (HelpButton.Text == "?")
             {
                 HelpButton.Text = "X";
                 richTextBox1.Height = this.Height - 50;
                 richTextBox1.ReadOnly = true;
 
-                string filePath = "D:\\hayrik\\sql\\help\\stocktaking.txt";
+                if(_language=="Armenian") filePath = "D:\\hayrik\\sql\\help\\stocktaking_arm.txt";
+                if (_language == "English") filePath = "D:\\hayrik\\sql\\help\\stocktaking_eng.txt";
+                if (_language == "German") filePath = "D:\\hayrik\\sql\\help\\stocktaking_germ.txt";
+                if (_language == "Espaniol") filePath = "D:\\hayrik\\sql\\help\\stocktaking_esp.txt";
+                if (_language == "Russian") filePath = "D:\\hayrik\\sql\\help\\stocktaking_rus.txt";
                 string fileContent = File.ReadAllText(filePath);
                 richTextBox1.Text = fileContent;
                 richTextBox1.Visible = true;
@@ -1103,6 +1199,14 @@ namespace WindowsFormsApp4
                 richTextBox1.Visible = false;
                 HelpButton.Text = "?";
             }
+        }
+
+        private void DepartmentComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DataRow[] foundRows = Table_Department.Select($"Name = '{DepartmentComboBox.Text}' ");
+            if (foundRows.Length == 0) { return; }
+            DepartmentIdBox.Text = foundRows[0]["Id"].ToString();
+
         }
     }
 }

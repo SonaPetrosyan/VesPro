@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Windows.Forms;
+using Microsoft.ReportingServices.Diagnostics.Internal;
 using MySql.Data.MySqlClient;
 using Mysqlx.Crud;
 namespace WindowsFormsApp4
@@ -10,7 +11,7 @@ namespace WindowsFormsApp4
     public partial class Form1 : Form
     {
 
-
+        private string _ooperatorname;
         private int _ooperator;  //_ooperator-ը աշխատողի Id-ն է
         private int _holl;  //_holl-ը սրահի համարն է
         private int _restaurant;  //_restaurant-ը ռեստորանի համարն է
@@ -19,6 +20,8 @@ namespace WindowsFormsApp4
         private int _previous; // եթե _previous == 1 , ապա նախնական պատվերի դաշտ կարող է մտնել
         private int _observer; // եթե _observer == 0 , բացի պատվերից և նախնականից մնացած տեղերը արգելված են
         private int _workplace;//աշխատատեղ։ տպիչները որոշելու համար է
+        private string _language;//աշխատանքային լեզուն է։ որոշվում է user-ի ընտրած լեզվով
+
 
         private SQLDatabaseHelper dbHelper;
 
@@ -37,10 +40,12 @@ namespace WindowsFormsApp4
         private DataTable Resize = new DataTable();
 
         private DataTable Table_Rest = new DataTable();
-        public Form1(int opperator, int holl, int restaurant, int editor, int orderer, int previous, int observer, int workplace)
+        public Form1(string opperatorname, int opperator, int holl, int restaurant,
+            int editor, int orderer, int previous, int observer, int workplace, string language)
         {
 
             InitializeComponent();
+            _ooperatorname = opperatorname;
             _ooperator = opperator;
             _holl = holl;
             _restaurant = restaurant;
@@ -49,6 +54,7 @@ namespace WindowsFormsApp4
             _previous = previous;
             _observer = observer;
             _workplace = workplace;
+            _language = language;
             string connectionString = Properties.Settings.Default.CafeRestDB; //  Properties.Settings.Default.CafeRestDB;
             SqlConnection connection = new SqlConnection(connectionString);
             SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
@@ -57,9 +63,8 @@ namespace WindowsFormsApp4
             Resize.Columns.Add("EndWidth", typeof(float));
             Resize.Columns.Add("EndHeight", typeof(float));
             Resize.Rows.Add(0, 0, 0, 0);
-
             Load();
-
+            SetLanguage(_language);
         }
 
 
@@ -73,11 +78,11 @@ namespace WindowsFormsApp4
             Table_Rest = dbHelper.ExecuteQuery(query1);
             foreach (DataRow row in Table_Rest.Rows)
             {
-                this.Text = row["Name_1"].ToString();
+                this.Text = row["Name"].ToString();
             }
             string query2 = $"SELECT * FROM SeansState WHERE Id='{_restaurant}' ";
             Table_Seans = dbHelper.ExecuteQuery(query2);
-            foreach(DataRow row in Table_Seans.Rows)
+            foreach (DataRow row in Table_Seans.Rows)
             {
                 if (decimal.Parse(row["state"].ToString()) == 0)
                 {
@@ -91,8 +96,8 @@ namespace WindowsFormsApp4
 
         private void main11_Click(object sender, EventArgs e)
         {
-            if (_orderer == 0 || _previous == 1) return;
-            order orderInstance = new order(_ooperator, _holl, _restaurant, _editor, 0, _workplace);
+            if (_orderer == 0) return;
+            order orderInstance = new order(_ooperatorname, _ooperator, _holl, _restaurant, _editor, 0, _workplace, _language);
             orderInstance.Show();
         }
 
@@ -153,13 +158,13 @@ namespace WindowsFormsApp4
         }
         private void main21_Click(object sender, EventArgs e)
         {
-            Foods FoodsInstance = new Foods(_restaurant, _editor);
+            Foods FoodsInstance = new Foods(_restaurant, _editor,_language);
             FoodsInstance.Show();
         }
 
         private void main22_Click(object sender, EventArgs e)
         {
-            Materials MaterialsInstance = new Materials(_restaurant, _editor);
+            Materials MaterialsInstance = new Materials(_restaurant, _editor,_language);
             MaterialsInstance.Show();
 
         }
@@ -167,7 +172,7 @@ namespace WindowsFormsApp4
         private void main12_Click(object sender, EventArgs e)
         {
             if (_observer == 0 || _editor == 0) return;
-            Purchase PurchaseInstance = new Purchase(_ooperator, _restaurant, _editor);
+            Purchase PurchaseInstance = new Purchase(_ooperator, _restaurant, _editor, _language);
             PurchaseInstance.Show();
         }
 
@@ -180,19 +185,19 @@ namespace WindowsFormsApp4
 
         private void main42_Click(object sender, EventArgs e)
         {
-            Nest NestInstance = new Nest(_restaurant);
+            Nest NestInstance = new Nest(_restaurant,_language);
             NestInstance.Show();
         }
 
         private void main43_Click(object sender, EventArgs e)
         {
-            FoodsGroup FoodsGroup = new FoodsGroup(_editor, _restaurant);
+            FoodsGroup FoodsGroup = new FoodsGroup(_editor, _restaurant, _language);
             FoodsGroup.Show();
         }
 
         private void main44_Click(object sender, EventArgs e)
         {
-            Additions Additions = new Additions(_restaurant, _editor);
+            Additions Additions = new Additions(_restaurant, _editor, _language);
             Additions.Show();
         }
 
@@ -224,13 +229,13 @@ namespace WindowsFormsApp4
                 control.Width = (int)(control.Width * (double)kw);
                 control.Height = (int)(control.Height * (double)kh);
             }
-            richTextBox1.Height = label8.Height+32;
+            richTextBox1.Height = label8.Height + 32;
         }
 
         private void main13_Click(object sender, EventArgs e)
         {
             if (_observer == 0) { return; }
-            Inventory InventoryInstance = new Inventory(_ooperator, _restaurant, 0, _editor);
+            Inventory InventoryInstance = new Inventory(_ooperator, _restaurant, 0, _editor, _language);
             InventoryInstance.Show();
         }
 
@@ -245,19 +250,19 @@ namespace WindowsFormsApp4
 
         private void main31_Click(object sender, EventArgs e)
         {
-            GoodsMovement GoodsMovementInstance = new GoodsMovement(_restaurant);
+            GoodsMovement GoodsMovementInstance = new GoodsMovement(_restaurant,_language);
             GoodsMovementInstance.Show();
         }
 
         private void main41_Click(object sender, EventArgs e)
         {
-            Workplace WorkplaceInstance = new Workplace(_restaurant);
+            Workplace WorkplaceInstance = new Workplace(_restaurant, _editor, _holl, _language);
             WorkplaceInstance.Show();
         }
 
         private void main23_Click_1(object sender, EventArgs e)
         {
-            Standart StandartInstance = new Standart(_restaurant, _editor);
+            Standart StandartInstance = new Standart(_restaurant, _editor, _language);
             StandartInstance.Show();
         }
 
@@ -501,7 +506,7 @@ namespace WindowsFormsApp4
 
         private void main32_Click(object sender, EventArgs e)
         {
-            Stocktaking StocktakingInstance = new Stocktaking(_restaurant, _editor);
+            Stocktaking StocktakingInstance = new Stocktaking(_restaurant, _editor, _language);
             StocktakingInstance.Show();
         }
 
@@ -513,7 +518,7 @@ namespace WindowsFormsApp4
         private void main14_Click(object sender, EventArgs e)
         {
             if (_previous == 0) return;
-            order orderInstance = new order(_ooperator, _holl, _restaurant, _editor, _previous, _workplace);
+            order orderInstance = new order(_ooperatorname, _ooperator, _holl, _restaurant, _editor, _previous, _workplace,_language);
             orderInstance.Show();
         }
 
@@ -525,7 +530,7 @@ namespace WindowsFormsApp4
 
         private void main15_Click(object sender, EventArgs e)
         {
-            Observation observationInstance = new Observation(_restaurant, _editor);
+            Observation observationInstance = new Observation(_restaurant, _editor, _language);
             observationInstance.Show();
         }
 
@@ -547,6 +552,357 @@ namespace WindowsFormsApp4
                 richTextBox1.Visible = false;
                 HelpButton.Text = "?";
             }
+        }
+
+
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            ChangeLanguage("Armenian");
+            button2.Text = "Հայ";
+            panel1.Visible = false;
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            ChangeLanguage("English");
+            button2.Text = "Eng";
+            panel1.Visible = false;
+        }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            ChangeLanguage("German");
+            button2.Text = "German";
+            panel1.Visible = false;
+        }
+
+        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+            ChangeLanguage("Russian");
+            button2.Text = "Russian";
+            panel1.Visible = false;
+        }
+
+        private void radioButton5_CheckedChanged(object sender, EventArgs e)
+        {
+            ChangeLanguage("Espaniol");
+            button2.Text = "Espaniol";
+            panel1.Visible = false;
+        }
+        private void ChangeLanguage(string lang)
+        {
+            _language = lang;
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
+            connection.Open();
+            string query = $"UPDATE Users SET Language = @Language WHERE Id = '{_ooperator}' AND Restaurant = '{_restaurant}' ";
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@Language", lang);
+                command.ExecuteNonQuery();
+            }
+            connection.Close();
+            SetLanguage(lang);
+
+        }
+        private void SetLanguage(string lang)
+        {
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
+            connection.Open();
+            DataTable ControlsForm1 = new DataTable();
+            string query1 = $"SELECT * FROM ControlsForm1  ";
+            ControlsForm1 = dbHelper.ExecuteQuery(query1);
+            foreach (Control control in this.Controls)
+            {
+                DataRow[] foundRows = ControlsForm1.Select($"Name = '{control.Name}'");
+                if (foundRows.Length > 0)
+                {
+                    if (lang == "Armenian") control.Text = foundRows[0]["Armenian"].ToString();
+                    if (lang == "English") control.Text = foundRows[0]["English"].ToString();
+                    if (lang == "German") control.Text = foundRows[0]["German"].ToString();
+                    if (lang == "Espaniol") control.Text = foundRows[0]["Espaniol"].ToString();
+                    if (lang == "Russian") control.Text = foundRows[0]["Russian"].ToString();
+                }
+            }
+            connection.Close();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            panel1.Visible = true;
+        }
+
+        private void main46_Click(object sender, EventArgs e)
+        {
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
+            connection.Open();
+               //DataTable trans = new DataTable();
+               //string query0 = $"SELECT trim(armenian) FROM Table_211 WHERE Restaurant = '{_restaurant}' ";
+               //trans = dbHelper.ExecuteQuery(query0);
+               //string filePath= "d:\\hayrik\\sql\\tanslation\\armenian_211.txt";
+               //Translation.ExportDataTableToCsv(trans, filePath, ";");
+
+            //DataTable german_211 = new DataTable();
+            //german_211.Columns.Add("German", typeof(string));
+            //string filePath1 = "d:\\hayrik\\sql\\tanslation\\german_211.txt";
+            //Translation.AppendCsvToDataTable(german_211, filePath1, ";");
+            //this.Text = german_211.Rows.Count.ToString();
+            //int i = 1;
+            //foreach (DataRow row in german_211.Rows)
+            //{
+            //    string query = $"UPDATE Table_211 SET German = @german WHERE Id = '{i}'  ";
+            //    using (SqlCommand command = new SqlCommand(query, connection))
+            //    {
+            //        command.Parameters.AddWithValue("@german", row["German"].ToString());
+            //        command.ExecuteNonQuery();
+            //    }
+            //    i = i + 1;
+            //}
+
+            //DataTable english_211 = new DataTable();
+            //english_211.Columns.Add("english", typeof(string));
+            //string filePath2 = "d:\\hayrik\\sql\\tanslation\\english_211.txt";
+            //Translation.AppendCsvToDataTable(english_211, filePath2, ";");
+            //this.Text = english_211.Rows.Count.ToString();
+            //i = 1;
+            //foreach (DataRow row in english_211.Rows)
+            //{
+            //    string query = $"UPDATE Table_211 SET english = @english WHERE Id = '{i}'  ";
+            //    using (SqlCommand command = new SqlCommand(query, connection))
+            //    {
+            //        command.Parameters.AddWithValue("@english", row["english"].ToString());
+            //        command.ExecuteNonQuery();
+            //    }
+            //    i = i + 1;
+            //}
+
+            //DataTable espaniol_211 = new DataTable();
+            //espaniol_211.Columns.Add("espaniol", typeof(string));
+            //string filePath3 = "d:\\hayrik\\sql\\tanslation\\espaniol_211.txt";
+            //Translation.AppendCsvToDataTable(espaniol_211, filePath3, ";");
+            //this.Text = espaniol_211.Rows.Count.ToString();
+            //i = 1;
+            //foreach (DataRow row in espaniol_211.Rows)
+            //{
+            //    string query = $"UPDATE Table_211 SET espaniol = @espaniol WHERE Id = '{i}'  ";
+            //    using (SqlCommand command = new SqlCommand(query, connection))
+            //    {
+            //        command.Parameters.AddWithValue("@espaniol", row["espaniol"].ToString());
+            //        command.ExecuteNonQuery();
+            //    }
+            //    i = i + 1;
+            //}
+
+            //DataTable russian_211 = new DataTable();
+            //russian_211.Columns.Add("russian", typeof(string));
+            //string filePath4 = "d:\\hayrik\\sql\\tanslation\\russian_211.txt";
+            //Translation.AppendCsvToDataTable(russian_211, filePath4, ";");
+            //this.Text = russian_211.Rows.Count.ToString();
+            //i = 1;
+            //foreach (DataRow row in russian_211.Rows)
+            //{
+            //    string query = $"UPDATE Table_211 SET russian = @russian WHERE Id = '{i}'  ";
+            //    using (SqlCommand command = new SqlCommand(query, connection))
+            //    {
+            //        command.Parameters.AddWithValue("@russian", row["russian"].ToString());
+            //        command.ExecuteNonQuery();
+            //    }
+            //    i = i + 1;
+            //}
+
+            //   DataTable trans = new DataTable();
+            //   string query0 = $"SELECT armenian FROM Table_215 WHERE Restaurant = '{_restaurant}' ";
+            //   trans = dbHelper.ExecuteQuery(query0);
+            //   string filePath= "d:\\hayrik\\sql\\tanslation\\armenian_215.txt";
+            //   Translation.ExportDataTableToCsv(trans, filePath, ";");
+            
+            //DataTable german_215 = new DataTable();
+            //german_215.Columns.Add("German", typeof(string));
+            //string filePath1 = "d:\\hayrik\\sql\\tanslation\\german_215.txt";
+            //Translation.AppendCsvToDataTable(german_215, filePath1, ";");
+            //int i = 1;
+            //foreach (DataRow row in german_215.Rows)
+            //{
+            //    string query = $"UPDATE Table_215 SET German = @german WHERE Id = '{i}'  ";
+            //    using (SqlCommand command = new SqlCommand(query, connection))
+            //    {
+            //        command.Parameters.AddWithValue("@german", row["German"].ToString());
+            //        command.ExecuteNonQuery();
+            //    }
+            //    i = i + 1;
+            //}
+            //DataTable Espaniol_215 = new DataTable();
+            //Espaniol_215.Columns.Add("Espaniol", typeof(string));
+            //string filePath2 = "d:\\hayrik\\sql\\tanslation\\Espaniol_215.txt";
+            //Translation.AppendCsvToDataTable(Espaniol_215, filePath2, ";");
+            //this.Text = Espaniol_215.Rows.Count.ToString();
+            //i = 1;
+            //foreach (DataRow row in Espaniol_215.Rows)
+            //{
+            //    string query = $"UPDATE Table_215 SET Espaniol = @Espaniol WHERE Id = '{i}'  ";
+            //    using (SqlCommand command = new SqlCommand(query, connection))
+            //    {
+            //        command.Parameters.AddWithValue("@Espaniol", row["Espaniol"].ToString());
+            //        command.ExecuteNonQuery();
+            //    }
+            //    i = i + 1;
+            //}
+
+            //DataTable English_215 = new DataTable();
+            //English_215.Columns.Add("English", typeof(string));
+            //string filePath3 = "d:\\hayrik\\sql\\tanslation\\English_215.txt";
+            //Translation.AppendCsvToDataTable(English_215, filePath3, ";");
+            //this.Text = English_215.Rows.Count.ToString();
+            //i = 1;
+            //foreach (DataRow row in English_215.Rows)
+            //{
+            //    string query = $"UPDATE Table_215 SET English = @English WHERE Id = '{i}'  ";
+            //    using (SqlCommand command = new SqlCommand(query, connection))
+            //    {
+            //        command.Parameters.AddWithValue("@English", row["English"].ToString());
+            //        command.ExecuteNonQuery();
+            //    }
+            //    i = i + 1;
+            //}
+
+            //DataTable Russian_215 = new DataTable();
+            //Russian_215.Columns.Add("Russian", typeof(string));
+            //string filePath4 = "d:\\hayrik\\sql\\tanslation\\Russian_215.txt";
+            //Translation.AppendCsvToDataTable(Russian_215, filePath4, ";");
+            //this.Text = Russian_215.Rows.Count.ToString();
+            //i = 1;
+            //foreach (DataRow row in Russian_215.Rows)
+            //{
+            //    string query = $"UPDATE Table_215 SET Russian = @Russian WHERE Id = '{i}'  ";
+            //    using (SqlCommand command = new SqlCommand(query, connection))
+            //    {
+            //        command.Parameters.AddWithValue("@Russian", row["Russian"].ToString());
+            //        command.ExecuteNonQuery();
+            //    }
+            //    i = i + 1;
+            //}
+
+            //DataTable Foodgroup_esp = new DataTable();
+
+            //string query0 = $"SELECT English FROM Foodgroupp WHERE Restaurant = '{_restaurant}' ";
+            //Foodgroup_esp = dbHelper.ExecuteQuery(query0);
+
+            //string filePath = "d:\\hayrik\\sql\\tanslation\\Foodgroup_esp.txt";
+            //Translation.ExportDataTableToCsv(Foodgroup_esp, filePath, ";");
+
+            //DataTable Foodgroup_germ = new DataTable();
+            //Foodgroup_germ = dbHelper.ExecuteQuery(query0);
+            //string filePath1 = "d:\\hayrik\\sql\\tanslation\\Foodgroup_germ.txt";
+            //Translation.ExportDataTableToCsv(Foodgroup_germ, filePath1, ";");
+
+            //DataTable AdditionNames_germ = new DataTable();
+            //DataTable AdditionNames_esp = new DataTable();
+            //DataTable AdditionNames_rus = new DataTable();
+            //string query01 = $"SELECT English FROM AdditionNames WHERE Restaurant = '{_restaurant}' ";
+            //AdditionNames_esp = dbHelper.ExecuteQuery(query01);
+            //AdditionNames_germ = dbHelper.ExecuteQuery(query01);
+            //AdditionNames_rus = dbHelper.ExecuteQuery(query01);
+
+            //string filePath2 = "d:\\hayrik\\sql\\tanslation\\AdditionNames_germ.txt";
+            //Translation.ExportDataTableToCsv(AdditionNames_germ, filePath2, ";");
+
+            //string filePath3 = "d:\\hayrik\\sql\\tanslation\\AdditionNames_esp.txt";
+            //Translation.ExportDataTableToCsv(AdditionNames_esp, filePath3, ";");
+
+            //string filePath4 = "d:\\hayrik\\sql\\tanslation\\AdditionNames_rus.txt";
+            //Translation.ExportDataTableToCsv(AdditionNames_rus, filePath4, ";");
+            //return;
+            //DataTable Foodgroup_esp = new DataTable();
+            //Foodgroup_esp.Columns.Add("Espaniol", typeof(string));
+            //string filePath1 = "d:\\hayrik\\sql\\tanslation\\Foodgroup_esp.txt";
+            //Translation.AppendCsvToDataTable(Foodgroup_esp, filePath1, ";");
+            //int i = 1;
+            //foreach (DataRow row in Foodgroup_esp.Rows)
+            //{
+            //    string query = $"UPDATE Foodgroupp SET Espaniol = @Espaniol WHERE Id = '{i}'  ";
+            //    using (SqlCommand command = new SqlCommand(query, connection))
+            //    {
+            //        command.Parameters.AddWithValue("@Espaniol", row["Espaniol"].ToString());
+            //        command.ExecuteNonQuery();
+            //    }
+            //    i = i + 1;
+            //}
+
+            ////return;
+            //DataTable Foodgroup_germ = new DataTable();
+            //Foodgroup_germ.Columns.Add("German", typeof(string));
+            //string filePath2 = "d:\\hayrik\\sql\\tanslation\\Foodgroup_germ.txt";
+            //Translation.AppendCsvToDataTable(Foodgroup_germ, filePath2, ";");
+            //this.Text = Foodgroup_germ.Rows.Count.ToString();
+            //i = 1;
+            //foreach (DataRow row in Foodgroup_germ.Rows)
+            //{
+            //    string query = $"UPDATE Foodgroupp SET German = @German WHERE Id = '{i}'  ";
+            //    using (SqlCommand command = new SqlCommand(query, connection))
+            //    {
+            //        command.Parameters.AddWithValue("@German", row["German"].ToString());
+            //        command.ExecuteNonQuery();
+            //    }
+            //    i = i + 1;
+            //}
+            ////return;
+
+            //DataTable AdditionNames_germ = new DataTable();
+            //AdditionNames_germ.Columns.Add("German", typeof(string));
+            //string filePath3 = "d:\\hayrik\\sql\\tanslation\\AdditionNames_germ.txt";
+            //Translation.AppendCsvToDataTable(AdditionNames_germ, filePath3, ";");
+            //this.Text = AdditionNames_germ.Rows.Count.ToString();
+            //i = 1;
+            //foreach (DataRow row in AdditionNames_germ.Rows)
+            //{
+            //    string query = $"UPDATE AdditionNames SET German = @German WHERE Id = '{i}'  ";
+            //    using (SqlCommand command = new SqlCommand(query, connection))
+            //    {
+            //        command.Parameters.AddWithValue("@German", row["German"].ToString());
+            //        command.ExecuteNonQuery();
+            //    }
+            //    i = i + 1;
+            //}
+
+            //DataTable AdditionNames_esp = new DataTable();
+            //AdditionNames_esp.Columns.Add("Espaniol", typeof(string));
+            //string filePath5 = "d:\\hayrik\\sql\\tanslation\\AdditionNames_esp.txt";
+            //Translation.AppendCsvToDataTable(AdditionNames_esp, filePath5, ";");
+            //this.Text = AdditionNames_esp.Rows.Count.ToString();
+            //i = 1;
+            //foreach (DataRow row in AdditionNames_esp.Rows)
+            //{
+            //    string query = $"UPDATE AdditionNames SET Espaniol = @Espaniol WHERE Id = '{i}'  ";
+            //    using (SqlCommand command = new SqlCommand(query, connection))
+            //    {
+            //        command.Parameters.AddWithValue("@Espaniol", row["Espaniol"].ToString());
+            //        command.ExecuteNonQuery();
+            //    }
+            //    i = i + 1;
+            //}
+
+            //DataTable AdditionNames_rus = new DataTable();
+            //AdditionNames_rus.Columns.Add("Russian", typeof(string));
+            //string filePath6 = "d:\\hayrik\\sql\\tanslation\\AdditionNames_rus.txt";
+            //Translation.AppendCsvToDataTable(AdditionNames_rus, filePath6, ";");
+            //this.Text = AdditionNames_rus.Rows.Count.ToString();
+            //i = 1;
+            //foreach (DataRow row in AdditionNames_rus.Rows)
+            //{
+            //    string query = $"UPDATE AdditionNames SET Russian = @Russian WHERE Id = '{i}'  ";
+            //    using (SqlCommand command = new SqlCommand(query, connection))
+            //    {
+            //        command.Parameters.AddWithValue("@Russian", row["Russian"].ToString());
+            //        command.ExecuteNonQuery();
+            //    }
+            //    i = i + 1;
+            //}
         }
     }
 }

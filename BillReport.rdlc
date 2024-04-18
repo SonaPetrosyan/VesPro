@@ -140,7 +140,7 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>կտրոն N#</Value>
+                        <Value>Bill N#</Value>
                         <Style>
                           <FontSize>8pt</FontSize>
                         </Style>
@@ -171,7 +171,7 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>սեղան N#</Value>
+                        <Value>Seat N#</Value>
                         <Style>
                           <FontSize>8pt</FontSize>
                         </Style>
@@ -365,7 +365,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>անվանում</Value>
+                                  <Value>Name</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -395,7 +395,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>գին</Value>
+                                  <Value>Price</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -425,7 +425,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>քանակ</Value>
+                                  <Value>Quant.</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -455,7 +455,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>գումար</Value>
+                                  <Value>Amount</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -653,7 +653,7 @@
       </Body>
       <Width>23.35039cm</Width>
       <Page>
-        <PageHeight>14.8cm</PageHeight>
+        <PageHeight>30cm</PageHeight>
         <PageWidth>10.5cm</PageWidth>
         <LeftMargin>0.5cm</LeftMargin>
         <RightMargin>0.2cm</RightMargin>

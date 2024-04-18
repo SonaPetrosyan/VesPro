@@ -30,9 +30,9 @@ public static class TableUpdater
                     foreach (var item in items)
                 {
                     string code = item["Code"].ToString().Trim();
-                    string name1 = item["Name_1"].ToString();
-                    string name2 = item["Name_2"].ToString();
-                    string name3 = item["Name_3"].ToString();
+                    string name1 = item["Name"].ToString();
+                    string name2 = item["Eng"].ToString();
+                    string name3 = item["Rus"].ToString();
                     string unit = item["Unit"].ToString();
                     int group = Convert.ToInt32(item["Group"].ToString().Trim());
                     bool semiprepared = bool.Parse(item["SemiPrepared"].ToString());
@@ -62,7 +62,7 @@ public static class TableUpdater
                 {
                     string code_215 = item["Code_215"].ToString().Trim();
                     string code_211 = item["Code_211"].ToString().Trim();
-                    string name1 = item["Name_1"].ToString();
+                    string name1 = item["Name"].ToString();
                     string note = item["Note"].ToString();
                     string unit = item["Unit"].ToString();
                     float coefficient = Convert.ToSingle(item["Coefficient"].ToString().Trim());
@@ -81,9 +81,9 @@ public static class TableUpdater
                 using (MySqlCommand command = new MySqlCommand(query, connection))
                 foreach (var item in items)
                 {
-                    string name1 = item["Name_1"].ToString();
-                    string name2 = item["Name_2"].ToString();
-                    string name3 = item["Name_3"].ToString();
+                    string name1 = item["Name"].ToString();
+                    string name2 = item["Eng"].ToString();
+                    string name3 = item["Rus"].ToString();
                     int group = Convert.ToInt32(item["Group"].ToString().Trim());
                     InsertRecordgroup(connection, "food_groupp", name1, name2, name3, group);
                 }
@@ -96,9 +96,9 @@ public static class TableUpdater
                 foreach (var item in items)
                 {
                     string code = item["Code"].ToString().Trim();
-                    string name1 = item["Name_1"].ToString();
-                    string name2 = item["Name_2"].ToString();
-                    string name3 = item["Name_3"].ToString();
+                    string name1 = item["Name"].ToString();
+                    string name2 = item["Eng"].ToString();
+                    string name3 = item["Rus"].ToString();
                     string unit = item["Unit"].ToString();
                     int group = Convert.ToInt32(item["Group"].ToString().Trim());
                     float price = Convert.ToSingle(item["Price"].ToString().Trim());
@@ -113,9 +113,9 @@ public static class TableUpdater
                 foreach (var item in items)
                 {
                     string code = item["Code"].ToString().Trim();
-                    string name1 = item["Name_1"].ToString();
-                    string name2 = item["Name_2"].ToString();
-                    string name3 = item["Name_3"].ToString();
+                    string name1 = item["Name"].ToString();
+                    string name2 = item["Eng"].ToString();
+                    string name3 = item["Rus"].ToString();
                     string unit = item["Unit"].ToString();
                     int group = Convert.ToInt32(item["Group"].ToString().Trim());
                     float price = Convert.ToSingle(item["Price"].ToString().Trim());
@@ -131,9 +131,9 @@ public static class TableUpdater
                     foreach (var item in items)
                 {
                     string code = item["Code"].ToString().Trim();
-                    string name1 = item["Name_1"].ToString();
-                    string name2 = item["Name_2"].ToString();
-                    string name3 = item["Name_3"].ToString();
+                    string name1 = item["Name"].ToString();
+                    string name2 = item["Eng"].ToString();
+                    string name3 = item["Rus"].ToString();
                     string unit = item["Unit"].ToString();
                     int group = Convert.ToInt32(item["Group"].ToString().Trim());
                     float price = Convert.ToSingle(item["Price"].ToString().Trim());
@@ -148,9 +148,9 @@ public static class TableUpdater
                     foreach (var item in items)
                     {
                         int number = int.Parse(item["Number"].ToString().Trim());
-                        string name1 = item["Name_1"].ToString();
-                        string name2 = item["Name_2"].ToString();
-                        string name3 = item["Name_3"].ToString();
+                        string name1 = item["Name"].ToString();
+                        string name2 = item["Eng"].ToString();
+                        string name3 = item["Rus"].ToString();
 
                         // Insert a new record if the code doesn't exist
                         InsertRecordaddgr(connection, "AdditionGroups", number, name1, name2, name3);
@@ -167,9 +167,9 @@ public static class TableUpdater
                     foreach (var item in items1)
                     {
                         int number = int.Parse(item["Number"].ToString().Trim());
-                        string name1 = item["Name_1"].ToString();
-                        string name2 = item["Name_2"].ToString();
-                        string name3 = item["Name_3"].ToString();
+                        string name1 = item["Name"].ToString();
+                        string name2 = item["Eng"].ToString();
+                        string name3 = item["Rus"].ToString();
 
                         // Insert a new record if the code doesn't exist
                         InsertRecordaddgr(connection, "AdditionNames", number, name1, name2, name3);
@@ -190,7 +190,7 @@ public static class TableUpdater
     private static void InsertRecordCalcul(MySqlConnection connection, string tableName, string code_215,
     string code_211, string name1, string note, string unit, float coefficient, float quantity, float bruto, float neto)
     {
-         string query = $"INSERT INTO {tableName} (Code_215,Code_211, Name_1, Note, Unit, Coefficient, Quantity, Bruto,Neto) " +
+         string query = $"INSERT INTO {tableName} (Code_215,Code_211, Name, Note, Unit, Coefficient, Quantity, Bruto,Neto) " +
                        $"VALUES (@Code_215, @Code_211, @Name1, @Note, @Unit, @Coefficient, @Quantity, @Bruto, @Neto)";
 
         using (MySqlCommand command = new MySqlCommand(query, connection))
@@ -211,7 +211,7 @@ public static class TableUpdater
         string name2, string name3, string unit, int group,bool semiprepared, int printer, float price, float price1,
         float price2, float price3, float price4, float price5, int department, string inholl)
     {
-        string query = $"INSERT INTO {tableName} (Code, Name_1, Name_2, Name_3, Unit, Group,SemiPrepared," +
+        string query = $"INSERT INTO {tableName} (Code, Name, Eng, Rus, Unit, Group,SemiPrepared," +
             $" Printer, Price, Price1, Price2, Price3, Price4, Price5, Department, InHoll) VALUES (@Code, @Name1," +
             $" @Name2, @Name3, @Unit, @Group, @Printer, @Price, @Price1, @Price2, @Price3, @Price4, @Price5, @Department, @InHoll)";
         using (MySqlCommand command = new MySqlCommand(query, connection))
@@ -238,7 +238,7 @@ public static class TableUpdater
 
     private static void InsertRecord(MySqlConnection connection, string tableName, string code, string name1, string name2, string name3, string unit, float price, int group)
     {
-        string query = $"INSERT INTO {tableName} (Code, Name_1, Name_2, Name_3, Unit, CostPrice, Group) " +
+        string query = $"INSERT INTO {tableName} (Code, Name, Eng, Rus, Unit, CostPrice, Group) " +
                        $"VALUES (@Code, @Name1, @Name2, @Name3, @Unit, @Price,@Group)";
 
         using (MySqlCommand command = new MySqlCommand(query, connection))
@@ -255,7 +255,7 @@ public static class TableUpdater
     }
     private static void InsertRecordgroup(MySqlConnection connection, string tableName,  string name1, string name2, string name3, int group)
     {
-        string query = $"INSERT INTO {tableName} (Name_1, Name_2, Name_3, Group) " +
+        string query = $"INSERT INTO {tableName} (Name, Eng, Rus, Group) " +
                        $"VALUES ( @Name1, @Name2, @Name3,@Group)";
 
         using (MySqlCommand command = new MySqlCommand(query, connection))
@@ -269,7 +269,7 @@ public static class TableUpdater
     }
     private static void InsertRecordaddgr(MySqlConnection connection, string tableName, int number, string name1, string name2, string name3)
     {
-        string query = $"INSERT INTO {tableName} (Number,Name_1, Name_2, Name_3) " +
+        string query = $"INSERT INTO {tableName} (Number,Name, Eng, Rus) " +
                        $"VALUES (@Number, @Name1, @Name2, @Name3)";
 
         using (MySqlCommand command = new MySqlCommand(query, connection))

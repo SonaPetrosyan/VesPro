@@ -8,7 +8,7 @@ namespace WindowsFormsApp4
     public static class PrintingBill
     {
         public static void PrintBill(string bill, string nest,  string gid,
-            string TipMoney, decimal paid, decimal pevious, DateTime DateBegin, DateTime DateEnd, DataTable dataTable)
+            string TipMoney, decimal paid, decimal pevious, DateTime DateBegin, DateTime DateEnd, DataTable dataTable, string restaurantname, string language)
         {
             bill= bill.Trim(); nest= nest.Trim(); 
             gid=gid.Trim(); TipMoney= TipMoney.Trim();
@@ -27,6 +27,29 @@ namespace WindowsFormsApp4
             float Total = 0;
             float service = 0;
             float discount = 0;
+            string Sum = "Գումար", Disc = "- զեղչ %", Gid = "- Գիդ", TipM = "+ թեյավճար", Tot = "Ընդամենը",
+                Comm = "Ընդամենը: Կրկնօրինակ է։ Չվաճարե՛լ։ ", Paid = "Վճարված է ";
+            if (language == "English")
+            { 
+                Sum = "Amount"; Disc = "- discount %"; Gid = "- Gid"; TipM = "+ tip"; Tot = "Total";
+                Comm = "Total. Duplicate. dont Pai. "; Paid = "Paid ";
+            }
+            if (language == "Espaniol")
+            {
+                Sum = "Cantidad"; Disc = "- % de descuento"; Gid = "- Gid"; TipM = "+ propina"; Tot = "Total";
+                Comm = "Total. Duplicado. No pagar."; Paid = "Pagado ";
+            }
+            if (language == "Russian")
+            {
+                Sum = "Сумма"; Disc = "- скидка %"; Gid = "- Гид"; TipM = "+ чаевые"; Tot = "Итого";
+                Comm = "Итого. Дубликат. Не оплатить."; Tot = "Оплачено";
+            }
+            if (language == "German")
+            {
+                Sum = "Betrag"; Disc = "- Rabatt %"; Gid = "- Gid"; TipM = "+ Spitze"; Tot = "Gesamt";
+                Comm = "Gesamt. Duplikat. Nicht bezahlen. "; Tot = "Bezahlt";
+            }
+
             foreach (DataRow row in dataTable.Rows)
             {
                 if (int.Parse(row["Free"].ToString()) == 1) continue;// սկզբում տպում ենք սպասարկման կամ զեղչի ենթակաները
@@ -57,7 +80,7 @@ namespace WindowsFormsApp4
             BillReport.Rows.Add(newRow1);
             DataRow newRow2 = BillReport.NewRow();
             BillReport.Rows.Add(newRow2);
-            newRow2["name"] = "Գումար"; newRow2["salesamount"] = sales;
+            newRow2["name"] = Sum; newRow2["salesamount"] = sales;//"Գումար"
             if ( service != 0)
             {
                 DataRow newRow3 = BillReport.NewRow();
@@ -69,23 +92,22 @@ namespace WindowsFormsApp4
             {
                 DataRow newRow4 = BillReport.NewRow();
                 BillReport.Rows.Add(newRow4);
-                newRow4["name"] = "- զեղչ %"; newRow4["salesamount"] = discount;
+                newRow4["name"] = Disc; newRow4["salesamount"] = discount;//"- զեղչ %"
                 Total = Total - discount;
             }
             if (gid.Length > 0 && gid != "0")
             {
                 DataRow newRow5 = BillReport.NewRow();
                 BillReport.Rows.Add(newRow5);
-                newRow5["name"] = "- Գիդ"; newRow5["salesamount"] = float.Parse(gid);
+                newRow5["name"] = Gid; newRow5["salesamount"] = float.Parse(gid);//"- Գիդ"
                 Total = Total - float.Parse(gid);
 
             }
             DataRow newRow6 = BillReport.NewRow();
             BillReport.Rows.Add(newRow6);
-           
             foreach (DataRow row in dataTable.Rows)
             {
-                if (int.Parse(row["Free"].ToString()) != 1) continue;//  հետո ենք սպասարկման կամ զեղչից ազատները
+                if (int.Parse(row["Free"].ToString()) != 1) continue;//  հետո տպում  ենք սպասարկման կամ զեղչից ազատները
                 code = row["code"].ToString();
                 DataRow[] foundRows = BillReport.Select($"Code = '{code}'");
                 if (foundRows.Length == 0)
@@ -109,40 +131,34 @@ namespace WindowsFormsApp4
 
          //   if (TipMoney.Length > 0 && TipMoney != "0")
          //   {
-                DataRow newRow10 = BillReport.NewRow();
-                BillReport.Rows.Add(newRow10);
                 DataRow newRow7 = BillReport.NewRow();
                 BillReport.Rows.Add(newRow7);
-                newRow7["name"] = "+ թեյավճար"; newRow7["salesamount"] = float.Parse(TipMoney);
-                Total = Total + float.Parse(TipMoney);
+                newRow7["name"] = TipM; newRow7["salesamount"] = float.Parse(TipMoney);//"+ թեյավճար"
+            Total = Total + float.Parse(TipMoney);
          //   }
             DataRow newRow8 = BillReport.NewRow();
             BillReport.Rows.Add(newRow8);
 
             DataRow newRow9 = BillReport.NewRow();
             BillReport.Rows.Add(newRow9);
-            newRow9["name"] = "Ընդամենը"; newRow9["salesamount"] = Total;
-            if ( pevious == 1) newRow9["name"] = "Ընդամենը: Կրկնօրինակ է։ Չվաճարե՛լ։ ";
+            newRow9["name"] = Tot; newRow9["salesamount"] = Total;//"Ընդամենը"
+            if ( pevious == 1) newRow9["name"] =Comm;//"Ընդամենը: Կրկնօրինակ է։ Չվաճարե՛լ։ "
             if (paid == 1)
             {
                 DataRow newRow11 = BillReport.NewRow();
                 BillReport.Rows.Add(newRow11);
-                newRow10["name"] = "Վճարված է "; newRow10["salesamount"] = Total ;
+                newRow11["name"] = Paid; newRow11["salesamount"] = Total;//"Վճարված է "
             }
-            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+
+                Dictionary<string, object> parameters = new Dictionary<string, object>();
             string DoNotPai = "";
-            parameters.Add("RestaurantName", "Պանդոկ Երևան");
+            parameters.Add("RestaurantName", restaurantname);
             parameters.Add("Bill", bill);
             parameters.Add("Nest", nest);
             parameters.Add("DateBegin", DateBegin);
             parameters.Add("DateEnd", DateEnd);
-            //if (paid == 1 || pevious == 1) DoNotPai = "Կրկնօրինակ է։ Չվաճարե՛լ։ ";
-            //if (DoNotPai.Length > 0)
-            //{
-            //    DataRow newRow11 = BillReport.NewRow();
-            //    BillReport.Rows.Add(newRow11);
-            //    newRow11["name"] = DoNotPai;
-            //}
+
 
 
             ReportManager reportManager = new ReportManager();

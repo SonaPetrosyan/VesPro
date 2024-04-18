@@ -38,9 +38,9 @@
             this.DepartmentLabel = new System.Windows.Forms.Label();
             this.DepartmentComboBox = new System.Windows.Forms.ComboBox();
             this.DepartmentIdBox = new System.Windows.Forms.TextBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.billBox = new System.Windows.Forms.CheckBox();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.button2 = new System.Windows.Forms.Button();
@@ -104,7 +104,7 @@
             this.dateTimePicker1.CustomFormat = "dd-MM-yyyy HH:mm";
             this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(3, 39);
+            this.dateTimePicker1.Location = new System.Drawing.Point(6, 39);
             this.dateTimePicker1.MinDate = new System.DateTime(2024, 1, 1, 0, 0, 0, 0);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(153, 27);
@@ -118,7 +118,7 @@
             this.dateTimePicker2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker2.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.dateTimePicker2.Location = new System.Drawing.Point(159, 39);
+            this.dateTimePicker2.Location = new System.Drawing.Point(162, 39);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(153, 27);
             this.dateTimePicker2.TabIndex = 39;
@@ -131,7 +131,7 @@
             this.checkBox1.Checked = true;
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(107, 13);
+            this.checkBox1.Location = new System.Drawing.Point(110, 13);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(128, 24);
             this.checkBox1.TabIndex = 40;
@@ -142,7 +142,7 @@
             // numericUpDown1
             // 
             this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown1.Location = new System.Drawing.Point(315, 37);
+            this.numericUpDown1.Location = new System.Drawing.Point(324, 37);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(64, 30);
             this.numericUpDown1.TabIndex = 41;
@@ -150,7 +150,7 @@
             // numericUpDown2
             // 
             this.numericUpDown2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown2.Location = new System.Drawing.Point(384, 37);
+            this.numericUpDown2.Location = new System.Drawing.Point(393, 37);
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(64, 30);
             this.numericUpDown2.TabIndex = 42;
@@ -159,7 +159,7 @@
             // 
             this.checkBox2.AutoSize = true;
             this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox2.Location = new System.Drawing.Point(347, 13);
+            this.checkBox2.Location = new System.Drawing.Point(356, 13);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(81, 24);
             this.checkBox2.TabIndex = 43;
@@ -171,7 +171,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(457, 14);
+            this.label1.Location = new System.Drawing.Point(469, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 20);
             this.label1.TabIndex = 45;
@@ -183,7 +183,7 @@
             this.DepartmentLabel.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.DepartmentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DepartmentLabel.ForeColor = System.Drawing.Color.Black;
-            this.DepartmentLabel.Location = new System.Drawing.Point(648, 15);
+            this.DepartmentLabel.Location = new System.Drawing.Point(676, 15);
             this.DepartmentLabel.Name = "DepartmentLabel";
             this.DepartmentLabel.Size = new System.Drawing.Size(64, 20);
             this.DepartmentLabel.TabIndex = 46;
@@ -195,45 +195,25 @@
             this.DepartmentComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DepartmentComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DepartmentComboBox.FormattingEnabled = true;
-            this.DepartmentComboBox.Location = new System.Drawing.Point(676, 41);
+            this.DepartmentComboBox.Location = new System.Drawing.Point(708, 41);
             this.DepartmentComboBox.Name = "DepartmentComboBox";
             this.DepartmentComboBox.Size = new System.Drawing.Size(120, 26);
             this.DepartmentComboBox.TabIndex = 47;
+            this.DepartmentComboBox.SelectedIndexChanged += new System.EventHandler(this.DepartmentComboBox_SelectedIndexChanged);
             // 
             // DepartmentIdBox
             // 
             this.DepartmentIdBox.BackColor = System.Drawing.Color.White;
-            this.DepartmentIdBox.Location = new System.Drawing.Point(641, 43);
+            this.DepartmentIdBox.Location = new System.Drawing.Point(673, 43);
             this.DepartmentIdBox.Name = "DepartmentIdBox";
             this.DepartmentIdBox.Size = new System.Drawing.Size(35, 22);
             this.DepartmentIdBox.TabIndex = 48;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "Բոլորը",
-            "1-ին սրահ",
-            "2-րդ սրահ",
-            "3-րդ սրահ",
-            "4-րդ սրահ",
-            "5-րդ սրահ",
-            "6-րդ սրահ",
-            "7-րդ սրահ",
-            "8-րդ սրահ",
-            "9-րդ սրահ"});
-            this.comboBox2.Location = new System.Drawing.Point(524, 39);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(107, 28);
-            this.comboBox2.TabIndex = 49;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(519, 12);
+            this.label2.Location = new System.Drawing.Point(538, 12);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(126, 20);
             this.label2.TabIndex = 50;
@@ -242,6 +222,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.comboBox2);
             this.panel1.Controls.Add(this.billBox);
             this.panel1.Controls.Add(this.numericUpDown3);
             this.panel1.Controls.Add(this.button2);
@@ -249,7 +230,6 @@
             this.panel1.Controls.Add(this.DepartmentLabel);
             this.panel1.Controls.Add(this.DepartmentIdBox);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.comboBox2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.checkBox2);
             this.panel1.Controls.Add(this.numericUpDown2);
@@ -259,15 +239,26 @@
             this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Location = new System.Drawing.Point(242, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(934, 77);
+            this.panel1.Size = new System.Drawing.Size(983, 77);
             this.panel1.TabIndex = 0;
             this.panel1.Enter += new System.EventHandler(this.panel1_Enter);
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(539, 41);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(120, 26);
+            this.comboBox2.TabIndex = 60;
             // 
             // billBox
             // 
             this.billBox.AutoSize = true;
             this.billBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.billBox.Location = new System.Drawing.Point(806, 44);
+            this.billBox.Location = new System.Drawing.Point(842, 44);
             this.billBox.Name = "billBox";
             this.billBox.Size = new System.Drawing.Size(127, 24);
             this.billBox.TabIndex = 59;
@@ -277,7 +268,7 @@
             // numericUpDown3
             // 
             this.numericUpDown3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown3.Location = new System.Drawing.Point(452, 38);
+            this.numericUpDown3.Location = new System.Drawing.Point(464, 38);
             this.numericUpDown3.Maximum = new decimal(new int[] {
             25,
             0,
@@ -295,7 +286,7 @@
             this.button2.FlatAppearance.BorderSize = 2;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(825, 6);
+            this.button2.Location = new System.Drawing.Point(861, 6);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(69, 31);
             this.button2.TabIndex = 57;
@@ -330,7 +321,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 6;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1479, 432);
+            this.dataGridView1.Size = new System.Drawing.Size(1522, 432);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridView1_CellBeginEdit);
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
@@ -581,9 +572,9 @@
             this.panel3.Controls.Add(this.radioButton7);
             this.panel3.Controls.Add(this.radioButton6);
             this.panel3.Controls.Add(this.button1);
-            this.panel3.Location = new System.Drawing.Point(1175, 1);
+            this.panel3.Location = new System.Drawing.Point(1225, 1);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(304, 76);
+            this.panel3.Size = new System.Drawing.Size(298, 76);
             this.panel3.TabIndex = 58;
             // 
             // HelpButton
@@ -592,7 +583,7 @@
             this.HelpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.HelpButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HelpButton.ForeColor = System.Drawing.Color.White;
-            this.HelpButton.Location = new System.Drawing.Point(264, 36);
+            this.HelpButton.Location = new System.Drawing.Point(237, 36);
             this.HelpButton.Name = "HelpButton";
             this.HelpButton.Size = new System.Drawing.Size(35, 35);
             this.HelpButton.TabIndex = 64;
@@ -607,7 +598,7 @@
             this.radioButton7.Checked = true;
             this.radioButton7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton7.ForeColor = System.Drawing.Color.Black;
-            this.radioButton7.Location = new System.Drawing.Point(177, 9);
+            this.radioButton7.Location = new System.Drawing.Point(173, 9);
             this.radioButton7.Name = "radioButton7";
             this.radioButton7.Size = new System.Drawing.Size(82, 24);
             this.radioButton7.TabIndex = 60;
@@ -622,7 +613,7 @@
             this.radioButton6.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.radioButton6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton6.ForeColor = System.Drawing.Color.Black;
-            this.radioButton6.Location = new System.Drawing.Point(10, 9);
+            this.radioButton6.Location = new System.Drawing.Point(6, 9);
             this.radioButton6.Name = "radioButton6";
             this.radioButton6.Size = new System.Drawing.Size(159, 24);
             this.radioButton6.TabIndex = 59;
@@ -637,7 +628,7 @@
             this.button1.FlatAppearance.BorderSize = 2;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(63, 38);
+            this.button1.Location = new System.Drawing.Point(59, 38);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(135, 31);
             this.button1.TabIndex = 58;
@@ -735,7 +726,7 @@
             // Stocktaking
             // 
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.ClientSize = new System.Drawing.Size(1479, 565);
+            this.ClientSize = new System.Drawing.Size(1524, 565);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
@@ -774,7 +765,6 @@
         private System.Windows.Forms.Label DepartmentLabel;
         private System.Windows.Forms.ComboBox DepartmentComboBox;
         private System.Windows.Forms.TextBox DepartmentIdBox;
-        private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button2;
@@ -821,6 +811,7 @@
         private System.Windows.Forms.Button HelpButton;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.ComboBox comboBox2;
     }
 
 }

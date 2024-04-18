@@ -1,5 +1,0 @@
-﻿Build started...
-1>------ Build started: Project: WindowsFormsApp4, Configuration: Debug Any CPU ------
-1>D:\HAYRIK\PROGRAMMER\WindowsFormsApp4\order.cs(103,33,103,34): error CS1519: Invalid token '.' in class, record, struct, or interface member declaration
-1>D:\HAYRIK\PROGRAMMER\WindowsFormsApp4\order.cs(103,51,103,52): error CS1519: Invalid token '=' in class, record, struct, or interface member declaration
-========== Build: 0 succeeded, 1 failed, 0 up-to-date, 0 skipped ==========

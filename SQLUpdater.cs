@@ -33,9 +33,9 @@ public static class SQLUpdater
                 foreach (var item in items)
                 {
                     string code = item["Code"].ToString().Trim();
-                    string name1 = item["Name_1"].ToString();
-                    string name2 = item["Name_2"].ToString();
-                    string name3 = item["Name_3"].ToString();
+                    string name1 = item["Name"].ToString();
+                    string name2 = item["Eng"].ToString();
+                    string name3 = item["Rus"].ToString();
                     string unit = item["Unit"].ToString();
                     bool semiprepared = bool.Parse(item["SemiPrepared"].ToString());
                     int printer = Convert.ToInt32(item["Printer"].ToString().Trim());
@@ -72,7 +72,7 @@ public static class SQLUpdater
                     {
                         string code_215 = item["Code_215"].ToString().Trim();
                         string code_211 = item["Code_211"].ToString().Trim();
-                        string name1 = item["Name_1"].ToString();
+                        string name1 = item["Name"].ToString();
                         string note = item["Note"].ToString();
                         string unit = item["Unit"].ToString();
                         float coefficient = Convert.ToSingle(item["Coefficient"].ToString().Trim());
@@ -97,9 +97,9 @@ public static class SQLUpdater
 
                 foreach (var item in items)
                     {
-                         string name1 = item["Name_1"].ToString();
-                        string name2 = item["Name_2"].ToString();
-                        string name3 = item["Name_3"].ToString();
+                         string name1 = item["Name"].ToString();
+                        string name2 = item["Eng"].ToString();
+                        string name3 = item["Rus"].ToString();
                         int groupp = Convert.ToInt32(item["Groupp"].ToString().Trim());
                         InsertRecordgroup(connection, "FoodGroupp", name1, name2, name3, groupp, restaurant);
                     }
@@ -121,9 +121,9 @@ public static class SQLUpdater
                 foreach (var item in items)
                     {
                         string code = item["Code"].ToString().Trim();
-                        string name1 = item["Name_1"].ToString();
-                        string name2 = item["Name_2"].ToString();
-                        string name3 = item["Name_3"].ToString();
+                        string name1 = item["Name"].ToString();
+                        string name2 = item["Eng"].ToString();
+                        string name3 = item["Rus"].ToString();
                         string unit = item["Unit"].ToString();
                         int groupp = Convert.ToInt32(item["Groupp"].ToString().Trim());
                         float price = Convert.ToSingle(item["Price"].ToString().Trim());
@@ -146,9 +146,9 @@ public static class SQLUpdater
                 foreach (var item in items)
                     {
                         string code = item["Code"].ToString().Trim();
-                        string name1 = item["Name_1"].ToString();
-                        string name2 = item["Name_2"].ToString();
-                        string name3 = item["Name_3"].ToString();
+                        string name1 = item["Name"].ToString();
+                        string name2 = item["Eng"].ToString();
+                        string name3 = item["Rus"].ToString();
                         string unit = item["Unit"].ToString();
                         int groupp = Convert.ToInt32(item["Groupp"].ToString().Trim());
                         float price = Convert.ToSingle(item["Price"].ToString().Trim());
@@ -168,9 +168,9 @@ public static class SQLUpdater
                 foreach (var item in items)
                     {
                         string code = item["Code"].ToString().Trim();
-                        string name1 = item["Name_1"].ToString();
-                        string name2 = item["Name_2"].ToString();
-                        string name3 = item["Name_3"].ToString();
+                        string name1 = item["Name"].ToString();
+                        string name2 = item["Eng"].ToString();
+                        string name3 = item["Rus"].ToString();
                         string unit = item["Unit"].ToString();
                         int groupp = Convert.ToInt32(item["Groupp"].ToString().Trim());
                         float price = Convert.ToSingle(item["Price"].ToString().Trim());
@@ -189,9 +189,9 @@ public static class SQLUpdater
                 foreach (var item in items)
                     {
                         int number = int.Parse(item["Number"].ToString().Trim());
-                        string name1 = item["Name_1"].ToString();
-                        string name2 = item["Name_2"].ToString();
-                        string name3 = item["Name_3"].ToString();
+                        string name1 = item["Name"].ToString();
+                        string name2 = item["Eng"].ToString();
+                        string name3 = item["Rus"].ToString();
 
                         // Insert a new record if the code doesn't exist
                         InsertRecordaddgr(connection, "AdditionGroups", number, name1, name2, name3);
@@ -211,9 +211,9 @@ public static class SQLUpdater
                 foreach (var item in items1)
                     {
                         int number = int.Parse(item["Number"].ToString().Trim());
-                        string name1 = item["Name_1"].ToString();
-                        string name2 = item["Name_2"].ToString();
-                        string name3 = item["Name_3"].ToString();
+                        string name1 = item["Name"].ToString();
+                        string name2 = item["Eng"].ToString();
+                        string name3 = item["Rus"].ToString();
 
                         // Insert a new record if the code doesn't exist
                         InsertRecordaddgr(connection, "AdditionNames", number, name1, name2, name3);
@@ -227,7 +227,7 @@ public static class SQLUpdater
     private static void InsertRecord(SqlConnection connection, string tableName,  string code, string name1,
         string name2, string name3, string unit, float price, int groupp,int restaurant)
     {
-        string query = $"INSERT INTO {tableName} ( Code, Name_1, Name_2, Name_3, Unit, CostPrice, Groupp,Restaurant) " +
+        string query = $"INSERT INTO {tableName} ( Code, Name, Eng, Rus, Unit, CostPrice, Groupp,Restaurant) " +
                        $"VALUES (@Code, @Name1, @Name2, @Name3, @Unit, @Price,@Groupp,@Restaurant)";
 
         using (SqlCommand command = new SqlCommand(query, connection))
@@ -249,7 +249,7 @@ public static class SQLUpdater
         float actually1, float actually2, float actually3, float actually4, float actually5,
         float act215_1, float act215_2, float act215_3, float act215_4, float act215_5)
     {
-        string query = $"INSERT INTO {tableName} ( Code, Name_1, Name_2, Name_3, Unit, CostPrice,Restaurant," +
+        string query = $"INSERT INTO {tableName} ( Code, Name, Eng, Rus, Unit, CostPrice,Restaurant," +
                        $"Actually1,Actually2,Actually3,Actually4,Actually5," +
                        $"Act215_1, Act215_2, Act215_3, Act215_4, Act215_5) " +
                        $"VALUES (@Code, @Name1, @Name2, @Name3, @Unit, @Price,@Restaurant," +
@@ -281,7 +281,7 @@ public static class SQLUpdater
     }
     private static void InsertRecordgroup(SqlConnection connection, string tableName, string name1, string name2, string name3, int groupp,int restaurant)
     {
-        string query = $"INSERT INTO {tableName} (Name_1, Name_2, Name_3, Groupp, Restaurant) " +
+        string query = $"INSERT INTO {tableName} (Name, Eng, Rus, Groupp, Restaurant) " +
                        $"VALUES (@Name1, @Name2, @Name3,@Groupp,@Restaurant)";
 
         using (SqlCommand command = new SqlCommand(query, connection))
@@ -298,7 +298,7 @@ public static class SQLUpdater
 
     private static void InsertRecordaddgr(SqlConnection connection, string tableName, int number, string name1, string name2, string name3)
     {
-        string query = $"INSERT INTO {tableName} (Number,Name_1, Name_2, Name_3) " +
+        string query = $"INSERT INTO {tableName} (Number,Name, Eng, Rus) " +
                        $"VALUES (@Number, @Name1, @Name2, @Name3)";
 
         using (SqlCommand command = new SqlCommand(query, connection))
@@ -314,7 +314,7 @@ public static class SQLUpdater
     private static void InsertRecordCalcul(SqlConnection connection, string tableName, string code_215,
      string code_211, string name1, string note, string unit, float coefficient, float quantity, float bruto, float neto, int restaurant)
     {
-        string query = $"INSERT INTO {tableName} (Code_215,Code_211, Name_1, Note, Unit, Coefficient, Quantity, Bruto,Neto,Restaurant) " +
+        string query = $"INSERT INTO {tableName} (Code_215,Code_211, Name, Note, Unit, Coefficient, Quantity, Bruto,Neto,Restaurant) " +
                       $"VALUES (@Code_215, @Code_211, @Name1, @Note, @Unit, @Coefficient, @Quantity, @Bruto, @Neto,@Restaurant)";
 
         using (SqlCommand command = new SqlCommand(query, connection))
@@ -336,7 +336,7 @@ public static class SQLUpdater
     string name2, string name3, string unit, int groupp, bool semiprepared, int printer, float price, float price1,
     float price2, float price3, float price4, float price5, int department, string inholl, int restaurant, int existent)
     {
-        string query = $"INSERT INTO {tableName} (Code, Name_1, Name_2, Name_3, Unit, Groupp, SemiPrepared," +
+        string query = $"INSERT INTO {tableName} (Code, Name, Eng, Rus, Unit, Groupp, SemiPrepared," +
             $" Printer, Price, Price1, Price2, Price3, Price4, Price5, Department, InHoll,Restaurant,Existent) VALUES (@Code, @Name1," +
             $" @Name2, @Name3, @Unit, @Groupp,@SemiPrepared, @Printer, @Price, @Price1, @Price2, @Price3, @Price4, @Price5, @Department, @InHoll, @Restaurant,@Existent)";
         using (SqlCommand command = new SqlCommand(query, connection))
@@ -366,7 +366,7 @@ public static class SQLUpdater
     private static void InsertInventory215(SqlConnection connection, string tableName, string code, string name1,
 string name2, string name3, string unit, int groupp, float act1, float act2, float act3, float act4, float act5, int restaurant)
     {
-        string query = $"INSERT INTO {tableName} (Code, Name_1, Name_2, Name_3, Unit, Groupp, " +
+        string query = $"INSERT INTO {tableName} (Code, Name, Eng, Rus, Unit, Groupp, " +
             $" Act215_1, Act215_2, Act215_3, Act215_4, Act215_5, Restaurant) VALUES (@Code, @Name1," +
             $" @Name2, @Name3, @Unit, @Groupp,@Act215_1, @Act215_2, @Act215_3, @Act215_4, @Act215_5, @Restaurant)";
         using (SqlCommand command = new SqlCommand(query, connection))

@@ -7,6 +7,8 @@ using System.Windows.Forms;
 using System.IO;
 using ReportPrinter;
 using System.Collections.Generic;
+using System.Linq;
+using Amazon.DynamoDBv2.DocumentModel;
 
 namespace WindowsFormsApp4
 {
@@ -16,6 +18,7 @@ namespace WindowsFormsApp4
         private int _restaurant;
         private int _update;
         private int _editor;
+        private string _language;
         private SQLDatabaseHelper dbHelper;
 
         private DataTable Table_215 = new DataTable();
@@ -44,61 +47,139 @@ namespace WindowsFormsApp4
 
         private DataTable Table_Action = new DataTable();
 
+        private DataTable ControlsInventory = new DataTable();
+
         private DataTable Table_Composite = new DataTable();
         
         private DataView dataView;
-        public Inventory(int ooperator, int restaurant, int update, int editor)
+        public Inventory(int ooperator, int restaurant, int update, int editor, string language)
         {
             _parameter1 = ooperator;
             _editor = editor;
             _restaurant = restaurant;
             _update = update;
+            _language = language;
             InitializeComponent();
 
-            string connectionString = Properties.Settings.Default.CafeRestDB;
+            string connectionString = "Server=DESKTOP-L1SRCHN\\SQLEXPRESS;Database=CafeRest;Integrated Security=True;";
             SqlConnection connection = new SqlConnection(connectionString);
             SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
 
             dateTimePicker1.Value = DateTime.Now;
-     
-            string query1 = $"SELECT * FROM department WHERE Alloved=1 ";
-            Table_Department = dbHelper.ExecuteQuery(query1);
-            DepartmentComboBox.DataSource = Table_Department.DefaultView;
-            DepartmentComboBox.Text = "";
-            DepartmentComboBox.DisplayMember = "Name_1";
+               string query = $"SELECT * FROM Department WHERE Restaurant= '{_restaurant}' ";
+            Table_Department =dbHelper.ExecuteQuery(query);
+               DepartmentComboBox.DataSource = Table_Department.DefaultView;
+               DepartmentComboBox.Text = "";
+               DepartmentComboBox.DisplayMember = "Name";
 
-            string query2 = $"SELECT Code,Name_1,Name_2,Name_3,Unit,CostPrice FROM table_211 WHERE Restaurant= '{_restaurant}' ";
+            //string query2 = $"SELECT Code,Name,Eng,Rus,Unit,CostPrice FROM table_211 WHERE Restaurant= '{_restaurant}' ";
+            string query2 = $"SELECT * FROM table_211 WHERE Restaurant= '{_restaurant}' ";
             Table_211 = dbHelper.ExecuteQuery(query2);
+            Table_211.Columns.Add("Name", typeof(string));
 
-            string query3 = $"SELECT Code,Name_1,Name_2,Name_3,Unit FROM table_215 WHERE Restaurant= '{_restaurant}' ";
-            Table_215 = dbHelper.ExecuteQuery(query3);
+            string query3 = $"SELECT * FROM table_213 WHERE Restaurant= '{_restaurant}' ";
+            Table_213 = dbHelper.ExecuteQuery(query3);
+            Table_213.Columns.Add("Name", typeof(string));
 
-  
+            string query4 = $"SELECT * FROM table_111 WHERE Restaurant= '{_restaurant}' ";
+            Table_111 = dbHelper.ExecuteQuery(query4);
+            Table_111.Columns.Add("Name", typeof(string));
+
+            //string query3 = $"SELECT Code,Name,Eng,Rus,Unit FROM table_215 WHERE Restaurant= '{_restaurant}' ";
+            string query5 = $"SELECT * FROM table_215 WHERE Restaurant= '{_restaurant}' ";
+            Table_215 = dbHelper.ExecuteQuery(query5);
+            Table_215.Columns.Add("Name", typeof(string));
+
             // if (_update == 1) // թարմացնում ենք են գույքագրումների աղյուսակները
             //  {
-            UpdateInventory_211();
-                UpdateInventory_213();
-                UpdateInventory_111();
-          //  }
-            if (radioButton1.Checked)
+                //UpdateInventory_211();
+                //UpdateInventory_213();
+                //UpdateInventory_111();
+            //  }
+            string query6 = $"SELECT * FROM Inventory WHERE Restaurant='{_restaurant}'";
+            Table_Inventory = dbHelper.ExecuteQuery(query6);
+            Table_Inventory.Columns.Add("Name", typeof(string));
+
+            var query7 = from row1 in Table_211.AsEnumerable()
+                        join row2 in Table_Inventory.AsEnumerable()
+                        on row1.Field<string>("Code") equals row2.Field<string>("Code") into gj
+                        from subRow2 in gj.DefaultIfEmpty()
+                        select new
+                        {
+                            Row1 = row1,
+                            Row2 = subRow2
+                        };
+
+            foreach (var item in query7)
             {
-                string query4 = $"SELECT Code,Name_1,Unit,CostPrice,Actually1,Actually2,Actually3,Actually4,Actually5," +
-                  $"Act215_1,Act215_2,Act215_3,Act215_4,Act215_5 FROM inventory WHERE Restaurant='{_restaurant}' and Groupp='2111' ";
-                Table_Inventory = dbHelper.ExecuteQuery(query4);
+                if (item.Row1 != null && item.Row2 != null)
+                {
+                    item.Row2["Name"] = item.Row1[_language];
+                }
             }
-            if (radioButton2.Checked)
+
+            var query8 = from row1 in Table_213.AsEnumerable()
+                         join row2 in Table_Inventory.AsEnumerable()
+                         on row1.Field<string>("Code") equals row2.Field<string>("Code") into gj
+                         from subRow2 in gj.DefaultIfEmpty()
+                         select new
+                         {
+                             Row1 = row1,
+                             Row2 = subRow2
+                         };
+
+            foreach (var item in query8)
             {
-                string query4 = $"SELECT Code,Name_1,Unit,CostPrice,Actually1,Actually2,Actually3,Actually4,Actually5," +
-                  $"Act215_1,Act215_2,Act215_3,Act215_4,Act215_5 FROM inventory WHERE Restaurant='{_restaurant}' and Groupp='2131' ";
-                Table_Inventory = dbHelper.ExecuteQuery(query4);
+                if (item.Row1 != null && item.Row2 != null)
+                {
+                    item.Row2["Name"] = item.Row1[_language];
+                }
             }
-            if (radioButton3.Checked)
+            var query9 = from row1 in Table_111.AsEnumerable()
+                         join row2 in Table_Inventory.AsEnumerable()
+                         on row1.Field<string>("Code") equals row2.Field<string>("Code") into gj
+                         from subRow2 in gj.DefaultIfEmpty()
+                         select new
+                         {
+                             Row1 = row1,
+                             Row2 = subRow2
+                         };
+
+            foreach (var item in query9)
             {
-                string query4 = $"SELECT Code,Name_1,Unit,CostPrice,Actually1,Actually2,Actually3,Actually4,Actually5," +
-                  $"Act215_1,Act215_2,Act215_3,Act215_4,Act215_5 FROM inventory WHERE Restaurant='{_restaurant}' and Groupp='1111' ";
-                Table_Inventory = dbHelper.ExecuteQuery(query4);
+                if (item.Row1 != null && item.Row2 != null)
+                {
+                    item.Row2["Name"] = item.Row1[_language];
+                }
             }
-            
+
+            string query10 = $"SELECT * FROM Inventory_215 WHERE Restaurant='{_restaurant}'";
+            Table_Inventory215 = dbHelper.ExecuteQuery(query10);
+            Table_Inventory215.Columns.Add("Name", typeof(string));
+            var query11 = from row1 in Table_215.AsEnumerable()
+                         join row2 in Table_Inventory215.AsEnumerable()
+                         on row1.Field<string>("Code") equals row2.Field<string>("Code") into gj
+                         from subRow2 in gj.DefaultIfEmpty()
+                         select new
+                         {
+                             Row1 = row1,
+                             Row2 = subRow2
+                         };
+
+            foreach (var item in query11)
+            {
+                if (item.Row1 != null && item.Row2 != null)
+                {
+                    item.Row2["Name"] = item.Row1[_language];
+                }
+            }
+
+
+            dataView = new DataView(Table_Inventory);
+            dataView.RowFilter = $"(Groupp) LIKE '%{2111}%'";
+            dataGridView1.DataSource = dataView;
+
+
             Table_Inventory.Columns.Add("Calcul", typeof(float));
             Table_Inventory.Columns.Add("Over", typeof(float));
             Table_Inventory.Columns.Add("Lack", typeof(float));
@@ -109,10 +190,9 @@ namespace WindowsFormsApp4
                 row["Over"] = Math.Max(0, (float.Parse(row["Actually1"].ToString()) + float.Parse(row["Act215_1"].ToString()) - float.Parse(row["Calcul"].ToString())));
                 row["Lack"] = Math.Max(0, (float.Parse(row["Calcul"].ToString()) - float.Parse(row["Actually1"].ToString()) - float.Parse(row["Act215_1"].ToString())));
             }
-            dataView = new DataView(Table_Inventory);
-            dataGridView1.DataSource = dataView;
+
             dataGridView1.Columns[0].DataPropertyName = "Code";
-            dataGridView1.Columns[1].DataPropertyName = "Name_1";
+            dataGridView1.Columns[1].DataPropertyName = "Name";
             dataGridView1.Columns[2].DataPropertyName = "Unit";
             dataGridView1.Columns[3].DataPropertyName = "CostPrice";
             dataGridView1.Columns[4].DataPropertyName = "Actually1";
@@ -129,13 +209,14 @@ namespace WindowsFormsApp4
 
             }
 
-            string query5 = $"SELECT Code,Name_1,Unit,Act215_1,Act215_2,Act215_3,Act215_4,Act215_5 FROM inventory_215 WHERE Restaurant='{_restaurant}' ";
-            Table_Inventory215 = dbHelper.ExecuteQuery(query5);
+            //string query13 = $"SELECT Code,Unit,Act215_1,Act215_2,Act215_3,Act215_4,Act215_5 FROM inventory_215 WHERE Restaurant='{_restaurant}' ";
+            //Table_Inventory215 = dbHelper.ExecuteQuery(query13);
+            //Table_Inventory215.Columns.Add("Name", typeof(string));
             int co = Table_Inventory215.Rows.Count;
             dataView = new DataView(Table_Inventory215);
             dataGridView2.DataSource = dataView;
             dataGridView2.Columns[0].DataPropertyName = "Code";
-            dataGridView2.Columns[1].DataPropertyName = "Name_1";
+            dataGridView2.Columns[1].DataPropertyName = "Name";
             dataGridView2.Columns[2].DataPropertyName = "Unit";
             dataGridView2.Columns[3].DataPropertyName = "Act215_1";
             foreach (DataGridViewColumn column in dataGridView2.Columns)
@@ -168,11 +249,109 @@ namespace WindowsFormsApp4
             int co1 = Table_LastInventory.Rows.Count;
 
 
+            SetLanguage(_language);
         }
+
+        private void SetLanguage(string lang)
+        {
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
+            string rb = "";
+            string rbt = "";
+            connection.Open();
+            DataTable ControlsForm1 = new DataTable();
+            string query1 = $"SELECT * FROM ControlsInventory  ";
+            ControlsInventory = dbHelper.ExecuteQuery(query1);
+            foreach (Control control in panel1.Controls)
+            {
+                string columnName = control.Name.Trim();
+                DataRow[] foundRows = ControlsInventory.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0)
+                {
+                    control.Text = foundRows[0][_language].ToString();
+                }
+            }
+            foreach (Control control in panel2.Controls)
+            {
+                string columnName = control.Name.Trim();
+                DataRow[] foundRows = ControlsInventory.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0)
+                {
+                    control.Text = foundRows[0][_language].ToString();
+                }
+            }
+            foreach (Control control in panel3.Controls)
+            {
+                string columnName = control.Name.Trim();
+                DataRow[] foundRows = ControlsInventory.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0)
+                {
+                    control.Text = foundRows[0][_language].ToString();
+                }
+            }
+            foreach (Control control in panel4.Controls)
+            {
+                string columnName = control.Name.Trim();
+                DataRow[] foundRows = ControlsInventory.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0)
+                {
+                    control.Text = foundRows[0][_language].ToString();
+                }
+            }
+            foreach (Control control in panel5.Controls)
+            {
+                string columnName = control.Name.Trim();
+                DataRow[] foundRows = ControlsInventory.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0)
+                {
+                    control.Text = foundRows[0][_language].ToString();
+                }
+            }
+            foreach (Control control in panel6.Controls)
+            {
+                string columnName = control.Name.Trim();
+                DataRow[] foundRows = ControlsInventory.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0)
+                {
+                    control.Text = foundRows[0][_language].ToString();
+                }
+            }
+            foreach (Control control in panel8.Controls)
+            {
+                string columnName = control.Name.Trim();
+                DataRow[] foundRows = ControlsInventory.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0)
+                {
+                    control.Text = foundRows[0][_language].ToString();
+                }
+            }
+            for (int colIndex = 0; colIndex < dataGridView1.Columns.Count; colIndex++)
+            {
+                string columnName = dataGridView1.Columns[colIndex].DataPropertyName.Trim();
+                DataRow[] foundRows = ControlsInventory.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0)
+                {
+                    dataGridView1.Columns[colIndex].HeaderText = foundRows[0][_language].ToString();
+                }
+            }
+
+            for (int colIndex = 0; colIndex < dataGridView2.Columns.Count; colIndex++)
+            {
+                string columnName = dataGridView2.Columns[colIndex].DataPropertyName.Trim();
+                DataRow[] foundRows = ControlsInventory.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0)
+                {
+                    dataGridView2.Columns[colIndex].HeaderText = foundRows[0][_language].ToString();
+                }
+            }
+            connection.Close();
+        }
+
 
         private void UpdateInventory_211() // գույքագրման աղյուսակը ճշգրտում ենք։
                                            // Եթե նյութի կոդ է պակաս ավելացնում ենք։
-                                           //ինքնարժեքներն ու անվանումներն ենք նորացնում
+                                           //ինքնարժեքներն  ենք նորացնում
         {
             string connectionString = Properties.Settings.Default.CafeRestDB;
             SqlConnection connection = new SqlConnection(connectionString);
@@ -181,39 +360,32 @@ namespace WindowsFormsApp4
             string gr = "2111";
             foreach (DataRow row in Table_211.Rows)
             {
-                string query = $"SELECT * FROM inventory WHERE Code = '{row["Code"]}' AND Restaurant = '{_restaurant}' AND Groupp='{gr}' ";
+                string query = $"SELECT * FROM inventory WHERE Code = '{row["Code"]}' AND Restaurant = '{_restaurant}'  ";
                 Exist = dbHelper.ExecuteQuery(query);
                 int count = Exist.Rows.Count;
                 if (count > 0)
                 {
 
-                    string InsertQuery = $"UPDATE inventory SET Name_1=@Name_1, Name_2=@Name_2, Name_3=@Name_3," +
-                        $" Unit=@Unit, CostPrice=@CostPrice, groupp=@groupp  WHERE Code=@Code AND Restaurant=@Restaurant";
+                    string InsertQuery = $"UPDATE inventory SET Unit=@Unit, CostPrice=@CostPrice, groupp=@groupp  WHERE Code=@Code AND Restaurant=@Restaurant";
 
                     using (SqlCommand updateCommand = new SqlCommand(InsertQuery, connection))
                     {
-                        updateCommand.Parameters.AddWithValue("@Name_1", row["Name_1"].ToString());
-                        updateCommand.Parameters.AddWithValue("@Name_2", row["Name_2"].ToString());
-                        updateCommand.Parameters.AddWithValue("@Name_3", row["Name_3"].ToString());
                         updateCommand.Parameters.AddWithValue("@Unit", row["Unit"].ToString());
-                        updateCommand.Parameters.AddWithValue("@Code", row["Code"].ToString());
                         updateCommand.Parameters.AddWithValue("@CostPrice", float.Parse(row["CostPrice"].ToString()));
                         updateCommand.Parameters.AddWithValue("@groupp", "2111");
+                        updateCommand.Parameters.AddWithValue("@Code", row["Code"].ToString());
                         updateCommand.Parameters.AddWithValue("@Restaurant", _restaurant);
                         updateCommand.ExecuteNonQuery();
                     }
                 }
                 else
                 {
-                    string InsertQuery = $"INSERT INTO inventory (Code, Name_1, Name_2, Name_3, Unit, CostPrice, Restaurant, groupp,calcul," +
+                    string InsertQuery = $"INSERT INTO inventory (Code, Unit, CostPrice, Restaurant, groupp," +
                         $"Actually1,Actually2,Actually3,Actually4,Actually5,Act215_1,Act215_2,Act215_3,Act215_4,Act215_5)" +
-                        $" VALUES (@Code, @Name_1, @Name_2, @Name_3, @Unit, @CostPrice ,@Restaurant, @groupp,@calcul," +
+                        $" VALUES (@Code, @Unit, @CostPrice ,@Restaurant, @groupp," +
                         $"@Actually1,@Actually2,@Actually3,@Actually4,@Actually5,@Act215_1,@Act215_2,@Act215_3,@Act215_4,@Act215_5)";
                     using (SqlCommand insertCommand = new SqlCommand(InsertQuery, connection))
                     {
-                        insertCommand.Parameters.AddWithValue("@Name_1", row["Name_1"].ToString());
-                        insertCommand.Parameters.AddWithValue("@Name_2", row["Name_2"].ToString());
-                        insertCommand.Parameters.AddWithValue("@Name_3", row["Name_3"].ToString());
                         insertCommand.Parameters.AddWithValue("@Unit", row["Unit"].ToString());
                         insertCommand.Parameters.AddWithValue("@CostPrice", float.Parse(row["CostPrice"].ToString()));
                         insertCommand.Parameters.AddWithValue("@Code", row["Code"].ToString());
@@ -229,8 +401,6 @@ namespace WindowsFormsApp4
                         insertCommand.Parameters.AddWithValue("@Act215_3", 0);
                         insertCommand.Parameters.AddWithValue("@Act215_4", 0);
                         insertCommand.Parameters.AddWithValue("@Act215_5", 0);
-                        insertCommand.Parameters.AddWithValue("@calcul", 0);
-
                         insertCommand.ExecuteNonQuery();
                     }
 
@@ -241,35 +411,14 @@ namespace WindowsFormsApp4
                 string query = $"SELECT * FROM inventory_215 WHERE Code = '{row["Code"]}' AND Restaurant = '{_restaurant}' ";
                 Exist = dbHelper.ExecuteQuery(query);
                 int count = Exist.Rows.Count;
-                if (count > 0)
+                if (count == 0)
                 {
-                    string InsertQuery = $"UPDATE inventory_215 SET Name_1=@Name_1,Name_2=@Name_2,Name_3=@Name_3,Unit=@Unit " +
-                        $" WHERE Code=@Code AND Restaurant=@Restaurant";
-
-                    using (SqlCommand updateCommand = new SqlCommand(InsertQuery, connection))
-                    {
-                        updateCommand.Parameters.AddWithValue("@Name_1", row["Name_1"].ToString());
-                        updateCommand.Parameters.AddWithValue("@Name_2", row["Name_2"].ToString());
-                        updateCommand.Parameters.AddWithValue("@Name_3", row["Name_3"].ToString());
-                        updateCommand.Parameters.AddWithValue("@Unit", row["Unit"].ToString());
-                        updateCommand.Parameters.AddWithValue("@Code", row["Code"].ToString());
-                        updateCommand.Parameters.AddWithValue("@Restaurant", _restaurant);
-                        updateCommand.ExecuteNonQuery();
-                    }
-
-                }
-                else
-                {
-                    string InsertQuery = $"INSERT INTO inventory_215 (Code,Name_1,Name_2,Name_3,Unit,Restaurant) " +
-                        $"VALUES (@Code,@Name_1,@Name_2,@Name_3,@Unit,@Restaurant)";
+                    string InsertQuery = $"INSERT INTO inventory_215 (Code,Unit,Restaurant) " +
+                        $"VALUES (@Code,@Unit,@Restaurant)";
                     using (SqlCommand insertCommand = new SqlCommand(InsertQuery, connection))
                     {
                         insertCommand.Parameters.AddWithValue("@Code", row["Code"].ToString());
-                        insertCommand.Parameters.AddWithValue("@Name_1", row["Name_1"].ToString());
-                        insertCommand.Parameters.AddWithValue("@Name_2", row["Name_2"].ToString());
-                        insertCommand.Parameters.AddWithValue("@Name_3", row["Name_3"].ToString());
                         insertCommand.Parameters.AddWithValue("@Unit", row["Unit"].ToString());
-
                         insertCommand.Parameters.AddWithValue("@Restaurant", _restaurant);
                         insertCommand.ExecuteNonQuery();
                     }
@@ -280,12 +429,12 @@ namespace WindowsFormsApp4
 
         private void UpdateInventory_213() // գույքագրման աղյուսակը ճշգրտում ենք։
                                            // Եթե տնտեսականի կոդ է պակաս ավելացնում ենք։
-                                           //ինքնարժեքներն ու անվանումներն ենք նորացնում
+                                           //ինքնարժեքներն ենք նորացնում
         {
             string connectionString = Properties.Settings.Default.CafeRestDB;
             SqlConnection connection = new SqlConnection(connectionString);
             SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
-            string query2 = $"SELECT Code,Name_1,Name_2,Name_3,Unit,CostPrice FROM table_213 WHERE Restaurant= '{_restaurant}' ";
+            string query2 = $"SELECT Code,Unit,CostPrice FROM table_213 WHERE Restaurant= '{_restaurant}' ";
             Table_213 = dbHelper.ExecuteQuery(query2);
             connection.Open();
             string gr = "2131";
@@ -298,14 +447,10 @@ namespace WindowsFormsApp4
                 if (count > 0)
                 {
 
-                    string InsertQuery = $"UPDATE inventory SET Name_1=@Name_1, Name_2=@Name_2, Name_3=@Name_3," +
-                        $" Unit=@Unit, CostPrice=@CostPrice, groupp=@groupp  WHERE Code=@Code AND Restaurant=@Restaurant";
+                    string InsertQuery = $"UPDATE Inventory SET Unit=@Unit, CostPrice=@CostPrice, groupp=@groupp  WHERE Code=@Code AND Restaurant=@Restaurant";
 
                     using (SqlCommand updateCommand = new SqlCommand(InsertQuery, connection))
                     {
-                        updateCommand.Parameters.AddWithValue("@Name_1", row["Name_1"].ToString());
-                        updateCommand.Parameters.AddWithValue("@Name_2", row["Name_2"].ToString());
-                        updateCommand.Parameters.AddWithValue("@Name_3", row["Name_3"].ToString());
                         updateCommand.Parameters.AddWithValue("@Unit", row["Unit"].ToString());
                         updateCommand.Parameters.AddWithValue("@CostPrice", float.Parse(row["CostPrice"].ToString()));
                         updateCommand.Parameters.AddWithValue("@Code", row["Code"].ToString());
@@ -316,15 +461,12 @@ namespace WindowsFormsApp4
                 }
                 else
                 {
-                    string InsertQuery = $"INSERT INTO inventory (Code, Name_1, Name_2, Name_3, Unit, CostPrice, Restaurant, groupp,calcul," +
+                    string InsertQuery = $"INSERT INTO inventory (Code, Unit, CostPrice, Restaurant, groupp," +
                         $"Actually1,Actually2,Actually3,Actually4,Actually5,Act215_1,Act215_2,Act215_3,Act215_4,Act215_5)" +
-                        $" VALUES (@Code, @Name_1, @Name_2, @Name_3, @Unit, @CostPrice ,@Restaurant, @groupp,@calcul," +
+                        $" VALUES (@Code, @Unit, @CostPrice ,@Restaurant, @groupp," +
                         $"@Actually1,@Actually2,@Actually3,@Actually4,@Actually5,@Act215_1,@Act215_2,@Act215_3,@Act215_4,@Act215_5)";
                     using (SqlCommand insertCommand = new SqlCommand(InsertQuery, connection))
                     {
-                        insertCommand.Parameters.AddWithValue("@Name_1", row["Name_1"].ToString());
-                        insertCommand.Parameters.AddWithValue("@Name_2", row["Name_2"].ToString());
-                        insertCommand.Parameters.AddWithValue("@Name_3", row["Name_3"].ToString());
                         insertCommand.Parameters.AddWithValue("@Unit", row["Unit"].ToString());
                         insertCommand.Parameters.AddWithValue("@CostPrice", float.Parse(row["CostPrice"].ToString()));
                         insertCommand.Parameters.AddWithValue("@Code", row["Code"].ToString());
@@ -340,7 +482,6 @@ namespace WindowsFormsApp4
                         insertCommand.Parameters.AddWithValue("@Act215_3", 0);
                         insertCommand.Parameters.AddWithValue("@Act215_4", 0);
                         insertCommand.Parameters.AddWithValue("@Act215_5", 0);
-                        insertCommand.Parameters.AddWithValue("@calcul", 0);
 
                         insertCommand.ExecuteNonQuery();
                     }
@@ -356,7 +497,7 @@ namespace WindowsFormsApp4
             SqlConnection connection = new SqlConnection(connectionString);
             SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
             connection.Open();
-            string query2 = $"SELECT Code,Name_1,Name_2,Name_3,Unit,CostPrice FROM table_111 WHERE Restaurant= '{_restaurant}' ";
+            string query2 = $"SELECT Code,Unit,CostPrice FROM table_111 WHERE Restaurant= '{_restaurant}' ";
             Table_111 = dbHelper.ExecuteQuery(query2);
             string gr = "1111";
             foreach (DataRow row in Table_111.Rows)
@@ -367,14 +508,10 @@ namespace WindowsFormsApp4
                 if (count > 0)
                 {
 
-                    string InsertQuery = $"UPDATE inventory SET Name_1=@Name_1, Name_2=@Name_2, Name_3=@Name_3," +
-                        $" Unit=@Unit, CostPrice=@CostPrice, groupp=@groupp  WHERE Code=@Code AND Restaurant=@Restaurant";
+                    string InsertQuery = $"UPDATE inventory SET Unit=@Unit, CostPrice=@CostPrice, groupp=@groupp  WHERE Code=@Code AND Restaurant=@Restaurant";
 
                     using (SqlCommand updateCommand = new SqlCommand(InsertQuery, connection))
                     {
-                        updateCommand.Parameters.AddWithValue("@Name_1", row["Name_1"].ToString());
-                        updateCommand.Parameters.AddWithValue("@Name_2", row["Name_2"].ToString());
-                        updateCommand.Parameters.AddWithValue("@Name_3", row["Name_3"].ToString());
                         updateCommand.Parameters.AddWithValue("@Unit", row["Unit"].ToString());
                         updateCommand.Parameters.AddWithValue("@CostPrice", float.Parse(row["CostPrice"].ToString()));
                         updateCommand.Parameters.AddWithValue("@Code", row["Code"].ToString());
@@ -385,15 +522,12 @@ namespace WindowsFormsApp4
                 }
                 else
                 {
-                    string InsertQuery = $"INSERT INTO inventory (Code, Name_1, Name_2, Name_3, Unit, CostPrice, Restaurant, groupp,calcul," +
+                    string InsertQuery = $"INSERT INTO inventory (Code, Unit, CostPrice, Restaurant, groupp," +
                         $"Actually1,Actually2,Actually3,Actually4,Actually5,Act215_1,Act215_2,Act215_3,Act215_4,Act215_5)" +
-                        $" VALUES (@Code, @Name_1, @Name_2, @Name_3, @Unit, @CostPrice ,@Restaurant, @groupp,@calcul," +
+                        $" VALUES (@Code, @Unit, @CostPrice ,@Restaurant, @groupp," +
                         $"@Actually1,@Actually2,@Actually3,@Actually4,@Actually5,@Act215_1,@Act215_2,@Act215_3,@Act215_4,@Act215_5)";
                     using (SqlCommand insertCommand = new SqlCommand(InsertQuery, connection))
                     {
-                        insertCommand.Parameters.AddWithValue("@Name_1", row["Name_1"].ToString());
-                        insertCommand.Parameters.AddWithValue("@Name_2", row["Name_2"].ToString());
-                        insertCommand.Parameters.AddWithValue("@Name_3", row["Name_3"].ToString());
                         insertCommand.Parameters.AddWithValue("@Unit", row["Unit"].ToString());
                         insertCommand.Parameters.AddWithValue("@CostPrice", float.Parse(row["CostPrice"].ToString()));
                         insertCommand.Parameters.AddWithValue("@Code", row["Code"].ToString());
@@ -409,7 +543,6 @@ namespace WindowsFormsApp4
                         insertCommand.Parameters.AddWithValue("@Act215_3", 0);
                         insertCommand.Parameters.AddWithValue("@Act215_4", 0);
                         insertCommand.Parameters.AddWithValue("@Act215_5", 0);
-                        insertCommand.Parameters.AddWithValue("@calcul", 0);
 
                         insertCommand.ExecuteNonQuery();
                     }
@@ -456,7 +589,7 @@ namespace WindowsFormsApp4
         {
             if (DepartmentComboBox.DataSource == Table_Department.DefaultView)
             {
-                DataRow[] foundRows = Table_Department.Select($"Name_1 = '{DepartmentComboBox.Text}' ");
+                DataRow[] foundRows = Table_Department.Select($"Name = '{DepartmentComboBox.Text}' ");
                 DepartmentIdBox.Text = foundRows[0]["Id"].ToString();
                 if (DepartmentIdBox.Text == "1")
                 {
@@ -526,7 +659,7 @@ namespace WindowsFormsApp4
         }
         private void DepartmentComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-                DataRow[] foundRows = Table_Department.Select($"Name_1 = '{DepartmentComboBox.Text}' ");
+                DataRow[] foundRows = Table_Department.Select($"Name = '{DepartmentComboBox.Text}' ");
             if (foundRows.Length == 0) { return; }
                 DepartmentIdBox.Text = foundRows[0]["Id"].ToString();
                 calculation();
@@ -542,7 +675,7 @@ namespace WindowsFormsApp4
         {
             string txt = SearchBox.Text.Trim();
             dataView = new DataView(Table_Inventory);
-            dataView.RowFilter = $"(Code+Name_1) LIKE '%{txt}%'";
+            dataView.RowFilter = $"(Code+Name) LIKE '%{txt}%'";
             dataGridView1.DataSource = dataView;
         }
 
@@ -550,7 +683,7 @@ namespace WindowsFormsApp4
         {
             string txt = SearchBox1.Text.Trim();
             dataView = new DataView(Table_Inventory215);
-            dataView.RowFilter = $"(Code+Name_1) LIKE '%{txt}%'";
+            dataView.RowFilter = $"(Code+Name) LIKE '%{txt}%'";
             dataGridView2.DataSource = dataView;
         }
 
@@ -1052,50 +1185,24 @@ namespace WindowsFormsApp4
 
         private void radioButton2_Click(object sender, EventArgs e)
         {
-            string connectionString = Properties.Settings.Default.CafeRestDB;
-            SqlConnection connection = new SqlConnection(connectionString);
-            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
-            string query4 = $"SELECT Code,Name_1,Unit,CostPrice,Actually1,Actually2,Actually3,Actually4,Actually5," +
-  $"Act215_1,Act215_2,Act215_3,Act215_4,Act215_5 FROM inventory WHERE Restaurant='{_restaurant}' and Groupp='2131' ";
-            Table_Inventory = dbHelper.ExecuteQuery(query4);
-            Table_Inventory.Columns.Add("Calcul", typeof(float));
-            Table_Inventory.Columns.Add("Over", typeof(float));
-            Table_Inventory.Columns.Add("Lack", typeof(float));
             dataView = new DataView(Table_Inventory);
+            dataView.RowFilter = $"(Groupp) LIKE '%{2131}%'";
             dataGridView1.DataSource = dataView;
             dataGridView2.Visible = false;
         }
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
-            string connectionString = Properties.Settings.Default.CafeRestDB;
-            SqlConnection connection = new SqlConnection(connectionString);
-            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
-            string query4 = $"SELECT Code,Name_1,Unit,CostPrice,Actually1,Actually2,Actually3,Actually4,Actually5," +
-  $"Act215_1,Act215_2,Act215_3,Act215_4,Act215_5 FROM inventory WHERE Restaurant='{_restaurant}' and Groupp='1111' ";
-            Table_Inventory = dbHelper.ExecuteQuery(query4);
-
-            Table_Inventory.Columns.Add("Calcul", typeof(float));
-            Table_Inventory.Columns.Add("Over", typeof(float));
-            Table_Inventory.Columns.Add("Lack", typeof(float));
             dataView = new DataView(Table_Inventory);
+            dataView.RowFilter = $"(Groupp) LIKE '%{1111}%'";
             dataGridView1.DataSource = dataView;
             dataGridView2.Visible = false;
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            string connectionString = Properties.Settings.Default.CafeRestDB;
-            SqlConnection connection = new SqlConnection(connectionString);
-            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
-            string query4 = $"SELECT Code,Name_1,Unit,CostPrice,Actually1,Actually2,Actually3,Actually4,Actually5," +
-  $"Act215_1,Act215_2,Act215_3,Act215_4,Act215_5 FROM inventory WHERE Restaurant='{_restaurant}' and Groupp='2111' ";
-            Table_Inventory = dbHelper.ExecuteQuery(query4);
-
-            Table_Inventory.Columns.Add("Calcul", typeof(float));
-            Table_Inventory.Columns.Add("Over", typeof(float));
-            Table_Inventory.Columns.Add("Lack", typeof(float));
             dataView = new DataView(Table_Inventory);
+            dataView.RowFilter = $"(Groupp) LIKE '%{2111}%'";
             dataGridView1.DataSource = dataView;
             dataGridView2.Visible=true;
         }
@@ -1110,12 +1217,12 @@ namespace WindowsFormsApp4
             Table_Restaurant = dbHelper.ExecuteQuery(query5);
             string restname = "";
             DataRow[] foundRows = Table_Restaurant.Select($"Id = '{_restaurant}' ");
-            if (foundRows != null && foundRows.Length > 0) restname = foundRows[0]["Name_1"].ToString();
+            if (foundRows != null && foundRows.Length > 0) restname = foundRows[0]["Name"].ToString();
 
             dataView = new DataView(Table_Inventory);
             dataGridView1.DataSource = dataView;
             dataGridView1.Columns[0].DataPropertyName = "Code";
-            dataGridView1.Columns[1].DataPropertyName = "Name_1";
+            dataGridView1.Columns[1].DataPropertyName = "Name";
             dataGridView1.Columns[2].DataPropertyName = "Unit";
             dataGridView1.Columns[3].DataPropertyName = "CostPrice";
             dataGridView1.Columns[4].DataPropertyName = "Actually1";
@@ -1172,7 +1279,7 @@ namespace WindowsFormsApp4
                 DataRow newRow = InventoryReport.NewRow();
                 InventoryReport.Rows.Add(newRow);
                 newRow["Code"] = row["Code"];
-                newRow["Name1"] = row["Name_1"];
+                newRow["Name1"] = row["Name"];
                 newRow["Unit"] = row["Unit"];
                 newRow["CostPrice"] = decimal.Parse(row["CostPrice"].ToString());
                 newRow["Actually"] = actually;

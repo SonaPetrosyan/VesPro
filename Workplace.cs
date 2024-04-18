@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Drawing;
+using System.IO;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Drawing.Printing;
-using MySql.Data.MySqlClient;
+
 
 
 namespace WindowsFormsApp4
@@ -13,7 +13,9 @@ namespace WindowsFormsApp4
     public partial class Workplace : Form
     {
         private int _restaurant;
-
+        private int _editor;
+        private int _holl;
+        private string _language;
         private SQLDatabaseHelper dbHelper;
 
         private DataTable Resize = new DataTable();
@@ -21,11 +23,15 @@ namespace WindowsFormsApp4
         private DataTable Table_Workplace = new DataTable();
 
         private DataTable Table_Restaurant = new DataTable();
+        private DataTable ControlsWorkplace = new DataTable();
 
         private DataView dataView;
-        public Workplace(int restaurant)
+        public Workplace(int restaurant, int editor, int holl, string language )
         {
             _restaurant = restaurant;
+            _editor = editor;
+            _holl = holl;
+            _language = language;
             InitializeComponent();
             string connectionString = Properties.Settings.Default.CafeRestDB;
             SqlConnection connection = new SqlConnection(connectionString);
@@ -39,36 +45,29 @@ namespace WindowsFormsApp4
 
             dataGridView1.Columns[0].DataPropertyName = "Number";
             dataGridView1.Columns[1].DataPropertyName = "Description";
-            dataGridView1.Columns[2].DataPropertyName = "Power";
-            dataGridView1.Columns[3].DataPropertyName = "Billprint";
-            dataGridView1.Columns[4].DataPropertyName = "Preprint";
-            dataGridView1.Columns[5].DataPropertyName = "Taxprint";
-            dataGridView1.Columns[6].DataPropertyName = "Printer1";
-            dataGridView1.Columns[7].DataPropertyName = "Printer2";
-            dataGridView1.Columns[8].DataPropertyName = "Printer3";
-            dataGridView1.Columns[9].DataPropertyName = "Printer4";
-            dataGridView1.Columns[10].DataPropertyName = "Printer5";
-            dataGridView1.Columns[11].DataPropertyName = "Printer6";
-            dataGridView1.Columns[12].DataPropertyName = "Printer7";
-            dataGridView1.Columns[13].DataPropertyName = "Printer8";
-            dataGridView1.Columns[14].DataPropertyName = "Printer9";
-            dataGridView1.Columns[15].DataPropertyName = "Printer10";
-            dataGridView1.Columns[16].DataPropertyName = "Printer11";
-            dataGridView1.Columns[17].DataPropertyName = "Printer12";
-            dataGridView1.Columns[18].DataPropertyName = "Printer13";
-            dataGridView1.Columns[19].DataPropertyName = "Printer14";
-            dataGridView1.Columns[20].DataPropertyName = "Printer15";
+            dataGridView1.Columns[2].DataPropertyName = "Billprint";
+            dataGridView1.Columns[3].DataPropertyName = "Preprint";
+            dataGridView1.Columns[4].DataPropertyName = "Taxprint";
+            dataGridView1.Columns[5].DataPropertyName = "Printer1";
+            dataGridView1.Columns[6].DataPropertyName = "Printer2";
+            dataGridView1.Columns[7].DataPropertyName = "Printer3";
+            dataGridView1.Columns[8].DataPropertyName = "Printer4";
+            dataGridView1.Columns[9].DataPropertyName = "Printer5";
+            dataGridView1.Columns[10].DataPropertyName = "Printer6";
+            dataGridView1.Columns[11].DataPropertyName = "Printer7";
+            dataGridView1.Columns[12].DataPropertyName = "Printer8";
+            dataGridView1.Columns[13].DataPropertyName = "Printer9";
+            dataGridView1.Columns[14].DataPropertyName = "Printer10";
+            dataGridView1.Columns[15].DataPropertyName = "Printer11";
+            dataGridView1.Columns[16].DataPropertyName = "Printer12";
+            dataGridView1.Columns[17].DataPropertyName = "Printer13";
+            dataGridView1.Columns[18].DataPropertyName = "Printer14";
+            dataGridView1.Columns[19].DataPropertyName = "Printer15";
 
-            //  dataGridView1.Columns[0].HeaderText = "Կոդ";
-            //  dataGridView1.Columns[1].HeaderText = "Անվանում";
-            //  dataGridView1.Columns[2].HeaderText = "Չ․մ";
-            //  dataGridView1.Columns[3].HeaderText = "Վերջին գին";
-            //  dataGridView1.Columns[4].HeaderText = "Քանակ";
-            //  dataGridView1.Columns[5].HeaderText = "Գին";
             foreach (DataGridViewColumn column in dataGridView1.Columns)
             {
                 string name = column.DataPropertyName;
-                if (column.Index > 20)
+                if (column.Index > 19)
                 {
                     column.Visible = false;
                 }
@@ -83,14 +82,67 @@ namespace WindowsFormsApp4
 
                 string query1 = $"SELECT * FROM Restaurants ";
             Table_Restaurant = dbHelper.ExecuteQuery(query1);
+            foreach (DataRow row in Table_Restaurant.Rows)
+            {
+                row["Name"] = row[_language];
+            }
 
             comboBoxRest.DataSource = Table_Restaurant.DefaultView;
-            comboBoxRest.DisplayMember = "Name_1";
+            comboBoxRest.DisplayMember = "Name";
             Resize.Columns.Add("BeginWidth", typeof(float));
             Resize.Columns.Add("BeginHeight", typeof(float));
             Resize.Columns.Add("EndWidth", typeof(float));
             Resize.Columns.Add("EndHeight", typeof(float));
             Resize.Rows.Add(0, 0, 0, 0);
+            connection.Close();
+
+            if (_holl == 0)
+            {
+                button1.Enabled = false;
+                savebutton.Enabled = false;
+            }
+            SetLanguage(_language);
+        }
+        private void SetLanguage(string lang)
+        {
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
+            string rb = "";
+            string rbt = "";
+            connection.Open();
+            DataTable ControlsForm1 = new DataTable();
+            string query1 = $"SELECT * FROM ControlsWorkplace  ";
+            ControlsWorkplace = dbHelper.ExecuteQuery(query1);
+            foreach (Control control in this.Controls)
+            {
+                string columnName = control.Name.Trim();
+                DataRow[] foundRows = ControlsWorkplace.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0)
+                {
+                    control.Text = foundRows[0][_language].ToString();
+                }
+            }
+            foreach (Control control in panel1.Controls)
+            {
+                string columnName = control.Name.Trim();
+                DataRow[] foundRows = ControlsWorkplace.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0)
+                {
+                    control.Text = foundRows[0][_language].ToString();
+                }
+            }
+
+            for (int colIndex = 0; colIndex < dataGridView1.Columns.Count; colIndex++)
+            {
+                string columnName = dataGridView1.Columns[colIndex].DataPropertyName.Trim();
+                DataRow[] foundRows = ControlsWorkplace.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0)
+                {
+                    dataGridView1.Columns[colIndex].HeaderText = foundRows[0][_language].ToString();
+                }
+            }
+
             connection.Close();
         }
 
@@ -162,7 +214,6 @@ namespace WindowsFormsApp4
             newRow["Holl"] = holl;
             newRow["Add"] = 1;
             savebutton.Visible = true;
-
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -173,11 +224,6 @@ namespace WindowsFormsApp4
             getprinterbox.Tag = currentCell.ColumnIndex.ToString();
             // Get the next cell
             this.Text = getprinterbox.Tag.ToString();
-            if (currentCell != null && currentCell.ColumnIndex == 5)
-            {
-                powerbox.Visible = true;
-                label3.Visible = true;
-            }
             if (currentCell != null && currentCell.ColumnIndex > 5) 
             {
                 getprinterbox.Visible = true;
@@ -197,16 +243,6 @@ namespace WindowsFormsApp4
 
 
 
-        private void powerbox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int row = int.Parse(dataGridView1.Tag.ToString());
-            int column = int.Parse(getprinterbox.Tag.ToString());
-            dataGridView1.CurrentCell = dataGridView1.Rows[row].Cells[column];
-            dataGridView1.CurrentCell.Value = powerbox.SelectedItem;
-            powerbox.Visible = false;
-            savebutton.Visible = true;
-        }
-
         private void savebutton_Click(object sender, EventArgs e)
         {
             string connectionString = Properties.Settings.Default.CafeRestDB;
@@ -219,7 +255,7 @@ namespace WindowsFormsApp4
                 if (row["Add"] == null || int.Parse(row["Add"].ToString()) != 1)
                 {
                     string UpdateQuery = $"UPDATE Workplace SET Number = @Number,Description=@Description," +
-                        $"Power=@Power,Billprint=@Billprint,Preprint=@Preprint,Taxprint=@Taxprint," +
+                        $"Billprint=@Billprint,Preprint=@Preprint,Taxprint=@Taxprint," +
                         $"Printer1=@Printer1,Printer2=@Printer2," +
                         $"Printer3=@Printer3,Printer4=@Printer4,Printer5=@Printer5," +
                         $"Printer6=@Printer6,Printer7=@Printer7,Printer8=@Printer8," +
@@ -230,7 +266,6 @@ namespace WindowsFormsApp4
                     {
                         command.Parameters.AddWithValue("@Number", row["Number"]);
                         command.Parameters.AddWithValue("@Description", row["Description"]);
-                        command.Parameters.AddWithValue("@Power", row["Power"]);
                         command.Parameters.AddWithValue("@Billprint", row["Billprint"]);
                         command.Parameters.AddWithValue("@Preprint", row["Preprint"]);
                         command.Parameters.AddWithValue("@Taxprint", row["Taxprint"]);
@@ -255,10 +290,10 @@ namespace WindowsFormsApp4
                 else
                 {
 
-                    string InsertQuery = $"INSERT INTO Workplace (Restaurant, Holl, Number,Description, Power,Billprint, Preprint, Taxprint, Printer1" +
+                    string InsertQuery = $"INSERT INTO Workplace (Restaurant, Holl, Number,Description,Billprint, Preprint, Taxprint, Printer1" +
                         $", Printer2, Printer3, Printer4, Printer5, Printer6, Printer7, Printer8, Printer9, Printer10, " +
                         $"Printer11, Printer12, Printer13, Printer14, Printer15) " +
-           $"VALUES (@Restaurant, @Holl, @Number,@Description, @Power, @Preprint, @Taxprint, @Printer1, @Printer2," +
+           $"VALUES (@Restaurant, @Holl, @Number,@Description,@Billprint,@Preprint, @Taxprint, @Printer1, @Printer2," +
            $" @Printer3, @Printer4, @Printer5, @Printer6, @Printer7, @Printer8, @Printer9, @Printer10," +
            $"@Printer11, @Printer12, @Printer13, @Printer14, @Printer15)";
                     using (SqlCommand command = new SqlCommand(InsertQuery, connection))
@@ -267,7 +302,6 @@ namespace WindowsFormsApp4
                         command.Parameters.AddWithValue("@Holl", row["Holl"]);
                         command.Parameters.AddWithValue("@Number", row["Number"]);
                         command.Parameters.AddWithValue("@Description", row["Description"]);
-                        command.Parameters.AddWithValue("@Power", row["Power"]);
                         command.Parameters.AddWithValue("@Billprint", row["Billprint"]);
                         command.Parameters.AddWithValue("@Preprint", row["Preprint"]);
                         command.Parameters.AddWithValue("@Taxprint", row["Taxprint"]);
@@ -298,6 +332,42 @@ namespace WindowsFormsApp4
             savebutton.Visible = true;
         }
 
+        private void HelpButton_Click(object sender, EventArgs e)
+        {
+            string filePath = "";
+            if (HelpButton.Text == "?")
+            {
+                HelpButton.Text = "X";
+                richTextBox1.Height = this.Height - 50;
+                richTextBox1.Top = 0;
+                richTextBox1.Left = HelpButton.Width+3;
+                richTextBox1.Width = comboBoxRest.Left ;
+                richTextBox1.ReadOnly = true;
 
+                if (_language=="Armenian") filePath = "D:\\hayrik\\sql\\help\\Workplace_arm.txt";
+                if (_language == "English") filePath = "D:\\hayrik\\sql\\help\\Workplace_eng.txt";
+                if (_language == "German") filePath = "D:\\hayrik\\sql\\help\\Workplace_ger.txt";
+                if (_language == "Espaniol") filePath = "D:\\hayrik\\sql\\help\\Workplace_esp.txt";
+                if (_language == "Russian") filePath = "D:\\hayrik\\sql\\help\\Workplace_eng.txt";
+                string fileContent = File.ReadAllText(filePath);
+                richTextBox1.Text = fileContent;
+                richTextBox1.Visible = true;
+            }
+            else
+            {
+                richTextBox1.Visible = false;
+                HelpButton.Text = "?";
+            }
+        }
+
+        private void HollUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            int rest = comboBoxRest.SelectedIndex + 1;
+            int holl = (int)HollUpDown.Value;
+            int num = 0;
+            dataView = new DataView(Table_Workplace);
+            dataView.RowFilter = ($"Restaurant = '{rest}' and Holl = '{holl}' ");
+            dataGridView1.DataSource = dataView;
+        }
     }
 }

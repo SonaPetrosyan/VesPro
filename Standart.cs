@@ -6,6 +6,9 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
 using Button = System.Windows.Forms.Button;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
+using System.Reflection.Emit;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 namespace WindowsFormsApp4
@@ -14,6 +17,8 @@ namespace WindowsFormsApp4
     {
         private int _restaurant;
         private int _editor;
+        private string _language;
+
         private DataTable Department = new DataTable();
 
         private DataTable Table_215 = new DataTable();
@@ -31,35 +36,84 @@ namespace WindowsFormsApp4
 //
         private SQLDatabaseHelper dbHelper;
         private DataView dataView;
-        public Standart(int restaurant, int editor)
+        public Standart(int restaurant, int editor, string language)
         {
             InitializeComponent();
             _restaurant = restaurant;
             _editor= editor;
+            _language = language;
+            string name = "անվանում", pr = "գին", qu = "քանակ", am = "արժեք";
+            label1.Text = "Պատվեր N#";
+
+            if (_language == "English")
+            {
+                name = "name"; pr = "price"; qu = "quantity"; am = "amount";
+                label1.Text = "Order N#";
+            }
+            if (_language == "German")
+            {
+                name = "name"; pr = "Preis"; qu = "Menge"; am = "Wert";
+                label1.Text = "Bestellung N#";
+            }
+            if (_language == "Espaniol")
+            {
+                name = "nombre"; pr = "precio"; qu = "cantidad"; am = "valor";
+                label1.Text = "Nº de pedido";
+            }
+            if (_language == "Russian")
+            {
+                name = "наименование"; pr = "цена"; qu = "количество"; am = "сумма";
+                label1.Text = "Заказ N#";
+            }
+
+
+
             string connectionString = Properties.Settings.Default.CafeRestDB;
             SqlConnection connection = new SqlConnection(connectionString);
             SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
 
             string query6 = $"SELECT * FROM standart_215 WHERE  Restaurant='{_restaurant}' ";
             Standart_215 = dbHelper.ExecuteQuery(query6);
+            Standart_215.Columns.Add("name", typeof(string));
 
             string query5 = $"SELECT * FROM department WHERE Restaurant='{_restaurant}' ";
             Department = dbHelper.ExecuteQuery(query5);
+            foreach (DataRow row in Department.Rows)
+            {
+                row["Name"] = row[_language].ToString();
+            }
 
             string query4 = $"SELECT * FROM FoodGroupp WHERE  Restaurant='{_restaurant}' ";
             FoodGroupp = dbHelper.ExecuteQuery(query4);
+            foreach (DataRow row in FoodGroupp.Rows)
+            {
+                row["Name"] = row[_language].ToString();
+            }
 
 
-            string query1 = $"SELECT * FROM table_215 WHERE Price>0 AND Restaurant='{_restaurant}' ";
+
+                string query1 = $"SELECT * FROM table_215 WHERE Price>0 AND Restaurant='{_restaurant}' ";
             Table_215 = dbHelper.ExecuteQuery(query1);
+            Table_215.Columns.Add("name", typeof(string));
+
             foreach (DataRow row in Table_215.Rows)
             {
                 row["existent"] = 0;
+                row["Name"] = row[_language];
             }
-
+            
             dataGridView1.DataSource = Table_215;
-            dataGridView1.Columns[0].DataPropertyName = "Name_1";
+            dataGridView1.Columns[0].DataPropertyName = "Name";
             dataGridView1.Columns[1].DataPropertyName = "Price";
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                if (column.DataPropertyName == "Name") column.HeaderText = name;
+                if (column.DataPropertyName == "Price") column.HeaderText = pr;
+                if (column.Index > 1)
+                {
+                    column.Visible = false;
+                }
+            }
 
             //// Կազմավորվում է պատվերի աղյուսակը
 
@@ -87,6 +141,18 @@ namespace WindowsFormsApp4
             dataGridView2.Columns[2].DataPropertyName = "qanak";
             dataGridView2.Columns[3].DataPropertyName = "salesamount";
 
+            foreach (DataGridViewColumn column in dataGridView2.Columns)
+            {
+                if (column.DataPropertyName == "name" ) column.HeaderText = name;
+                if (column.DataPropertyName == "Price") column.HeaderText = pr;
+                if (column.DataPropertyName == "qanak") column.HeaderText = qu;
+                if (column.DataPropertyName == "salesamount") column.HeaderText = am;
+
+                if (column.Index > 3)
+                {
+                    column.Visible = false;
+                }
+            }
 
             Resize.Columns.Add("BeginWidth", typeof(float));
             Resize.Columns.Add("BeginHeight", typeof(float));
@@ -104,7 +170,7 @@ namespace WindowsFormsApp4
             Table_Rest = dbHelper.ExecuteQuery(query7);
             foreach (DataRow row in Table_Rest.Rows)
             {
-                this.Text = row["Name_1"].ToString();
+                this.Text = row["Name"].ToString();
             }
 
 
@@ -389,7 +455,7 @@ namespace WindowsFormsApp4
                         }
                         if (k == 1) continue;
                         i++;
-                        groupArray[i].Text = matchingRows[0]["Name_1"].ToString();
+                        groupArray[i].Text = matchingRows[0]["Name"].ToString();
                         groupArray[i].Tag = matchingRows[0]["Groupp"].ToString();
                         groupArray[i].Visible = true;
                     }
@@ -406,7 +472,7 @@ namespace WindowsFormsApp4
             object printerValue = dataGridView.Rows[e.RowIndex].Cells["printer"].Value;
             object priceValue = dataGridView.Rows[e.RowIndex].Cells["price"].Value;
             object existValue = dataGridView.Rows[e.RowIndex].Cells["existent"].Value;
-            object nameValue = dataGridView.Rows[e.RowIndex].Cells["Name_1"].Value;
+            object nameValue = dataGridView.Rows[e.RowIndex].Cells["Name"].Value;
             object departmentValue = dataGridView.Rows[e.RowIndex].Cells["Department"].Value;
             if (codeValue != null)
             {
@@ -638,10 +704,12 @@ namespace WindowsFormsApp4
             connection.Open();
             string query6 = $"SELECT * FROM standart_215 WHERE  Restaurant='{_restaurant}' ";
             Standart_215 = dbHelper.ExecuteQuery(query6);
-
+            Standart_215.Columns.Add("name", typeof(string));
+            Translate.translation(Table_215, Standart_215, _language, "1");
             if (numericUpDown1.Value > 0 && _editor == 1) dataGridView1.Enabled= true;
             CurrentOrder.Clear();
             int i = 0;
+            float summ = 0;
             foreach (DataRow row in Standart_215.Rows)
             {
                 if ((int.Parse(row["Number"].ToString()) != numericUpDown1.Value) || int.Parse(row["Restaurant"].ToString()) != _restaurant) continue;
@@ -651,6 +719,7 @@ namespace WindowsFormsApp4
                 newRow["id"] = i;
                 newRow["Number"] = numericUpDown1.Value;
                 newRow["Code"] = row["Code"];
+                newRow["Name"] = row["Name"];
                 newRow["Quantity"] = row["Quantity"];
                 newRow["SalesAmount"] = row["SalesAmount"];
                 newRow["Restaurant"] = _restaurant;
@@ -660,13 +729,13 @@ namespace WindowsFormsApp4
                 DataRow[] foundRows = Table_215.Select($"Code= '{row["Code"]}' AND Restaurant= '{_restaurant}' ");
                 if (foundRows.Length > 0)
                 {
-                    newRow["name"] = foundRows[0]["Name_1"];
                     newRow["price"] = foundRows[0]["Price"];
                     newRow["departmentout"] = foundRows[0]["Department"];
                 }
                 newRow["qanak"] = row["Quantity"].ToString();
+                summ=summ+ float.Parse(row["SalesAmount"].ToString());
             }
-
+            amount.Text=summ.ToString();
             connection.Close();
         }
 
@@ -742,11 +811,10 @@ namespace WindowsFormsApp4
             Button[] departmentArray = new Button[2] {department1, department2 };
             foreach (DataRow row in Department.Rows)//բաժինների կոճակների անուններն ենք տեղադրում
             {
-                if (row["Alloved"].ToString() == "0") continue;
                 j++;
                 if (DoesButtonExist(departmentArray[j].Name))
                 {
-                    departmentArray[j].Text = row["Name_1"].ToString();
+                    departmentArray[j].Text = row["Name"].ToString();
                     departmentArray[j].Visible = true;
                 }
             }
@@ -818,11 +886,16 @@ namespace WindowsFormsApp4
         {
             if (HelpButton.Text == "?")
             {
+                string filePath = "";
                 HelpButton.Text = "X";
                 richTextBox1.Height = this.Height - 50;
                 richTextBox1.ReadOnly = true;
 
-                string filePath = "D:\\hayrik\\sql\\help\\Standart.txt";
+                if (_language == "Armenian") filePath = "D:\\hayrik\\sql\\help\\Standart_arm.txt";
+                if (_language == "English") filePath = "D:\\hayrik\\sql\\help\\Standart_eng.txt";
+                if (_language == "German") filePath = "D:\\hayrik\\sql\\help\\Standart_ger.txt";
+                if (_language == "Espaniol") filePath = "D:\\hayrik\\sql\\help\\Standart_esp.txt";
+                if (_language == "Russian") filePath = "D:\\hayrik\\sql\\help\\Standart_rus.txt";
                 string fileContent = File.ReadAllText(filePath);
                 richTextBox1.Text = fileContent;
                 richTextBox1.Visible = true;

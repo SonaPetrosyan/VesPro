@@ -13,6 +13,8 @@ namespace WindowsFormsApp4
         private int _parameter1;
         private int _restaurant;
         private int _editor;
+        private string _language;
+
         private SQLDatabaseHelper dbHelper;
 
         private DataTable Table_215 = new DataTable();
@@ -35,31 +37,36 @@ namespace WindowsFormsApp4
 
         private DataTable Resize = new DataTable();
 
+        private DataTable ControlsPurchase = new DataTable();
+
         private DataTable Table_Number = new DataTable();
 
         private DataTable Table_Purchase;
 
         private DataView dataView;
 
-        public Purchase(int ooperator, int restaurant, int editor)
+        public Purchase(int ooperator, int restaurant, int editor, string language)
         {
             _parameter1 = ooperator;
             _restaurant = restaurant;
             _editor = editor;
+            _language = language;
             InitializeComponent();
-            //InitForm();
+
             dateTimePicker1.Value = DateTime.Now;
             string connectionString = Properties.Settings.Default.CafeRestDB;
             SqlConnection connection = new SqlConnection(connectionString);
             SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
 
-            string query1 = $"SELECT Code,Name_1,Unit,CostPrice FROM table_211  ";
+            string query1 = $"SELECT * FROM table_211  ";
             Table_211 = dbHelper.ExecuteQuery(query1);
+            Table_211.Columns.Add("Name", typeof(string));
             Table_211.Columns.Add("Quantity", typeof(float));
             Table_211.Columns.Add("Amount", typeof(float));
             Table_211.Columns.Add("Changed", typeof(int));
             foreach (DataRow row in Table_211.Rows)
             {
+                row["Name"] = row[_language];
                 row["Quantity"] = 0;
                 row["Amount"] = 0;
                 row["Changed"] = 0;
@@ -79,14 +86,14 @@ namespace WindowsFormsApp4
             Table_Purchase.Columns.Add("DateOfEntry", typeof(DateTime));
             Table_Purchase.Columns.Add("RestaurantIn", typeof(int));
             Table_Purchase.Columns.Add("RestaurantOut", typeof(int));
-            Table_Purchase.Columns.Add("Restaurant", typeof(int));
+            //      Table_Purchase.Columns.Add("Restaurant", typeof(int));
             Table_Purchase.Columns.Add("Note", typeof(string));
 
             dataView = new DataView(Table_211);
             dataGridView1.DataSource = dataView;
 
             dataGridView1.Columns[0].DataPropertyName = "Code";
-            dataGridView1.Columns[1].DataPropertyName = "Name_1";
+            dataGridView1.Columns[1].DataPropertyName = "Name";
             dataGridView1.Columns[2].DataPropertyName = "Unit";
             dataGridView1.Columns[3].DataPropertyName = "CostPrice";
             dataGridView1.Columns[4].DataPropertyName = "Quantity";
@@ -111,7 +118,7 @@ namespace WindowsFormsApp4
             dataGridView2.DataSource = dataView;
 
             dataGridView2.Columns[0].DataPropertyName = "Code";
-            dataGridView2.Columns[1].DataPropertyName = "Name_1";
+            dataGridView2.Columns[1].DataPropertyName = "Name";
             dataGridView2.Columns[2].DataPropertyName = "Unit";
             dataGridView2.Columns[3].DataPropertyName = "CostPrice";
             dataGridView2.Columns[4].DataPropertyName = "Quantity";
@@ -134,36 +141,42 @@ namespace WindowsFormsApp4
             }
 
 
-            string query2 = $"SELECT Code,Name_1,Department,CostPrice FROM table_215  where Restaurant='{_restaurant}'  ";
+            string query2 = $"SELECT Code,Department,CostPrice,Armenian,English,German,Espaniol,Russian FROM table_215  where Restaurant='{_restaurant}'  ";
             Table_215 = dbHelper.ExecuteQuery(query2);
+            Table_215.Columns.Add("Name", typeof(string));
             Table_215.Columns.Add("Quantity", typeof(float));
             Table_215.Columns.Add("Amount", typeof(float));
 
             foreach (DataRow row in Table_215.Rows)
             {
+                row["Name"] = row[_language];
                 row["Quantity"] = 0;
                 row["Amount"] = 0;
             }
 
-            string query3 = $"SELECT Code,Name_1,Unit,CostPrice FROM table_213  where Restaurant='{_restaurant}'  ";
+            string query3 = $"SELECT Code,Unit,CostPrice,Armenian,English,German,Espaniol,Russian FROM table_213  where Restaurant='{_restaurant}'  ";
             Table_213 = dbHelper.ExecuteQuery(query3);
+            Table_213.Columns.Add("Name", typeof(string));
             Table_213.Columns.Add("Quantity", typeof(float));
             Table_213.Columns.Add("Amount", typeof(float));
             Table_213.Columns.Add("Changed", typeof(int));
             foreach (DataRow row in Table_213.Rows)
             {
+                row["Name"] = row[_language];
                 row["Quantity"] = 0;
                 row["Amount"] = 0;
                 row["Changed"] = 0;
             }
 
-            string query7 = $"SELECT Code,Name_1,Unit,CostPrice FROM table_111  where Restaurant='{_restaurant}'  ";
+            string query7 = $"SELECT Code,Unit,CostPrice,Armenian,English,German,Espaniol,Russian FROM table_111  where Restaurant='{_restaurant}'  ";
             Table_111 = dbHelper.ExecuteQuery(query7);
+            Table_111.Columns.Add("Name", typeof(string));
             Table_111.Columns.Add("Quantity", typeof(float));
             Table_111.Columns.Add("Amount", typeof(float));
             Table_111.Columns.Add("Changed", typeof(int));
             foreach (DataRow row in Table_111.Rows)
             {
+                row["Name"] = row[_language];
                 row["Quantity"] = 0;
                 row["Amount"] = 0;
                 row["Changed"] = 0;
@@ -172,36 +185,120 @@ namespace WindowsFormsApp4
             string query4 = $"SELECT * FROM department  where Restaurant='{_restaurant}' ";
             Table_Department = dbHelper.ExecuteQuery(query4);
             Table_Department_ = dbHelper.ExecuteQuery(query4);
+            foreach (DataRow row in Table_Department.Rows)
+            {
+                row["Name"] = row[_language];
+            }
+            foreach (DataRow row in Table_Department_.Rows)
+            {
+                row["Name"] = row[_language];
+            }
             DepartmentComboBox.DataSource = Table_Department.DefaultView;
             DepartmentComboBox.Text = "";
-            DepartmentComboBox.DisplayMember = "Name_1";
+            DepartmentComboBox.DisplayMember = "Name";
 
 
             string query5 = $"SELECT * FROM partners where Restaurant='{_restaurant}' AND Groupp='{0}'  ";
             Table_Partners = dbHelper.ExecuteQuery(query5);
+            foreach (DataRow row in Table_Partners.Rows)
+            {
+                row["Name"] = row[_language];
+            }
 
-
-            PartnersComboBox.DisplayMember = "Name_1";
+            PartnersComboBox.DisplayMember = "Name";
             PartnersComboBox.DataSource = Table_Partners.DefaultView;
             PartnersComboBox.Text = "";
 
             string query6 = $"SELECT * FROM partners  where Restaurant='{_restaurant}' AND Groupp='{1}' ";
             Table_Outgo = dbHelper.ExecuteQuery(query6);
-
+            foreach (DataRow row in Table_Outgo.Rows)
+            {
+                row["Name"] = row[_language];
+            }
             Resize.Columns.Add("BeginWidth", typeof(float));
             Resize.Columns.Add("BeginHeight", typeof(float));
             Resize.Columns.Add("EndWidth", typeof(float));
             Resize.Columns.Add("EndHeight", typeof(float));
             Resize.Rows.Add(0, 0, 0, 0);
 
-
+            SetLanguage(_language);
         }
+        private void SetLanguage(string lang)
+        {
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
+            string rb = "";
+            string rbt = "";
+            connection.Open();
+            DataTable ControlsForm1 = new DataTable();
+            string query1 = $"SELECT * FROM ControlsPurchase  ";
+            ControlsPurchase = dbHelper.ExecuteQuery(query1);
+            foreach (Control control in panel1.Controls)
+            {
+                string columnName = control.Name.Trim();
+                DataRow[] foundRows = ControlsPurchase.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0)
+                {
+                    control.Text = foundRows[0][_language].ToString();
+                }
+            }
+            foreach (Control control in panel3.Controls)
+            {
+                string columnName = control.Name.Trim();
+                DataRow[] foundRows = ControlsPurchase.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0)
+                {
+                    control.Text = foundRows[0][_language].ToString();
+                }
+            }
+            foreach (Control control in panel4.Controls)
+            {
+                string columnName = control.Name.Trim();
+                DataRow[] foundRows = ControlsPurchase.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0)
+                {
+                    control.Text = foundRows[0][_language].ToString();
+                }
+            }
+            foreach (Control control in panel5.Controls)
+            {
+                string columnName = control.Name.Trim();
+                DataRow[] foundRows = ControlsPurchase.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0)
+                {
+                    control.Text = foundRows[0][_language].ToString();
+                }
+            }
+            for (int colIndex = 0; colIndex < dataGridView1.Columns.Count; colIndex++)
+            {
+                string columnName = dataGridView1.Columns[colIndex].DataPropertyName.Trim();
+                DataRow[] foundRows = ControlsPurchase.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0)
+                {
+                    dataGridView1.Columns[colIndex].HeaderText = foundRows[0][_language].ToString();
+                }
+            }
+
+            for (int colIndex = 0; colIndex < dataGridView2.Columns.Count; colIndex++)
+            {
+                string columnName = dataGridView2.Columns[colIndex].DataPropertyName.Trim();
+                DataRow[] foundRows = ControlsPurchase.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0)
+                {
+                    dataGridView2.Columns[colIndex].HeaderText = foundRows[0][_language].ToString();
+                }
+            }
+            connection.Close();
+        }
+
+
 
         private void PortnersComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (PartnersComboBox.DataSource == Table_Partners.DefaultView)
             {
-                DataRow[] foundRows = Table_Partners.Select($"Name_1 = '{PartnersComboBox.Text}' ");
+                DataRow[] foundRows = Table_Partners.Select($"Name = '{PartnersComboBox.Text}' ");
                 foreach (DataRow row in foundRows)
                 {
                     PartnersIdBox.Text = row["Id"].ToString().Trim();
@@ -210,7 +307,7 @@ namespace WindowsFormsApp4
             }
             else
             {
-                DataRow[] foundRows = Table_Department_.Select($"Name_1 = '{PartnersComboBox.Text}' ");
+                DataRow[] foundRows = Table_Department_.Select($"Name = '{PartnersComboBox.Text}' ");
                 foreach (DataRow row in foundRows)
                 {
                     PartnersIdBox.Text = row["Id"].ToString().Trim();
@@ -231,7 +328,7 @@ namespace WindowsFormsApp4
 
         private void radioButton9_Click(object sender, EventArgs e)
         {
-            dataGridView1.Columns[5].HeaderText = "Գին";
+              dataGridView1.Columns[5].HeaderText = "Գին";
         }
 
         private void InitForm()
@@ -290,7 +387,6 @@ namespace WindowsFormsApp4
                     if (column.HeaderText == "Քանակ")
                     {
                         desiredColumnIndex = column.Index;
-                        this.Text = "column.Index=" + column.Index.ToString() + " column.DataPropertyName " + column.DataPropertyName;
                         dataGridView1.CurrentCell = dataGridView1.Rows[desiredRowIndex].Cells[desiredColumnIndex];
                         dataGridView1.BeginEdit(true);
                     }
@@ -312,7 +408,6 @@ namespace WindowsFormsApp4
                     if (column.HeaderText == "Քանակ")
                     {
                         desiredColumnIndex = column.Index;
-                        this.Text = "column.Index=" + column.Index.ToString() + " column.DataPropertyName " + column.DataPropertyName;
                         dataGridView1.CurrentCell = dataGridView1.Rows[desiredRowIndex].Cells[desiredColumnIndex];
                         dataGridView1.BeginEdit(true);
                     }
@@ -326,25 +421,25 @@ namespace WindowsFormsApp4
             if (dataGridView1.DataSource is DataView dataView && dataView.Table == Table_215)
             {
                 int department = int.Parse(DepartmentIdBox.Text.Trim());
-                dataView.RowFilter = $"Department = {department} AND Name_1 LIKE '%{txt}%'";
+                dataView.RowFilter = $"Department = {department} AND Name LIKE '%{txt}%'";
                 dataGridView1.DataSource = dataView;
             }
             if (dataGridView1.DataSource is DataView dataView1 && dataView1.Table == Table_211)
             {
                 dataView = new DataView(Table_211);
-                dataView.RowFilter = $"(Code+Name_1) LIKE '%{txt}%'";
+                dataView.RowFilter = $"(Code+Name) LIKE '%{txt}%'";
                 dataGridView1.DataSource = dataView;
             }
             if (dataGridView1.DataSource is DataView dataView2 && dataView2.Table == Table_213)
             {
                 dataView = new DataView(Table_213);
-                dataView.RowFilter = $"(Code+Name_1) LIKE '%{txt}%'";
+                dataView.RowFilter = $"(Code+Name) LIKE '%{txt}%'";
                 dataGridView1.DataSource = dataView;
             }
             if (dataGridView1.DataSource is DataView dataView3 && dataView3.Table == Table_111)
             {
                 dataView = new DataView(Table_111);
-                dataView.RowFilter = $"(Code+Name_1) LIKE '%{txt}%'";
+                dataView.RowFilter = $"(Code+Name) LIKE '%{txt}%'";
                 dataGridView1.DataSource = dataView;
             }
         }
@@ -380,36 +475,47 @@ namespace WindowsFormsApp4
                 float salesamount = 0;
                 float costamount = 0;
                 float amount = 0;
+                int quantindex = 0;
+                int amountindex = 0;
                 string unitvalue = "";
                 cname = dataGridView1.Columns[columnIndex].HeaderText;
-
-                codevalue = dataGridView1.Rows[rowIndex].Cells[0].Value.ToString();
-                namevalue = dataGridView1.Rows[rowIndex].Cells[1].Value.ToString();
-                unitvalue = dataGridView1.Rows[rowIndex].Cells[2].Value.ToString();
-                costprice = float.Parse(dataGridView1.Rows[rowIndex].Cells[3].Value.ToString());
-                quantity = float.Parse(dataGridView1.Rows[rowIndex].Cells[4].Value.ToString());
-                costamount = costprice * quantity;
-                amount = costamount;
-                if (radioButton10.Checked)
+                for (int colIndex = 0; colIndex < dataGridView1.Columns.Count; colIndex++)
                 {
-                    costamount = float.Parse(dataGridView1.Rows[rowIndex].Cells[5].Value.ToString());
-                    amount = costamount;
-                    costprice= float.Parse(dataGridView1.Rows[rowIndex].Cells[5].Value.ToString())/quantity;
+                    if (dataGridView1.Columns[colIndex].DataPropertyName == "Code") codevalue = dataGridView1.Rows[rowIndex].Cells[colIndex].Value.ToString();
+                    if (dataGridView1.Columns[colIndex].DataPropertyName == "Name") namevalue = dataGridView1.Rows[rowIndex].Cells[colIndex].Value.ToString();
+                    if (dataGridView1.Columns[colIndex].DataPropertyName == "Unit") unitvalue = dataGridView1.Rows[rowIndex].Cells[colIndex].Value.ToString();
+                    if (dataGridView1.Columns[colIndex].DataPropertyName == "CostPrice") costprice = float.Parse(dataGridView1.Rows[rowIndex].Cells[colIndex].Value.ToString());
+                    if (dataGridView1.Columns[colIndex].DataPropertyName == "Quantity")
+                    {
+                        quantity = float.Parse(dataGridView1.Rows[rowIndex].Cells[colIndex].Value.ToString());
+                        quantindex = colIndex;
+                    }
+                    if (dataGridView1.Columns[colIndex].DataPropertyName == "Amount")
+                    {
+                        amount = float.Parse(dataGridView1.Rows[rowIndex].Cells[colIndex].Value.ToString());
+                        amountindex = colIndex;
+                    }
                 }
-                if (radioButton9.Checked && !radioButton4.Checked)
+                //costamount = costprice * quantity;
+                //amount = costamount;
+                if (radioButton10.Checked && quantity !=0)
                 {
-                    costprice = float.Parse(dataGridView1.Rows[rowIndex].Cells[5].Value.ToString());
+                    costamount = amount;
+                    costprice= amount / quantity;
+                }
+                if ((radioButton3.Checked || radioButton2.Checked || radioButton9.Checked) && !radioButton4.Checked)
+                {
                     costamount = costprice * quantity;
                     amount = costamount;
                 }
                 if (radioButton4.Checked && radioButton10.Checked)
                 {
-                    salesamount = float.Parse(dataGridView1.Rows[rowIndex].Cells[5].Value.ToString());
-                    amount = salesamount;
+                    salesamount = amount;
+
                 }
                 if (radioButton4.Checked && radioButton9.Checked)
                 {
-                    salesamount = float.Parse(dataGridView1.Rows[rowIndex].Cells[5].Value.ToString()) * quantity;
+                    salesamount = costprice * quantity;
                     amount = salesamount;
                 }
 
@@ -477,8 +583,10 @@ namespace WindowsFormsApp4
                 if (radioButton3.Checked)
                 {
                     note = "spent";
-                    departmentin = int.Parse(DepartmentIdBox.Text);
+                    debitor = int.Parse(PartnersIdBox.Text);
                     departmentout = int.Parse(PartnersIdBox.Text);
+                                        
+                    
                     if (dataGridView1.DataSource is DataView dataView && dataView.Table == Table_211)
                     {
                         debet = "7111";
@@ -531,14 +639,17 @@ namespace WindowsFormsApp4
                         kredit = "6111";
                     }
                 }
-                if (((radioButton1.Checked || radioButton4.Checked) && columnIndex == 5 && quantity != 0)
-                    || (!radioButton1.Checked && !radioButton4.Checked && columnIndex == 4))
-                {
-                    float sum = 0;
-                    DataRow newRow = Table_Purchase.NewRow();
+                //  if (((radioButton1.Checked || radioButton4.Checked) && columnIndex == 5 && quantity != 0)
+                //      || (!radioButton1.Checked && !radioButton4.Checked && columnIndex == 4))
+                //  {
+                float sum = 0;
+                if ((radioButton10.Checked && amount !=0 && quantity != 0) ||
+                    ((radioButton3.Checked || radioButton2.Checked || radioButton9.Checked) && quantity != 0))
+                { 
+                    DataRow newRow = Table_Purchase.NewRow();  
                     Table_Purchase.Rows.Add(newRow);
                     newRow["Code"] = codevalue;
-                    newRow["Name_1"] = namevalue;
+                    newRow["Name"] = namevalue;
                     newRow["Unit"] = unitvalue;
                     newRow["Quantity"] = quantity;
                     newRow["CostPrice"] = costprice;
@@ -560,18 +671,18 @@ namespace WindowsFormsApp4
                     newRow["RestaurantOut"] = 0;
                     newRow["Restaurant"] = 0;
 
-                    if (radioButton1.Checked && radioButton9.Checked)
-                    {
-                        dataGridView1.Rows[rowIndex].Cells[3].Value = dataGridView1.Rows[rowIndex].Cells[5].Value;
-                    }
-                    if (radioButton1.Checked && radioButton10.Checked && quantity != 0)
-                    {
-                        dataGridView1.Rows[rowIndex].Cells[3].Value = costamount / quantity;
+                    //if (radioButton1.Checked && radioButton9.Checked)
+                    //{
+                    //    dataGridView1.Rows[rowIndex].Cells[3].Value = costprice;
+                    //}
+                    //if (radioButton1.Checked && radioButton10.Checked && quantity != 0)
+                    //{
+                    //    dataGridView1.Rows[rowIndex].Cells[3].Value = costamount / quantity;
 
-                    }
+                    //}
 
-                    dataGridView1.Rows[rowIndex].Cells[4].Value = 0;
-                    dataGridView1.Rows[rowIndex].Cells[5].Value = 0;
+                    dataGridView1.Rows[rowIndex].Cells[ amountindex].Value = 0;
+                    dataGridView1.Rows[rowIndex].Cells[quantindex].Value = 0;
                     SaveButton1.Visible = true;
                     SaveButton1.Enabled = true;
                     dgv.EndEdit();
@@ -786,10 +897,11 @@ namespace WindowsFormsApp4
                 panel1.Tag = "radioButton1";
                 DateLabel.Visible = true;
                 SupplierLabel.Visible = true;
-                SupplierLabel.Text = "մատակարար";
+                DataRow[] foundRows = ControlsPurchase.Select($"TRIM(Name) = 'SupplierLabel'");
+                SupplierLabel.Text = foundRows[0][_language].ToString();
                 PartnersIdBox.Visible = true;
                 PartnersComboBox.Visible = true;
-                PartnersComboBox.DisplayMember = "Name_1";
+                PartnersComboBox.DisplayMember = "Name";
                 PartnersComboBox.DataSource = Table_Partners.DefaultView;
                 PartnersComboBox.Text = "";
                 PartnersIdBox.Text = "";
@@ -798,10 +910,12 @@ namespace WindowsFormsApp4
                 dateTimePicker1.Visible = true;
 
                 DepartmentLabel.Visible = true;
-                DepartmentLabel.Text = "Բաժին +";
+                //DepartmentLabel.Text = "Բաժին +";
+                DataRow[] foundRows1 = ControlsPurchase.Select($"TRIM(Name) = 'DepartmentLabel'");
+                DepartmentLabel.Text = foundRows1[0][_language].ToString();
                 DepartmentIdBox.Visible = true;
                 DepartmentComboBox.Visible = true;
-                DepartmentComboBox.DisplayMember = "Name_1";
+                DepartmentComboBox.DisplayMember = "Name";
                 DepartmentComboBox.DataSource = Table_Department.DefaultView;
 
                 checkBox1.Visible = true;
@@ -847,10 +961,12 @@ namespace WindowsFormsApp4
                 panel1.Tag = "radioButton2";
                 DateLabel.Visible = true;
                 SupplierLabel.Visible = true;
-                SupplierLabel.Text = "Բաժին -";
+                //SupplierLabel.Text = "Բաժին -";
+                DataRow[] foundRows1 = ControlsPurchase.Select($"TRIM(Name) = 'SupplierLabel'");
+                SupplierLabel.Text = foundRows1[0][_language].ToString()+" -";
                 PartnersIdBox.Visible = true;
                 PartnersComboBox.Visible = true;
-                PartnersComboBox.DisplayMember = "Name_1";
+                PartnersComboBox.DisplayMember = "Name";
                 PartnersComboBox.DataSource = Table_Department_.DefaultView;
                 PartnersComboBox.Text = "";
                 PartnersIdBox.Text = "";
@@ -858,10 +974,11 @@ namespace WindowsFormsApp4
                 dateTimePicker1.Visible = true;
 
                 DepartmentLabel.Visible = true;
-                DepartmentLabel.Text = "Բաժին +";
+                DataRow[] foundRows2 = ControlsPurchase.Select($"TRIM(Name) = 'SupplierLabel'");
+                DepartmentLabel.Text = foundRows2[0][_language].ToString()+" +";
                 DepartmentIdBox.Visible = true;
                 DepartmentComboBox.Visible = true;
-                DepartmentComboBox.DisplayMember = "Name_1";
+                DepartmentComboBox.DisplayMember = "Name";
                 DepartmentComboBox.DataSource = Table_Department.DefaultView;
                 DepartmentComboBox.Text = "";
                 DepartmentIdBox.Text = "";
@@ -903,10 +1020,12 @@ namespace WindowsFormsApp4
                 panel1.Tag = "radioButton3";
                 DateLabel.Visible = true;
                 SupplierLabel.Visible = true;
-                SupplierLabel.Text = "Բաժին -";
+                //SupplierLabel.Text = "Բաժին -";
+                DataRow[] foundRows1 = ControlsPurchase.Select($"TRIM(Name) = 'SupplierLabel'");
+                SupplierLabel.Text = foundRows1[0][_language].ToString()+" -";
                 PartnersIdBox.Visible = true;
                 PartnersComboBox.Visible = true;
-                PartnersComboBox.DisplayMember = "Name_1";
+                PartnersComboBox.DisplayMember = "Name";
                 PartnersComboBox.DataSource = Table_Department_.DefaultView;
                 PartnersComboBox.Text = "";
                 PartnersIdBox.Text = "";
@@ -915,10 +1034,12 @@ namespace WindowsFormsApp4
 
                 SumBox.Visible = true;
                 DepartmentLabel.Visible = true;
-                DepartmentLabel.Text = "Ծախս";
+                //DepartmentLabel.Text = "Ծախս";
+                DataRow[] foundRows2 = ControlsPurchase.Select($"TRIM(Name) = 'DepartmentLabel'");
+                DepartmentLabel.Text = foundRows2[0][_language].ToString() ;
                 DepartmentIdBox.Visible = true;
                 DepartmentComboBox.Visible = true;
-                DepartmentComboBox.DisplayMember = "Name_1";
+                DepartmentComboBox.DisplayMember = "Name";
                 DepartmentComboBox.DataSource = Table_Outgo.DefaultView;
                 DepartmentIdBox.Text = "";
                 DepartmentComboBox.Text = "";
@@ -956,10 +1077,12 @@ namespace WindowsFormsApp4
                 panel1.Tag = "radioButton4";
                 DateLabel.Visible = true;
                 SupplierLabel.Visible = true;
-                SupplierLabel.Text = "Բաժին -";
+                //SupplierLabel.Text = "Բաժին -";
+                DataRow[] foundRows2 = ControlsPurchase.Select($"TRIM(Name) = 'SupplierLabel'");
+                SupplierLabel.Text = foundRows2[0][_language].ToString();
                 PartnersIdBox.Visible = true;
                 PartnersComboBox.Visible = true;
-                PartnersComboBox.DisplayMember = "Name_1";
+                PartnersComboBox.DisplayMember = "Name";
                 PartnersComboBox.DataSource = Table_Department_.DefaultView;
                 PartnersComboBox.Text = "";
                 PartnersIdBox.Text = "";
@@ -967,10 +1090,12 @@ namespace WindowsFormsApp4
                 dateTimePicker1.Visible = true;
 
                 DepartmentLabel.Visible = true;
-                DepartmentLabel.Text = "Պարտապան";
+                //DepartmentLabel.Text = "Պարտապան";
+                DataRow[] foundRows3 = ControlsPurchase.Select($"TRIM(Name) = 'DepartmentLabel'");
+                DepartmentLabel.Text = foundRows3[0][_language].ToString();
                 DepartmentIdBox.Visible = true;
                 DepartmentComboBox.Visible = true;
-                DepartmentComboBox.DisplayMember = "Name_1";
+                DepartmentComboBox.DisplayMember = "Name";
                 DepartmentComboBox.DataSource = Table_Partners.DefaultView;
                 DepartmentIdBox.Text = "";
                 DepartmentComboBox.Text = "";
@@ -1017,11 +1142,12 @@ namespace WindowsFormsApp4
                 panel1.Tag = "radioButton5";
                 DateLabel.Visible = true;
                 SupplierLabel.Visible = true;
-                SupplierLabel.Text = "մուտք սեղանից";
-
+                //SupplierLabel.Text = "մուտք սեղանից";
+                DataRow[] foundRows4 = ControlsPurchase.Select($"TRIM(Name) = 'SupplierLabel'");
+                SupplierLabel.Text = foundRows4[0][_language].ToString();
                 PartnersIdBox.Visible = false;
                 PartnersComboBox.Visible = false;
-                // PartnersComboBox.DisplayMember = "Name_1";
+                // PartnersComboBox.DisplayMember = "Name";
                 // PartnersComboBox.DataSource = Table_Partners.DefaultView;
                 PartnersComboBox.Text = "";
                 PartnersIdBox.Text = "";
@@ -1030,10 +1156,12 @@ namespace WindowsFormsApp4
                 dateTimePicker1.Visible = true;
 
                 DepartmentLabel.Visible = true;
-                DepartmentLabel.Text = "Բաժին +";
+                //DepartmentLabel.Text = "Բաժին +";
+                DataRow[] foundRows5 = ControlsPurchase.Select($"TRIM(Name) = 'DepartmentLabel'");
+                DepartmentLabel.Text = foundRows5[0][_language].ToString()+" +";
                 DepartmentIdBox.Visible = true;
                 DepartmentComboBox.Visible = true;
-                DepartmentComboBox.DisplayMember = "Name_1";
+                DepartmentComboBox.DisplayMember = "Name";
                 DepartmentComboBox.DataSource = Table_Department.DefaultView;
 
                 checkBox1.Visible = true;
@@ -1153,21 +1281,21 @@ namespace WindowsFormsApp4
         {
             if (DepartmentComboBox.DataSource == Table_Department.DefaultView)
             {
-                DataRow[] foundRows = Table_Department.Select($"Name_1 = '{DepartmentComboBox.Text}' ");
-                DepartmentIdBox.Text = foundRows[0]["Id"].ToString();
-            }
-            if (DepartmentComboBox.DataSource == Table_Partners.DefaultView)
-            {
-                DataRow[] foundRows = Table_Partners.Select($"Name_1 = '{DepartmentComboBox.Text}' ");
-                DepartmentIdBox.Text = foundRows[0]["Id"].ToString();
-            }
-            if (DepartmentComboBox.DataSource == Table_Partners.DefaultView)
-            {
-                DataRow[] foundRows = Table_Partners.Select($"Name_1 = '{DepartmentComboBox.Text}' ");
-                DepartmentIdBox.Text = foundRows[0]["Id"].ToString();
-            }
 
-            if (radioButton2.Checked && DepartmentIdBox.Text == PartnersIdBox.Text)
+                DataRow[] foundRows = Table_Department.Select($"Name = '{DepartmentComboBox.Text}' ");
+                DepartmentIdBox.Text = foundRows[0]["Id"].ToString();
+            }
+            if (DepartmentComboBox.DataSource == Table_Partners.DefaultView)
+            {
+                DataRow[] foundRows = Table_Partners.Select($"Name = '{DepartmentComboBox.Text}' ");
+                DepartmentIdBox.Text = foundRows[0]["Id"].ToString();
+            }
+            if (DepartmentComboBox.DataSource == Table_Outgo.DefaultView)
+            {
+                DataRow[] foundRows = Table_Outgo.Select($"Name = '{DepartmentComboBox.Text}' ");
+                DepartmentIdBox.Text = foundRows[0]["Id"].ToString();
+            }
+            if ((radioButton2.Checked) && DepartmentIdBox.Text == PartnersIdBox.Text)
             {
                 PartnersIdBox.Text = "";
                 DepartmentIdBox.Text = "";
@@ -1190,12 +1318,12 @@ namespace WindowsFormsApp4
         {
             if (PartnersComboBox.DataSource == Table_Department_.DefaultView)
             {
-                DataRow[] foundRows = Table_Department_.Select($"Name_1 = '{PartnersComboBox.Text}' ");
+                DataRow[] foundRows = Table_Department_.Select($"Name = '{PartnersComboBox.Text}' ");
                 PartnersIdBox.Text = foundRows[0]["Id"].ToString();
             }
             if (PartnersComboBox.DataSource == Table_Partners.DefaultView)
             {
-                DataRow[] foundRows = Table_Partners.Select($"Name_1 = '{PartnersComboBox.Text}' ");
+                DataRow[] foundRows = Table_Partners.Select($"Name = '{PartnersComboBox.Text}' ");
                 PartnersIdBox.Text = foundRows[0]["Id"].ToString();
             }
 
@@ -1238,16 +1366,15 @@ namespace WindowsFormsApp4
             {
 
                 row["Number"] = number;
-                string InsertQuery = $"INSERT INTO actions  (Number,Code,Date,DateOfEntry,DepartmentIn," +
+                string InsertQuery = $"INSERT INTO actions  (Number,Code,Date,DepartmentIn," +
                     $" DepartmentOut,Debitor, Kreditor,Debet,Kredit,Quantity,CostAmount,SalesAmount, Operator, " +
-                    $"RestaurantIn,RestaurantOut, Restaurant, Note) VALUES  (@number, @code, @date, @dateofentry, @departmentin,@departmentout," +
+                    $"RestaurantIn,RestaurantOut, Restaurant, Note) VALUES  (@number, @code, @date, @departmentin,@departmentout," +
                     $" @debitor, @kreditor, @debet, @kredit, @quantity, @costamount, @salesamount, @operator, @restaurantin, @restaurantout, @restaurant, @note)";
                 using (SqlCommand updatCommand = new SqlCommand(InsertQuery, connection))
                 {
                     updatCommand.Parameters.AddWithValue("@number", row["Number"]);
                     updatCommand.Parameters.AddWithValue("@code", row["Code"]);
                     updatCommand.Parameters.AddWithValue("@date", dateTimePicker1.Value);
-                    updatCommand.Parameters.AddWithValue("@dateofentry", DateTime.Now);
                     updatCommand.Parameters.AddWithValue("@departmentin", row["DepartmentIn"]);
                     updatCommand.Parameters.AddWithValue("@departmentout", row["DepartmentOut"]);
                     updatCommand.Parameters.AddWithValue("@debitor", row["Debitor"]);
@@ -1352,8 +1479,7 @@ namespace WindowsFormsApp4
             }
         }
 
-
-    }
+     }
 }
 
 

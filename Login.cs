@@ -105,7 +105,7 @@ namespace WindowsFormsApp4
             DataTable Table_Login = dbHelper.ExecuteQuery(query);
             string q = Table_Login.Rows.Count.ToString();
 
-            string pow = "";
+            string oօperatorname = "";
             int opperator = 0;
             int holl = 0;
             int restaurant = 0;
@@ -114,11 +114,13 @@ namespace WindowsFormsApp4
             int orderer = 0;
             int observer = 0;
             int workplace = 0;
+            string lang = "";
 
             if (Table_Login.Rows.Count > 0) //user - ը գոյություն ունի
             {
                 foreach (DataRow row in Table_Login.Rows)//ստուգում ենք լիազորությունը
                 {
+                    oօperatorname = row["name"].ToString();
                     opperator = Convert.ToInt32(row["Id"]);// աշխատակցի Id-ն
                     holl = Convert.ToInt32(row["Holl"]);//Սրահի համարը
                     restaurant = Convert.ToInt32(row["Restaurant"]);//ռեստորանի համարը
@@ -127,10 +129,10 @@ namespace WindowsFormsApp4
                     if (row["previous"] != DBNull.Value) previous = Convert.ToInt32(row["previous"]);//նախնական
                     if (row["observer"] != DBNull.Value) observer = Convert.ToInt32(row["observer"]);//դիտորդ
                     if (row["Workplace"] != DBNull.Value) workplace = Convert.ToInt32(row["observer"]);//աշխատատեղ
-
+                    if (row["Language"] != DBNull.Value) lang = row["Language"].ToString();//աշխատատեղ
                 }
                 connection.Close();
-                Form1 form1 = new Form1(opperator, holl, restaurant, editor, orderer, previous, observer, workplace);
+                Form1 form1 = new Form1(oօperatorname,opperator, holl, restaurant, editor, orderer, previous, observer, workplace,lang);
 
                 form1.Show();
             }

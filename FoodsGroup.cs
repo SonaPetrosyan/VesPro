@@ -11,6 +11,8 @@ namespace WindowsFormsApp4
 
         private int _editor;
 
+        private string _language;
+
         private SQLDatabaseHelper dbHelper;
 
         private DataTable Tablte_215 = new DataTable();
@@ -24,11 +26,13 @@ namespace WindowsFormsApp4
         private DataTable Exist = new DataTable();
 
         private DataView dataView;
-        public FoodsGroup(int editor, int restaurant)
+        public FoodsGroup(int editor, int restaurant, string language)
         {
             _editor = editor;
 
             _restaurant = restaurant;
+
+            _language = language;
 
             InitializeComponent();
 
@@ -37,11 +41,13 @@ namespace WindowsFormsApp4
             SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
 
 
-            string query1 = $"SELECT Code,Name_1,Department,Free,Groupp FROM table_215 WHERE Restaurant='{_restaurant}'" ;
+            string query1 = $"SELECT * FROM table_215 WHERE Restaurant='{_restaurant}'" ;
             Tablte_215 = dbHelper.ExecuteQuery(query1);
+            Tablte_215.Columns.Add("Name", typeof(string));
+
             dataGridView1.DataSource = Tablte_215;
             dataGridView1.Columns[0].DataPropertyName = "Code";
-            dataGridView1.Columns[1].DataPropertyName = "Name_1";
+            dataGridView1.Columns[1].DataPropertyName = "Name";
             dataGridView1.Columns[2].DataPropertyName = "Department";
             dataGridView1.Columns[3].DataPropertyName = "Free";
             dataGridView1.Columns[4].DataPropertyName = "Groupp";
@@ -53,27 +59,32 @@ namespace WindowsFormsApp4
                     column.Visible = false;
                 }
             }
+            foreach (DataRow row in Tablte_215.Rows)
+            {
+                row["Name"] = row[_language];
+            }
 
-            string query2 = $"SELECT Groupp,Name_1,Name_2,Name_3 FROM FoodGroupp WHERE Restaurant='{_restaurant}'";
+            string query2 = $"SELECT * FROM FoodGroupp WHERE Restaurant='{_restaurant}'";
             Food_Group = dbHelper.ExecuteQuery(query2);
             dataGridView2.DataSource = Food_Group;
             dataGridView2.Columns[0].DataPropertyName = "Groupp";
-            dataGridView2.Columns[1].DataPropertyName = "Name_1";
-            dataGridView2.Columns[2].DataPropertyName = "Name_2";
-            dataGridView2.Columns[3].DataPropertyName = "Name_3";
+            dataGridView2.Columns[1].DataPropertyName = "Name";
             foreach (DataGridViewColumn column in dataGridView2.Columns)
             {
-                if (column.Index > 3)
+                if (column.Index > 1)
                 {
                     column.Visible = false;
                 }
             }
-
+            foreach (DataRow row in Food_Group.Rows)
+            {
+                row["Name"] = row[_language];
+            }
             string query3 = $"SELECT * FROM Restaurants WHERE Id = '{_restaurant}'";
             Table_Rest = dbHelper.ExecuteQuery(query3);
             foreach (DataRow row in Table_Rest.Rows)
             {
-                this.Text = row["Name_1"].ToString();
+                this.Text = row["Name"].ToString();
             }
 
             Resize.Columns.Add("BeginWidth", typeof(float));
@@ -153,7 +164,7 @@ namespace WindowsFormsApp4
             newRow["Groupp"] = groupp + 1;
             Food_Group.Rows.Add(newRow);
             int lastRowIndex = Food_Group.Rows.Count - 1;
-            dataGridView2.CurrentCell = dataGridView2.Rows[lastRowIndex].Cells[0];
+            dataGridView2.CurrentCell = dataGridView2.Rows[lastRowIndex].Cells[1];
             dataGridView2.BeginEdit(true);
         }
 
@@ -207,19 +218,15 @@ namespace WindowsFormsApp4
                     Exist = new DataTable();
                     int groupp = int.Parse(dataGridView2.Rows[i].Cells[0].Value.ToString());
                     string name1 = dataGridView2.Rows[i].Cells[1].Value.ToString();
-                    string name2 = dataGridView2.Rows[i].Cells[2].Value.ToString();
-                    string name3 = dataGridView2.Rows[i].Cells[3].Value.ToString();
                     string query = $"SELECT * FROM FoodGroupp WHERE Groupp = '{groupp}' AND Restaurant='{_restaurant}'";
                     Exist = dbHelper.ExecuteQuery(query);
                     int count = Exist.Rows.Count;
                     if (count > 0)
                     {
-                        string UpdateQuery = $"UPDATE FoodGroupp SET Name_1= @Name_1,Name_2= @Name_2,Name_3= @Name_3 WHERE Groupp= @Groupp ";
+                        string UpdateQuery = $"UPDATE FoodGroupp SET {_language}= @language WHERE Groupp= @Groupp ";
                         using (SqlCommand command = new SqlCommand(UpdateQuery, connection))
                         {
-                            command.Parameters.AddWithValue("@Name_1", name1);
-                            command.Parameters.AddWithValue("@Name_2", name2);
-                            command.Parameters.AddWithValue("@Name_3", name3);
+                            command.Parameters.AddWithValue("@language", name1);
                             command.Parameters.AddWithValue("@Groupp", groupp);
                               command.ExecuteNonQuery();
                         }
@@ -229,13 +236,11 @@ namespace WindowsFormsApp4
                     }
                     else
                     {
-                        string InsertQuery = $"INSERT INTO FoodGroupp SET (Groupp, Name_1, Name_2,Name_3,Restaurant) VALUES (@Groupp, @Name_1, @Name_2, @Name_3,@Restaurant)";
+                        string InsertQuery = $"INSERT INTO FoodGroupp SET (Groupp,{_language},Restaurant) VALUES (@Groupp, @language, @Restaurant)";
                         using (SqlCommand command = new SqlCommand(InsertQuery, connection))
                         {
                             command.Parameters.AddWithValue("@Groupp", groupp);
-                            command.Parameters.AddWithValue("@Name_1", name1);
-                            command.Parameters.AddWithValue("@Name_2", name2);
-                            command.Parameters.AddWithValue("@Name_3", name3);
+                            command.Parameters.AddWithValue("@language", name1);
                             command.Parameters.AddWithValue("@Restaurant", _restaurant);
                             command.ExecuteNonQuery();
                         }
@@ -286,7 +291,7 @@ namespace WindowsFormsApp4
         {
             dataView = new DataView(Tablte_215);
             string txt = SearchBox.Text.Trim();
-            dataView.RowFilter = $"(Code+Name_1) LIKE '%{txt}%'";
+            dataView.RowFilter = $"(Code+Name) LIKE '%{txt}%'";
             dataGridView1.DataSource = dataView;
         }
 

@@ -70,7 +70,7 @@ namespace WindowsFormsApp4
             Table_Rest = dbHelper.ExecuteQuery(query1);
             foreach (DataRow row in Table_Rest.Rows)
             {
-                this.Text = row["Name_1"].ToString();
+                this.Text = row["Name"].ToString();
             }
 
             connection.Close();
