@@ -1,0 +1,25 @@
+
+
+
+     In the <there is> column of the left table, the actual quantity of the product is placed.
+
+    The remaining fields are calculated.
+
+    In the <in Food> field is the quantity of the product in the ready-made actual meal.
+
+    The <Calculated> field is the calculated quantity of the product
+
+    In the <in fact> field of the right table, the number of meals actual at the moment is placed.
+
+    Be sure to click the <Save> button after installation.
+
+    With the <Reset section> button, the <there is> and <in fact> fields of the given section are cleared.
+
+    With the <Formulate> button, surpluses are output, deficits are entered.
+
+    The inventory formulations of the specified date and the specified department are deleted with the <Delete> button.
+
+    Pay attention to the accuracy of the date - hour to minute.
+
+
+    Click the yellow <X> button to close the window.

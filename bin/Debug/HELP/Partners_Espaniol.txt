@@ -1,0 +1,13 @@
+    Es la lista de empleados.
+    Es decir, proveedores y deudores la lista.
+	También es una lista de códigos de costos.
+
+     Especifique la columna <coste> para el costo.
+     estos son usados ​​<comprar, mover, vender, gastar>
+     mientras trabaja con el botón.
+ 
+     Puedes ver tus transacciones con ellos.
+     con el botón <observación>, especificando
+	 el código correspondiente.
+
+     Haga clic en el botón amarillo <X> para cerrar

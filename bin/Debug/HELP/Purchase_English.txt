@@ -1,0 +1,18 @@
+
+    
+	Just select the desired group 
+    and start working.
+   
+    In the left table, stand on the required line,
+    set the quantity and go to the next one.
+   
+    if you checked the <amount> button, then write 
+	the amount you paid for the product in the <amount> field.
+   
+    Row will appear in the right table.
+   
+    If you checked the box to the right of the <search> window,
+    then the marker returns to the <search> field.
+   
+    After collecting the entire document, click the <Save> button,
+    otherwise the work will have no consequence.

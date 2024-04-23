@@ -1,0 +1,27 @@
+
+
+
+    La cantidad realmente presente del producto se coloca en la columna <válido> de la tabla de la izquierda.
+
+    Se calculan los campos restantes.
+
+    En el campo <in Food> está la cantidad de producto en la comida preparada realmente presente.
+
+    El campo <Calculado> es la cantidad calculada del producto.
+
+    En el campo <válido> de la tabla derecha se coloca el número de comidas realmente presente en ese momento.
+
+    Asegúrese de hacer clic en el botón <Save> después de la instalación.
+
+    Con el botón <Restablecer sección>, se borran los campos <válido> de la sección dada.
+
+    Con el botón <Formular> se generan los excedentes y se introducen los déficits.
+
+    Las formulaciones de inventario de la fecha especificada y del departamento especificado se eliminan con el botón <Borrar>.
+
+    Preste atención a la exactitud de la fecha: hora a minuto.
+
+    el campo verde es para buscar.
+
+    Haga clic en el botón amarillo <X> para cerrar la ventana.
+	 

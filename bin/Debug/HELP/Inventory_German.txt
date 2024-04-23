@@ -1,0 +1,26 @@
+
+
+
+    Die in der Tat Menge des Produkts wird in der Spalte <in der Tat> der linken Tabelle angezeigt.
+
+    Die restlichen Felder werden berechnet.
+
+    Im Feld <in Food> steht die Menge des Produkts in der fertig in der Tat Essen.
+
+    Das Feld <Berechnet> ist die berechnete Menge des Produkts
+
+    Im Feld <in der Tat> der rechten Tabelle wird die Anzahl der aktuell in der Tat Mahlzeiten eingetragen.
+
+    Klicken Sie nach der Installation unbedingt auf die Schaltfläche <Save>.
+
+    Mit der Schaltfläche <Abschnitt zurücksetzen> werden die <in der Tat> Felder des angegebenen Abschnitts gelöscht.
+
+    Mit der Schaltfläche <Formulieren> werden Überschüsse ausgegeben, Defizite eingetragen.
+
+    Mit der Schaltfläche <Löschen> werden die Inventurformulierungen des angegebenen Datums und der angegebenen Abteilung gelöscht.
+
+    Achten Sie auf die Genauigkeit des Datums – Stunde bis Minute.
+
+    Das grüne Feld dient der Suche.
+
+    Klicken Sie auf die gelbe Schaltfläche <X>, um das Fenster zu schließen.

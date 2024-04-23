@@ -1174,6 +1174,7 @@ namespace WindowsFormsApp4
 
         private void HelpButton_Click(object sender, EventArgs e)
         {
+            string help = FindFolder.Folder("Help");
             string filePath = "";
             if (HelpButton.Text == "?")
             {
@@ -1181,11 +1182,11 @@ namespace WindowsFormsApp4
                 richTextBox1.Height = this.Height - 50;
                 richTextBox1.ReadOnly = true;
 
-                if(_language=="Armenian") filePath = "D:\\hayrik\\sql\\help\\stocktaking_arm.txt";
-                if (_language == "English") filePath = "D:\\hayrik\\sql\\help\\stocktaking_eng.txt";
-                if (_language == "German") filePath = "D:\\hayrik\\sql\\help\\stocktaking_germ.txt";
-                if (_language == "Espaniol") filePath = "D:\\hayrik\\sql\\help\\stocktaking_esp.txt";
-                if (_language == "Russian") filePath = "D:\\hayrik\\sql\\help\\stocktaking_rus.txt";
+                if(_language=="Armenian") filePath = help+"\\stocktaking_arm.txt";
+                if (_language == "English") filePath = help + "\\stocktaking_eng.txt";
+                if (_language == "German") filePath = help + "\\stocktaking_germ.txt";
+                if (_language == "Espaniol") filePath = help + "\\stocktaking_esp.txt";
+                if (_language == "Russian") filePath = help + "\\stocktaking_rus.txt";
                 string fileContent = File.ReadAllText(filePath);
                 richTextBox1.Text = fileContent;
                 richTextBox1.Visible = true;

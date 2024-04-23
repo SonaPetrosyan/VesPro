@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using Microsoft.ReportingServices.Diagnostics.Internal;
 using MySql.Data.MySqlClient;
 using Mysqlx.Crud;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 namespace WindowsFormsApp4
 {
     public partial class Form1 : Form
@@ -15,6 +16,7 @@ namespace WindowsFormsApp4
         private int _ooperator;  //_ooperator-ը աշխատողի Id-ն է
         private int _holl;  //_holl-ը սրահի համարն է
         private int _restaurant;  //_restaurant-ը ռեստորանի համարն է
+        private int _manager; // եթե _manager == 1 , ապա կարող է խմբագրել ամենուրեք
         private int _editor; // եթե _edit == 0 , ապա խմբագրելն արգելված է
         private int _orderer; // եթե _orderer == 1 , ապա պատվերի դաշտ կարող է մտնել
         private int _previous; // եթե _previous == 1 , ապա նախնական պատվերի դաշտ կարող է մտնել
@@ -33,6 +35,8 @@ namespace WindowsFormsApp4
 
         private DataTable Table_Composite = new DataTable();
 
+        private DataTable Table_Languages = new DataTable();
+
         private DataTable Table_Seans = new DataTable();
 
         private DataTable Օpening = new DataTable();// Table_215-ի բաղադրորթյուններն են կիսապատռասորաստուկները բացված
@@ -40,7 +44,7 @@ namespace WindowsFormsApp4
         private DataTable Resize = new DataTable();
 
         private DataTable Table_Rest = new DataTable();
-        public Form1(string opperatorname, int opperator, int holl, int restaurant,
+        public Form1(string opperatorname, int opperator, int holl, int restaurant,int manager,
             int editor, int orderer, int previous, int observer, int workplace, string language)
         {
 
@@ -49,6 +53,7 @@ namespace WindowsFormsApp4
             _ooperator = opperator;
             _holl = holl;
             _restaurant = restaurant;
+            _manager = manager;
             _editor = editor;
             _orderer = orderer;
             _previous = previous;
@@ -91,6 +96,24 @@ namespace WindowsFormsApp4
                         updatCommand.ExecuteNonQuery();
                 }
             }
+            string query3 = $"SELECT * FROM Languages";
+            Table_Languages = dbHelper.ExecuteQuery(query3);
+            string r = "";
+            int i=1 ;
+            foreach(DataRow row in Table_Languages.Rows)
+            {
+           
+                 object value = Table_Languages.Rows[i-1]["Language"];
+                string lang = value.ToString();
+                r = lang;
+                if (i == 1) radioButton1.Text = lang;
+                if (i == 2) radioButton2.Text = lang;
+                if (i == 3) radioButton3.Text = lang;
+                if (i == 4) radioButton4.Text = lang;
+                if (i == 5) radioButton5.Text = lang;
+                i = i + 1;
+            }
+
         }
 
 
@@ -103,7 +126,8 @@ namespace WindowsFormsApp4
 
         private void main45_Click(object sender, EventArgs e)
         {
-            users user = new users(_restaurant, _editor);
+            if(_manager == 0) return;
+            users user = new users(_restaurant, _manager, _language);
             user.Show();
         }
 
@@ -158,12 +182,14 @@ namespace WindowsFormsApp4
         }
         private void main21_Click(object sender, EventArgs e)
         {
+            if (_manager == 1) _editor = 1;
             Foods FoodsInstance = new Foods(_restaurant, _editor,_language);
             FoodsInstance.Show();
         }
 
         private void main22_Click(object sender, EventArgs e)
         {
+            if (_manager == 1) _editor = 1;
             Materials MaterialsInstance = new Materials(_restaurant, _editor,_language);
             MaterialsInstance.Show();
 
@@ -171,6 +197,7 @@ namespace WindowsFormsApp4
 
         private void main12_Click(object sender, EventArgs e)
         {
+            if (_manager == 1) _editor = 1;
             if (_observer == 0 || _editor == 0) return;
             Purchase PurchaseInstance = new Purchase(_ooperator, _restaurant, _editor, _language);
             PurchaseInstance.Show();
@@ -185,18 +212,21 @@ namespace WindowsFormsApp4
 
         private void main42_Click(object sender, EventArgs e)
         {
-            Nest NestInstance = new Nest(_restaurant,_language);
+            if (_manager == 1) _editor = 1;
+            Nest NestInstance = new Nest(_restaurant,_language, _editor);
             NestInstance.Show();
         }
 
         private void main43_Click(object sender, EventArgs e)
         {
+            if (_manager == 1) _editor = 1;
             FoodsGroup FoodsGroup = new FoodsGroup(_editor, _restaurant, _language);
             FoodsGroup.Show();
         }
 
         private void main44_Click(object sender, EventArgs e)
         {
+            if (_manager == 1) _editor = 1;
             Additions Additions = new Additions(_restaurant, _editor, _language);
             Additions.Show();
         }
@@ -234,7 +264,7 @@ namespace WindowsFormsApp4
 
         private void main13_Click(object sender, EventArgs e)
         {
-            if (_observer == 0) { return; }
+            if (_manager == 1) _editor = 1;
             Inventory InventoryInstance = new Inventory(_ooperator, _restaurant, 0, _editor, _language);
             InventoryInstance.Show();
         }
@@ -256,12 +286,14 @@ namespace WindowsFormsApp4
 
         private void main41_Click(object sender, EventArgs e)
         {
+            if (_manager == 1) _editor = 1;
             Workplace WorkplaceInstance = new Workplace(_restaurant, _editor, _holl, _language);
             WorkplaceInstance.Show();
         }
 
         private void main23_Click_1(object sender, EventArgs e)
         {
+            if (_manager == 1) _editor = 1;
             Standart StandartInstance = new Standart(_restaurant, _editor, _language);
             StandartInstance.Show();
         }
@@ -524,7 +556,7 @@ namespace WindowsFormsApp4
 
         private void main24_Click(object sender, EventArgs e)
         {
-            Partners partnersInstance = new Partners(_restaurant, _editor);
+            Partners partnersInstance = new Partners(_restaurant, _editor, _language);
             partnersInstance.Show();
         }
 
@@ -536,13 +568,17 @@ namespace WindowsFormsApp4
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string help = FindFolder.Folder("Help");
+            string filePath = "";
             if (HelpButton.Text == "?")
             {
                 HelpButton.Text = "X";
                 richTextBox1.Height = this.Height - 50;
+                richTextBox1.Left = HelpButton.Width + 5;
+                richTextBox1.Width = this.Width / 2;
                 richTextBox1.ReadOnly = true;
 
-                string filePath = "D:\\hayrik\\sql\\help\\menu.txt";
+                filePath = help + "\\Form1_" + _language + ".txt";
                 string fileContent = File.ReadAllText(filePath);
                 richTextBox1.Text = fileContent;
                 richTextBox1.Visible = true;
@@ -558,36 +594,47 @@ namespace WindowsFormsApp4
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            ChangeLanguage("Armenian");
-            button2.Text = "Հայ";
+
+            object value = Table_Languages.Rows[0]["Language"];
+            string lang = value.ToString();
+            ChangeLanguage(lang);
+            button2.Text = lang;
             panel1.Visible = false;
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            ChangeLanguage("English");
-            button2.Text = "Eng";
+            object value = Table_Languages.Rows[1]["Language"];
+            string lang = value.ToString();
+            ChangeLanguage(lang);
+            button2.Text = lang;
             panel1.Visible = false;
         }
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
-            ChangeLanguage("German");
-            button2.Text = "German";
+            object value = Table_Languages.Rows[2]["Language"];
+            string lang = value.ToString();
+            ChangeLanguage(lang);
+            button2.Text = lang;
             panel1.Visible = false;
         }
 
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
-        {
-            ChangeLanguage("Russian");
-            button2.Text = "Russian";
+        { 
+            object value = Table_Languages.Rows[3]["Language"];
+            string lang = value.ToString();
+            ChangeLanguage(lang);
+            button2.Text = lang;
             panel1.Visible = false;
         }
 
         private void radioButton5_CheckedChanged(object sender, EventArgs e)
         {
-            ChangeLanguage("Espaniol");
-            button2.Text = "Espaniol";
+            object value = Table_Languages.Rows[4]["Language"];
+            string lang = value.ToString();
+            ChangeLanguage(lang);
+            button2.Text = lang;
             panel1.Visible = false;
         }
         private void ChangeLanguage(string lang)
@@ -621,11 +668,7 @@ namespace WindowsFormsApp4
                 DataRow[] foundRows = ControlsForm1.Select($"Name = '{control.Name}'");
                 if (foundRows.Length > 0)
                 {
-                    if (lang == "Armenian") control.Text = foundRows[0]["Armenian"].ToString();
-                    if (lang == "English") control.Text = foundRows[0]["English"].ToString();
-                    if (lang == "German") control.Text = foundRows[0]["German"].ToString();
-                    if (lang == "Espaniol") control.Text = foundRows[0]["Espaniol"].ToString();
-                    if (lang == "Russian") control.Text = foundRows[0]["Russian"].ToString();
+                    control.Text = foundRows[0][_language].ToString();
                 }
             }
             connection.Close();
@@ -903,6 +946,11 @@ namespace WindowsFormsApp4
             //    }
             //    i = i + 1;
             //}
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

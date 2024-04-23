@@ -1,0 +1,13 @@
+     Es handelt sich um die Liste der Partner.
+     Das heißt, Lieferanten und Schuldner
+     Die Liste. Es ist auch eine Liste von Kostencodes.
+
+     Geben Sie die Spalte <cost> für die Kosten an
+     diese werden verwendet <kaufen, bewegen, verkaufen, ausgeben>
+     während Sie mit der Taste arbeiten.
+ 
+     Sie können Ihre Transaktionen mit ihnen einsehen
+     mit der Schaltfläche <Beobachtung> unter Angabe
+	 des entsprechenden Codes.
+
+     Klicken Sie zum Schließen auf die gelbe Schaltfläche <X>

@@ -1,0 +1,18 @@
+    
+	
+	Simplemente seleccione el grupo deseado y
+    y empezar a trabajar.
+   
+    En la tabla de la izquierda, párese en la línea requerida,
+    establece la cantidad y pasa al siguiente.
+   
+    si marcó el botón <sum>, entonces en <sum>
+    escriba el sum que pagó por el producto en el campo.
+   
+    la fila aparecerá en la tabla de la derecha.
+   
+    Si marcó la casilla a la derecha de la ventana <buscar>,
+    luego el marcador vuelve al campo <buscar>.
+   
+    Después de recopilar el documento completo, haga clic en el botón <Save>,
+    de lo contrario el trabajo no tendrá consecuencias.

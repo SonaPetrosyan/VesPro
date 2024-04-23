@@ -1,0 +1,14 @@
+
+
+
+     Welcher der Mitarbeiter mit welchem ​​Knopf arbeiten kann,
+	 wird durch seine Befugnisse bestimmt.
+     Diese Befugnisse werden vom Vorgesetzten
+	 über die Schaltfläche <Mitarbeiter> gewährt.
+
+     Sie können eine Beschreibung der Befugnisse direkt dort sehen,
+	 indem Sie auf die Schaltfläche <?> klicken
+
+     Klicken Sie auf die gelbe Schaltfläche <X>, um das Fenster zu schließen.
+
+ 

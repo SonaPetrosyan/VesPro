@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Data;
+using System.IO;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
@@ -12,6 +13,8 @@ namespace WindowsFormsApp4
 
         private int _editor;
 
+        private string _language;
+
         private DataTable dataTableusers = new DataTable();
 
         private DataTable Resize = new DataTable();
@@ -22,18 +25,20 @@ namespace WindowsFormsApp4
 
         private DataView dataView;
 
-        public users(int restaurant, int editor)
+        public users(int restaurant, int editor, string language)
         {
             _restaurant = restaurant;
 
             _editor = editor;
+
+            _language = language;
 
             InitializeComponent();
             string connectionString = Properties.Settings.Default.CafeRestDB;
             SqlConnection connection = new SqlConnection(connectionString);
             SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
 
-            string query = $"SELECT id,Login, Password, Passqart, Position, Name,editor,orderer,previous,observer, Holl,Restaurant,Workplace FROM users  ";
+            string query = $"SELECT Id,Login,Password,Passqart,Position,Name,Manager,orderer,editor,previous,observer,Workplace,Holl,Restaurant FROM users  ";
             dataTableusers = dbHelper.ExecuteQuery(query);
             dataGridView1.DataSource = dataTableusers;
             dataView = new DataView(dataTableusers);
@@ -43,17 +48,19 @@ namespace WindowsFormsApp4
             dataGridView1.Columns[3].DataPropertyName = "Passqart";
             dataGridView1.Columns[4].DataPropertyName = "Position";
             dataGridView1.Columns[5].DataPropertyName = "Name";
-            dataGridView1.Columns[6].DataPropertyName = "orderer";
-            dataGridView1.Columns[7].DataPropertyName = "editor";
-            dataGridView1.Columns[8].DataPropertyName = "previous";
-            dataGridView1.Columns[9].DataPropertyName = "observer";
-            dataGridView1.Columns[10].DataPropertyName = "Holl";
-            dataGridView1.Columns[11].DataPropertyName = "Restaurant";
-            dataGridView1.Columns[12].DataPropertyName = "Workplace";
+            dataGridView1.Columns[6].DataPropertyName = "Manager";
+            dataGridView1.Columns[7].DataPropertyName = "orderer";
+            dataGridView1.Columns[8].DataPropertyName = "editor";
+            dataGridView1.Columns[9].DataPropertyName = "previous";
+            dataGridView1.Columns[10].DataPropertyName = "observer";
+            dataGridView1.Columns[11].DataPropertyName = "Workplace";
+            dataGridView1.Columns[12].DataPropertyName = "Holl";
+            dataGridView1.Columns[13].DataPropertyName = "Restaurant";
+
             foreach (DataGridViewColumn column in dataGridView1.Columns)
             {
 
-                if (column.Index > 12)
+                if (column.Index > 13)
                 {
                     column.Visible = false;
                 }
@@ -158,6 +165,14 @@ namespace WindowsFormsApp4
                 newRow["Id"] = id;
                 newRow["Holl"] = _holl;
                 newRow["Restaurant"] = _restaurant;
+                newRow["orderer"] = 0;
+                newRow["Manager"] = 0;
+                newRow["Editor"] = 0;
+                newRow["previous"] = 0;
+                newRow["observer"] = 0;
+                newRow["Password"] = "";
+                newRow["Login"] = "";
+                newRow["Workplace"] = 0;
                 {
                     int lastRowIndex = dataGridView1.Rows.Count - 2;
                     for (int colIndex = 0; colIndex < dataGridView1.Columns.Count; colIndex++)
@@ -191,31 +206,83 @@ namespace WindowsFormsApp4
                 }
                 if (count == 0)
                 {
-                  String query1= $"INSERT INTO users (Login,Password,Passqart,Name,Position,editor,orderer,previous,observer,Holl,Restaurant ) " +
-                            $"VALUES ('{row["Login"]}','{row["Password"]}','{row["Passqart"]}'," +
-                            $"'{row["editor"]}','{row["orderer"]}','{row["previous"]}','{row["observer"]}','{row["Name"]}'," +
-                            $"'{row["Position"]}','{row["Holl"]}','{row["Restaurant"]}') ";
-                    using (SqlCommand insertCommand = new SqlCommand(query1, connection))
-                        insertCommand.ExecuteNonQuery();
+                    String InsertQuery = $"INSERT INTO users (Login,Password,Passqart,Name,Position,Manager,editor,orderer,previous,Workplace,observer,Holl,Restaurant ) " +
+                         $"VALUES (@Login,@Password,@Passqart,@Name,@Position,@Manager,@editor,@orderer,@previous,@Workplace,@observer,@Holl,@Restaurant )";     
+                    using (SqlCommand command = new SqlCommand(InsertQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@Login", row["Login"]);
+                        command.Parameters.AddWithValue("@Password", row["Password"]);
+                        command.Parameters.AddWithValue("@Passqart", row["Passqart"]);
+                        command.Parameters.AddWithValue("@Name", row["Name"]);
+                        command.Parameters.AddWithValue("@Position", row["Position"]);
+                        command.Parameters.AddWithValue("@Manager", row["Manager"]);
+                        command.Parameters.AddWithValue("@editor", row["editor"]);
+                        command.Parameters.AddWithValue("@orderer", row["orderer"]);
+                        command.Parameters.AddWithValue("@previous", row["previous"]);
+                        command.Parameters.AddWithValue("@observer", row["observer"]);
+                        command.Parameters.AddWithValue("@Workplace", row["Workplace"]);
+                        command.Parameters.AddWithValue("@Holl", row["Holl"]);
+                        command.Parameters.AddWithValue("@Restaurant", row["Restaurant"]);
+                        command.ExecuteNonQuery();
+                    }
                 }
                 else
                 {
-                    int prev = 1, obs = 1, ord = 1, edit = 1;
-                    this.Text = "previous " + row["previous"].ToString() + "observer " + row["observer"].ToString() + "orderer " + row["orderer"].ToString() + "editor " + row["editor"].ToString();
-                    if (row["previous"].ToString().Length == 0) prev = 0;
-                    if (row["editor"].ToString().Length == 0) edit = 0;
-                    if (row["observer"].ToString().Length == 0) obs = 0;
-                    if (row["orderer"].ToString().Length == 0) ord = 0;
-                    String query1 = $"UPDATE users SET Login = '{row["Login"]}',Password='{row["Password"]}'," +
-                              $"Passqart='{row["Passqart"]}',editor='{edit}',Name = '{row["Name"]}'," +
-                              $"Position='{row["Position"]}',orderer='{ord}',previous='{prev}',observer='{obs}'," +
-                              $"Holl='{row["Holl"]}',Restaurant = '{row["Restaurant"]}' WHERE Id = '{row["Id"]}' ";
-                    using (SqlCommand insertCommand = new SqlCommand(query1, connection))
-                        insertCommand.ExecuteNonQuery();
+                   String updatequery = $"UPDATE users SET Login = @Login,Password=@Password," +
+                              $"Passqart=@Passqart,editor=@editor,Name = @Name," +
+                              $"Position=@Position,Manager=@Manager,orderer=@orderer,previous=@previous,Workplace=@Workplace,observer=@observer," +
+                              $"Holl=@Holl,Restaurant = @Restaurant WHERE Id = @Id ";
+                    using (SqlCommand command = new SqlCommand(updatequery, connection))
+                    {
+                        command.Parameters.AddWithValue("@Login", row["Login"]);
+                        command.Parameters.AddWithValue("@Password", row["Password"]);
+                        command.Parameters.AddWithValue("@Passqart", row["Passqart"]);
+                        command.Parameters.AddWithValue("@Name", row["Name"]);
+                        command.Parameters.AddWithValue("@Position", row["Position"]);
+                        command.Parameters.AddWithValue("@Manager", row["Manager"]);
+                        command.Parameters.AddWithValue("@editor", row["editor"]);
+                        command.Parameters.AddWithValue("@orderer", row["orderer"]);
+                        command.Parameters.AddWithValue("@previous", row["previous"]);
+                        command.Parameters.AddWithValue("@Workplace", row["Workplace"]);
+                        command.Parameters.AddWithValue("@observer", row["observer"]);
+                        command.Parameters.AddWithValue("@Holl", row["Holl"]);
+                        command.Parameters.AddWithValue("@Restaurant", row["Restaurant"]);
+                        command.Parameters.AddWithValue("@Id", row["Id"]);
+                        command.ExecuteNonQuery();
+                    }
                 }
             }
             SaveButton.Visible=false;
             connection.Close();
+        }
+
+        private void HelpButton_Click(object sender, EventArgs e)
+        {
+            string help = FindFolder.Folder("Help");
+            string filePath = "";
+            if (HelpButton.Text == "?")
+            {
+                HelpButton.Text = "X";
+                richTextBox1.Height = this.Height - 50;
+                richTextBox1.Top = 0;
+                richTextBox1.Left = HelpButton.Width+5;
+                richTextBox1.Width = this.Width/2;
+                richTextBox1.ReadOnly = true;
+                richTextBox1.Visible = true;
+                if (_language == "Armenian") filePath = help+"\\User_arm.txt";
+                if (_language == "English") filePath = help+"\\User_eng.txt";
+                if (_language == "German") filePath = help + "\\User_ger.txt";
+                if (_language == "Espaniol") filePath = help + "\\User_esp.txt";
+                if (_language == "Russian") filePath = help + "\\User_rus.txt";
+                string fileContent = File.ReadAllText(filePath);
+                richTextBox1.Text = fileContent;
+
+            }
+            else
+            {
+                richTextBox1.Visible = false;
+                HelpButton.Text = "?";
+            }
         }
     }
 }

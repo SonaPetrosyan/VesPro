@@ -110,6 +110,7 @@ namespace WindowsFormsApp4
             int holl = 0;
             int restaurant = 0;
             int editor = 0;
+            int manager = 0;
             int previous = 0;
             int orderer = 0;
             int observer = 0;
@@ -124,17 +125,27 @@ namespace WindowsFormsApp4
                     opperator = Convert.ToInt32(row["Id"]);// աշխատակցի Id-ն
                     holl = Convert.ToInt32(row["Holl"]);//Սրահի համարը
                     restaurant = Convert.ToInt32(row["Restaurant"]);//ռեստորանի համարը
+                    if (row["Manager"] != DBNull.Value) manager = Convert.ToInt32(row["Manager"]);//կառավարիչ
                     if (row["Editor"] != DBNull.Value) editor = Convert.ToInt32(row["Editor"]); //խմբագրող
                     if (row["orderer"] != DBNull.Value) orderer = Convert.ToInt32(row["orderer"]);//պատվիրող
                     if (row["previous"] != DBNull.Value) previous = Convert.ToInt32(row["previous"]);//նախնական
                     if (row["observer"] != DBNull.Value) observer = Convert.ToInt32(row["observer"]);//դիտորդ
                     if (row["Workplace"] != DBNull.Value) workplace = Convert.ToInt32(row["observer"]);//աշխատատեղ
-                    if (row["Language"] != DBNull.Value) lang = row["Language"].ToString();//աշխատատեղ
+                    if (row["Language"] != DBNull.Value) lang = row["Language"].ToString();//աշխատանքային լեզու
+                    oօperatorname = row["Name"].ToString();
+                    opperator = int.Parse(row["Id"].ToString());
                 }
                 connection.Close();
-                Form1 form1 = new Form1(oօperatorname,opperator, holl, restaurant, editor, orderer, previous, observer, workplace,lang);
-
-                form1.Show();
+                if (manager + editor + orderer + previous + observer > 0)
+                {
+                    Form1 form1 = new Form1(oօperatorname, opperator, holl, restaurant, manager, editor, orderer, previous, observer, workplace, lang);
+                    form1.Show();
+                }
+                else
+                {
+                    message.Text = "Լիազորություններ չունեք";
+                    message.Visible = true;
+                }
             }
             else //user - ը գոյություն չունի
             {

@@ -1,0 +1,54 @@
+     Aceptación del pedido
+
+     Brilla en la mesa deseada.
+
+     Haga clic en <Cocina> o <Bar> para filtrar la lista de productos.
+     luego seleccione el grupo de productos con los botones de arriba.
+
+     Haga clic en la línea de alimentos deseada. La comida aparece en la tabla de la derecha.
+     ingrese la cantidad con los botones numéricos y luego presione <Enter>.
+
+     Si aún no ha presionado <Enter>, puede cambiar la línea actual a una nueva fuente
+     eligiendo
+
+     Si necesitas contarle a la cocina algo más sobre esa comida, deja de hacerlo
+     en la línea de productos que aún no ha sido aceptada, haga clic en los botones a continuación y
+     seleccione la información requerida de la tabla de la izquierda.
+
+     Después de recoger todo el pedido, pulsa el botón <aceptar>.
+ 
+     Si el producto tiene un código de barras, haga clic en <barcode> en la ventana. Él
+     se pondrá verde. Lea el código de barras y proceda como se indica arriba.
+  
+     marque la casilla <persona> para establecer el número de personas. Se pondrá verde.
+     ingrese la cantidad, presione <Enter>.
+
+     Si desea el importe de una comida que ya ha sido aceptada pero aún no imprime el recibo
+     cambie, luego en la mesa de la derecha párese en la línea de comida, aparecerá debajo de ella
+     comida con un signo menos. Ingrese la cantidad y presione <Enter>
+	 
+     Sólo el gerente puede permitir un cambio en la mesa donde se imprime el cupón
+     con su tarjeta, párese en la ventana <manager>. Se pondrá verde. Lee la tarjeta.
+
+     Para mover una mese, haga clic en esa mesa, luego en el botón <move>,
+     Entonces necesitas la mesa.
+
+     Si necesita aceptar un pedido estándar, seleccione en la parte superior izquierda
+     número de pedido, insertar el número de personas, insertar en la ventana de <guida>
+     el número de personas a descontar y luego proceder como está escrito anteriormente.
+
+     Si desea ver el cupón y mantener la mesa abierta, haga clic en <Preview>
+
+     Haga clic en <Print> para presentar el cupón al cliente. Cierra
+     la mesa de cambios.
+
+     Si hay una propina, haga clic en la ventana <Tipmoney>. Se pondrá verde.
+     marque el número requerido y luego presione <Enter>.
+
+     Después de recibir el dinero, presione el botón <Release>.
+
+     El administrador puede usar los botones <hay>,<ninguno>,<vender> en la parte superior de la lista.
+     cambiar la propiedad del producto.
+     Si está marcado como <ninguno>, entonces no será posible vender ese producto.
+
+     Haga clic en el botón amarillo <X> para cerrar la ventana.

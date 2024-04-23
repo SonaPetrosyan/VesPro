@@ -1,0 +1,26 @@
+ 
+
+   The names of the groups in the table on the right appear
+   In the bottom lines of =Order Acceptance=
+   in the form of buttons.
+   
+   Click over them and the lines of left table
+   by the given number are opened in the form of a table
+   from which the description of the meal is selected
+   sweet, bitter, without onion, etc.
+ 
+    How to put a group number in the description
+    on the line 
+   
+    - Stand on the line of the right table. 
+    The number will appear above the =V= button.
+   
+    - Stand on the required row of the left table.
+    The number will appear below the =V= button.
+   
+    - Press the =V= button and that number will be placed on that line.
+   
+    Click the =Save= button when you are done, otherwise
+    your work will have no consequences.
+   
+    Click the yellow =X= button to close the window.

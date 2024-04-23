@@ -1,0 +1,48 @@
+
+
+    Each employee who enters the program has the following features:
+
+       - restaurant number: <Restaurant>
+
+       - hall number: <Holl>
+
+       and powers:
+
+          — order taker: <orderer> + workplace: <workplace> (is a number - workplace number)
+            if these fields are checked, that employee can take an order
+
+          — previous order taker: <previous> + workplace: <workplace>
+            if these fields are checked, that employee can take a pre-order
+
+          — manager: <manager>
+            if this field is checked, that peer has the right to edit anywhere
+            including this table
+ 
+          — editor: <editor>
+            if this field is checked, that peer has the right to edit anywhere
+            this table is not among them.
+
+          — observer: <observer>
+            if only this field is marked, then that associate has the right to observe only.
+            cannot be edited
+
+        If the employee does not have any of these features, he cannot enter the program.
+
+
+        These permissions are set with the <employees> button
+  
+
+        Everyone can have different combinations of these qualities.
+  
+ 
+         The printers needed to print the order and receipts are determined by the workplace.
+  
+         The meaning of the rest of the fields is as follows:
+
+         <Password>: Password
+         <Passqart>: password on magnetic media
+         <Position>: The position
+         <Name>: Name of the employee
+
+
+        Click the yellow <X> button to close.

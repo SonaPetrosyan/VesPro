@@ -10,6 +10,7 @@ namespace WindowsFormsApp4
     {
         private int _restaurant;
         private string _language;
+        private int _editor;
         private SQLDatabaseHelper dbHelper;
         private DataTable Nest_1 = new DataTable();
         private DataTable Nest_Group = new DataTable();
@@ -18,10 +19,11 @@ namespace WindowsFormsApp4
         private DataTable ControlsNestGroupp = new DataTable();
         private DataTable Table_Rest = new DataTable();
         private DataView dataView;
-        public Nest(int restaurant, string language)
+        public Nest(int restaurant, string language, int editor)
         {
             _restaurant = restaurant;
             _language = language;
+            _editor= editor;
             InitializeComponent();
 
             string connectionString = Properties.Settings.Default.CafeRestDB;
@@ -76,6 +78,11 @@ namespace WindowsFormsApp4
             label3.Text = "";
             Load();
             SetLanguage(_language);
+            if (_editor == 0)
+            {
+                Savebutton1.Enabled=false;
+                Savebutton2.Enabled=false;
+            }
         }
         private void SetLanguage(string lang)
         {

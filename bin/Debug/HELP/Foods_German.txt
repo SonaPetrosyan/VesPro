@@ -1,0 +1,47 @@
+      Wenn Sie auf der Produktlinie stehen, erscheinen die oben abgebildeten Kästchen
+      der Selbstkostenpreis und der Prozentsatz der Gemeinkosten.
+
+      Die Spalten in der Tabelle oben rechts bedeuten:
+
+      Abschnitt ist eine Zahl. zum Beispiel: 2. Es bedeutet, dass nach dem Verkauf
+      Komponenten werden aus Abschnitt 2 exportiert.
+
+      Preis – ist der aktuelle Verkaufspreis, außer für die Hallen 1, 2, 3, 4 und 5
+      Die Preise der Hallen 1, 2, 3, 4, 5 betragen Preis 1, Preis 2, Preis 3, Preis 4, Preis 5.
+
+        Drucker ist eine Nummer. Es ist die Druckernummer, die die Bestellung für dieses Produkt bestimmt
+      Wo wird gedruckt: Küche, Bar, Grill usw.
+      Unter der Schaltfläche <Arbeitsplatz> wird der Drucker der angegebenen Nummer ermittelt.
+
+      <S.P> – wenn es angegeben ist, ist es halbfertig.
+
+      ATG ist ein Code, der auf der Registrierkasse aufgedruckt wird.
+
+      Salon - wenn er 0 oder leer ist, erscheint er im Menü aller Säle.
+      Wenn zum Beispiel: 2,5,6, ist es nur in diesen Hallen sichtbar.
+
+        nicht zusammengesetzt - wenn zum Beispiel: 1,6,8, dann vom Verkauf in diesen Hallen
+         Komponenten werden nicht entfernt.
+
+
+
+      So bereiten Sie die Zusammenstellung der Mahlzeit vor:
+   
+        Stellen Sie sich in der oberen rechten Tabelle auf die gewünschte Zeile.
+      Wählen Sie in der Tabelle oben links den gewünschten Half-Pot aus:
+      durch Vervollständigung der Menge.
+      Die Zeile erscheint in der unteren rechten Tabelle. Füllen Sie die Zeile dort aus
+
+      Wählen Sie in der Tabelle unten links die benötigte Materialmenge aus
+      durch Füllen der Menge.
+        Die Zeile erscheint in der unteren rechten Tabelle. Füllen Sie die Zeile dort aus
+
+      Grüne Fenster dienen der Suche.
+
+      Die Schaltfläche <Barcode> sendet das Menü im XML-Format als Barcode an die Datenbank
+      damit die Skala generiert wird.
+
+      Klicken Sie auf die Schaltfläche <save>, nachdem Sie die Arbeit abgeschlossen haben, sonst geht sie verloren
+      Erledigt.
+
+      Klicken Sie auf die gelbe Schaltfläche <X>, um das Fenster zu schließen.

@@ -61,7 +61,7 @@ namespace WindowsFormsApp4
             _language = language;
             InitializeComponent();
 
-            string connectionString = "Server=DESKTOP-L1SRCHN\\SQLEXPRESS;Database=CafeRest;Integrated Security=True;";
+            string connectionString = Properties.Settings.Default.CafeRestDB;
             SqlConnection connection = new SqlConnection(connectionString);
             SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
 
@@ -196,7 +196,7 @@ namespace WindowsFormsApp4
             dataGridView1.Columns[2].DataPropertyName = "Unit";
             dataGridView1.Columns[3].DataPropertyName = "CostPrice";
             dataGridView1.Columns[4].DataPropertyName = "Actually1";
-            dataGridView1.Columns[5].DataPropertyName = "Act215_1";
+            dataGridView1.Columns[5].DataPropertyName = "act215_1";
             dataGridView1.Columns[6].DataPropertyName = "Calcul";
             dataGridView1.Columns[7].DataPropertyName = "Over";
             dataGridView1.Columns[8].DataPropertyName = "Lack";
@@ -330,10 +330,11 @@ namespace WindowsFormsApp4
             {
                 string columnName = dataGridView1.Columns[colIndex].DataPropertyName.Trim();
                 DataRow[] foundRows = ControlsInventory.Select($"TRIM(Name) = '{columnName}'");
-                if (foundRows.Length > 0)
+                if (foundRows.Length > 0 && columnName.IndexOf("215")<0)
                 {
                     dataGridView1.Columns[colIndex].HeaderText = foundRows[0][_language].ToString();
                 }
+
             }
 
             for (int colIndex = 0; colIndex < dataGridView2.Columns.Count; colIndex++)
@@ -1308,23 +1309,24 @@ namespace WindowsFormsApp4
             parameters.Add("ReportName", reportname);
             parameters.Add("department", DepartmentComboBox.Text);
             parameters.Add("Lastinventory", "վերջին գրանցած "+LastLabel.Text);
-            
 
 
+            string Report = FindFolder.Folder("Report")+ "\\InventoryReport.rdlc";
 
             ReportManager reportManager = new ReportManager();
-             reportManager.PreviewReport("BillReport", $"d:\\hayrik\\sql\\windowsformsapp4\\InventoryReport.rdlc", InventoryReport, parameters, null);
+             reportManager.PreviewReport("BillReport", Report, InventoryReport, parameters, null);
         }
 
         private void HelpButton_Click(object sender, EventArgs e)
         {
+            string help = FindFolder.Folder("Help");
+            string filePath = "";
             if (HelpButton.Text == "?")
             {
                 HelpButton.Text = "X";
                 richTextBox1.Height = this.Height - 50;
                 richTextBox1.ReadOnly = true;
-
-                string filePath = "D:\\hayrik\\sql\\help\\Inventory.txt";
+                filePath = help + "\\Inventory_" + _language+".txt";
                 string fileContent = File.ReadAllText(filePath);
                 richTextBox1.Text = fileContent;
                 richTextBox1.Visible = true;

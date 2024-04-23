@@ -1,0 +1,18 @@
+    
+	
+	Wählen Sie einfach die gewünschte Gruppe aus 
+    und fang an zu arbeiten.
+   
+    Stellen Sie sich in der linken Tabelle auf die gewünschte Zeile.
+    Stellen Sie den Betrag ein und fahren Sie mit dem nächsten fort.
+   
+    Wenn Sie die Schaltfläche <Betrag> aktiviert haben, dann <Betrag>
+    Geben Sie den Betrag, den Sie für das Produkt bezahlt haben, in das Feld ein.
+   
+    Die Zeile wird in der Tabelle rechts angezeigt.
+   
+    Wenn Sie das Kontrollkästchen rechts neben dem Fenster <Suche> aktiviert haben,
+    dann kehrt die Markierung zum Feld <Suche> zurück.
+   
+    Klicken Sie nach dem Sammeln des gesamten Dokuments auf die Schaltfläche <Speichern>.
+    andernfalls hat die Arbeit keine Konsequenzen.

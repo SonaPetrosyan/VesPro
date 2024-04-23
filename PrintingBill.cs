@@ -159,11 +159,10 @@ namespace WindowsFormsApp4
             parameters.Add("DateBegin", DateBegin);
             parameters.Add("DateEnd", DateEnd);
 
-
+            string Report = FindFolder.Folder("Report")+ "\\BillReport.rdlc";
 
             ReportManager reportManager = new ReportManager();
-            reportManager.PreviewReport("BillReport", $"d:\\hayrik\\sql\\windowsformsapp4\\BillReport.rdlc", BillReport, parameters, null);
-
+            reportManager.PreviewReport("BillReport", Report, BillReport, parameters, null);
         }
     }
 }

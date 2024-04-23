@@ -1,0 +1,13 @@
+     It is the list of partners.
+     That is, suppliers and debtors
+     the list. It is also a list of cost codes.
+
+     Specify the <cost> column for the cost
+     these are used <buy, move, sell, spend>
+     while working with the button.
+ 
+     You can view your transactions with them
+     with the <observation> button, specifying 
+	 the appropriate code.
+
+     Click the yellow <X> button to close

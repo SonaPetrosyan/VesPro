@@ -1,0 +1,9 @@
+Select the required options and press the <Next> button
+   
+    To print a copy of the coupon, check the <print ticket> box,
+    then stand on the required line. Wait a while and the coupon prototype will appear.
+   
+    To reopen the printed table for the current session, uncheck the <printed> column
+    and click the <Save> button.
+   
+        Click the yellow <X> button to close.

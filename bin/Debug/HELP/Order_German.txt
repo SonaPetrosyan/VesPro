@@ -1,0 +1,61 @@
+     
+	 
+	Bestellannahme:
+
+      Klicken Sie auf die gewünschte Tabelle
+
+      Klicken Sie auf <Küche> oder <Bar>, um die Produktliste zu filtern.
+      Anschließend wählen Sie mit den Buttons oben die Produktgruppe aus.
+
+      Klicken Sie auf die gewünschte Lebensmittelzeile. Das Essen erscheint
+	  in der rechten Tabelle. Geben Sie die Menge mit den Zifferntasten
+	  ein und drücken Sie dann die <Enter>.
+
+      Wenn Sie noch nicht die <Enter> gedrückt haben, können Sie die aktuelle
+	  Zeile durch Auswahl in einen neuen Feed ändern
+
+      Wenn Sie der Küche noch etwas über diese Mahlzeit mitteilen möchten, 
+	  klicken Sie auf die Produktlinie der rechten Tabelle, die noch nicht
+	  akzeptiert wurde, klicken Sie auf die Schaltflächen unten und wählen Sie
+	  die erforderlichen Informationen aus der Tabelle links aus.
+
+      Nachdem Sie die gesamte Bestellung gesammelt haben, 
+	  klicken Sie auf die Schaltfläche <Save>.
+ 
+      Wenn das Produkt über einen Barcode verfügt, klicken Sie auf das Fenster
+	  <Barcode>. Es wird grün. Lesen Sie den Barcode und gehen Sie wie oben vor.
+  
+      Klicken Sie auf die Schaltfläche <Pers.>, um die Anzahl der Personen festzulegen.
+	  Es wird grün. Geben Sie die Menge ein und drücken Sie die <Enter>.
+
+      Wenn Sie die Menge einer bereits angenommenen Mahlzeit reduzieren möchten,
+      Stellen Sie sich dann in der rechten Tabelle auf die Lebensmittellinie,
+	  auf der sie angezeigt wird unten in der Tabelle mit einem Minuszeichen versehen.
+	  Geben Sie die Menge ein und drücken Sie <Enter>.
+
+      Nur der Manager kann eine Änderung an dem Tisch zulassen, an dem der Coupon gedruckt wird
+      mit seiner Karte. Stoppen Sie beim Fenster <Manager>. Es wird grün. Lesen Sie die Karte.
+
+      Um eine Tisch zu verschieben, klicken Sie auf die Tisch und dann auf die Schaltfläche <move>.
+      Klicken Sie dann auf die gewünschte Tisch.
+
+      Wenn Sie eine Standardbestellung annehmen müssen, wählen Sie bitte oben links aus
+      Bestellnummer, Personenzahl eingeben, ins Guide-Fenster einfügen
+      Geben Sie die Anzahl der zu ermäßigenden Personen ein und 
+	  gehen Sie dann wie oben beschrieben vor.
+
+      Wenn Sie den Coupon sehen und die Tisch geöffnet lassen möchten, klicken Sie auf <Preview>
+
+      Klicken Sie auf <Print>, um dem Kunden den Gutschein vorzulegen. Es schließt
+      die Tisch für Änderungen.
+
+      Wenn es ein Trinkgeld gibt, klicken Sie auf das Fenster <Tipmoney>. Es wird grün.
+      Wählen Sie die gewünschte Nummer und drücken Sie dann die <Enter>.
+
+      Nachdem Sie das Geld erhalten haben, drücken Sie die Schaltfläche <Release>.
+
+      Der Manager kann dies mit den Schaltflächen <es gibt>, <keine>, <zu verkaufen> oben in der Liste tun
+      die Eigenschaften des Produkts ändern.
+      Wenn <keine> markiert ist, wird das Produkt nicht verkauft.
+
+      Klicken Sie auf die gelbe Schaltfläche <X>, um das Fenster zu schließen.

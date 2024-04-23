@@ -1,0 +1,60 @@
+     
+	 
+	 
+	 
+	 Order acceptance
+
+     Click on the desired table
+
+     Click <Kitchen> or <Bar> to filter the list of products.
+     Then select the product group with the buttons above.
+
+     Click on the desired food line. The food appears in the right table.
+     enter the quantity with the number buttons, then press <Enter>.
+
+     If you haven't pressed <Enter> yet, you can change the current line to a new feed
+     choosing
+
+     if you need to tell the kitchen anything else about that meal, stand
+     on the line right table of the product not yet accepted, click on the buttons below
+	 and select the required information from the table on the left.
+
+     After collecting the entire order, click the <Save> button.
+ 
+     If the product has a barcode, click on the <barcode> window. It
+     will turn green. Read the barcode and proceed as above.
+  
+     Click the <pers.> button to set the number of people. It will turn green.
+     enter the quantity, press <Enter>.
+
+     If you want to reduce quantity of a meal that has already been accepted,
+	 then in the right table stand on the line of food, it will appear on the
+     bottom of table with a minus sign. Enter the quantity and press <Enter>.
+
+     Only the manager can allow a change at the table where the coupon is printed
+     with his card: stop at the <Manager> window. It will turn green. Read the card.
+
+     To move a table, click on that table, then on the <move> button,
+     then click on the table that you want.
+
+     If you need to accept a standard order, please select from the top left
+     order number, insert the number of persons, insert in the guide window
+     the number of persons to be discounted and then proceed as written above.
+
+     If you want to see the coupon and keep the table open, click <Preview>
+
+     Click <Print> to present the coupon to the customer. It closes
+     the table for changes.
+
+     If there is a tip, click the <Tip money> window. It will turn green.
+     dial the required number, then press <Enter>.
+
+     After receiving the money, press the <Release> button.
+
+     The manager can with the <there is>,<none>,<tosell> buttons at the top of the list
+     change the property of the product.
+     If <none> is marked, then that product will not be sold.
+
+     Click the yellow <X> button to close the window.
+     
+     

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Drawing;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -140,11 +141,10 @@ namespace WindowsFormsApp4
 
             }
 
-
-            string query2 = $"SELECT Code,Department,CostPrice,Armenian,English,German,Espaniol,Russian FROM table_215  where Restaurant='{_restaurant}'  ";
+            string query2 = $"SELECT * FROM table_215  where Restaurant='{_restaurant}'  ";
             Table_215 = dbHelper.ExecuteQuery(query2);
             Table_215.Columns.Add("Name", typeof(string));
-            Table_215.Columns.Add("Quantity", typeof(float));
+ //           Table_215.Columns.Add("Quantity", typeof(float));
             Table_215.Columns.Add("Amount", typeof(float));
 
             foreach (DataRow row in Table_215.Rows)
@@ -154,7 +154,8 @@ namespace WindowsFormsApp4
                 row["Amount"] = 0;
             }
 
-            string query3 = $"SELECT Code,Unit,CostPrice,Armenian,English,German,Espaniol,Russian FROM table_213  where Restaurant='{_restaurant}'  ";
+  
+            string query3 = $"SELECT * FROM table_213  where Restaurant='{_restaurant}'  ";
             Table_213 = dbHelper.ExecuteQuery(query3);
             Table_213.Columns.Add("Name", typeof(string));
             Table_213.Columns.Add("Quantity", typeof(float));
@@ -168,7 +169,8 @@ namespace WindowsFormsApp4
                 row["Changed"] = 0;
             }
 
-            string query7 = $"SELECT Code,Unit,CostPrice,Armenian,English,German,Espaniol,Russian FROM table_111  where Restaurant='{_restaurant}'  ";
+   
+            string query7 = $"SELECT * FROM table_111  where Restaurant='{_restaurant}'  ";
             Table_111 = dbHelper.ExecuteQuery(query7);
             Table_111.Columns.Add("Name", typeof(string));
             Table_111.Columns.Add("Quantity", typeof(float));
@@ -1479,7 +1481,31 @@ namespace WindowsFormsApp4
             }
         }
 
-     }
+        private void HelpButton_Click(object sender, EventArgs e)
+        {
+            string help = FindFolder.Folder("Help");
+            string filePath = "";
+            if (HelpButton.Text == "?")
+            {
+                HelpButton.Text = "X";
+                richTextBox1.Top = 0;
+                richTextBox1.Height = this.Height - 50;
+                richTextBox1.Left = HelpButton.Width + 5;
+                richTextBox1.Width = this.Width / 2;
+                richTextBox1.ReadOnly = true;
+
+                filePath = help + "\\Purchase_" + _language + ".txt";
+                string fileContent = File.ReadAllText(filePath);
+                richTextBox1.Text = fileContent;
+                richTextBox1.Visible = true;
+            }
+            else
+            {
+                richTextBox1.Visible = false;
+                HelpButton.Text = "?";
+            }
+        }
+    }
 }
 
 

@@ -134,6 +134,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BillReport.xsd</DependentUpon>
     </Compile>
+    <Compile Include="FindFolder.cs" />
+    <Compile Include="FindMaxID.cs" />
     <Compile Include="Foods.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -226,6 +228,7 @@
     </Compile>
     <Compile Include="ReplaceFields.cs" />
     <Compile Include="Save.cs" />
+    <Compile Include="Save_.cs" />
     <Compile Include="SQLDatabaseHelper.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="SQLUpdater.cs" />
@@ -259,13 +262,16 @@
     </Compile>
     <EmbeddedResource Include="Additions.resx">
       <DependentUpon>Additions.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="BillReport.rdlc" />
     <EmbeddedResource Include="Foods.resx">
       <DependentUpon>Foods.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FoodsGroup.resx">
       <DependentUpon>FoodsGroup.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -273,12 +279,14 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GoodsMovement.resx">
       <DependentUpon>GoodsMovement.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="images\Standart.resx">
       <DependentUpon>Standart.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory.resx">
       <DependentUpon>Inventory.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryReport.rdlc" />
     <EmbeddedResource Include="Login.resx">

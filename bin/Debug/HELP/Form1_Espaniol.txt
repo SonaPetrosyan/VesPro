@@ -1,0 +1,13 @@
+
+
+     Cuál de los empleados puede trabajar con qué botón
+     está determinado por sus poderes.
+
+
+     Esos poderes los otorga el gerente con el botón <Empleados>.
+
+     Puedes ver una descripción de los poderes allí mismo
+	 haciendo clic en el botón <?>
+
+     Haga clic en el botón amarillo <X> para cerrar la ventana.
+ 

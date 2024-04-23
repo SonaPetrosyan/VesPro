@@ -1,0 +1,31 @@
+   
+   
+   Die Namen der Gruppen in der Tabelle rechts werden angezeigt
+   In den Zeilen unter 'Auftragsannahme' in Form von Knöpfe.
+   
+   Wenn du auf sie strahlst  rechten Tisch
+   die Zeilen der angegebenen Nummer werden in Form einer Tabelle geöffnet,
+   aus der die Beschreibung der Mahlzeit ausgewählt wird:
+   süß, bitter, ohne Zwiebeln usw.
+ 
+    So geben Sie eine Gruppennummer in die Beschreibung ein
+    an der Leitung
+   
+    - Stellen Sie sich auf die rechte Tischlinie. Ausrichten
+    Die Nummer wird über der Schaltfläche 'V' angezeigt.
+   
+    - Stellen Sie sich in die gewünschte Reihe des linken Tisches. Ausrichten
+    Die Nummer wird unter der Schaltfläche 'V' angezeigt.
+   
+    - Drücken Sie die Schaltfläche 'V' und die Nummer oben wird in diese Zeile eingefügt.
+   
+    Klicken Sie andernfalls auf die Schaltfläche 'Save', wenn Sie fertig sind
+    Ihre Arbeit wird keine Konsequenzen haben.
+   
+    Klicken Sie auf die gelbe  Schaltfläche 'X', um das Fenster zu schließen.
+	
+	
+	
+	
+
+	   

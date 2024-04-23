@@ -1,0 +1,47 @@
+      Cuando se encuentra en la línea de productos, aparecen los cuadros de arriba
+      el precio de costo y el porcentaje de gastos generales.
+
+      Las columnas de la tabla superior derecha significan:
+
+      - la sección es un número. por ejemplo: 2. Significa que después de vender
+      Los componentes se exportarán desde la sección 2.
+
+      - precio - es el precio de venta actual, excepto para los pabellones 1, 2, 3, 4 y 5
+      Los precios de las salas 1, 2, 3, 4, 5 son precio 1, precio 2, precio 3, precio 4, precio 5, respectivamente.
+
+      - La impresora es un número. Es el número de impresora el que determina el pedido de ese producto.
+      donde se imprimirá: cocina, bar, parrilla, etc.
+      la impresora del número dado se determina bajo el botón <lugar de trabajo>.
+
+      - <S.P> - si está indicado, está semielaborado.
+
+      - ATG es un código que se imprimirá en la caja registradora.
+
+      - salón: si es 0 o está vacío, aparece en el menú de todos los salones.
+      Si, por ejemplo: 2,5,6, es visible sólo en estos pasillos.
+
+      -  no compuesto: si, por ejemplo: 1,6,8, entonces por vender en estas salas
+	  
+      -   Los componentes no se eliminan.
+
+
+      Para preparar la composición de la comida:
+   
+        En la tabla superior derecha, párese en la línea requerida.
+      Seleccione el medio bote requerido de la tabla superior izquierda:
+      completando la cantidad.
+      La fila aparece en la tabla inferior derecha. Complete la línea allí
+
+      Seleccione la cantidad de material requerida de la tabla inferior izquierda
+      llenando la cantidad.
+        La fila aparece en la tabla inferior derecha. Complete la línea allí
+
+      Las ventanas verdes son para buscar.
+
+      El botón <Barcode> envía el menú en formato XML a la base de datos como un código de barras
+      para que la escala genere.
+
+      Haga clic en el botón <save> después de terminar el trabajo o lo perderá.
+      hecho.
+
+      Haga clic en el botón amarillo <X> para cerrar la ventana.

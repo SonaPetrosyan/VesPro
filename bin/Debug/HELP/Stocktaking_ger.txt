@@ -1,0 +1,9 @@
+Wählen Sie die gewünschten Optionen aus und klicken Sie auf die Schaltfläche <Nach>
+   
+    Um eine Kopie des Gutscheins auszudrucken, aktivieren Sie das Kontrollkästchen <Ticket ausdruke>.
+    Stellen Sie sich dann auf die gewünschte Zeile. Warten Sie eine Weile und der Coupon-Prototyp wird angezeigt.
+   
+    Um die gedruckte Tabelle für die aktuelle Sitzung erneut zu öffnen, deaktivieren Sie die Spalte <gedruckt>
+    und klicken Sie auf die Schaltfläche <Save>.
+   
+        Klicken Sie zum Schließen auf die gelbe Schaltfläche <X>.

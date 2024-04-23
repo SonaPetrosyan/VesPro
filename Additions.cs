@@ -4,6 +4,7 @@ using System.Data;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
+using System.Text;
 
 namespace WindowsFormsApp4
 {
@@ -24,6 +25,8 @@ namespace WindowsFormsApp4
         private DataTable Resize = new DataTable();
 
         private DataTable Exist = new DataTable(); 
+
+        private DataTable Help = new DataTable();
 
         private DataTable Table_Rest = new DataTable(); 
 
@@ -311,6 +314,7 @@ namespace WindowsFormsApp4
 
         private void HelpButton_Click(object sender, EventArgs e)  
         {
+            string help = FindFolder.Folder("Help");
             string filePath = "";
             if (HelpButton.Text == "?")
             {
@@ -320,21 +324,26 @@ namespace WindowsFormsApp4
                 richTextBox1.Left = 0;
                 richTextBox1.Width = this.Width- HelpButton.Width-20;
                 richTextBox1.ReadOnly = true;
-
-                if (_language == "Armenian") filePath = "D:\\hayrik\\sql\\help\\Additions_arm.txt";
-                if (_language == "English") filePath = "D:\\hayrik\\sql\\help\\Additions_eng.txt";
-                if (_language == "German") filePath = "D:\\hayrik\\sql\\help\\Additions_ger.txt";
-                if (_language == "Espaniol") filePath = "D:\\hayrik\\sql\\help\\Additions_esp.txt";
-                if (_language == "Russian") filePath = "D:\\hayrik\\sql\\help\\Additions_eng.txt";
+                richTextBox1.Visible = true;
+                if (_language == "Armenian") filePath = help+"\\Additions_arm.txt";
+                if (_language == "English") filePath = help + "\\Additions_eng.txt";
+                if (_language == "German") filePath = help + "\\Additions_ger.txt";
+                if (_language == "Espaniol") filePath = help + "\\Additions_esp.txt";
+                if (_language == "Russian") filePath = help + "\\Additions_rus.txt";
                 string fileContent = File.ReadAllText(filePath);
                 richTextBox1.Text = fileContent;
-                richTextBox1.Visible = true;
+                
             }
             else
             {
                 richTextBox1.Visible = false;
                 HelpButton.Text = "?";
             }
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 

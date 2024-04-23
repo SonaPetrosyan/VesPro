@@ -1,0 +1,29 @@
+           
+		   
+		   Each waiter taking an order must have
+           workplace.
+
+           This is indicated by the <Co workers> button.
+
+           Different waiters may have the same workplace.
+
+           The workplace determines which printer corresponds to his
+           number for this workplace.
+
+           (Each dish in <Menu> is assigned a printer number,
+            which determines where the receipt for ordering this dish will be printed:
+            kitchen, bar, barbecue, etc.)
+
+            The printer is installed as follows:
+
+            Double-click the <printer n> cell. Will open
+            a list of printers from which to select a printer.
+
+            If the printers <print>, <preprint>, <cash printer> are installed,
+            then the corresponding buttons will appear on the waiter’s screen
+            otherwise these buttons are missing.
+
+            If after making changes you did not click the <Save> button, then
+            what you do will have no consequences.
+
+           Click the yellow <X> button to close the window.

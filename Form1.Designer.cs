@@ -670,6 +670,7 @@ namespace WindowsFormsApp4
             this.richTextBox1.TabIndex = 65;
             this.richTextBox1.Text = "";
             this.richTextBox1.Visible = false;
+            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // button1
             // 

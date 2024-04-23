@@ -1,0 +1,29 @@
+            
+			
+			Jeder Kellner, der eine Bestellung entgegennimmt, muss Folgendes haben
+            Arbeitsplatz.
+
+            Dies wird durch die Schaltfläche <Kollegen> angezeigt.
+
+            Verschiedene Kellner können den gleichen Arbeitsplatz haben.
+
+            Der Arbeitsplatz bestimmt, welcher Drucker seinem entspricht
+            Nummer für diesen Arbeitsplatz.
+
+            (Jedem Gericht im <Menü> ist eine Druckernummer zugeordnet,
+             Hiermit wird festgelegt, wo die Quittung für die Bestellung dieses Gerichts ausgedruckt wird:
+             Küche, Bar, Grill usw.)
+
+             Der Drucker wird wie folgt installiert:
+
+             Doppelklicken Sie auf die Zelle <Drucker n>. Wird Öffnen
+             Eine Liste von Druckern, aus der Sie einen Drucker auswählen können.
+
+             Wenn die Drucker <print>, <preprint>, <cash Printer> installiert sind,
+             dann erscheinen die entsprechenden Schaltflächen auf dem Bildschirm des Kellners
+             ansonsten fehlen diese Knöpfe.
+
+             Wenn Sie nach dem Vornehmen von Änderungen nicht auf die Schaltfläche <Saven> geklickt haben, dann
+             Was Sie tun, wird keine Konsequenzen haben.
+
+            Klicken Sie auf die gelbe Schaltfläche <X>, um das Fenster zu schließen.

@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using Microsoft.ReportingServices.Diagnostics.Internal;
 
 namespace WindowsFormsApp4
 {
@@ -12,6 +13,8 @@ namespace WindowsFormsApp4
         private int _restaurant;
 
         private int _editor;
+
+        private string _language;
 
         private SQLDatabaseHelper dbHelper;
 
@@ -22,14 +25,15 @@ namespace WindowsFormsApp4
         private DataTable Table_Rest = new DataTable();
 
         private DataView dataView;
-        public Partners(int restaurant, int editor)
+        public Partners(int restaurant, int editor, string language)
         {
             _restaurant = restaurant;
             _editor = editor;
+            _language= language;
 
             InitializeComponent();
 
-            string connectionString = "Server=DESKTOP-L1SRCHN\\SQLEXPRESS;Database=CafeRest;Integrated Security=True;";
+            string connectionString = Properties.Settings.Default.CafeRestDB;
             SqlConnection connection = new SqlConnection(connectionString);
             SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
             string query1_0 = $"SELECT * FROM Partners WHERE Restaurant='{_restaurant}' ";
@@ -37,15 +41,13 @@ namespace WindowsFormsApp4
             dataView = new DataView(Table_Partners);
             dataGridView1.DataSource = dataView;
             dataGridView1.Columns[0].DataPropertyName = "Id";
-            dataGridView1.Columns[1].DataPropertyName = "Name";
-            dataGridView1.Columns[2].DataPropertyName = "Eng";
-            dataGridView1.Columns[3].DataPropertyName = "Rus";
-            dataGridView1.Columns[4].DataPropertyName = "Note";
-            dataGridView1.Columns[5].DataPropertyName = "Groupp";
+            dataGridView1.Columns[1].DataPropertyName = _language;
+            dataGridView1.Columns[2].DataPropertyName = "Note";
+            dataGridView1.Columns[3].DataPropertyName = "Groupp";
 
             foreach (DataGridViewColumn column in dataGridView1.Columns)
             {
-                if (column.Index > 5)
+                if (column.Index > 3)
                 {
                     column.Visible = false;
                 }
@@ -118,17 +120,18 @@ namespace WindowsFormsApp4
             dataView = new DataView(Table_Partners);
             if (dataView.Count > 0)
             {
-                // Use LINQ to find the maximum value in the "Code" column
-                decimal maxId = dataView.Cast<DataRowView>().Max(row => (decimal)row["Id"]) + 1;
-
 
                 DataRow newRow = Table_Partners.NewRow();
+                decimal maxId = dataView.Cast<DataRowView>().Max(row => (decimal)row["Id"]) + 1;
+                foreach (DataColumn column in Table_Partners.Columns)
+                {
+                    string columnName = column.ColumnName;
+                    if (Table_Partners.Columns[columnName].DataType == typeof(string)) newRow[columnName] = "";
+                    if (Table_Partners.Columns[columnName].DataType == typeof(int)) newRow[columnName] = 0;
+                    if (Table_Partners.Columns[columnName].DataType == typeof(float)) newRow[columnName] = 0;
+                }
+
                 newRow["Id"] = maxId;
-                newRow["Name"] = "";
-                newRow["Eng"] = "";
-                newRow["Rus"] = "";
-                newRow["Note"] = ""; 
-                newRow["Groupp"] = 0;
                 newRow["Restaurant"] = _restaurant;
 
 
@@ -150,46 +153,73 @@ namespace WindowsFormsApp4
         private void Savebutton_Click(object sender, EventArgs e)
         {
             DataTable Tp = new DataTable();
-            string connectionString = "Server=DESKTOP-L1SRCHN\\SQLEXPRESS;Database=CafeRest;Integrated Security=True;";
-            SqlConnection connection = new SqlConnection(connectionString);
+            string connectionString = Properties.Settings.Default.CafeRestDB;
             SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
-            connection.Open();
+
             foreach (DataRow row in Table_Partners.Rows)
             {
                 string query = $"SELECT * FROM Partners WHERE Id='{row["Id"]}' AND Restaurant='{_restaurant}' ";
                 Tp = dbHelper.ExecuteQuery(query);
+
                 if (Tp.Rows.Count > 0)
                 {
-                    string UpdateQuery = $"UPDATE Partners SET Name = @Name, Eng = @Eng, Rus = @Rus, Note = @Note, Groupp = @Groupp  WHERE Id = @Id  ";
-                    using (SqlCommand command = new SqlCommand(UpdateQuery, connection))
+                    foreach (DataColumn column in Table_Partners.Columns)
                     {
-                        command.Parameters.AddWithValue("@Name", row["Name"]);
-                        command.Parameters.AddWithValue("@Eng", row["Eng"]);
-                        command.Parameters.AddWithValue("@Rus", row["Rus"]);
-                        command.Parameters.AddWithValue("@Note", row["Note"]);
-                        command.Parameters.AddWithValue("@Groupp", row["Groupp"]);
-                        command.Parameters.AddWithValue("@Id", row["Id"]);
-                        command.ExecuteNonQuery();
+                        string columnName = column.ColumnName;
+
+                        if (columnName == "Id") continue;
+
+                        string UpdateQuery = $"UPDATE Partners SET {columnName} = @Name  WHERE Id = @Id";
+                        using (SqlConnection connection = new SqlConnection(connectionString))
+                        {
+                            connection.Open();
+                            using (SqlCommand command = new SqlCommand(UpdateQuery, connection))
+                            {
+                                command.Parameters.AddWithValue("@Name", row[columnName]);
+                                command.Parameters.AddWithValue("@Id", row["Id"]);
+                                command.ExecuteNonQuery();
+                            }
+                        }
                     }
                 }
                 else
                 {
-                    string InsertQuery = $"INSERT INTO Partners (Name, Eng, Rus, Note, Groupp,  Restaurant) " +
-       $"VALUES (@Name, @Eng, @Rus, @Note, @Groupp  @Restaurant)";
+                    SqlConnection connection = new SqlConnection(connectionString);
+                    connection.Open();
+                    string InsertQuery = $"INSERT INTO Partners (Name) VALUES (@Name)";
                     using (SqlCommand command = new SqlCommand(InsertQuery, connection))
                     {
-                        command.Parameters.AddWithValue("@Name", row["Name"]);
-                        command.Parameters.AddWithValue("@Eng", row["Eng"]);
-                        command.Parameters.AddWithValue("@Rus", row["Rus"]);
-                        command.Parameters.AddWithValue("@Note", row["Note"]);
-                        command.Parameters.AddWithValue("@Groupp", row["Groupp"]);
-                        command.Parameters.AddWithValue("@Restaurant", _restaurant);
+                        command.Parameters.AddWithValue("@Name", " ");
                         command.ExecuteNonQuery();
                     }
-                }
+                    int maxid = FindMaxID.MaxId(connectionString, "Partners");
 
+                    foreach (DataColumn column in Table_Partners.Columns)
+                    {
+                        string columnName = column.ColumnName;
+
+                        if (columnName == "Id") continue;
+
+                        string UpdateQuery = $"UPDATE Partners SET {columnName} = @Name  WHERE Id = @Id";
+                        using (SqlConnection connection1 = new SqlConnection(connectionString))
+                        {
+                            if (connection1.State != ConnectionState.Open) { connection1.Open(); }
+                            using (SqlCommand command = new SqlCommand(UpdateQuery, connection1))
+                            {
+                                command.Parameters.AddWithValue("@Name", row[columnName]);
+                                command.Parameters.AddWithValue("@Id", maxid);
+                                command.ExecuteNonQuery();
+                            }
+                            if (connection1.State == ConnectionState.Open) { connection1.Close(); }
+                        }
+                        
+                    }
+                    
+                    connection.Close();
+                }
+                
             }
-            connection.Close();
+            
             Savebutton.Visible= false;
         }
 
@@ -200,16 +230,17 @@ namespace WindowsFormsApp4
 
         private void HelpButton_Click(object sender, EventArgs e)
         {
+            string help = FindFolder.Folder("Help");
+            string filePath = "";
             if (HelpButton.Text == "?")
             {
                 HelpButton.Text = "X";
                 richTextBox1.Height = this.Height - 50;
                 richTextBox1.Top = 0;
                 richTextBox1.Left = HelpButton.Width+2;
-                richTextBox1.Width = this.Width / 2;
+                richTextBox1.Width = this.Width - HelpButton.Width-20;
                 richTextBox1.ReadOnly = true;
-
-                string filePath = "D:\\hayrik\\sql\\help\\Partners.txt";
+                filePath = help + "\\Partners_" + _language + ".txt";
                 string fileContent = File.ReadAllText(filePath);
                 richTextBox1.Text = fileContent;
                 richTextBox1.Visible = true;

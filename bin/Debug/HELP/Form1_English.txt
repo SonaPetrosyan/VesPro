@@ -1,0 +1,14 @@
+
+ 
+ 
+     Which of the employees can work with which button
+	 is determined by their powers.
+     Those powers are granted by the manager
+	 with the <Employees> button.
+
+     You can see a description of the powers
+	 right there by clicking the <?> button
+
+     Click the yellow <X> button to close the window.
+
+ 

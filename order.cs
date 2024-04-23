@@ -66,6 +66,10 @@ namespace WindowsFormsApp4
 
         private DataTable Table_Restaurants = new DataTable();    // Ռեստորանների ցանկն է
 
+
+
+        private DataTable ControlsOrder = new DataTable();
+
         private DataTable Table_Workplace = new DataTable();
 
         private DataView dataView;
@@ -263,13 +267,112 @@ namespace WindowsFormsApp4
             //bindingSource.DataSource = CurrentOrder;
             connection.Close();
 
-            if (_editor == 0)
+            if (_editor == 0 )
             {
                 dataGridView1.Enabled = false; dataGridView2.Enabled = false; remove.Enabled = false; tab69.Enabled = false;
                 radioButton1.Enabled = false; radioButton2.Enabled = false; radioButton3.Enabled = false; TipMoney.Enabled = false;
                 numericUpDown3.Enabled = false;
             }
+            SetLanguage(_language);
         }
+
+        private void SetLanguage(string lang)
+        {
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
+            string rb = "";
+            string rbt = "";
+            connection.Open();
+            DataTable ControlsForm1 = new DataTable();
+            string query1 = $"SELECT * FROM ControlsOrder  ";
+            ControlsOrder = dbHelper.ExecuteQuery(query1);
+            foreach (Control control in this.Controls)
+            {
+                string columnName = control.Name.Trim();
+                DataRow[] foundRows = ControlsOrder.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0)
+                {
+                    control.Text = foundRows[0][_language].ToString();
+                }
+            }
+            foreach (Control control in panel1.Controls)
+            {
+                string columnName = control.Name.Trim();
+                DataRow[] foundRows = ControlsOrder.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0)
+                {
+                    control.Text = foundRows[0][_language].ToString();
+                }
+            }
+            foreach (Control control in panel2.Controls)
+            {
+                string columnName = control.Name.Trim();
+                DataRow[] foundRows = ControlsOrder.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0)
+                {
+                    control.Text = foundRows[0][_language].ToString();
+                }
+            }
+            foreach (Control control in panel3.Controls)
+            {
+                string columnName = control.Name.Trim();
+                DataRow[] foundRows = ControlsOrder.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0)
+                {
+                    control.Text = foundRows[0][_language].ToString();
+                }
+            }
+            foreach (Control control in panel4.Controls)
+            {
+                string columnName = control.Name.Trim();
+                DataRow[] foundRows = ControlsOrder.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0)
+                {
+                    control.Text = foundRows[0][_language].ToString();
+                }
+            }
+            foreach (Control control in panel5.Controls)
+            {
+                string columnName = control.Name.Trim();
+                DataRow[] foundRows = ControlsOrder.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0)
+                {
+                    control.Text = foundRows[0][_language].ToString();
+                }
+            }
+            foreach (Control control in panel6.Controls)
+            {
+                string columnName = control.Name.Trim();
+                DataRow[] foundRows = ControlsOrder.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0)
+                {
+                    control.Text = foundRows[0][_language].ToString();
+                }
+            }
+            for (int colIndex = 0; colIndex < dataGridView1.Columns.Count; colIndex++)
+            {
+                string columnName = dataGridView1.Columns[colIndex].DataPropertyName.Trim();
+                DataRow[] foundRows = ControlsOrder.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0 && columnName.IndexOf("215") < 0)
+                {
+                    dataGridView1.Columns[colIndex].HeaderText = foundRows[0][_language].ToString();
+                }
+
+            }
+
+            for (int colIndex = 0; colIndex < dataGridView2.Columns.Count; colIndex++)
+            {
+                string columnName = dataGridView2.Columns[colIndex].DataPropertyName.Trim();
+                DataRow[] foundRows = ControlsOrder.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0)
+                {
+                    dataGridView2.Columns[colIndex].HeaderText = foundRows[0][_language].ToString();
+                }
+            }
+            connection.Close();
+        }
+
 
         private void group1_Click(object sender, EventArgs e)
         {
@@ -1925,6 +2028,27 @@ namespace WindowsFormsApp4
 
         private void number_enter_Click(object sender, EventArgs e)
         {
+            if (ManagerBox.BackColor == Color.LightGreen) // սեղանն է բացում
+            {
+                DataTable Users = new DataTable();
+
+                string connectionString = Properties.Settings.Default.CafeRestDB;
+                SqlConnection connection = new SqlConnection(connectionString);
+                SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
+                if (connection.State == ConnectionState.Closed) connection.Open();
+                string pass = ManagerBox.Text;
+                string query = $"SELECT * FROM Users WHERE Password='{pass}'";
+                Users = dbHelper.ExecuteQuery(query);
+                if (Users.Rows.Count > 0 && int.Parse(Users.Rows[0]["Editor"].ToString()) == 1)
+                {
+                    string UpdateQuery1 = $"UPDATE Tablenest SET Printed = 0 WHERE  Nest = '{nest.Text}' AND Ticket = '{int.Parse(bill.Text)}' AND Restaurant='{_restaurant}' ";
+                    using (SqlCommand updatCommand = new SqlCommand(UpdateQuery1, connection))
+                        updatCommand.ExecuteNonQuery();
+                }
+                connection.Close();
+
+
+            }
             if (numericUpDown3.BackColor == Color.LightGreen) // անձերի թիվն է դնում
             {
                 string connectionString = Properties.Settings.Default.CafeRestDB;
@@ -2601,9 +2725,9 @@ namespace WindowsFormsApp4
                 parameters.Add("restaurant", Restaurantname);
                 parameters.Add("operator", _ooperatorname);
                 parameters.Add("ticket", bill.Text);
-
+                string Report = FindFolder.Folder("Report") + "\\OrderReport.rdlc";
                 ReportManager reportManager = new ReportManager();
-                reportManager.PreviewReport("BillReport", $"d:\\hayrik\\sql\\windowsformsapp4\\OrderReport.rdlc", Order, parameters, null);
+                reportManager.PreviewReport("BillReport", Report, Order, parameters, null);
             }
 
 
@@ -4195,12 +4319,13 @@ namespace WindowsFormsApp4
 
         private void HelpButton_Click(object sender, EventArgs e)
         {
+            string help = FindFolder.Folder("Help");
+            string filePath = "";
             if (HelpButton.Text == "?")
             {
                 HelpButton.Text = "X";
                 richTextBox1.ReadOnly = true;
-
-                string filePath = "D:\\hayrik\\sql\\help\\Order.txt";
+                filePath = help + "\\Order_" + _language+".txt";
                 string fileContent = File.ReadAllText(filePath);
                 richTextBox1.Text = fileContent;
                 richTextBox1.Visible = true;

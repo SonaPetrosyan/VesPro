@@ -1,0 +1,46 @@
+       Cada empleado que ingresa al programa tiene las siguientes características:
+
+       - número de restaurante: <Restaurant>
+
+       - número de sala: <Holl>
+
+       y poderes:
+
+          — tomador del pedido: <orderer> + lugar de trabajo: <workplace> (es un número - número del lugar de trabajo)
+            Si estos campos están marcados, ese empleado puede tomar un pedido.
+
+          — tomador del pedido anterior: <previous> + lugar de trabajo: <workplace>
+            Si estos campos están marcados, ese empleado puede realizar un pedido por adelantado.
+
+          — gerente: <manager>
+            Si este campo está marcado, ese compañero tiene derecho a editar en cualquier lugar.
+            incluyendo esta tabla
+ 
+          — editor: <editor>
+            Si este campo está marcado, ese compañero tiene derecho a editar en cualquier lugar.
+            esta mesa no está entre ellos.
+
+          — observador: <observer>
+            si sólo se marca este campo, entonces ese asociado tiene derecho a observar únicamente.
+            no se puede editar
+
+       Si el empleado no cuenta con alguna de estas características no puede ingresar al programa.
+
+
+       Estos permisos se configuran con el botón <empleados>
+  
+
+       Cada uno puede tener diferentes combinaciones de estas cualidades.
+  
+ 
+       Las impresoras necesarias para imprimir el pedido y los recibos las determina el lugar de trabajo.
+  
+       El significado del resto de campos es el siguiente:
+
+         <Password>: Contraseña
+         <Passqart>: contraseña en soporte magnético
+         <Position>: La posición
+         <Name>: Nombre del empleado
+
+
+       Haga clic en el botón amarillo <X> para cerrar.  

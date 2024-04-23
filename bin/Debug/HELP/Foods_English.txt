@@ -1,0 +1,47 @@
+     When standing on the product line, the boxes above appear
+     the cost price and the percentage of overhead.
+
+     The columns in the upper right table mean:
+
+     section is a number. for example: 2. It means that after selling
+     components will be exported from section 2.
+
+     price - is the current sale price, except for halls 1, 2, 3, 4 and 5
+     The prices of halls 1, 2, 3, 4, 5 are price 1, price 2, price 3, price 4, price 5, respectively.
+
+       Printer is a number. It is the printer number that determines the order for that product
+     where will it be printed: kitchen, bar, grill, etc.
+     the printer of the given number is determined under the <workplace> button.
+
+     <S.P> - if it is indicated, it is semi-prepared.
+
+     ATG is a code that will be printed on the cash register.
+
+     salon - if it is 0 or empty, then it appears in the menu of all halls.
+     If, for example: 2,5,6, it is visible only in these halls.
+
+       non-composite - if, for example: 1,6,8, then from selling in these halls
+        components are not removed.
+
+
+
+     To prepare the composition of the meal:
+   
+       On the upper right table, stand on the required line.
+     Select the required half-pot from the top left table:
+     by completing the quantity.
+     The row appears in the lower right table. Fill in the line there
+
+     Select the required material quantity from the lower left table
+     by filling the quantity.
+       The row appears in the lower right table. Fill in the line there
+
+     green windows are for searching.
+
+     The <Barcode> button sends the menu in Xml form to the database as a barcode
+     for the scale to generate.
+
+     Click the <save> Button after you finish the work or you will lose it
+     done.
+
+     Click the yellow <X> button to close the window.

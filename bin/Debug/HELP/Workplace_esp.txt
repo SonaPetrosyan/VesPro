@@ -1,0 +1,29 @@
+            
+			
+			Cada camarero que tome un pedido debe tener
+            lugar de trabajo.
+
+            Esto se indica con el botón <Cotrabajadores>.
+
+            Diferentes camareros pueden tener el mismo lugar de trabajo.
+
+            El lugar de trabajo determina qué impresora corresponde a su
+            número para este lugar de trabajo.
+
+            (A cada plato en <Menú> se le asigna un número de impresora,
+             que determina dónde se imprimirá el recibo de pedido de este plato:
+             cocina, bar, barbacoa, etc.)
+
+             La impresora se instala de la siguiente manera:
+
+             Haga doble clic en la celda <impresora n>. Abrirá
+             una lista de impresoras entre las que seleccionar una.
+
+             Si las impresoras <imprimir>, <preimpresión>, <impresora de efectivo> están instaladas,
+             luego aparecerán los botones correspondientes en la pantalla del camarero
+             de lo contrario, faltan estos botones.
+
+             Si después de realizar cambios no hizo clic en el botón <Save>, entonces
+             lo que hagas no tendrá consecuencias.
+
+            Haga clic en el botón amarillo <X> para cerrar la ventana.

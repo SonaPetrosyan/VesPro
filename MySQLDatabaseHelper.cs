@@ -8,7 +8,6 @@ using MySql.Data.MySqlClient;
 
 namespace WindowsFormsApp4
 {
-    //aaaaaaa
     public class MySQLDatabaseHelper
     {
         private string connectionString;
