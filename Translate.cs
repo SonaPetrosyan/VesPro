@@ -24,11 +24,8 @@ public static class Translate
             {
                 if (item.Row2 != null)
                 {
-                    if (language == "Armenian") item.Row2["Name"] = item.Row1["Armenian"];
-                    if (language == "English") item.Row2["Name"] = item.Row1["English"];
-                    if (language == "German") item.Row2["Name"] = item.Row1["German"];
-                    if (language == "Russian") item.Row2["Name"] = item.Row1["Russian"];
-                    if (language == "Espaniol") item.Row2["Name"] = item.Row1["Espaniol"];
+                    item.Row2["Name"] = item.Row1[language];
+                   
                 }
             }
         }
@@ -36,12 +33,8 @@ public static class Translate
         {
             foreach (DataRow row in Table1.Rows)
             {
-                if (language == "Armenian") row["Name"] = row["Armenian"];
-                if (language == "English") row["Name"] = row["English"];
-                if (language == "German") row["Name"] = row["German"];
-                if (language == "Russian") row["Name"] = row["Russian"];
-                if (language == "Espaniol") row["Name"] = row["Espaniol"];
-            }
+                row["Name"] = row[language];
+             }
 
         }
         if (mode == "3")
@@ -60,7 +53,7 @@ public static class Translate
             {
                 if (item.Row2 != null)
                 {
-                    item.Row2["Name"] = item.Row1["Armenian"];
+                    item.Row2["Name"] = item.Row1[language];
                     
                 }
             }

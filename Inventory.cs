@@ -1181,9 +1181,6 @@ namespace WindowsFormsApp4
                 button4.BackColor = Color.Snow;
             }
         }
-
-         
-
         private void radioButton2_Click(object sender, EventArgs e)
         {
             dataView = new DataView(Table_Inventory);

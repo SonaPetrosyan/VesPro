@@ -860,8 +860,8 @@ namespace WindowsFormsApp4
                 richTextBox1.Text = fileContent;
                 richTextBox1.Visible = true;
                 richTextBox1.Top = 0;
-                richTextBox1.Left = 0;
-                richTextBox1.Width = HelpButton.Left - 5;
+                richTextBox1.Left = HelpButton.Width+5;
+                richTextBox1.Width = this.Width/2;
                 richTextBox1.Height = this.Height - 20;
             }
             else

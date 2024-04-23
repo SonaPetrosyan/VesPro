@@ -18,50 +18,50 @@ namespace WindowsFormsApp4
                 connection.Open();
                 string parameter = Parameter;
                 int _restaurant= Restaurant;
-                if (parameter == "215")
-                {
-                    foreach (DataRow row in datatable.Rows)
-                    {
-                        if (row["Changed"] != DBNull.Value && decimal.Parse(row["Changed"].ToString()) == 0) continue; //տողը փոփոխված չի
-                        string code = row["Code"].ToString().Trim();
-                        string arm = row["Armenian"].ToString();
-                        string eng = row["English"].ToString();
-                        string ger = row["German"].ToString();
-                        string esp = row["Espaniol"].ToString();
-                        string rus = row["Russian"].ToString();
-                        string unit = row["Unit"].ToString();
-                        string atg = row["ATG"].ToString();
-                        int existent= Convert.ToInt32(row["Existent"].ToString().Trim());
-                        int groupp = Convert.ToInt32(row["Groupp"].ToString().Trim());
-                        int semiprepared = int.Parse(row["SemiPrepared"].ToString());
-                        int printer = Convert.ToInt32(row["Printer"].ToString().Trim());
-                        float price = Convert.ToSingle(row["Price"].ToString().Trim());
-                        float price1 = Convert.ToSingle(row["Price1"].ToString().Trim());
-                        float price2 = Convert.ToSingle(row["Price2"].ToString().Trim());
-                        float price3 = Convert.ToSingle(row["Price3"].ToString().Trim());
-                        float price4 = Convert.ToSingle(row["Price4"].ToString().Trim());
-                        float price5 = Convert.ToSingle(row["Price5"].ToString().Trim());
-                        int department = Convert.ToInt32(row["Department"].ToString().Trim());
-                        string inholl = row["InHoll"].ToString();
-                        string non = row["NonComposite"].ToString();
+                //if (parameter == "215")
+                //{
+                //    foreach (DataRow row in datatable.Rows)
+                //    {
+                //        if (row["Changed"] != DBNull.Value && decimal.Parse(row["Changed"].ToString()) == 0) continue; //տողը փոփոխված չի
+                //        string code = row["Code"].ToString().Trim();
+                //        string arm = row["Armenian"].ToString();
+                //        string eng = row["English"].ToString();
+                //        string ger = row["German"].ToString();
+                //        string esp = row["Espaniol"].ToString();
+                //        string rus = row["Russian"].ToString();
+                //        string unit = row["Unit"].ToString();
+                //        string atg = row["ATG"].ToString();
+                //        int existent= Convert.ToInt32(row["Existent"].ToString().Trim());
+                //        int groupp = Convert.ToInt32(row["Groupp"].ToString().Trim());
+                //        int semiprepared = int.Parse(row["SemiPrepared"].ToString());
+                //        int printer = Convert.ToInt32(row["Printer"].ToString().Trim());
+                //        float price = Convert.ToSingle(row["Price"].ToString().Trim());
+                //        float price1 = Convert.ToSingle(row["Price1"].ToString().Trim());
+                //        float price2 = Convert.ToSingle(row["Price2"].ToString().Trim());
+                //        float price3 = Convert.ToSingle(row["Price3"].ToString().Trim());
+                //        float price4 = Convert.ToSingle(row["Price4"].ToString().Trim());
+                //        float price5 = Convert.ToSingle(row["Price5"].ToString().Trim());
+                //        int department = Convert.ToInt32(row["Department"].ToString().Trim());
+                //        string inholl = row["InHoll"].ToString();
+                //        string non = row["NonComposite"].ToString();
 
-                        // Check if the code already exists in the table
-                        bool codeExists = CheckIfCodeExists(connection, "table_215", code);
+                //        // Check if the code already exists in the table
+                //        bool codeExists = CheckIfCodeExists(connection, "table_215", code);
 
-                        if (codeExists)
-                        {
-                            // Update the fields if the code exists
-                            UpdateFields215(connection, "table_215", code, arm, eng, ger, esp, rus, unit, groupp, semiprepared, printer, price, price1, price2, price3, price4, price5, department, inholl, atg, existent, non);
+                //        if (codeExists)
+                //        {
+                //            // Update the fields if the code exists
+                //            UpdateFields215(connection, "table_215", code, arm, eng, ger, esp, rus, unit, groupp, semiprepared, printer, price, price1, price2, price3, price4, price5, department, inholl, atg, existent, non);
 
-                        }
-                        else
-                        {
-                            // Insert a new record if the code doesn't exist
-                            InsertRecord215(connection, "table_215", code, arm, eng, ger, esp, rus, unit, groupp, semiprepared, printer, price, price1, price2, price3, price4, price5, department, inholl, atg,non, _restaurant);
+                //        }
+                //        else
+                //        {
+                //            // Insert a new record if the code doesn't exist
+                //            InsertRecord215(connection, "table_215", code, arm, eng, ger, esp, rus, unit, groupp, semiprepared, printer, price, price1, price2, price3, price4, price5, department, inholl, atg,non, _restaurant);
 
-                        }
-                    }
-                }
+                //        }
+                //    }
+                //}
                 if (parameter == "Composition")
                 {
                     foreach (DataRow row in datatable.Rows)
@@ -95,32 +95,32 @@ namespace WindowsFormsApp4
                     }
                 }
                 //***********************************
-                if (parameter == "211")
-                {
-                    foreach (DataRow row in datatable.Rows)
-                    {
-                        if (row["Changed"] != DBNull.Value && decimal.Parse(row["Changed"].ToString()) == 0) continue;
-                        string code = row["Code"].ToString().Trim();
-                        string arm = row["Armenian"].ToString();
-                        string eng = row["English"].ToString();
-                        string ger = row["German"].ToString();
-                        string esp = row["Espaniol"].ToString();
-                        string rus = row["Russian"].ToString();
-                        string unit = row["Unit"].ToString();
-                        int groupp = Convert.ToInt32(row["Groupp"].ToString().Trim());
-                        float costprice = Convert.ToSingle(row["CostPrice"].ToString().Trim());
-                        bool codeExists = CheckIfCodeExists(connection, "table_211", code);
+                //if (parameter == "211")
+                //{
+                //    foreach (DataRow row in datatable.Rows)
+                //    {
+                //        if (row["Changed"] != DBNull.Value && decimal.Parse(row["Changed"].ToString()) == 0) continue;
+                //        string code = row["Code"].ToString().Trim();
+                //        string arm = row["Armenian"].ToString();
+                //        string eng = row["English"].ToString();
+                //        string ger = row["German"].ToString();
+                //        string esp = row["Espaniol"].ToString();
+                //        string rus = row["Russian"].ToString();
+                //        string unit = row["Unit"].ToString();
+                //        int groupp = Convert.ToInt32(row["Groupp"].ToString().Trim());
+                //        float costprice = Convert.ToSingle(row["CostPrice"].ToString().Trim());
+                //        bool codeExists = CheckIfCodeExists(connection, "table_211", code);
 
-                        if (codeExists)
-                        {
-                            UpdateFields(connection, "table_211", code, arm, eng, ger, esp, rus, unit, groupp, costprice);
-                        }
-                        else
-                        {
-                            InsertRecord(connection, "table_211", code, arm, eng, ger, esp, rus, unit, groupp, costprice, _restaurant);
-                        }
-                    }
-                }
+                //        if (codeExists)
+                //        {
+                //            UpdateFields(connection, "table_211", code, arm, eng, ger, esp, rus, unit, groupp, costprice);
+                //        }
+                //        else
+                //        {
+                //            InsertRecord(connection, "table_211", code, arm, eng, ger, esp, rus, unit, groupp, costprice, _restaurant);
+                //        }
+                //    }
+                //}
 
                 //***********************************
                 if (parameter == "211_cost") //միայն գները
@@ -136,35 +136,35 @@ namespace WindowsFormsApp4
                 }
 
                 //***********************************
-                if (parameter == "111")
-                {
-                    foreach (DataRow row in datatable.Rows)
-                    {
-                        if (row["Changed"] != DBNull.Value && decimal.Parse(row["Changed"].ToString()) == 0) continue;
-                        string code = row["Code"].ToString().Trim();
-                        string arm = row["Armenian"].ToString();
-                        string eng = row["English"].ToString();
-                        string ger = row["German"].ToString();
-                        string esp = row["Espaniol"].ToString();
-                        string rus = row["Russian"].ToString();
-                        string unit = row["Unit"].ToString();
-                        int groupp = Convert.ToInt32(row["Groupp"].ToString().Trim());
-                        float costprice = Convert.ToSingle(row["CostPrice"].ToString().Trim());
-                        // Check if the code already exists in the table
-                        bool codeExists = CheckIfCodeExists(connection, "table_111", code);
+                //if (parameter == "111")
+                //{
+                //    foreach (DataRow row in datatable.Rows)
+                //    {
+                //        if (row["Changed"] != DBNull.Value && decimal.Parse(row["Changed"].ToString()) == 0) continue;
+                //        string code = row["Code"].ToString().Trim();
+                //        string arm = row["Armenian"].ToString();
+                //        string eng = row["English"].ToString();
+                //        string ger = row["German"].ToString();
+                //        string esp = row["Espaniol"].ToString();
+                //        string rus = row["Russian"].ToString();
+                //        string unit = row["Unit"].ToString();
+                //        int groupp = Convert.ToInt32(row["Groupp"].ToString().Trim());
+                //        float costprice = Convert.ToSingle(row["CostPrice"].ToString().Trim());
+                //        // Check if the code already exists in the table
+                //        bool codeExists = CheckIfCodeExists(connection, "table_111", code);
 
-                        if (codeExists)
-                        {
-                            // Update the fields if the code exists
-                            UpdateFields(connection, "table_111", code, arm, eng, ger, esp, rus, unit, groupp, costprice);
-                        }
-                        else
-                        {
-                            // Insert a new record if the code doesn't exist
-                            InsertRecord(connection, "table_111", code, arm, eng, ger, esp, rus, unit, groupp, costprice, _restaurant);
-                        }
-                    }
-                }
+                //        if (codeExists)
+                //        {
+                //            // Update the fields if the code exists
+                //            UpdateFields(connection, "table_111", code, arm, eng, ger, esp, rus, unit, groupp, costprice);
+                //        }
+                //        else
+                //        {
+                //            // Insert a new record if the code doesn't exist
+                //            InsertRecord(connection, "table_111", code, arm, eng, ger, esp, rus, unit, groupp, costprice, _restaurant);
+                //        }
+                //    }
+                //}
                 //***********************************
                 if (parameter == "111_cost") //միայն գները
                 {
@@ -181,52 +181,52 @@ namespace WindowsFormsApp4
                     }
                 }
                 //***********************************
-                if (parameter == "213")
-                {
-                    foreach (DataRow row in datatable.Rows)
-                    {
-                        if (row["Changed"] != DBNull.Value && decimal.Parse(row["Changed"].ToString()) == 0) continue;
-                        string code = row["Code"].ToString().Trim();
-                        string arm = row["Armenian"].ToString();
-                        string eng = row["English"].ToString();
-                        string ger = row["German"].ToString();
-                        string esp = row["Espaniol"].ToString();
-                        string rus = row["Russian"].ToString();
-                        string unit = row["Unit"].ToString();
-                        int groupp = Convert.ToInt32(row["Groupp"].ToString().Trim());
-                        float costprice = Convert.ToSingle(row["CostPrice"].ToString().Trim());
-                        // Check if the code already exists in the table
-                        bool codeExists = CheckIfCodeExists(connection, "table_213", code);
+                //if (parameter == "213")
+                //{
+                //    foreach (DataRow row in datatable.Rows)
+                //    {
+                //        if (row["Changed"] != DBNull.Value && decimal.Parse(row["Changed"].ToString()) == 0) continue;
+                //        string code = row["Code"].ToString().Trim();
+                //        string arm = row["Armenian"].ToString();
+                //        string eng = row["English"].ToString();
+                //        string ger = row["German"].ToString();
+                //        string esp = row["Espaniol"].ToString();
+                //        string rus = row["Russian"].ToString();
+                //        string unit = row["Unit"].ToString();
+                //        int groupp = Convert.ToInt32(row["Groupp"].ToString().Trim());
+                //        float costprice = Convert.ToSingle(row["CostPrice"].ToString().Trim());
+                //        // Check if the code already exists in the table
+                //        bool codeExists = CheckIfCodeExists(connection, "table_213", code);
 
-                        if (codeExists)
-                        {
-                            // Update the fields if the code exists
-                            UpdateFields(connection, "table_213", code,  arm, eng, ger, esp, rus, unit, groupp, costprice);
+                //        if (codeExists)
+                //        {
+                //            // Update the fields if the code exists
+                //            UpdateFields(connection, "table_213", code,  arm, eng, ger, esp, rus, unit, groupp, costprice);
 
-                        }
-                        else
-                        {
-                            // Insert a new record if the code doesn't exist
-                            InsertRecord(connection, "table_213", code, arm, eng, ger, esp, rus, unit, groupp, costprice, _restaurant);
+                //        }
+                //        else
+                //        {
+                //            // Insert a new record if the code doesn't exist
+                //            InsertRecord(connection, "table_213", code, arm, eng, ger, esp, rus, unit, groupp, costprice, _restaurant);
 
-                        }
-                    }
-                    //***********************************
-                    if (parameter == "213_cost") //միայն գները
-                    {
-                        foreach (DataRow row in datatable.Rows)
-                        {
-                            if (row["Changed"] != DBNull.Value && decimal.Parse(row["Changed"].ToString()) == 0) continue;
-                            string code = row["Code"].ToString().Trim();
-                            float costprice = Convert.ToSingle(row["CostPrice"].ToString().Trim());
-                            bool codeExists = CheckIfCodeExists(connection, "table_213", code);
-                            if (codeExists)
-                            {
-                                UpdateFields_cost(connection, "table_213", code, costprice);
-                            }
-                        }
-                    }
-                }
+                //        }
+                //    }
+                //    //***********************************
+                //    if (parameter == "213_cost") //միայն գները
+                //    {
+                //        foreach (DataRow row in datatable.Rows)
+                //        {
+                //            if (row["Changed"] != DBNull.Value && decimal.Parse(row["Changed"].ToString()) == 0) continue;
+                //            string code = row["Code"].ToString().Trim();
+                //            float costprice = Convert.ToSingle(row["CostPrice"].ToString().Trim());
+                //            bool codeExists = CheckIfCodeExists(connection, "table_213", code);
+                //            if (codeExists)
+                //            {
+                //                UpdateFields_cost(connection, "table_213", code, costprice);
+                //            }
+                //        }
+                //    }
+                //}
 
                 //if (parameter == "Table_Purchase") // actions ֆայլում ավելացնում ենք գործողությունները
                 //{

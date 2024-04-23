@@ -974,8 +974,6 @@ namespace WindowsFormsApp4
                         string r2 = remove.Tag.ToString();
                         string r3 = bill.Text;
                         string r8 = TipMoney.Text;
-                        //dbHelper = new SqlDatabaseHelper("localhost", "kafe_arm", "root", "");
-                        //SqlConnection connection = dbHelper.GetConnection();
                         connection.Open();
                         string UpdateQuery = $"UPDATE TicketsOrdered SET  Nest= '{r1}' WHERE Nest= '{r2}' AND Ticket = '{r3}' AND Seans = '{seans}'  AND Previous='{_previous}' ";
                         using (SqlCommand updatCommand = new SqlCommand(UpdateQuery, connection))

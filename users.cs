@@ -269,11 +269,7 @@ namespace WindowsFormsApp4
                 richTextBox1.Width = this.Width/2;
                 richTextBox1.ReadOnly = true;
                 richTextBox1.Visible = true;
-                if (_language == "Armenian") filePath = help+"\\User_arm.txt";
-                if (_language == "English") filePath = help+"\\User_eng.txt";
-                if (_language == "German") filePath = help + "\\User_ger.txt";
-                if (_language == "Espaniol") filePath = help + "\\User_esp.txt";
-                if (_language == "Russian") filePath = help + "\\User_rus.txt";
+                filePath = help+"\\User_"+_language+".txt";
                 string fileContent = File.ReadAllText(filePath);
                 richTextBox1.Text = fileContent;
 

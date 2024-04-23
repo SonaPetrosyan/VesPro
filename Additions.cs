@@ -325,11 +325,7 @@ namespace WindowsFormsApp4
                 richTextBox1.Width = this.Width- HelpButton.Width-20;
                 richTextBox1.ReadOnly = true;
                 richTextBox1.Visible = true;
-                if (_language == "Armenian") filePath = help+"\\Additions_arm.txt";
-                if (_language == "English") filePath = help + "\\Additions_eng.txt";
-                if (_language == "German") filePath = help + "\\Additions_ger.txt";
-                if (_language == "Espaniol") filePath = help + "\\Additions_esp.txt";
-                if (_language == "Russian") filePath = help + "\\Additions_rus.txt";
+                filePath = help+"\\Additions_"+_language+".txt";
                 string fileContent = File.ReadAllText(filePath);
                 richTextBox1.Text = fileContent;
                 

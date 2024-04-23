@@ -1181,12 +1181,7 @@ namespace WindowsFormsApp4
                 HelpButton.Text = "X";
                 richTextBox1.Height = this.Height - 50;
                 richTextBox1.ReadOnly = true;
-
-                if(_language=="Armenian") filePath = help+"\\stocktaking_arm.txt";
-                if (_language == "English") filePath = help + "\\stocktaking_eng.txt";
-                if (_language == "German") filePath = help + "\\stocktaking_germ.txt";
-                if (_language == "Espaniol") filePath = help + "\\stocktaking_esp.txt";
-                if (_language == "Russian") filePath = help + "\\stocktaking_rus.txt";
+                filePath = help+"\\stocktaking_"+_language+".txt";
                 string fileContent = File.ReadAllText(filePath);
                 richTextBox1.Text = fileContent;
                 richTextBox1.Visible = true;

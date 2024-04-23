@@ -344,12 +344,7 @@ namespace WindowsFormsApp4
                 richTextBox1.Left = HelpButton.Width+3;
                 richTextBox1.Width = comboBoxRest.Left ;
                 richTextBox1.ReadOnly = true;
-
-                if (_language=="Armenian") filePath = help+"\\Workplace_arm.txt";
-                if (_language == "English") filePath = help + "\\Workplace_eng.txt";
-                if (_language == "German") filePath = help + "\\Workplace_ger.txt";
-                if (_language == "Espaniol") filePath = help + "\\Workplace_esp.txt";
-                if (_language == "Russian") filePath = help + "\\Workplace_eng.txt";
+                filePath = help+"\\Workplace_"+_language+".txt";
                 string fileContent = File.ReadAllText(filePath);
                 richTextBox1.Text = fileContent;
                 richTextBox1.Visible = true;
