@@ -22,7 +22,6 @@ namespace WindowsFormsApp4.Properties {
                 return defaultInstance;
             }
         }
-        //aaaa
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
