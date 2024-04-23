@@ -610,7 +610,7 @@ namespace WindowsFormsApp4
             button2.Text = lang;
             panel1.Visible = false;
         }
-
+        //aaaa
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
             object value = Table_Languages.Rows[2]["Language"];
