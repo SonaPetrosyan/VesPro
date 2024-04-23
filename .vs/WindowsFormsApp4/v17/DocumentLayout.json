@@ -3,7 +3,19 @@
   "WorkspaceRootPath": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|D:\\HAYRIK\\SQL\\WindowsFormsApp4\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|D:\\HAYRIK\\SQL\\WindowsFormsApp4\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|solutionrelative:login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|D:\\HAYRIK\\SQL\\WindowsFormsApp4\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|solutionrelative:login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|d:\\hayrik\\sql\\windowsformsapp4\\properties\\settings.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|solutionrelative:properties\\settings.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|d:\\hayrik\\sql\\windowsformsapp4\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -11,44 +23,40 @@
       "RelativeMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|d:\\hayrik\\sql\\windowsformsapp4\\purchase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|D:\\HAYRIK\\SQL\\WindowsFormsApp4\\purchase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|solutionrelative:purchase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|d:\\hayrik\\sql\\windowsformsapp4\\purchase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|D:\\HAYRIK\\SQL\\WindowsFormsApp4\\purchase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|solutionrelative:purchase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|d:\\hayrik\\sql\\windowsformsapp4\\purchase.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|D:\\HAYRIK\\SQL\\WindowsFormsApp4\\purchase.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|solutionrelative:purchase.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|d:\\hayrik\\sql\\windowsformsapp4\\update_composits.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|D:\\HAYRIK\\SQL\\WindowsFormsApp4\\update_composits.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|solutionrelative:update_composits.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|d:\\hayrik\\sql\\windowsformsapp4\\stocktaking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|D:\\HAYRIK\\SQL\\WindowsFormsApp4\\stocktaking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|solutionrelative:stocktaking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|d:\\hayrik\\sql\\windowsformsapp4\\sqldatabasehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|D:\\HAYRIK\\SQL\\WindowsFormsApp4\\sqldatabasehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|solutionrelative:sqldatabasehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|d:\\hayrik\\sql\\windowsformsapp4\\save.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|D:\\HAYRIK\\SQL\\WindowsFormsApp4\\save.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|solutionrelative:save.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|d:\\hayrik\\sql\\windowsformsapp4\\goodsmovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|D:\\HAYRIK\\SQL\\WindowsFormsApp4\\goodsmovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|solutionrelative:goodsmovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|D:\\HAYRIK\\SQL\\WindowsFormsApp4\\mysqldatabasehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|solutionrelative:mysqldatabasehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|D:\\HAYRIK\\SQL\\WindowsFormsApp4\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|solutionrelative:login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|D:\\HAYRIK\\SQL\\WindowsFormsApp4\\nest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -107,7 +115,7 @@
       "RelativeMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|solutionrelative:foods.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|d:\\hayrik\\sql\\windowsformsapp4\\foods.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|D:\\HAYRIK\\SQL\\WindowsFormsApp4\\foods.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|solutionrelative:foods.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -187,10 +195,6 @@
       "RelativeMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|solutionrelative:nest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|D:\\HAYRIK\\SQL\\WindowsFormsApp4\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|solutionrelative:login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|D:\\HAYRIK\\SQL\\WindowsFormsApp4\\additions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{A0BC67E4-A8C9-4219-9216-38215D7E2A1D}|WindowsFormsApp4.csproj|solutionrelative:additions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
@@ -204,6 +208,19 @@
           "DockedWidth": 200,
           "SelectedChildIndex": 12,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Settings.Designer.cs",
+              "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Properties\\Settings.Designer.cs",
+              "RelativeDocumentMoniker": "Properties\\Settings.Designer.cs",
+              "ToolTip": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Properties\\Settings.Designer.cs",
+              "RelativeToolTip": "Properties\\Settings.Designer.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAzwB0AAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-23T09:55:56.143Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
@@ -226,32 +243,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Purchase.Designer.cs",
-              "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Purchase.Designer.cs",
-              "RelativeDocumentMoniker": "Purchase.Designer.cs",
-              "ToolTip": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Purchase.Designer.cs",
-              "RelativeToolTip": "Purchase.Designer.cs",
-              "ViewState": "AQIAAJ8CAAAAAAAAAAAjwLcCAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-23T04:47:37.977Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Purchase.cs [Design]",
-              "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Purchase.cs",
-              "RelativeDocumentMoniker": "Purchase.cs",
-              "ToolTip": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Purchase.cs [Design]",
-              "RelativeToolTip": "Purchase.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-23T03:54:15.793Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "Update_composits.cs",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Update_composits.cs",
               "RelativeDocumentMoniker": "Update_composits.cs",
@@ -259,12 +251,11 @@
               "RelativeToolTip": "Update_composits.cs",
               "ViewState": "AQIAABoAAAAAAAAAAAAuwCgAAAA4AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-23T03:35:20.043Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-23T03:35:20.043Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "Stocktaking.cs",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Stocktaking.cs",
               "RelativeDocumentMoniker": "Stocktaking.cs",
@@ -272,12 +263,11 @@
               "RelativeToolTip": "Stocktaking.cs",
               "ViewState": "AQIAABUEAAAAAAAAAAAWwCUEAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-23T03:35:15.837Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-23T03:35:15.837Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "Purchase.cs",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Purchase.cs",
               "RelativeDocumentMoniker": "Purchase.cs",
@@ -285,16 +275,11 @@
               "RelativeToolTip": "Purchase.cs",
               "ViewState": "AQIAADUCAAAAAAAAAAAAAEYCAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-23T03:35:08.705Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+              "WhenOpened": "2024-04-23T03:35:08.705Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
@@ -306,24 +291,80 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "Form1.cs",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
               "ToolTip": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Form1.cs",
               "RelativeToolTip": "Form1.cs",
-              "ViewState": "AQIAAGICAAAAAAAAAAArwHACAAArAAAA",
+              "ViewState": "AQIAAFMCAAAAAAAAAAAAAFgCAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-20T08:58:19.4Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Login.cs [Design]",
+              "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Login.cs",
+              "RelativeDocumentMoniker": "Login.cs",
+              "ToolTip": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Login.cs [Design]",
+              "RelativeToolTip": "Login.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-19T06:31:15.613Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Login.cs",
+              "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Login.cs",
+              "RelativeDocumentMoniker": "Login.cs",
+              "ToolTip": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Login.cs",
+              "RelativeToolTip": "Login.cs",
+              "ViewState": "AQIAAFMAAAAAAAAAAAAawFsAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-19T06:31:35.286Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Purchase.cs [Design]",
+              "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Purchase.cs",
+              "RelativeDocumentMoniker": "Purchase.cs",
+              "ToolTip": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Purchase.cs [Design]",
+              "RelativeToolTip": "Purchase.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-23T03:54:15.793Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Purchase.Designer.cs",
+              "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Purchase.Designer.cs",
+              "RelativeDocumentMoniker": "Purchase.Designer.cs",
+              "ToolTip": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Purchase.Designer.cs",
+              "RelativeToolTip": "Purchase.Designer.cs",
+              "ViewState": "AQIAAJ8CAAAAAAAAAAAjwLcCAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-23T04:47:37.977Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
             },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "SQLDatabaseHelper.cs",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\SQLDatabaseHelper.cs",
               "RelativeDocumentMoniker": "SQLDatabaseHelper.cs",
@@ -331,12 +372,11 @@
               "RelativeToolTip": "SQLDatabaseHelper.cs",
               "ViewState": "AQIAAAoAAAAAAAAAAAAuwAoAAAA4AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-23T03:35:14.5Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-23T03:35:14.5Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "Save.cs",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Save.cs",
               "RelativeDocumentMoniker": "Save.cs",
@@ -344,12 +384,11 @@
               "RelativeToolTip": "Save.cs",
               "ViewState": "AQIAAA0AAAAAAAAAAAAuwA0AAABLAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-23T03:35:11.923Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-23T03:35:11.923Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "GoodsMovement.cs",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\GoodsMovement.cs",
               "RelativeDocumentMoniker": "GoodsMovement.cs",
@@ -357,12 +396,11 @@
               "RelativeToolTip": "GoodsMovement.cs",
               "ViewState": "AQIAAPQAAAAAAAAAAAAewAUBAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-23T03:35:05.691Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-23T03:35:05.691Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 19,
               "Title": "TableUpdater.cs",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\TableUpdater.cs",
               "RelativeDocumentMoniker": "TableUpdater.cs",
@@ -370,12 +408,11 @@
               "RelativeToolTip": "TableUpdater.cs",
               "ViewState": "AQIAAAsAAAAAAAAAAAAuwAsAAABCAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-19T14:23:30.147Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-19T14:23:30.147Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 20,
               "Title": "Inventory.cs",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Inventory.cs",
               "RelativeDocumentMoniker": "Inventory.cs",
@@ -383,12 +420,11 @@
               "RelativeToolTip": "Inventory.cs",
               "ViewState": "AQIAAC4AAAAAAAAAAAAewD8AAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-19T16:26:12.9Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-19T16:26:12.9Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 21,
               "Title": "Observation.cs",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Observation.cs",
               "RelativeDocumentMoniker": "Observation.cs",
@@ -396,12 +432,11 @@
               "RelativeToolTip": "Observation.cs",
               "ViewState": "AQIAAIkAAAAAAAAAAAAewJoAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-19T14:10:11.052Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-19T14:10:11.052Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 18,
               "Title": "SQLUpdater.cs",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\SQLUpdater.cs",
               "RelativeDocumentMoniker": "SQLUpdater.cs",
@@ -414,7 +449,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 17,
               "Title": "users.cs",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\users.cs",
               "RelativeDocumentMoniker": "users.cs",
@@ -422,12 +457,11 @@
               "RelativeToolTip": "users.cs",
               "ViewState": "AQIAABMAAAAAAAAAAAAewCQAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-18T17:01:01.548Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-18T17:01:01.548Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "Workplace.cs",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Workplace.cs",
               "RelativeDocumentMoniker": "Workplace.cs",
@@ -435,12 +469,11 @@
               "RelativeToolTip": "Workplace.cs",
               "ViewState": "AQIAAOcAAAAAAAAAAAAWwPcAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-19T14:23:35.84Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-19T14:23:35.84Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "Additions.cs",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Additions.cs",
               "RelativeDocumentMoniker": "Additions.cs",
@@ -448,12 +481,11 @@
               "RelativeToolTip": "Additions.cs",
               "ViewState": "AQIAALMAAAAAAAAAAAAMwMIAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-18T14:11:09.834Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-18T14:11:09.834Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "Nest.cs",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Nest.cs",
               "RelativeDocumentMoniker": "Nest.cs",
@@ -461,25 +493,11 @@
               "RelativeToolTip": "Nest.cs",
               "ViewState": "AQIAAAsAAAAAAAAAAAAewBwAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-19T11:04:57.289Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-19T11:04:57.289Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Login.cs",
-              "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Login.cs",
-              "RelativeDocumentMoniker": "Login.cs",
-              "ToolTip": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Login.cs",
-              "RelativeToolTip": "Login.cs",
-              "ViewState": "AQIAAGAAAAAAAAAAAAAAAGAAAAAjAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-19T06:31:35.286Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "MySQLDatabaseHelper.cs",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\MySQLDatabaseHelper.cs",
               "RelativeDocumentMoniker": "MySQLDatabaseHelper.cs",
@@ -487,12 +505,11 @@
               "RelativeToolTip": "MySQLDatabaseHelper.cs",
               "ViewState": "AQIAAAwAAAAAAAAAAAAAAAwAAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-18T12:54:58.658Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-18T12:54:58.658Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 22,
               "Title": "FindMaxID.cs",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\FindMaxID.cs",
               "RelativeDocumentMoniker": "FindMaxID.cs",
@@ -500,12 +517,11 @@
               "RelativeToolTip": "FindMaxID.cs",
               "ViewState": "AQIAAAcAAAAAAAAAAAAuwAcAAAA3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-20T10:21:40.673Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-20T10:21:40.673Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 23,
               "Title": "Partners.cs",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Partners.cs",
               "RelativeDocumentMoniker": "Partners.cs",
@@ -513,12 +529,11 @@
               "RelativeToolTip": "Partners.cs",
               "ViewState": "AQIAABIAAAAAAAAAAAAewCMAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-20T09:10:17.848Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-20T09:10:17.848Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 24,
               "Title": "Standart.cs",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Standart.cs",
               "RelativeDocumentMoniker": "Standart.cs",
@@ -526,12 +541,11 @@
               "RelativeToolTip": "Standart.cs",
               "ViewState": "AQIAADQAAAAAAAAAAAAjwEYAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-19T14:11:53.001Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-19T14:11:53.001Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 25,
               "Title": "Materials.cs",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Materials.cs",
               "RelativeDocumentMoniker": "Materials.cs",
@@ -539,12 +553,11 @@
               "RelativeToolTip": "Materials.cs",
               "ViewState": "AQIAAJUBAAAAAAAAAAAewKYBAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-22T05:37:02.412Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-22T05:37:02.412Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 26,
               "Title": "Save_.cs",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Save_.cs",
               "RelativeDocumentMoniker": "Save_.cs",
@@ -552,12 +565,11 @@
               "RelativeToolTip": "Save_.cs",
               "ViewState": "AQIAABAAAAAAAAAAAAAAABAAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-22T19:09:43.213Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-22T19:09:43.213Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 27,
               "Title": "Foods.cs",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Foods.cs",
               "RelativeDocumentMoniker": "Foods.cs",
@@ -565,36 +577,33 @@
               "RelativeToolTip": "Foods.cs",
               "ViewState": "AQIAACQBAAAAAAAAAAAIwDQBAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-22T08:19:29.176Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-22T08:19:29.176Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 28,
               "Title": "Foods.cs [Design]",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Foods.cs",
               "RelativeDocumentMoniker": "Foods.cs",
               "ToolTip": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Foods.cs [Design]",
               "RelativeToolTip": "Foods.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-22T07:26:50.367Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-04-22T07:26:50.367Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 30,
               "Title": "Materials.cs [Design]",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Materials.cs",
               "RelativeDocumentMoniker": "Materials.cs",
               "ToolTip": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Materials.cs [Design]",
               "RelativeToolTip": "Materials.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-22T05:36:43.082Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-04-22T05:36:43.082Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 29,
               "Title": "Foods.Designer.cs",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Foods.Designer.cs",
               "RelativeDocumentMoniker": "Foods.Designer.cs",
@@ -602,28 +611,22 @@
               "RelativeToolTip": "Foods.Designer.cs",
               "ViewState": "AQIAADUCAAAAAAAAAAAjwEcCAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-22T19:37:25.379Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-22T19:37:25.379Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 31,
               "Title": "Partners.cs [Design]",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Partners.cs",
               "RelativeDocumentMoniker": "Partners.cs",
               "ToolTip": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Partners.cs [Design]",
               "RelativeToolTip": "Partners.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-20T14:11:22.642Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+              "WhenOpened": "2024-04-20T14:11:22.642Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 32,
               "Title": "FindFolder.cs",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\FindFolder.cs",
               "RelativeDocumentMoniker": "FindFolder.cs",
@@ -631,12 +634,11 @@
               "RelativeToolTip": "FindFolder.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAACcAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-19T12:18:02.536Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-19T12:18:02.536Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 33,
               "Title": "Materials.Designer.cs",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Materials.Designer.cs",
               "RelativeDocumentMoniker": "Materials.Designer.cs",
@@ -644,12 +646,11 @@
               "RelativeToolTip": "Materials.Designer.cs",
               "ViewState": "AQIAAHgBAAAAAAAAAAAjwIoBAAA3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-21T07:22:59.903Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-21T07:22:59.903Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 34,
               "Title": "Observation.Designer.cs",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Observation.Designer.cs",
               "RelativeDocumentMoniker": "Observation.Designer.cs",
@@ -657,24 +658,22 @@
               "RelativeToolTip": "Observation.Designer.cs",
               "ViewState": "AQIAAOECAAAAAAAAAAAjwPMCAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-21T14:13:17.386Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-21T14:13:17.386Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 35,
               "Title": "Inventory.cs [Design]",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Inventory.cs",
               "RelativeDocumentMoniker": "Inventory.cs",
               "ToolTip": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Inventory.cs [Design]",
               "RelativeToolTip": "Inventory.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-19T15:00:34.693Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-04-19T15:00:34.693Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 36,
               "Title": "Translate.cs",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Translate.cs",
               "RelativeDocumentMoniker": "Translate.cs",
@@ -682,12 +681,11 @@
               "RelativeToolTip": "Translate.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-19T12:27:47.051Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-19T12:27:47.051Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 37,
               "Title": "PrintManager.cs",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\PrintManager.cs",
               "RelativeDocumentMoniker": "PrintManager.cs",
@@ -695,12 +693,11 @@
               "RelativeToolTip": "PrintManager.cs",
               "ViewState": "AQIAADwAAAAAAAAAAAAjwE4AAAA7AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-19T16:22:24.592Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-19T16:22:24.592Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 38,
               "Title": "OrderReport.rdlc [XML]",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\OrderReport.rdlc",
               "RelativeDocumentMoniker": "OrderReport.rdlc",
@@ -708,12 +705,11 @@
               "RelativeToolTip": "OrderReport.rdlc [XML]",
               "ViewState": "AQIAACQAAAAAAAAAAIBZwCoAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001755|",
-              "WhenOpened": "2024-04-20T09:10:11.359Z",
-              "EditorCaption": " [XML]"
+              "WhenOpened": "2024-04-20T09:10:11.359Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 40,
               "Title": "BillReport.rdlc [XML]",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\BillReport.rdlc",
               "RelativeDocumentMoniker": "BillReport.rdlc",
@@ -721,24 +717,22 @@
               "RelativeToolTip": "BillReport.rdlc [XML]",
               "ViewState": "AQIAABcAAAAAAAAAAIAwwCoAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001755|",
-              "WhenOpened": "2024-04-19T14:08:55.117Z",
-              "EditorCaption": " [XML]"
+              "WhenOpened": "2024-04-19T14:08:55.117Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 41,
               "Title": "FoodsGroup.cs [Design]",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\FoodsGroup.cs",
               "RelativeDocumentMoniker": "FoodsGroup.cs",
               "ToolTip": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\FoodsGroup.cs [Design]",
               "RelativeToolTip": "FoodsGroup.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-20T08:58:11.988Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-04-20T08:58:11.988Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 39,
               "Title": "InventoryReport.rdlc [XML]",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\InventoryReport.rdlc",
               "RelativeDocumentMoniker": "InventoryReport.rdlc",
@@ -746,24 +740,22 @@
               "RelativeToolTip": "InventoryReport.rdlc [XML]",
               "ViewState": "AQIAACcAAAAAAAAAAIAwwDoAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001755|",
-              "WhenOpened": "2024-04-19T14:10:02.682Z",
-              "EditorCaption": " [XML]"
+              "WhenOpened": "2024-04-19T14:10:02.682Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 42,
               "Title": "users.cs [Design]",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\users.cs",
               "RelativeDocumentMoniker": "users.cs",
               "ToolTip": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\users.cs [Design]",
               "RelativeToolTip": "users.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-18T17:00:55.427Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-04-18T17:00:55.427Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 43,
               "Title": "order.cs [Design]",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\order.cs",
               "RelativeDocumentMoniker": "order.cs",
@@ -775,7 +767,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 44,
               "Title": "order.cs",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\order.cs",
               "RelativeDocumentMoniker": "order.cs",
@@ -788,7 +780,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 45,
               "Title": "PrintingBill.cs",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\PrintingBill.cs",
               "RelativeDocumentMoniker": "PrintingBill.cs",
@@ -796,12 +788,11 @@
               "RelativeToolTip": "PrintingBill.cs",
               "ViewState": "AQIAAI8AAAAAAAAAAAAjwKQAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-19T14:11:34.732Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-19T14:11:34.732Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 46,
               "Title": "Translation.cs",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Translation.cs",
               "RelativeDocumentMoniker": "Translation.cs",
@@ -809,44 +800,29 @@
               "RelativeToolTip": "Translation.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-19T12:36:04.786Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-19T12:36:04.786Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 47,
               "Title": "Nest.cs [Design]",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Nest.cs",
               "RelativeDocumentMoniker": "Nest.cs",
               "ToolTip": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Nest.cs [Design]",
               "RelativeToolTip": "Nest.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-19T11:04:53.515Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-04-19T11:04:53.515Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
-              "Title": "Login.cs [Design]",
-              "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Login.cs",
-              "RelativeDocumentMoniker": "Login.cs",
-              "ToolTip": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Login.cs [Design]",
-              "RelativeToolTip": "Login.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-19T06:31:15.613Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 48,
               "Title": "Additions.cs [Design]",
               "DocumentMoniker": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Additions.cs",
               "RelativeDocumentMoniker": "Additions.cs",
               "ToolTip": "D:\\HAYRIK\\SQL\\WindowsFormsApp4\\Additions.cs [Design]",
               "RelativeToolTip": "Additions.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-18T14:11:02.282Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-04-18T14:11:02.282Z"
             }
           ]
         }
