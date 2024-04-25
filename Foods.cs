@@ -385,9 +385,6 @@ namespace WindowsFormsApp4
             connection.Close();
         }
 
-
-
-
         private void Foods_Load(object sender, EventArgs e)
         {
               
