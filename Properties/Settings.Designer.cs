@@ -12,7 +12,7 @@ namespace WindowsFormsApp4.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.9.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.6.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -22,10 +22,11 @@ namespace WindowsFormsApp4.Properties {
                 return defaultInstance;
             }
         }
+        
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Server=DESKTOP-L1SRCHN\\SQLEXPRESS;Database=CafeRest;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Server=5.161.41.35;Database=CafeRest;User ID=Mukel;Password=<5Gandzasar5>;")]
         public string CafeRestDB {
             get {
                 return ((string)(this["CafeRestDB"]));
@@ -35,8 +36,8 @@ namespace WindowsFormsApp4.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-L1SRCHN\\SQLEXPRESS;Initial Catalog=CafeRest;Integrated Securi" +
-            "ty=True;Encrypt=False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=5.161.41.35;Initial Catalog=CafeRest;Encrypt=False;User ID=Mukel;Pass" +
+            "word=<5Gandzasar5>;")]
         public string CafeRestConnectionString {
             get {
                 return ((string)(this["CafeRestConnectionString"]));
