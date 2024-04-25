@@ -40,6 +40,8 @@ namespace WindowsFormsApp4
 
         private DataTable newNestGroup = new DataTable();
 
+        private DataTable newinformation = new DataTable();
+
         private DataTable Table_SeansState = new DataTable();
 
         private DataTable Table_TicketsOrdered = new DataTable();
@@ -73,7 +75,7 @@ namespace WindowsFormsApp4
             string connectionString = Properties.Settings.Default.CafeRestDB;
             SqlConnection connection = new SqlConnection(connectionString);
             SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
-            string query1 = $"SELECT * FROM SeansState Where Id='{_restaurant}' ";
+            string query1 = $"SELECT * FROM SeansState Where Id={_restaurant} ";
             Table_SeansState = dbHelper.ExecuteQuery(query1);
             int sseans = 1;
             foreach (DataRow row in Table_SeansState.Rows)
@@ -84,10 +86,10 @@ namespace WindowsFormsApp4
             numericUpDown2.Value = sseans;
             radioButton6.Tag = sseans.ToString();
 
-            string query4 = $"SELECT * FROM Table_215  WHERE Restaurant='{_restaurant}'";
+            string query4 = $"SELECT * FROM Table_215  WHERE Restaurant={_restaurant}";
             Table_215 = dbHelper.ExecuteQuery(query4);
 
-            string query3 = $"SELECT * FROM Seans  WHERE  restaurant='{_restaurant}' ";
+            string query3 = $"SELECT * FROM Seans  WHERE  restaurant={_restaurant} ";
             Table_Seans = dbHelper.ExecuteQuery(query3);
 
             var query5 = from row1 in Table_Seans.AsEnumerable()  // տեղադրում ենք <Inholl> դաշտը, որպեսսզի որոշ սրահներից վաճառքի
@@ -110,13 +112,13 @@ namespace WindowsFormsApp4
             }
 
             string query2 = $"SELECT DateBegin,Seans,Ticket,Nest,Costamount,Salesamount," +
-                $"Delivery,Music,Service,Discount,Tipmoney,gid,cash,Nestgroup,Holl,Paid,cashless,Person,printed FROM TicketsOrdered WHERE Previous='{0}' AND Restaurant='{_restaurant}' ";
+                $"Delivery,Music,Service,Discount,Tipmoney,gid,cash,Nestgroup,Holl,Paid,cashless,Person,printed FROM TicketsOrdered WHERE Previous={0} AND Restaurant={_restaurant} ";
             Table_TicketsOrdered = dbHelper.ExecuteQuery(query2);
 
 
-            Table_TicketsOrdered.Columns.Add("Total", typeof(float));
-            Table_TicketsOrdered.Columns.Add("Paidamount", typeof(float));
-            Table_TicketsOrdered.Columns.Add("profit", typeof(float));
+            Table_TicketsOrdered.Columns.Add("Total", typeof(decimal));
+            Table_TicketsOrdered.Columns.Add("Paidamount", typeof(decimal));
+            Table_TicketsOrdered.Columns.Add("profit", typeof(decimal));
             Table_TicketsOrdered.Columns.Add("password", typeof(string));
             foreach (DataRow row in Table_TicketsOrdered.Rows)
             {
@@ -132,9 +134,9 @@ namespace WindowsFormsApp4
             //    if (row["Costamount"] != DBNull.Value && row["Salesamount"] != DBNull.Value &&
             //        row["Service"] != DBNull.Value && row["Discount"] != DBNull.Value && row["Discount"] != DBNull.Value)
             //    {
-            //        row["Total"] = float.Parse(row["Salesamount"].ToString()) +
-            //        float.Parse(row["Service"].ToString()) - float.Parse(row["Discount"].ToString());
-            //        row["profit"] = float.Parse(row["Total"].ToString()) - float.Parse(row["Costamount"].ToString());
+            //        row["Total"] = decimal.Parse(row["Salesamount"].ToString()) +
+            //        decimal.Parse(row["Service"].ToString()) - decimal.Parse(row["Discount"].ToString());
+            //        row["profit"] = decimal.Parse(row["Total"].ToString()) - decimal.Parse(row["Costamount"].ToString());
             //    }
             //}
 
@@ -178,14 +180,14 @@ namespace WindowsFormsApp4
             {
                 row["Name"] = row[_language];
             }
-            string query = $"SELECT * FROM Department WHERE Restaurant= '{_restaurant}' ";
+            string query = $"SELECT * FROM Department WHERE Restaurant= {_restaurant} ";
             Table_Department = dbHelper.ExecuteQuery(query);
             DepartmentComboBox.DataSource = Table_Department.DefaultView;
             DepartmentComboBox.Text = "";
             DepartmentComboBox.DisplayMember = "Name";
 
 
-            string query6 = $"SELECT * FROM Restaurants WHERE Id = '{_restaurant}'";
+            string query6 = $"SELECT * FROM Restaurants WHERE Id = {_restaurant}";
             Table_Rest = dbHelper.ExecuteQuery(query6);
             foreach (DataRow row in Table_Rest.Rows)
             {
@@ -196,10 +198,10 @@ namespace WindowsFormsApp4
 
    
 
-            Resize.Columns.Add("BeginWidth", typeof(float));
-            Resize.Columns.Add("BeginHeight", typeof(float));
-            Resize.Columns.Add("EndWidth", typeof(float));
-            Resize.Columns.Add("EndHeight", typeof(float));
+            Resize.Columns.Add("BeginWidth", typeof(decimal));
+            Resize.Columns.Add("BeginHeight", typeof(decimal));
+            Resize.Columns.Add("EndWidth", typeof(decimal));
+            Resize.Columns.Add("EndHeight", typeof(decimal));
             Resize.Rows.Add(0, 0, 0, 0);
 
             button2.Visible = false;
@@ -294,14 +296,14 @@ namespace WindowsFormsApp4
 
         private void Stocktaking_ResizeEnd(object sender, EventArgs e)
         {
-            float kw = 0;
-            float kh = 0;
+            decimal kw = 0;
+            decimal kh = 0;
             foreach (DataRow row in Resize.Rows)
             {
                 row["EndWidth"] = this.Width;
                 row["EndHeight"] = this.Height;
-                kw = float.Parse(row["EndWidth"].ToString()) / float.Parse(row["BeginWidth"].ToString());
-                kh = float.Parse(row["EndHeight"].ToString()) / float.Parse(row["BeginHeight"].ToString());
+                kw = decimal.Parse(row["EndWidth"].ToString()) / decimal.Parse(row["BeginWidth"].ToString());
+                kh = decimal.Parse(row["EndHeight"].ToString()) / decimal.Parse(row["BeginHeight"].ToString());
             }
             foreach (Control control in this.Controls)
             {
@@ -355,22 +357,23 @@ namespace WindowsFormsApp4
 
         private void button2_Click(object sender, EventArgs e)
         {
-            float Costamount = 0, Salesamount = 0, Delivery = 0, Music = 0, Service = 0,
+            decimal Costamount = 0, Salesamount = 0, Delivery = 0, Music = 0, Service = 0,
     Discount = 0, Total = 0, profit = 0, cashless = 0, Tipmoney = 0, Paidamount = 0, sumPaid = 0;
             int Person = 0;
-
+            button1.Enabled = false;
 
 
             //******************************************* կտրոնով 
             if (radioButton1.Checked)
             {
-                DataTable newinformation = new DataTable();
+                
                 newinformation = Table_TicketsOrdered.Clone();
                 //DateTime data1 = dateTimePicker1.Value;
                 int seans = 0;
                 data1 = DateTime.Now;
                 foreach (DataRow row in Table_TicketsOrdered.Rows)
                 {
+                    
                     seans = int.Parse(row["Seans"].ToString());
                     if (row["DateBegin"] != DBNull.Value)
                     {
@@ -394,6 +397,7 @@ namespace WindowsFormsApp4
                         continue;
                     }
                     if (comboBox2.SelectedIndex != 0 && int.Parse(row["Nestgroup"].ToString()) != comboBox2.SelectedIndex) continue;
+                    button1.Enabled = true;
                     DataRow newRow1 = newinformation.NewRow();
                     newinformation.Rows.Add(newRow1);
                     newRow1["total"] = 0;
@@ -402,39 +406,39 @@ namespace WindowsFormsApp4
                     newRow1["seans"] = decimal.Parse(row["seans"].ToString());
                     newRow1["ticket"] = decimal.Parse(row["ticket"].ToString());
                     newRow1["nest"] = row["nest"].ToString();
-                    newRow1["costamount"] = float.Parse(row["costamount"].ToString());
-                    newRow1["salesamount"] = float.Parse(row["salesamount"].ToString());
-                    newRow1["service"] = float.Parse(row["service"].ToString());
-                    newRow1["discount"] = float.Parse(row["discount"].ToString());
-                    newRow1["delivery"] = float.Parse(row["delivery"].ToString());
-                    newRow1["music"] = float.Parse(row["music"].ToString());
-                    newRow1["cash"] = float.Parse(row["cash"].ToString());
-                    newRow1["cashless"] = float.Parse(row["cashless"].ToString());
-                    newRow1["tipmoney"] = float.Parse(row["tipmoney"].ToString());
-                    newRow1["gid"] = float.Parse(row["gid"].ToString());
+                    newRow1["costamount"] = decimal.Parse(row["costamount"].ToString());
+                    newRow1["salesamount"] = decimal.Parse(row["salesamount"].ToString());
+                    newRow1["service"] = decimal.Parse(row["service"].ToString());
+                    newRow1["discount"] = decimal.Parse(row["discount"].ToString());
+                    newRow1["delivery"] = decimal.Parse(row["delivery"].ToString());
+                    newRow1["music"] = decimal.Parse(row["music"].ToString());
+                    newRow1["cash"] = decimal.Parse(row["cash"].ToString());
+                    newRow1["cashless"] = decimal.Parse(row["cashless"].ToString());
+                    newRow1["tipmoney"] = decimal.Parse(row["tipmoney"].ToString());
+                    newRow1["gid"] = decimal.Parse(row["gid"].ToString());
                     newRow1["person"] = decimal.Parse(row["person"].ToString());
-                    newRow1["total"] = float.Parse(newRow1["salesamount"].ToString()) + float.Parse(newRow1["service"].ToString()) -
-                       float.Parse(newRow1["discount"].ToString()) - float.Parse(newRow1["gid"].ToString());
-                    newRow1["profit"] = float.Parse(newRow1["total"].ToString()) - float.Parse(newRow1["costamount"].ToString());
+                    newRow1["total"] = decimal.Parse(newRow1["salesamount"].ToString()) + decimal.Parse(newRow1["service"].ToString()) -
+                       decimal.Parse(newRow1["discount"].ToString()) - decimal.Parse(newRow1["gid"].ToString());
+                    newRow1["profit"] = decimal.Parse(newRow1["total"].ToString()) - decimal.Parse(newRow1["costamount"].ToString());
 
                     if (decimal.Parse(row["Paid"].ToString()) == 1)
                     {
                         newRow1["Paidamount"] = newRow1["Total"];
-                        Paidamount = Paidamount + float.Parse(newRow1["Total"].ToString());
+                        Paidamount = Paidamount + decimal.Parse(newRow1["Total"].ToString());
                     }
 
-                    Costamount = Costamount + float.Parse(newRow1["costamount"].ToString());
-                    Salesamount = Salesamount + float.Parse(newRow1["Salesamount"].ToString());
-                    Delivery = Delivery + float.Parse(newRow1["Delivery"].ToString());
-                    Music = Music + float.Parse(newRow1["Music"].ToString());
-                    Service = Service + float.Parse(newRow1["Service"].ToString());
-                    Discount = Discount + float.Parse(newRow1["Discount"].ToString());
-                    Tipmoney = Tipmoney + float.Parse(newRow1["Tipmoney"].ToString());
-                    Total = Total + float.Parse(newRow1["Total"].ToString());
-                    cashless = cashless + float.Parse(newRow1["cashless"].ToString());
-                    profit = profit + float.Parse(newRow1["profit"].ToString());
+                    Costamount = Costamount + decimal.Parse(newRow1["costamount"].ToString());
+                    Salesamount = Salesamount + decimal.Parse(newRow1["Salesamount"].ToString());
+                    Delivery = Delivery + decimal.Parse(newRow1["Delivery"].ToString());
+                    Music = Music + decimal.Parse(newRow1["Music"].ToString());
+                    Service = Service + decimal.Parse(newRow1["Service"].ToString());
+                    Discount = Discount + decimal.Parse(newRow1["Discount"].ToString());
+                    Tipmoney = Tipmoney + decimal.Parse(newRow1["Tipmoney"].ToString());
+                    Total = Total + decimal.Parse(newRow1["Total"].ToString());
+                    cashless = cashless + decimal.Parse(newRow1["cashless"].ToString());
+                    profit = profit + decimal.Parse(newRow1["profit"].ToString());
                     Person = Person + int.Parse(newRow1["Person"].ToString());
-                    if (float.Parse(newRow1["paidamount"].ToString()) == 0)
+                    if (decimal.Parse(newRow1["paidamount"].ToString()) == 0)
                     {
                         button1.BackColor = Color.LightYellow;
                         button1.Enabled = false;
@@ -468,14 +472,14 @@ namespace WindowsFormsApp4
             if (radioButton2.Checked || radioButton5.Checked)
             {
                 Table_Food = new DataTable();
-                Table_Food.Columns.Add("Code", typeof(int));
+                Table_Food.Columns.Add("Code", typeof(string));
                 Table_Food.Columns.Add("Name", typeof(string));
                 Table_Food.Columns.Add("Quantity", typeof(decimal));
-                Table_Food.Columns.Add("Costamount", typeof(float));
-                Table_Food.Columns.Add("Salesamount", typeof(float));
+                Table_Food.Columns.Add("Costamount", typeof(decimal));
+                Table_Food.Columns.Add("Salesamount", typeof(decimal));
                 Table_Food.Columns.Add("Service", typeof(decimal));
                 Table_Food.Columns.Add("Discount", typeof(decimal));
-                Table_Food.Columns.Add("Profit", typeof(float));
+                Table_Food.Columns.Add("Profit", typeof(decimal));
                 dataGridView2.Columns[0].DataPropertyName = "Code";
                 dataGridView2.Columns[1].DataPropertyName = "Name";
                 dataGridView2.Columns[2].DataPropertyName = "Quantity";
@@ -504,16 +508,16 @@ namespace WindowsFormsApp4
                     if (checkBox2.Checked && (seans < numericUpDown1.Value || seans > numericUpDown2.Value)) continue;
                     if (numericUpDown3.Value > 0 && int.Parse(row["Holl"].ToString()) != numericUpDown3.Value) continue;
                     if (comboBox2.SelectedIndex != 0 && int.Parse(row["Nestgroup"].ToString()) != comboBox2.SelectedIndex) continue;
-                    if (radioButton5.Checked && float.Parse(row["Quantity"].ToString()) >= 0) continue; // մինուսները 
+                    if (radioButton5.Checked && decimal.Parse(row["Quantity"].ToString()) >= 0) continue; // մինուսները 
                     code = row["Code"].ToString();
                     DataRow[] foundRows = Table_Food.Select($"Code = '{code}' ");
 
-                    Costamount = Costamount + float.Parse(row["Costamount"].ToString());
-                    Salesamount = Salesamount + float.Parse(row["Salesamount"].ToString());
-                    Service = Service + float.Parse(row["Service"].ToString());
-                    Discount = Discount + float.Parse(row["Discount"].ToString());
-                    profit = profit + float.Parse(row["Salesamount"].ToString()) + float.Parse(row["Service"].ToString()) -
-                            float.Parse(row["Costamount"].ToString()) - float.Parse(row["Discount"].ToString());
+                    Costamount = Costamount + decimal.Parse(row["Costamount"].ToString());
+                    Salesamount = Salesamount + decimal.Parse(row["Salesamount"].ToString());
+                    Service = Service + decimal.Parse(row["Service"].ToString());
+                    Discount = Discount + decimal.Parse(row["Discount"].ToString());
+                    profit = profit + decimal.Parse(row["Salesamount"].ToString()) + decimal.Parse(row["Service"].ToString()) -
+                            decimal.Parse(row["Costamount"].ToString()) - decimal.Parse(row["Discount"].ToString());
 
                     if (foundRows.Length == 0)
                     {
@@ -526,18 +530,18 @@ namespace WindowsFormsApp4
                         newRow["Salesamount"] = row["Salesamount"];
                         newRow["Service"] = row["Service"];
                         newRow["Discount"] = row["Discount"];
-                        newRow["Profit"] = float.Parse(row["Salesamount"].ToString()) + float.Parse(row["Service"].ToString()) -
-                            float.Parse(row["Costamount"].ToString()) - float.Parse(row["Discount"].ToString());
+                        newRow["Profit"] = decimal.Parse(row["Salesamount"].ToString()) + decimal.Parse(row["Service"].ToString()) -
+                            decimal.Parse(row["Costamount"].ToString()) - decimal.Parse(row["Discount"].ToString());
                     }
                     else
                     {
-                        foundRows[0]["Quantity"] = float.Parse(foundRows[0]["Quantity"].ToString()) + float.Parse(row["Quantity"].ToString());
-                        foundRows[0]["Costamount"] = float.Parse(foundRows[0]["Salesamount"].ToString()) + float.Parse(row["Costamount"].ToString());
-                        foundRows[0]["Salesamount"] = float.Parse(foundRows[0]["Salesamount"].ToString()) + float.Parse(row["Salesamount"].ToString());
-                        foundRows[0]["Service"] = float.Parse(foundRows[0]["Service"].ToString()) + float.Parse(row["Service"].ToString());
-                        foundRows[0]["Discount"] = float.Parse(foundRows[0]["Discount"].ToString()) + float.Parse(row["Discount"].ToString());
-                        foundRows[0]["Profit"] = float.Parse(foundRows[0]["Salesamount"].ToString()) + float.Parse(foundRows[0]["Service"].ToString()) -
-                            float.Parse(foundRows[0]["Costamount"].ToString()) - float.Parse(foundRows[0]["Discount"].ToString());
+                        foundRows[0]["Quantity"] = decimal.Parse(foundRows[0]["Quantity"].ToString()) + decimal.Parse(row["Quantity"].ToString());
+                        foundRows[0]["Costamount"] = decimal.Parse(foundRows[0]["Salesamount"].ToString()) + decimal.Parse(row["Costamount"].ToString());
+                        foundRows[0]["Salesamount"] = decimal.Parse(foundRows[0]["Salesamount"].ToString()) + decimal.Parse(row["Salesamount"].ToString());
+                        foundRows[0]["Service"] = decimal.Parse(foundRows[0]["Service"].ToString()) + decimal.Parse(row["Service"].ToString());
+                        foundRows[0]["Discount"] = decimal.Parse(foundRows[0]["Discount"].ToString()) + decimal.Parse(row["Discount"].ToString());
+                        foundRows[0]["Profit"] = decimal.Parse(foundRows[0]["Salesamount"].ToString()) + decimal.Parse(foundRows[0]["Service"].ToString()) -
+                            decimal.Parse(foundRows[0]["Costamount"].ToString()) - decimal.Parse(foundRows[0]["Discount"].ToString());
                     }
 
                 }
@@ -549,46 +553,46 @@ namespace WindowsFormsApp4
                     if (checkBox2.Checked && (seans < numericUpDown1.Value || seans > numericUpDown2.Value)) continue;
                     if (numericUpDown3.Value > 0 && int.Parse(row["Holl"].ToString()) != numericUpDown3.Value) continue;
                     if (comboBox2.SelectedIndex != 0 && int.Parse(row["Nestgroup"].ToString()) != comboBox2.SelectedIndex) continue;
-                    if (radioButton5.Checked && float.Parse(row["Quantity"].ToString()) >= 0) continue; // մինուսները 
+                    if (radioButton5.Checked && decimal.Parse(row["Quantity"].ToString()) >= 0) continue; // մինուսները 
                     code = row["Code"].ToString();
                     DataRow[] foundRows = Table_Food.Select($"Code = '{code}' ");
 
-                    Costamount = Costamount + float.Parse(row["Costamount"].ToString());
-                    Salesamount = Salesamount + float.Parse(row["Salesamount"].ToString());
-                    Service = Service + float.Parse(row["Service"].ToString());
-                    Discount = Discount + float.Parse(row["Discount"].ToString());
-                    profit = profit + float.Parse(row["Salesamount"].ToString()) + float.Parse(row["Service"].ToString()) -
-                            float.Parse(row["Costamount"].ToString()) - float.Parse(row["Discount"].ToString());
+                    Costamount = Costamount + decimal.Parse(row["Costamount"].ToString());
+                    Salesamount = Salesamount + decimal.Parse(row["Salesamount"].ToString());
+                    Service = Service + decimal.Parse(row["Service"].ToString());
+                    Discount = Discount + decimal.Parse(row["Discount"].ToString());
+                    profit = profit + decimal.Parse(row["Salesamount"].ToString()) + decimal.Parse(row["Service"].ToString()) -
+                            decimal.Parse(row["Costamount"].ToString()) - decimal.Parse(row["Discount"].ToString());
 
                     if (foundRows.Length == 0)
                     {
                         DataRow newRow = Table_Food.NewRow();
                         Table_Food.Rows.Add(newRow);
                         newRow["Code"] = row["Code"];
-                        newRow["Name"] = row["Name"];
                         newRow["Quantity"] = row["Quantity"];
                         newRow["Costamount"] = row["Costamount"];
                         newRow["Salesamount"] = row["Salesamount"];
                         newRow["Service"] = row["Service"];
                         newRow["Discount"] = row["Discount"];
-                        newRow["Profit"] = float.Parse(row["Salesamount"].ToString()) + float.Parse(row["Service"].ToString()) -
-                            float.Parse(row["Costamount"].ToString()) - float.Parse(row["Discount"].ToString());
+                        newRow["Profit"] = decimal.Parse(row["Salesamount"].ToString()) + decimal.Parse(row["Service"].ToString()) -
+                            decimal.Parse(row["Costamount"].ToString()) - decimal.Parse(row["Discount"].ToString());
 
 
 
                     }
                     else
                     {
-                        foundRows[0]["Quantity"] = float.Parse(foundRows[0]["Quantity"].ToString()) + float.Parse(row["Quantity"].ToString());
-                        foundRows[0]["Costamount"] = float.Parse(foundRows[0]["Salesamount"].ToString()) + float.Parse(row["Costamount"].ToString());
-                        foundRows[0]["Salesamount"] = float.Parse(foundRows[0]["Salesamount"].ToString()) + float.Parse(row["Salesamount"].ToString());
-                        foundRows[0]["Service"] = float.Parse(foundRows[0]["Service"].ToString()) + float.Parse(row["Service"].ToString());
-                        foundRows[0]["Discount"] = float.Parse(foundRows[0]["Discount"].ToString()) + float.Parse(row["Discount"].ToString());
-                        foundRows[0]["Profit"] = float.Parse(foundRows[0]["Salesamount"].ToString()) + float.Parse(foundRows[0]["Service"].ToString()) -
-                            float.Parse(foundRows[0]["Costamount"].ToString()) - float.Parse(foundRows[0]["Discount"].ToString());
+                        foundRows[0]["Quantity"] = decimal.Parse(foundRows[0]["Quantity"].ToString()) + decimal.Parse(row["Quantity"].ToString());
+                        foundRows[0]["Costamount"] = decimal.Parse(foundRows[0]["Salesamount"].ToString()) + decimal.Parse(row["Costamount"].ToString());
+                        foundRows[0]["Salesamount"] = decimal.Parse(foundRows[0]["Salesamount"].ToString()) + decimal.Parse(row["Salesamount"].ToString());
+                        foundRows[0]["Service"] = decimal.Parse(foundRows[0]["Service"].ToString()) + decimal.Parse(row["Service"].ToString());
+                        foundRows[0]["Discount"] = decimal.Parse(foundRows[0]["Discount"].ToString()) + decimal.Parse(row["Discount"].ToString());
+                        foundRows[0]["Profit"] = decimal.Parse(foundRows[0]["Salesamount"].ToString()) + decimal.Parse(foundRows[0]["Service"].ToString()) -
+                            decimal.Parse(foundRows[0]["Costamount"].ToString()) - decimal.Parse(foundRows[0]["Discount"].ToString());
                     }
 
                 }
+
                 DataRow newRow1 = Table_Food.NewRow();
                 Table_Food.Rows.Add(newRow1);
                 DataRow newRow2 = Table_Food.NewRow();
@@ -601,6 +605,8 @@ namespace WindowsFormsApp4
                 dataGridView2.DataSource = Table_Food;
                 dataGridView1.Visible = false;
                 dataGridView2.Visible = true;
+
+                Translate.translation(Table_215, Table_Food, _language, "1");
 
             }
 
@@ -638,9 +644,9 @@ namespace WindowsFormsApp4
                         }
                         if (int.Parse(row["Paid"].ToString()) == 1)
                         {
-                            Paidamount = Paidamount + float.Parse(row["Total"].ToString());
-                            newRow["Paidamount"] = float.Parse(row["Total"].ToString());
-                            sumPaid = sumPaid + float.Parse(row["Total"].ToString());
+                            Paidamount = Paidamount + decimal.Parse(row["Total"].ToString());
+                            newRow["Paidamount"] = decimal.Parse(row["Total"].ToString());
+                            sumPaid = sumPaid + decimal.Parse(row["Total"].ToString());
                         }
                         newRow["Seans"] = year;
                         newRow["Ticket"] = month;
@@ -648,34 +654,34 @@ namespace WindowsFormsApp4
                     }
                     else
                     {
-                        foundRows[0]["Costamount"] = float.Parse(foundRows[0]["Costamount"].ToString()) + float.Parse(row["costamount"].ToString());
-                        foundRows[0]["Salesamount"] = float.Parse(foundRows[0]["Salesamount"].ToString()) + float.Parse(row["Salesamount"].ToString());
-                        foundRows[0]["Delivery"] = float.Parse(foundRows[0]["Delivery"].ToString()) + float.Parse(row["Delivery"].ToString());
-                        foundRows[0]["Music"] = float.Parse(foundRows[0]["Music"].ToString()) + float.Parse(row["Music"].ToString());
-                        foundRows[0]["Service"] = float.Parse(foundRows[0]["Service"].ToString()) + float.Parse(row["Service"].ToString());
-                        foundRows[0]["Discount"] = float.Parse(foundRows[0]["Discount"].ToString()) + float.Parse(row["Discount"].ToString());
-                        foundRows[0]["Tipmoney"] = float.Parse(foundRows[0]["Tipmoney"].ToString()) + float.Parse(row["Tipmoney"].ToString());
-                        foundRows[0]["Total"] = float.Parse(foundRows[0]["Total"].ToString()) + float.Parse(row["Total"].ToString());
-                        foundRows[0]["cashless"] = float.Parse(foundRows[0]["cashless"].ToString()) + float.Parse(row["cashless"].ToString());
-                        foundRows[0]["profit"] = float.Parse(foundRows[0]["profit"].ToString()) + float.Parse(row["profit"].ToString());
+                        foundRows[0]["Costamount"] = decimal.Parse(foundRows[0]["Costamount"].ToString()) + decimal.Parse(row["costamount"].ToString());
+                        foundRows[0]["Salesamount"] = decimal.Parse(foundRows[0]["Salesamount"].ToString()) + decimal.Parse(row["Salesamount"].ToString());
+                        foundRows[0]["Delivery"] = decimal.Parse(foundRows[0]["Delivery"].ToString()) + decimal.Parse(row["Delivery"].ToString());
+                        foundRows[0]["Music"] = decimal.Parse(foundRows[0]["Music"].ToString()) + decimal.Parse(row["Music"].ToString());
+                        foundRows[0]["Service"] = decimal.Parse(foundRows[0]["Service"].ToString()) + decimal.Parse(row["Service"].ToString());
+                        foundRows[0]["Discount"] = decimal.Parse(foundRows[0]["Discount"].ToString()) + decimal.Parse(row["Discount"].ToString());
+                        foundRows[0]["Tipmoney"] = decimal.Parse(foundRows[0]["Tipmoney"].ToString()) + decimal.Parse(row["Tipmoney"].ToString());
+                        foundRows[0]["Total"] = decimal.Parse(foundRows[0]["Total"].ToString()) + decimal.Parse(row["Total"].ToString());
+                        foundRows[0]["cashless"] = decimal.Parse(foundRows[0]["cashless"].ToString()) + decimal.Parse(row["cashless"].ToString());
+                        foundRows[0]["profit"] = decimal.Parse(foundRows[0]["profit"].ToString()) + decimal.Parse(row["profit"].ToString());
                         foundRows[0]["Person"] = int.Parse(foundRows[0]["Person"].ToString()) + int.Parse(row["Person"].ToString());
                         if (int.Parse(row["Paid"].ToString()) == 1)
                         {
-                            Paidamount = Paidamount + float.Parse(row["Total"].ToString());
+                            Paidamount = Paidamount + decimal.Parse(row["Total"].ToString());
                             foundRows[0]["Paidamount"] = Paidamount;
-                            sumPaid = sumPaid + float.Parse(row["Total"].ToString());
+                            sumPaid = sumPaid + decimal.Parse(row["Total"].ToString());
                         }
 
                     }
-                    Costamount = Costamount + float.Parse(row["costamount"].ToString());
-                    Salesamount = Salesamount + float.Parse(row["Salesamount"].ToString());
-                    Delivery = Delivery + float.Parse(row["Delivery"].ToString());
-                    Music = Music + float.Parse(row["Music"].ToString());
-                    Service = Service + float.Parse(row["Service"].ToString());
-                    Discount = Discount + float.Parse(row["Discount"].ToString());
-                    Total = Total + float.Parse(row["Total"].ToString());
-                    cashless = cashless + float.Parse(row["cashless"].ToString());
-                    profit = profit + float.Parse(row["profit"].ToString());
+                    Costamount = Costamount + decimal.Parse(row["costamount"].ToString());
+                    Salesamount = Salesamount + decimal.Parse(row["Salesamount"].ToString());
+                    Delivery = Delivery + decimal.Parse(row["Delivery"].ToString());
+                    Music = Music + decimal.Parse(row["Music"].ToString());
+                    Service = Service + decimal.Parse(row["Service"].ToString());
+                    Discount = Discount + decimal.Parse(row["Discount"].ToString());
+                    Total = Total + decimal.Parse(row["Total"].ToString());
+                    cashless = cashless + decimal.Parse(row["cashless"].ToString());
+                    profit = profit + decimal.Parse(row["profit"].ToString());
                     Person = Person + int.Parse(row["Person"].ToString());
                     Tipmoney = Tipmoney + int.Parse(row["Tipmoney"].ToString());
 
@@ -744,45 +750,45 @@ namespace WindowsFormsApp4
                         newRow["Nest"] = dey;
                         if (int.Parse(row["Paid"].ToString()) == 1)
                         {
-                            Paidamount = Paidamount + float.Parse(row["Total"].ToString());
-                            newRow["Paidamount"] = float.Parse(row["Total"].ToString());
-                            sumPaid = sumPaid + float.Parse(row["Total"].ToString());
+                            Paidamount = Paidamount + decimal.Parse(row["Total"].ToString());
+                            newRow["Paidamount"] = decimal.Parse(row["Total"].ToString());
+                            sumPaid = sumPaid + decimal.Parse(row["Total"].ToString());
                         }
 
                     }
                     else
                     {
-                        foundRows[0]["Costamount"] = float.Parse(foundRows[0]["Costamount"].ToString()) + float.Parse(row["costamount"].ToString());
-                        foundRows[0]["Salesamount"] = float.Parse(foundRows[0]["Salesamount"].ToString()) + float.Parse(row["Salesamount"].ToString());
-                        foundRows[0]["Delivery"] = float.Parse(foundRows[0]["Delivery"].ToString()) + float.Parse(row["Delivery"].ToString());
-                        foundRows[0]["Music"] = float.Parse(foundRows[0]["Music"].ToString()) + float.Parse(row["Music"].ToString());
-                        foundRows[0]["Service"] = float.Parse(foundRows[0]["Service"].ToString()) + float.Parse(row["Service"].ToString());
-                        foundRows[0]["Discount"] = float.Parse(foundRows[0]["Discount"].ToString()) + float.Parse(row["Discount"].ToString());
-                        foundRows[0]["Tipmoney"] = float.Parse(foundRows[0]["Tipmoney"].ToString()) + float.Parse(row["Tipmoney"].ToString());
-                        foundRows[0]["Total"] = float.Parse(foundRows[0]["Total"].ToString()) + float.Parse(row["Total"].ToString());
-                        foundRows[0]["cashless"] = float.Parse(foundRows[0]["cashless"].ToString()) + float.Parse(row["cashless"].ToString());
-                        foundRows[0]["profit"] = float.Parse(foundRows[0]["profit"].ToString()) + float.Parse(row["profit"].ToString());
+                        foundRows[0]["Costamount"] = decimal.Parse(foundRows[0]["Costamount"].ToString()) + decimal.Parse(row["costamount"].ToString());
+                        foundRows[0]["Salesamount"] = decimal.Parse(foundRows[0]["Salesamount"].ToString()) + decimal.Parse(row["Salesamount"].ToString());
+                        foundRows[0]["Delivery"] = decimal.Parse(foundRows[0]["Delivery"].ToString()) + decimal.Parse(row["Delivery"].ToString());
+                        foundRows[0]["Music"] = decimal.Parse(foundRows[0]["Music"].ToString()) + decimal.Parse(row["Music"].ToString());
+                        foundRows[0]["Service"] = decimal.Parse(foundRows[0]["Service"].ToString()) + decimal.Parse(row["Service"].ToString());
+                        foundRows[0]["Discount"] = decimal.Parse(foundRows[0]["Discount"].ToString()) + decimal.Parse(row["Discount"].ToString());
+                        foundRows[0]["Tipmoney"] = decimal.Parse(foundRows[0]["Tipmoney"].ToString()) + decimal.Parse(row["Tipmoney"].ToString());
+                        foundRows[0]["Total"] = decimal.Parse(foundRows[0]["Total"].ToString()) + decimal.Parse(row["Total"].ToString());
+                        foundRows[0]["cashless"] = decimal.Parse(foundRows[0]["cashless"].ToString()) + decimal.Parse(row["cashless"].ToString());
+                        foundRows[0]["profit"] = decimal.Parse(foundRows[0]["profit"].ToString()) + decimal.Parse(row["profit"].ToString());
                         foundRows[0]["Person"] = int.Parse(foundRows[0]["Person"].ToString()) + int.Parse(row["Person"].ToString());
                         if (int.Parse(row["Paid"].ToString()) == 1)
                         {
-                            Paidamount = Paidamount + float.Parse(row["Total"].ToString());
+                            Paidamount = Paidamount + decimal.Parse(row["Total"].ToString());
                             foundRows[0]["Paidamount"] = Paidamount;
-                            sumPaid = sumPaid + float.Parse(row["Total"].ToString());
+                            sumPaid = sumPaid + decimal.Parse(row["Total"].ToString());
                         }
 
                     }
                     //if (int.Parse(newRow["Paid"].ToString()) == 1) newRow["Paidamount"] = newRow["Total"];
-                    Costamount = Costamount + float.Parse(row["costamount"].ToString());
-                    Salesamount = Salesamount + float.Parse(row["Salesamount"].ToString());
-                    Delivery = Delivery + float.Parse(row["Delivery"].ToString());
-                    Music = Music + float.Parse(row["Music"].ToString());
-                    Service = Service + float.Parse(row["Service"].ToString());
-                    Discount = Discount + float.Parse(row["Discount"].ToString());
-                    Total = Total + float.Parse(row["Total"].ToString());
-                    cashless = cashless + float.Parse(row["cashless"].ToString());
-                    profit = profit + float.Parse(row["profit"].ToString());
+                    Costamount = Costamount + decimal.Parse(row["costamount"].ToString());
+                    Salesamount = Salesamount + decimal.Parse(row["Salesamount"].ToString());
+                    Delivery = Delivery + decimal.Parse(row["Delivery"].ToString());
+                    Music = Music + decimal.Parse(row["Music"].ToString());
+                    Service = Service + decimal.Parse(row["Service"].ToString());
+                    Discount = Discount + decimal.Parse(row["Discount"].ToString());
+                    Total = Total + decimal.Parse(row["Total"].ToString());
+                    cashless = cashless + decimal.Parse(row["cashless"].ToString());
+                    profit = profit + decimal.Parse(row["profit"].ToString());
                     Person = Person + int.Parse(row["Person"].ToString());
-                    Tipmoney = Tipmoney + float.Parse(row["Tipmoney"].ToString());
+                    Tipmoney = Tipmoney + decimal.Parse(row["Tipmoney"].ToString());
                 }
                 DataRow newRow1 = newinformation.NewRow();
                 newinformation.Rows.Add(newRow1);
@@ -919,11 +925,11 @@ namespace WindowsFormsApp4
 
             CurrentOrder = new DataTable();
             CurrentOrder.Columns.Add("name", typeof(string));
-            CurrentOrder.Columns.Add("price", typeof(float));
-            CurrentOrder.Columns.Add("salesamount", typeof(float));
-            CurrentOrder.Columns.Add("quantity", typeof(float));
-            CurrentOrder.Columns.Add("service", typeof(float));
-            CurrentOrder.Columns.Add("discount", typeof(float));
+            CurrentOrder.Columns.Add("price", typeof(decimal));
+            CurrentOrder.Columns.Add("salesamount", typeof(decimal));
+            CurrentOrder.Columns.Add("quantity", typeof(decimal));
+            CurrentOrder.Columns.Add("service", typeof(decimal));
+            CurrentOrder.Columns.Add("discount", typeof(decimal));
             CurrentOrder.Columns.Add("free", typeof(int));
             CurrentOrder.Columns.Add("code", typeof(string));
             // }
@@ -931,7 +937,7 @@ namespace WindowsFormsApp4
             decimal seans = 0, ticket = 0, Paid = 0;
             string nest = "", Gid = "";
             DateTime DateBegin = DateTime.Now, DateEnd = DateTime.Now;
-            float Salesamount = 0, Service = 0, Discount = 0, Delivery = 0, Music = 0, Tipmoney = 0, Total = 0;
+            decimal Salesamount = 0, Service = 0, Discount = 0, Delivery = 0, Music = 0, Tipmoney = 0, Total = 0;
 
             for (int colIndex = 0; colIndex < dataGridView1.Columns.Count; colIndex++)
             {
@@ -971,8 +977,8 @@ namespace WindowsFormsApp4
                     DataRow[] foundRows1 = CurrentOrder.Select($"Code = '{code}'");
                     if (foundRows1.Length > 0)
                     {
-                        foundRows1[0]["quantity"] = float.Parse(foundRows1[0]["quantity"].ToString()) + float.Parse(row["quantity"].ToString());
-                        foundRows1[0]["salesamount"] = float.Parse(foundRows1[0]["salesamount"].ToString()) + float.Parse(row["salesamount"].ToString());
+                        foundRows1[0]["quantity"] = decimal.Parse(foundRows1[0]["quantity"].ToString()) + decimal.Parse(row["quantity"].ToString());
+                        foundRows1[0]["salesamount"] = decimal.Parse(foundRows1[0]["salesamount"].ToString()) + decimal.Parse(row["salesamount"].ToString());
                     }
                     else
                     {
@@ -980,18 +986,18 @@ namespace WindowsFormsApp4
                         CurrentOrder.Rows.Add(newRow);
                         newRow["code"] = row["Code"].ToString();
                         newRow["name"] = "";
-                        newRow["price"] = float.Parse(row["Price"].ToString());
-                        newRow["salesamount"] = float.Parse(row["Salesamount"].ToString());
-                        newRow["quantity"] = float.Parse(row["Quantity"].ToString());
-                        newRow["service"] = float.Parse(row["service"].ToString());
-                        newRow["discount"] = float.Parse(row["discount"].ToString());
+                        newRow["price"] = decimal.Parse(row["Price"].ToString());
+                        newRow["salesamount"] = decimal.Parse(row["Salesamount"].ToString());
+                        newRow["quantity"] = decimal.Parse(row["Quantity"].ToString());
+                        newRow["service"] = decimal.Parse(row["service"].ToString());
+                        newRow["discount"] = decimal.Parse(row["discount"].ToString());
                         newRow["free"] = int.Parse(row["Free"].ToString());
                     }
                 }
                 //հեռացնում ենք 0 քանակով տողերը
                 foreach (DataRow row in CurrentOrder.Rows.Cast<DataRow>().ToList())
                 {
-                    if (float.Parse(row["Quantity"].ToString()) == 0)
+                    if (decimal.Parse(row["Quantity"].ToString()) == 0)
                     {
                         row.Delete();
                     }
@@ -1006,11 +1012,11 @@ namespace WindowsFormsApp4
             {
                 DateBegin = (DateTime)row["DateBegin"];
                 DateEnd = DateTime.Parse(row["DateEnd"].ToString());
-                Salesamount = float.Parse(row["Salesamount"].ToString());
-                Service = float.Parse(row["Service"].ToString());
-                Discount = float.Parse(row["Discount"].ToString());
+                Salesamount = decimal.Parse(row["Salesamount"].ToString());
+                Service = decimal.Parse(row["Service"].ToString());
+                Discount = decimal.Parse(row["Discount"].ToString());
                 Gid = row["Gid"].ToString();
-                Tipmoney = float.Parse(row["Tipmoney"].ToString());
+                Tipmoney = decimal.Parse(row["Tipmoney"].ToString());
                 Paid = decimal.Parse(row["Paid"].ToString());
             }
             connection.Close();
@@ -1065,14 +1071,14 @@ namespace WindowsFormsApp4
             string query0 = $"SELECT * FROM SeansState  WHERE Id='{_restaurant}' ";
             Table_Seans = dbHelper.ExecuteQuery(query0);
 
-            string query1 = $"SELECT * FROM Seans  WHERE Previous='{0}' AND restaurant='{_restaurant}' ";
+            string query1 = $"SELECT * FROM Seans  WHERE  restaurant='{_restaurant}' ";
             Table_Seans = dbHelper.ExecuteQuery(query1);
 
 
 
             string query2 = $"SELECT * FROM Composite  WHERE restaurant='{_restaurant}' ";
             Table_Composite = dbHelper.ExecuteQuery(query2);
-            string query3 = $"SELECT * FROM Actions  WHERE  Id=0 ";
+            string query3 = $"SELECT * FROM Actions where Id=0";
             Table_Actions = dbHelper.ExecuteQuery(query3);
             connection.Open();
             foreach (DataRow row in Table_Seans.Rows)
@@ -1081,9 +1087,9 @@ namespace WindowsFormsApp4
                 if (row["NonComposite"].ToString().IndexOf(noncomp) >= 0) continue; //տվյալ սրահում չի բաղադրվում ճաշատեսակը
 
                 string InsertQuery = $"INSERT INTO Actions_215 ( Code , Groupp, DateOfEntry, Seans, Ticket, Paid," +
-                    $"Nest ,Quantity , Price, Costamount, Salesamount, Service, Discount, Free, Taxpaid, Restaurant, Holl, Operator, Previous, DepartmentOut)" +
+                    $"Nest ,Quantity , Price, Costamount, Salesamount, Service, Discount, Free, Taxpaid, Restaurant, Holl, Operator, DepartmentOut)" +
                     $" values (@Code , @Groupp, @DateOfEntry, @Seans, @Ticket, @Paid, @Nest ," +
-                    $"@Quantity ,@Price, @Costamount, @Salesamount, @Service, @Discount, @Free, @Taxpaid, @Restaurant, @Holl, @Operator, @Previous, @Departmentout ) ";
+                    $"@Quantity ,@Price, @Costamount, @Salesamount, @Service, @Discount, @Free, @Taxpaid, @Restaurant, @Holl, @Operator, @Departmentout ) ";
                 using (SqlCommand insertCommand = new SqlCommand(InsertQuery, connection))
 
                 {
@@ -1106,68 +1112,76 @@ namespace WindowsFormsApp4
                     insertCommand.Parameters.AddWithValue("@Restaurant", _restaurant);
                     insertCommand.Parameters.AddWithValue("@Holl", row["holl"]);
                     insertCommand.Parameters.AddWithValue("@Operator", row["operator"]);
-                    insertCommand.Parameters.AddWithValue("@Previous", row["previous"]);
 
                     insertCommand.ExecuteNonQuery();
                 }
-
-                foreach (DataRow row1 in Table_Seans.Rows)
+            }
+            foreach (DataRow row1 in Table_Seans.Rows)
+            {
+                DataRow[] foundRows1 = Table_Composite.Select($"Code_215 = {row1["Code"]}");
+                if (foundRows1.Length > 0)
                 {
-                    DataRow[] foundRows1 = Table_Composite.Select($"Code_215 = '{row1["Code"]}' ");
-                    if (foundRows1.Length > 0)
+                    foreach (DataRow row2 in foundRows1)
                     {
-                        foreach (DataRow row2 in foundRows1)
+                        DataRow[] foundRows2 = Table_Actions.Select($"Code = {row2["Code_211"]} AND Code_215 = {row1["Code"]} AND DepartmentOut= {row1["DepartmentOut"]}");
+                        if (foundRows2.Length == 0)
                         {
-                            DataRow[] foundRows2 = Table_Actions.Select($"Code = '{row2["Code_211"]}' AND Code_215 = '{row1["Code"]}' AND DepartmentOut= '{row1["DepartmentOut"]}'");
-                            if (foundRows2.Length == 0)
-                            {
-                                DataRow newRow = Table_Actions.NewRow();
-                                Table_Actions.Rows.Add(newRow);
-                                newRow["Date"] = row1["DateOfEntry"]; newRow["seans"] = row1["seans"];
-                                newRow["Code"] = row2["code_211"]; newRow["Code_215"] = row1["code"];
-                                newRow["DepartmentOut"] = row1["DepartmentOut"]; newRow["Restaurant"] = row1["Restaurant"];
-                                newRow["Quantity"] = float.Parse(row1["Quantity"].ToString()) * float.Parse(row2["Quantity"].ToString());
-                                newRow["Costamount"] = float.Parse(newRow["Quantity"].ToString()) * float.Parse(row2["CostPrice"].ToString());
-                                newRow["SalesAmount"] = row1["SalesAmount"];
-                            }
-                            else
-                            {
-                                foundRows2[0]["Quantity"] = float.Parse(foundRows2[0]["Quantity"].ToString()) +
-                                    float.Parse(row1["Quantity"].ToString()) * float.Parse(row2["Quantity"].ToString());
-                                foundRows2[0]["Costamount"] = float.Parse(foundRows2[0]["Costamount"].ToString()) +
-                                    float.Parse(row1["Quantity"].ToString()) * float.Parse(row2["Quantity"].ToString()) *
-                                    float.Parse(row2["CostPrice"].ToString());
-                                foundRows2[0]["SalesAmount"] = float.Parse(foundRows2[0]["SalesAmount"].ToString()) +
-                                    float.Parse(row1["SalesAmount"].ToString());
-                            }
+                            DataRow newRow = Table_Actions.NewRow();
+                            Table_Actions.Rows.Add(newRow);
+                            newRow["Date"] = row1["DateOfEntry"]; newRow["seans"] = row1["Seans"];
+                            newRow["Code"] = row2["code_211"]; newRow["Code_215"] = row1["Code"];
+                            newRow["DepartmentOut"] = row1["DepartmentOut"]; newRow["Restaurant"] = row1["Restaurant"];
+                            newRow["Quantity"] = decimal.Parse(row1["Quantity"].ToString()) * decimal.Parse(row2["Quantity"].ToString());
+                            newRow["Costamount"] = decimal.Parse(newRow["Quantity"].ToString()) * decimal.Parse(row2["CostPrice"].ToString());
+                            newRow["SalesAmount"] = row1["SalesAmount"];
+                        }
+                        else
+                        {
+                            foundRows2[0]["Quantity"] = decimal.Parse(foundRows2[0]["Quantity"].ToString()) +
+                                decimal.Parse(row1["Quantity"].ToString()) * decimal.Parse(row2["Quantity"].ToString());
+                            foundRows2[0]["Costamount"] = decimal.Parse(foundRows2[0]["Costamount"].ToString()) +
+                                decimal.Parse(row1["Quantity"].ToString()) * decimal.Parse(row2["Quantity"].ToString()) *
+                                decimal.Parse(row2["CostPrice"].ToString());
+                            foundRows2[0]["SalesAmount"] = decimal.Parse(foundRows2[0]["SalesAmount"].ToString()) +
+                                decimal.Parse(row1["SalesAmount"].ToString());
                         }
                     }
                 }
-                foreach (DataRow row3 in Table_Actions.Rows)
-                {
-                    string InsertQuery1 = $"INSERT INTO Actions (Date, seans,  Code, Code_215, Quantity , Costamount, Salesamount, DepartmentOut, Restaurant, debet, kredit )" +
-                             $" values (@Date, @seans,  @Code, @code_215, @Quantity , @Costamount, @Salesamount, @DepartmentOut, @Restaurant, @debet, @kredit ) ";
-                    using (SqlCommand insertCommand = new SqlCommand(InsertQuery1, connection))
+            }
+            foreach (DataRow row3 in Table_Actions.Rows)
+            {
+                string InsertQuery1 = $"INSERT INTO Actions (Date, seans,  Code, Code_215, Quantity , Costamount, Salesamount, DepartmentOut, Restaurant, debet, kredit )" +
+                         $" values (@Date, @seans,  @Code, @code_215, @Quantity , @Costamount, @Salesamount, @DepartmentOut, @Restaurant, @debet, @kredit ) ";
+                using (SqlCommand insertCommand = new SqlCommand(InsertQuery1, connection))
 
-                    {
-                        insertCommand.Parameters.AddWithValue("@Date", row3["Date"]);
-                        insertCommand.Parameters.AddWithValue("@Seans", row3["Seans"]);
-                        insertCommand.Parameters.AddWithValue("@Code", row3["Code"]);
-                        insertCommand.Parameters.AddWithValue("@Code_215", row3["Code_215"]);
-                        insertCommand.Parameters.AddWithValue("@Quantity", row3["Quantity"]);
-                        insertCommand.Parameters.AddWithValue("@Costamount", row3["Costamount"]);
-                        insertCommand.Parameters.AddWithValue("@Salesamount", 0);
-                        insertCommand.Parameters.AddWithValue("@DepartmentOut", row3["DepartmentOut"]);
-                        insertCommand.Parameters.AddWithValue("@Restaurant", row3["Restaurant"]);
-                        insertCommand.Parameters.AddWithValue("@debet", "7111" );
-                        insertCommand.Parameters.AddWithValue("@kredit", "2111");
-                        insertCommand.ExecuteNonQuery();
-                    }
+                {
+                    insertCommand.Parameters.AddWithValue("@Date", row3["Date"]);
+                    insertCommand.Parameters.AddWithValue("@Seans", row3["Seans"]);
+                    insertCommand.Parameters.AddWithValue("@Code", row3["Code"]);
+                    insertCommand.Parameters.AddWithValue("@Code_215", row3["Code_215"]);
+                    insertCommand.Parameters.AddWithValue("@Quantity", row3["Quantity"]);
+                    insertCommand.Parameters.AddWithValue("@Costamount", row3["Costamount"]);
+                    insertCommand.Parameters.AddWithValue("@Salesamount", 0);
+                    insertCommand.Parameters.AddWithValue("@DepartmentOut", row3["DepartmentOut"]);
+                    insertCommand.Parameters.AddWithValue("@Restaurant", row3["Restaurant"]);
+                    insertCommand.Parameters.AddWithValue("@debet", "7111");
+                    insertCommand.Parameters.AddWithValue("@kredit", "2111");
+                    insertCommand.ExecuteNonQuery();
                 }
             }
+
+            string UpdateQuery = $"UPDATE SeansState SET State = @State WHERE Id = @Id  ";
+            using (SqlCommand command = new SqlCommand(UpdateQuery, connection))
+            {
+                command.Parameters.AddWithValue("@State", 0);
+                command.Parameters.AddWithValue("@Id", _restaurant);
+                command.ExecuteNonQuery();
+            }
+
             string DeleteQuery = $"DELETE FROM seans ";
             using (SqlCommand deleteCommand = new SqlCommand(DeleteQuery, connection))
                 deleteCommand.ExecuteNonQuery();
+
             connection.Close();
             button1.Visible = false;
         }
@@ -1203,6 +1217,47 @@ namespace WindowsFormsApp4
             if (foundRows.Length == 0) { return; }
             DepartmentIdBox.Text = foundRows[0]["Id"].ToString();
 
+        }
+
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            dataGridView2.Visible = false;
+            dataGridView1.Visible = true;
+            button2.Focus();
+            SendKeys.Send("{ENTER}");
+        }
+
+        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+            dataGridView2.Visible = false;
+            dataGridView1.Visible = true;
+            button2.Focus();
+            SendKeys.Send("{ENTER}");
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            dataGridView1.Visible = false;
+            dataGridView2.Visible = true;
+            button2.Focus();
+            SendKeys.Send("{ENTER}");
+        }
+
+        private void radioButton5_CheckedChanged(object sender, EventArgs e)
+        {
+            dataGridView1.Visible = false;
+            dataGridView2.Visible = true;
+            button2.Focus();
+            SendKeys.Send("{ENTER}");
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            dataGridView2.Visible = false;
+            dataGridView1.Visible = true;
+            button2.Focus();
+            SendKeys.Send("{ENTER}");
         }
     }
 }

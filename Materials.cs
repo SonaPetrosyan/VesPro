@@ -331,6 +331,14 @@ namespace WindowsFormsApp4
                     int maxId = FindMaxID.MaxId(connectionString, "Table_211") +1;
                     DataRow newRow = Table_211.NewRow();
                     Table_211.Rows.Add(newRow);
+                    foreach (DataColumn column in Table_211.Columns)
+                    {
+                        string columnName = column.ColumnName;
+                        if (Table_211.Columns[columnName].DataType == typeof(string)) newRow[columnName] = "";
+                        if (Table_211.Columns[columnName].DataType == typeof(int)) newRow[columnName] = 0;
+                        if (Table_211.Columns[columnName].DataType == typeof(float)) newRow[columnName] = 0;
+                        if (Table_211.Columns[columnName].DataType == typeof(decimal)) newRow[columnName] = 0;
+                    }
                     newRow["Id"] = maxId;
                     newRow["Code"] = maxCode;
                     newRow["Restaurant"] = _restaurant;
@@ -339,9 +347,17 @@ namespace WindowsFormsApp4
                 }
                 if (dataView.Table == Table_213)  
                 {
-                    int maxId = FindMaxID.MaxId(connectionString, "Table_211") + 1;
+                    int maxId = FindMaxID.MaxId(connectionString, "Table_213") + 1;
                     DataRow newRow = Table_213.NewRow();
                     Table_213.Rows.Add(newRow);
+                    foreach (DataColumn column in Table_213.Columns)
+                    {
+                        string columnName = column.ColumnName;
+                        if (Table_213.Columns[columnName].DataType == typeof(string)) newRow[columnName] = "";
+                        if (Table_213.Columns[columnName].DataType == typeof(int)) newRow[columnName] = 0;
+                        if (Table_213.Columns[columnName].DataType == typeof(float)) newRow[columnName] = 0;
+                        if (Table_213.Columns[columnName].DataType == typeof(decimal)) newRow[columnName] = 0;
+                    }
                     newRow["Id"] = maxId;
                     newRow["Code"] = maxCode;
                     newRow["Restaurant"] = _restaurant;
@@ -350,9 +366,17 @@ namespace WindowsFormsApp4
                 }
                 if (dataView.Table == Table_111)
                 {
-                    int maxId = FindMaxID.MaxId(connectionString, "Table_211") + 1;
+                    int maxId = FindMaxID.MaxId(connectionString, "Table_111") + 1;
                     DataRow newRow = Table_111.NewRow();
                     Table_111.Rows.Add(newRow);
+                    foreach (DataColumn column in Table_111.Columns)
+                    {
+                        string columnName = column.ColumnName;
+                        if (Table_111.Columns[columnName].DataType == typeof(string)) newRow[columnName] = "";
+                        if (Table_111.Columns[columnName].DataType == typeof(int)) newRow[columnName] = 0;
+                        if (Table_111.Columns[columnName].DataType == typeof(float)) newRow[columnName] = 0;
+                        if (Table_111.Columns[columnName].DataType == typeof(decimal)) newRow[columnName] = 0;
+                    }
                     newRow["Id"] = maxId;
                     newRow["Code"] = maxCode;
                     newRow["Restaurant"] = _restaurant;
@@ -361,9 +385,17 @@ namespace WindowsFormsApp4
                 }
                 if (dataView.Table == Table_215)
                 {
-                    int maxId = FindMaxID.MaxId(connectionString, "Table_211") + 1;
+                    int maxId = FindMaxID.MaxId(connectionString, "Table_215") + 1;
                     DataRow newRow = Table_215.NewRow();
                     Table_215.Rows.Add(newRow);
+                    foreach (DataColumn column in Table_215.Columns)
+                    {
+                        string columnName = column.ColumnName;
+                        if (Table_215.Columns[columnName].DataType == typeof(string)) newRow[columnName] = "";
+                        if (Table_215.Columns[columnName].DataType == typeof(int)) newRow[columnName] = 0;
+                        if (Table_215.Columns[columnName].DataType == typeof(float)) newRow[columnName] = 0;
+                        if (Table_215.Columns[columnName].DataType == typeof(decimal)) newRow[columnName] = 0;
+                    }
                     newRow["Id"] = maxId;
                     newRow["Code"] = maxCode;
                     newRow["Restaurant"] = _restaurant;
@@ -403,14 +435,17 @@ namespace WindowsFormsApp4
             }
             if (dataView.Table == Table_213)
             {
+                Save(Table_213, "Table_213");
                 // Save.UpdateTableFromDatatable(connectionString, Table_213, "213", _restaurant);
             }
             if (dataView.Table == Table_111)
             {
+                Save(Table_111, "Table_111");
                 //  Save.UpdateTableFromDatatable(connectionString, Table_111, "111", _restaurant);
             }
             if (dataView.Table == Table_215)
             {
+                Save(Table_215, "Table_215");
                 // Save.UpdateTableFromDatatable(connectionString, Table_215, "215", _restaurant);
             }
             SaveButton1.Visible = false;

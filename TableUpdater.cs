@@ -47,9 +47,9 @@ public static class TableUpdater
                     string inholl = item["InHoll"].ToString();
                     InsertRecord215(connection, "table_215", code, name1, name2, name3, unit, group, semiprepared, printer, price, price1, price2, price3, price4, price5, department, inholl);
                 }
- 
+
                 //**********************************************
-                string jsonFilePath1 = "d:\\hayrik\\programmer\\json\\json_calc.json";
+                string jsonFilePath1 = "";// "d:\\hayrik\\programmer\\json\\json_calc.json";
                 string jsonContent1 = File.ReadAllText(jsonFilePath1);
                 JObject json1 = JObject.Parse(jsonContent1);
 
@@ -156,7 +156,7 @@ public static class TableUpdater
                         InsertRecordaddgr(connection, "AdditionGroups", number, name1, name2, name3);
                     }
 
-                string jsonFilePath1 = "d:\\hayrik\\programmer\\json\\addition_names.json";
+                string jsonFilePath1 = "";// "d:\\hayrik\\programmer\\json\\addition_names.json";
                 string jsonContent1 = File.ReadAllText(jsonFilePath1);
                 JObject json1 = JObject.Parse(jsonContent1);
 

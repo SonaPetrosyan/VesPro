@@ -135,50 +135,50 @@ namespace WindowsFormsApp4
         private void Updater_215_Click(object sender, EventArgs e)
         {
             string connectionString2 = Properties.Settings.Default.CafeRestDB;
-            string jsonFilePath1 = "d:\\hayrik\\programmer\\json\\json_215.json";
-            // Call the static method from another class
-            SQLUpdater.SQLFromJson(connectionString2, jsonFilePath1, "215", _restaurant);
+            //string jsonFilePath1 = "d:\\hayrik\\programmer\\json\\json_215.json";
+            //// Call the static method from another class
+           // SQLUpdater.SQLFromJson(connectionString2, jsonFilePath1, "215", _restaurant);
         }
 
         private void update_211_Click(object sender, EventArgs e)
         {
-            string connectionString2 = Properties.Settings.Default.CafeRestDB;
-            string jsonFilePath1 = "d:\\hayrik\\programmer\\json\\json_211.json";
-            // Call the static method from another class
-            SQLUpdater.SQLFromJson(connectionString2, jsonFilePath1, "211", _restaurant);
+            //string connectionString2 = Properties.Settings.Default.CafeRestDB;
+            //string jsonFilePath1 = "d:\\hayrik\\programmer\\json\\json_211.json";
+            //// Call the static method from another class
+            //SQLUpdater.SQLFromJson(connectionString2, jsonFilePath1, "211", _restaurant);
 
         }
 
         private void update213_Click(object sender, EventArgs e)
         {
 
-            string connectionString2 = Properties.Settings.Default.CafeRestDB;
-            string jsonFilePath1 = "d:\\hayrik\\programmer\\json\\json_213.json";
+            //string connectionString2 = Properties.Settings.Default.CafeRestDB;
+            //string jsonFilePath1 = "d:\\hayrik\\programmer\\json\\json_213.json";
             // Call the static method from another class
-            SQLUpdater.SQLFromJson(connectionString2, jsonFilePath1, "213", _restaurant);
+           // SQLUpdater.SQLFromJson(connectionString2, jsonFilePath1, "213", _restaurant);
         }
         private void button13_Click(object sender, EventArgs e)
         {
-            string connectionString2 = Properties.Settings.Default.CafeRestDB;
-            string jsonFilePath1 = "d:\\hayrik\\programmer\\json\\json_111.json";
-            // Call the static method from another class
-            SQLUpdater.SQLFromJson(connectionString2, jsonFilePath1, "111", _restaurant);
+           // string connectionString2 = Properties.Settings.Default.CafeRestDB;
+           // string jsonFilePath1 = "d:\\hayrik\\programmer\\json\\json_111.json";
+           // // Call the static method from another class
+           // SQLUpdater.SQLFromJson(connectionString2, jsonFilePath1, "111", _restaurant);
 
         }
-        private void group_Click(object sender, EventArgs e)
+        private void group_Click(object sender, EventArgs e)  
         {
-            string connectionString2 = Properties.Settings.Default.CafeRestDB;
-            string jsonFilePath1 = "d:\\hayrik\\programmer\\json\\group.json";
-            // Call the static method from another class
-            SQLUpdater.SQLFromJson(connectionString2, jsonFilePath1, "group", _restaurant);
+          //  string connectionString2 = Properties.Settings.Default.CafeRestDB;
+          //  string jsonFilePath1 = "d:\\hayrik\\programmer\\json\\group.json";
+          //  // Call the static method from another class
+          //  SQLUpdater.SQLFromJson(connectionString2, jsonFilePath1, "group", _restaurant);
 
         }
         private void button14_Click(object sender, EventArgs e)
         {
-            string connectionString2 = Properties.Settings.Default.CafeRestDB;
-            string jsonFilePath1 = "d:\\hayrik\\programmer\\json\\addition_groups.json";
-            // Call the static method from another class
-            SQLUpdater.SQLFromJson(connectionString2, jsonFilePath1, "addition", _restaurant);
+          //  string connectionString2 = Properties.Settings.Default.CafeRestDB;
+          //  string jsonFilePath1 = "d:\\hayrik\\programmer\\json\\addition_groups.json";
+          //  // Call the static method from another class
+          //  SQLUpdater.SQLFromJson(connectionString2, jsonFilePath1, "addition", _restaurant);
         }
         private void main21_Click(object sender, EventArgs e)
         {

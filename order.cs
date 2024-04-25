@@ -164,11 +164,22 @@ namespace WindowsFormsApp4
             }
 
             int seans_state = 0;
-
             string query10 = $"SELECT * FROM SeansState WHERE Id='{_restaurant}' ";
             Seans_State = dbHelper.ExecuteQuery(query10);
             DataRow[] foundRows = Seans_State.Select($"id = '{_restaurant}'");
-            if (foundRows.Length > 0) seans_state = int.Parse(foundRows[0]["Seans"].ToString());
+            if (foundRows.Length > 0)
+            {
+                if (decimal.Parse(foundRows[0]["state"].ToString()) == 0)
+                {
+                    string UpdateQuery = $"Update SeansState set Seans=Seans+1,state=1 where Id='{_restaurant}' ";
+                    using (SqlCommand updatCommand = new SqlCommand(UpdateQuery, connection))
+                        updatCommand.ExecuteNonQuery();
+                }
+            }
+            string query12 = $"SELECT * FROM SeansState WHERE Id='{_restaurant}' ";
+            Seans_State = dbHelper.ExecuteQuery(query12);
+            DataRow[] foundRows12 = Seans_State.Select($"id = '{_restaurant}'");
+            if (foundRows12.Length > 0) seans_state = int.Parse(foundRows12[0]["Seans"].ToString());
 
 
             if (_previous == 0)
@@ -697,6 +708,7 @@ namespace WindowsFormsApp4
                 object idValue = dataGridView.Rows[e.RowIndex].Cells["id"].Value;
                 object freeValue = dataGridView.Rows[e.RowIndex].Cells["free"].Value;
                 object grouppValue = dataGridView.Rows[e.RowIndex].Cells["groupp"].Value;
+                object departValue = dataGridView.Rows[e.RowIndex].Cells["department"].Value;
                 int qan = Convert.ToInt32(quantValue);
                 bool acc = bool.Parse(accValue.ToString());
                 int groupp=int.Parse(grouppValue.ToString());
@@ -715,11 +727,13 @@ namespace WindowsFormsApp4
                 if (acc)
                 {
                     int printer = int.Parse(printerValue.ToString());
+                    int department = int.Parse(departValue.ToString());
                     string code = codeValue.ToString();
                     string name = nameValue.ToString();
                     float price = float.Parse(priceValue.ToString());
                     float costprice = float.Parse(costpriceValue.ToString());
                     int free = int.Parse(freeValue.ToString());
+
 
                     DataRow[] foundRows1 = CurrentOrder.Select($"code = '{code}' and accepted='false'");
                     if (foundRows1.Length > 0)
@@ -759,6 +773,7 @@ namespace WindowsFormsApp4
                             newRow["salesamount"] = 0;
                             newRow["costamount"] = 0;
                             newRow["printer"] = printer;
+                            newRow["department"] = department;
                             newRow["free"] = free;
                             newRow["qanak"] = "-";
                             dataGridView2.BeginEdit(true);
@@ -3569,6 +3584,9 @@ namespace WindowsFormsApp4
             TableNest = dbHelper.ExecuteQuery(selectquery);
             NestUpdate();
             connection.Close();
+            cancel.Visible = false;
+            printbutton1.Visible = false;
+            printbutton2.Visible = false;
         }
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -3598,6 +3616,12 @@ namespace WindowsFormsApp4
                         row.DefaultCellStyle.BackColor = dataGridView1.DefaultCellStyle.BackColor;
                         row.DefaultCellStyle.ForeColor = dataGridView1.DefaultCellStyle.ForeColor;
                     }
+                }
+                var cellValue = e.Value;
+                if (cellValue is decimal decimalValue && decimalValue % 1 == 0)
+                {
+                    e.Value = ((int)decimalValue).ToString();
+                    e.FormattingApplied = true;
                 }
             }
         }
@@ -4384,5 +4408,6 @@ namespace WindowsFormsApp4
         {
             legend.Visible=false;
         }
+
     }
 }

@@ -582,7 +582,7 @@ namespace WindowsFormsApp4
         {
             dataView = new DataView(Table_215);
             string txt = SearchBox.Text.Trim();
-            dataView.RowFilter = $"(Code+Name) LIKE '%{txt}%'";
+            dataView.RowFilter = $"(Code+{_language}) LIKE '%{txt}%'";
             dataGridView1.DataSource = dataView;
         }
         private void SearchBox3_TextChanged(object sender, EventArgs e)

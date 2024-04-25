@@ -611,5 +611,10 @@ namespace WindowsFormsApp4
             dataView = new DataView(Table_111);
             dataGridView1.DataSource = dataView;
         }
+
+        private void a(object sender, DataGridViewDataErrorEventArgs e)
+        {
+
+        }
     }
 }

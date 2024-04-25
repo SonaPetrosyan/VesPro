@@ -56,7 +56,7 @@ public static class SQLUpdater
 
                 }
                 //**********************************************
-                string jsonFilePath1 = "d:\\hayrik\\programmer\\json\\json_calc.json";
+                string jsonFilePath1 = "";// "d:\\hayrik\\programmer\\json\\json_calc.json";
                 string jsonContent1 = File.ReadAllText(jsonFilePath1);
                 JObject json1 = JObject.Parse(jsonContent1);
 
@@ -196,7 +196,7 @@ public static class SQLUpdater
                         // Insert a new record if the code doesn't exist
                         InsertRecordaddgr(connection, "AdditionGroups", number, name1, name2, name3);
                     }
-                string jsonFilePath1 = "d:\\hayrik\\programmer\\json\\addition_names.json";
+                string jsonFilePath1 = "";// "d:\\hayrik\\programmer\\json\\addition_names.json";
                 string jsonContent1 = File.ReadAllText(jsonFilePath1);
                 JObject json1 = JObject.Parse(jsonContent1);
 
