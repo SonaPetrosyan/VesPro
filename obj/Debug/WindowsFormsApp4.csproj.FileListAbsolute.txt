@@ -258,3 +258,4 @@ D:\Projects\WindowsFormsApp4\VesPro\obj\Debug\WindowsFormsApp4.csproj.CoreCompil
 D:\Projects\WindowsFormsApp4\VesPro\obj\Debug\WindowsFormsApp4.csproj.CopyComplete
 D:\Projects\WindowsFormsApp4\VesPro\obj\Debug\WindowsFormsApp4.exe
 D:\Projects\WindowsFormsApp4\VesPro\obj\Debug\WindowsFormsApp4.pdb
+D:\Projects\WindowsFormsApp4\VesPro\obj\Debug\WindowsFormsApp4.HelpDialogForm.resources

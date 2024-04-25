@@ -311,29 +311,30 @@ namespace WindowsFormsApp4
             dataGridView1.CurrentCell = dataGridView1.Rows[lastRowIndex].Cells[0];
             dataGridView1.BeginEdit(true);
         }
-
+        private HelpDialogForm helpDialogForm;
         private void HelpButton_Click(object sender, EventArgs e)  
         {
             string help = FindFolder.Folder("Help");
             string filePath = "";
             if (HelpButton.Text == "?")
             {
-                HelpButton.Text = "X";
-                richTextBox1.Height = this.Height - 50;
-                richTextBox1.Top = 0;
-                richTextBox1.Left = 0;
-                richTextBox1.Width = this.Width- HelpButton.Width-20;
-                richTextBox1.ReadOnly = true;
-                richTextBox1.Visible = true;
+                HelpButton.Text = "X";               
                 filePath = help+"\\Additions_"+_language+".txt";
                 string fileContent = File.ReadAllText(filePath);
-                richTextBox1.Text = fileContent;
-                
+
+                if (helpDialogForm == null)
+                {
+                    helpDialogForm = new HelpDialogForm();
+                    helpDialogForm.FormClosed += (s, args) => helpDialogForm = null; // Reset the helpDialogForm reference when the form is closed
+                }
+
+                helpDialogForm.SetHelpContent(fileContent);
+                helpDialogForm.Show();
             }
             else
             {
-                richTextBox1.Visible = false;
                 HelpButton.Text = "?";
+                helpDialogForm?.Close(); // Close the help dialog form if it's open
             }
         }
 

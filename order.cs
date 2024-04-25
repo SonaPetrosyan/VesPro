@@ -4339,70 +4339,32 @@ namespace WindowsFormsApp4
             NestUpdate();
         }
 
+        private HelpDialogForm helpDialogForm;
+
         private void HelpButton_Click(object sender, EventArgs e)
         {
-            string help = FindFolder.Folder("Help");
-            string filePath = "";
             if (HelpButton.Text == "?")
             {
                 HelpButton.Text = "X";
-                richTextBox1.ReadOnly = true;
-                filePath = help + "\\Order_" + _language+".txt";
+                string helpFolderPath = FindFolder.Folder("Help");
+                string filePath = Path.Combine(helpFolderPath, $"Order_{_language}.txt");
                 string fileContent = File.ReadAllText(filePath);
-                richTextBox1.Text = fileContent;
-                richTextBox1.Visible = true;
-                richTextBox1.Top = 0;
-                richTextBox1.Left = 0;
-                richTextBox1.Width = HelpButton.Left - 10;
-                richTextBox1.Height = this.Height - 20;
 
+                if (helpDialogForm == null)
+                {
+                    helpDialogForm = new HelpDialogForm();
+                    helpDialogForm.FormClosed += (s, args) => helpDialogForm = null; // Reset the helpDialogForm reference when the form is closed
+                }
+
+                helpDialogForm.SetHelpContent(fileContent);
+                helpDialogForm.Show();
             }
             else
             {
-                richTextBox1.Visible = false;
                 HelpButton.Text = "?";
+                helpDialogForm?.Close(); // Close the help dialog form if it's open
             }
         }
-//        private void translate(DataTable Table1, DataTable Table2)
-//        {
-//            if (Table1.Columns.Contains("code"))
-//            {
-//                var query = from row1 in Table1.AsEnumerable()
-//                            join row2 in Table2.AsEnumerable()
-//                            on row1.Field<string>("Code") equals row2.Field<string>("Code") into gj
-//                            from subRow2 in gj.DefaultIfEmpty()
-//                            select new
-//                            {
-//                                Row1 = row1,
-//                                Row2 = subRow2
-//                            };
-
-//                foreach (var item in query)
-//                {
-//                    if (item.Row2 != null)
-//                    {
-//                        if (_language == "Armenian") item.Row2["Name"] = item.Row1["Armenian"];
-//                        if (_language == "English") item.Row2["Name"] = item.Row1["English"];
-//                        if (_language == "German") item.Row2["Name"] = item.Row1["German"];
-//                        if (_language == "Russian") item.Row2["Name"] = item.Row1["Russian"];
-//                        if (_language == "Espaniol") item.Row2["Name"] = item.Row1["Espaniol"];
-//                    }
-//                }
-//            }
-//            else
-//            {
-
-//                foreach(DataRow row in  Table1.Rows)
-//                {
-//                    if (_language == "Armenian") row["Name"] = row["Armenian"];
-//                    if (_language == "English") row["Name"] = row["English"];
-//                    if (_language == "German") row["Name"] = row["German"];
-//                    if (_language == "Russian") row["Name"] = row["Russian"];
-//                    if (_language == "Espaniol") row["Name"] = row["Espaniol"];
-//                }
-
-//            }
-//        }
 
         private void dataGridView1_MouseEnter(object sender, EventArgs e)
         {

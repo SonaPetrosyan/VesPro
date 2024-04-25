@@ -1480,7 +1480,7 @@ namespace WindowsFormsApp4
                 e.FormattingApplied = true; // Indicate that the formatting is applied
             }
         }
-
+        private HelpDialogForm helpDialogForm;
         private void HelpButton_Click(object sender, EventArgs e)
         {
             string help = FindFolder.Folder("Help");
@@ -1488,21 +1488,23 @@ namespace WindowsFormsApp4
             if (HelpButton.Text == "?")
             {
                 HelpButton.Text = "X";
-                richTextBox1.Top = 0;
-                richTextBox1.Height = this.Height - 50;
-                richTextBox1.Left = HelpButton.Width + 5;
-                richTextBox1.Width = this.Width / 2;
-                richTextBox1.ReadOnly = true;
 
                 filePath = help + "\\Purchase_" + _language + ".txt";
                 string fileContent = File.ReadAllText(filePath);
-                richTextBox1.Text = fileContent;
-                richTextBox1.Visible = true;
+
+                if (helpDialogForm == null)
+                {
+                    helpDialogForm = new HelpDialogForm();
+                    helpDialogForm.FormClosed += (s, args) => helpDialogForm = null; // Reset the helpDialogForm reference when the form is closed
+                }
+
+                helpDialogForm.SetHelpContent(fileContent);
+                helpDialogForm.Show();
             }
             else
             {
-                richTextBox1.Visible = false;
                 HelpButton.Text = "?";
+                helpDialogForm?.Close(); // Close the help dialog form if it's open
             }
         }
     }

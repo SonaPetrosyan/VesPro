@@ -724,7 +724,7 @@ namespace WindowsFormsApp4
             textBox2.Enabled = radioButton1.Checked;
             textBox3.Enabled = radioButton1.Checked;
         }
-
+        private HelpDialogForm helpDialogForm;
         private void HelpButton_Click(object sender, EventArgs e)
         {
             string help = FindFolder.Folder("Help");
@@ -739,13 +739,20 @@ namespace WindowsFormsApp4
                 richTextBox1.ReadOnly = true;
                 filePath = help+"\\Observation_"+_language+".txt";
                 string fileContent = File.ReadAllText(filePath);
-                richTextBox1.Text = fileContent;
-                richTextBox1.Visible = true;
+
+                if (helpDialogForm == null)
+                {
+                    helpDialogForm = new HelpDialogForm();
+                    helpDialogForm.FormClosed += (s, args) => helpDialogForm = null; // Reset the helpDialogForm reference when the form is closed
+                }
+
+                helpDialogForm.SetHelpContent(fileContent);
+                helpDialogForm.Show();
             }
             else
             {
-                richTextBox1.Visible = false;
                 HelpButton.Text = "?";
+                helpDialogForm?.Close(); // Close the help dialog form if it's open
             }
         }
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)

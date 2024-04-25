@@ -160,6 +160,12 @@
     <Compile Include="GoodsMovement.Designer.cs">
       <DependentUpon>GoodsMovement.cs</DependentUpon>
     </Compile>
+    <Compile Include="HelpDialogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HelpDialogForm.Designer.cs">
+      <DependentUpon>HelpDialogForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="images\Standart.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -279,6 +285,9 @@
     <EmbeddedResource Include="GoodsMovement.resx">
       <DependentUpon>GoodsMovement.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HelpDialogForm.resx">
+      <DependentUpon>HelpDialogForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="images\Standart.resx">
       <DependentUpon>Standart.cs</DependentUpon>

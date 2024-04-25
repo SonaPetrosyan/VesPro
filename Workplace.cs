@@ -331,6 +331,7 @@ namespace WindowsFormsApp4
         {
             savebutton.Visible = true;
         }
+        private HelpDialogForm helpDialogForm;
 
         private void HelpButton_Click(object sender, EventArgs e)
         {
@@ -338,21 +339,23 @@ namespace WindowsFormsApp4
             string filePath = "";
             if (HelpButton.Text == "?")
             {
-                HelpButton.Text = "X";
-                richTextBox1.Height = this.Height - 50;
-                richTextBox1.Top = 0;
-                richTextBox1.Left = HelpButton.Width+3;
-                richTextBox1.Width = comboBoxRest.Left ;
-                richTextBox1.ReadOnly = true;
+                HelpButton.Text = "X";              
                 filePath = help+"\\Workplace_"+_language+".txt";
                 string fileContent = File.ReadAllText(filePath);
-                richTextBox1.Text = fileContent;
-                richTextBox1.Visible = true;
+
+                if (helpDialogForm == null)
+                {
+                    helpDialogForm = new HelpDialogForm();
+                    helpDialogForm.FormClosed += (s, args) => helpDialogForm = null; // Reset the helpDialogForm reference when the form is closed
+                }
+
+                helpDialogForm.SetHelpContent(fileContent);
+                helpDialogForm.Show();
             }
             else
             {
-                richTextBox1.Visible = false;
                 HelpButton.Text = "?";
+                helpDialogForm?.Close(); // Close the help dialog form if it's open
             }
         }
 
