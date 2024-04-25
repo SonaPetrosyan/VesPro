@@ -266,10 +266,10 @@ namespace WindowsFormsApp4
             this.group1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.group1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group1.ForeColor = System.Drawing.Color.Maroon;
-            this.group1.Location = new System.Drawing.Point(12, 5);
-            this.group1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.group1.Location = new System.Drawing.Point(9, 4);
+            this.group1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.group1.Name = "group1";
-            this.group1.Size = new System.Drawing.Size(79, 23);
+            this.group1.Size = new System.Drawing.Size(59, 19);
             this.group1.TabIndex = 0;
             this.group1.Text = "group1";
             this.group1.UseVisualStyleBackColor = false;
@@ -295,10 +295,10 @@ namespace WindowsFormsApp4
             this.group2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.group2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group2.ForeColor = System.Drawing.Color.Maroon;
-            this.group2.Location = new System.Drawing.Point(92, 5);
-            this.group2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.group2.Location = new System.Drawing.Point(69, 4);
+            this.group2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.group2.Name = "group2";
-            this.group2.Size = new System.Drawing.Size(79, 23);
+            this.group2.Size = new System.Drawing.Size(59, 19);
             this.group2.TabIndex = 3;
             this.group2.Text = "group2";
             this.group2.UseVisualStyleBackColor = false;
@@ -313,10 +313,10 @@ namespace WindowsFormsApp4
             this.group3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.group3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group3.ForeColor = System.Drawing.Color.Maroon;
-            this.group3.Location = new System.Drawing.Point(173, 5);
-            this.group3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.group3.Location = new System.Drawing.Point(130, 4);
+            this.group3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.group3.Name = "group3";
-            this.group3.Size = new System.Drawing.Size(79, 23);
+            this.group3.Size = new System.Drawing.Size(59, 19);
             this.group3.TabIndex = 5;
             this.group3.Text = "button3";
             this.group3.UseVisualStyleBackColor = false;
@@ -331,10 +331,10 @@ namespace WindowsFormsApp4
             this.group4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.group4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group4.ForeColor = System.Drawing.Color.Maroon;
-            this.group4.Location = new System.Drawing.Point(253, 5);
-            this.group4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.group4.Location = new System.Drawing.Point(190, 4);
+            this.group4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.group4.Name = "group4";
-            this.group4.Size = new System.Drawing.Size(79, 23);
+            this.group4.Size = new System.Drawing.Size(59, 19);
             this.group4.TabIndex = 4;
             this.group4.Text = "group4";
             this.group4.UseVisualStyleBackColor = false;
@@ -349,10 +349,10 @@ namespace WindowsFormsApp4
             this.group5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.group5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group5.ForeColor = System.Drawing.Color.Maroon;
-            this.group5.Location = new System.Drawing.Point(334, 5);
-            this.group5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.group5.Location = new System.Drawing.Point(250, 4);
+            this.group5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.group5.Name = "group5";
-            this.group5.Size = new System.Drawing.Size(79, 23);
+            this.group5.Size = new System.Drawing.Size(59, 19);
             this.group5.TabIndex = 9;
             this.group5.Text = "group5";
             this.group5.UseVisualStyleBackColor = false;
@@ -367,10 +367,10 @@ namespace WindowsFormsApp4
             this.group6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.group6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group6.ForeColor = System.Drawing.Color.Maroon;
-            this.group6.Location = new System.Drawing.Point(414, 5);
-            this.group6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.group6.Location = new System.Drawing.Point(310, 4);
+            this.group6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.group6.Name = "group6";
-            this.group6.Size = new System.Drawing.Size(79, 23);
+            this.group6.Size = new System.Drawing.Size(59, 19);
             this.group6.TabIndex = 8;
             this.group6.Text = "group6";
             this.group6.UseVisualStyleBackColor = false;
@@ -385,10 +385,10 @@ namespace WindowsFormsApp4
             this.group7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.group7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group7.ForeColor = System.Drawing.Color.Maroon;
-            this.group7.Location = new System.Drawing.Point(495, 5);
-            this.group7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.group7.Location = new System.Drawing.Point(371, 4);
+            this.group7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.group7.Name = "group7";
-            this.group7.Size = new System.Drawing.Size(79, 23);
+            this.group7.Size = new System.Drawing.Size(59, 19);
             this.group7.TabIndex = 7;
             this.group7.Text = "group7";
             this.group7.UseVisualStyleBackColor = false;
@@ -403,10 +403,10 @@ namespace WindowsFormsApp4
             this.group8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.group8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group8.ForeColor = System.Drawing.Color.Maroon;
-            this.group8.Location = new System.Drawing.Point(576, 5);
-            this.group8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.group8.Location = new System.Drawing.Point(432, 4);
+            this.group8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.group8.Name = "group8";
-            this.group8.Size = new System.Drawing.Size(79, 23);
+            this.group8.Size = new System.Drawing.Size(59, 19);
             this.group8.TabIndex = 6;
             this.group8.Text = "group8";
             this.group8.UseVisualStyleBackColor = false;
@@ -421,10 +421,10 @@ namespace WindowsFormsApp4
             this.group9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.group9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group9.ForeColor = System.Drawing.Color.Maroon;
-            this.group9.Location = new System.Drawing.Point(657, 5);
-            this.group9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.group9.Location = new System.Drawing.Point(493, 4);
+            this.group9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.group9.Name = "group9";
-            this.group9.Size = new System.Drawing.Size(79, 23);
+            this.group9.Size = new System.Drawing.Size(59, 19);
             this.group9.TabIndex = 11;
             this.group9.Text = "group9";
             this.group9.UseVisualStyleBackColor = false;
@@ -439,10 +439,10 @@ namespace WindowsFormsApp4
             this.group10.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.group10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group10.ForeColor = System.Drawing.Color.Maroon;
-            this.group10.Location = new System.Drawing.Point(738, 5);
-            this.group10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.group10.Location = new System.Drawing.Point(554, 4);
+            this.group10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.group10.Name = "group10";
-            this.group10.Size = new System.Drawing.Size(79, 23);
+            this.group10.Size = new System.Drawing.Size(59, 19);
             this.group10.TabIndex = 10;
             this.group10.Text = "group10";
             this.group10.UseVisualStyleBackColor = false;
@@ -457,10 +457,10 @@ namespace WindowsFormsApp4
             this.group11.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.group11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group11.ForeColor = System.Drawing.Color.Maroon;
-            this.group11.Location = new System.Drawing.Point(818, 5);
-            this.group11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.group11.Location = new System.Drawing.Point(614, 4);
+            this.group11.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.group11.Name = "group11";
-            this.group11.Size = new System.Drawing.Size(79, 23);
+            this.group11.Size = new System.Drawing.Size(59, 19);
             this.group11.TabIndex = 16;
             this.group11.Text = "group11";
             this.group11.UseVisualStyleBackColor = false;
@@ -475,10 +475,10 @@ namespace WindowsFormsApp4
             this.group12.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.group12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group12.ForeColor = System.Drawing.Color.Maroon;
-            this.group12.Location = new System.Drawing.Point(899, 5);
-            this.group12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.group12.Location = new System.Drawing.Point(674, 4);
+            this.group12.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.group12.Name = "group12";
-            this.group12.Size = new System.Drawing.Size(79, 23);
+            this.group12.Size = new System.Drawing.Size(59, 19);
             this.group12.TabIndex = 15;
             this.group12.Text = "group12";
             this.group12.UseVisualStyleBackColor = false;
@@ -493,10 +493,10 @@ namespace WindowsFormsApp4
             this.group13.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.group13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group13.ForeColor = System.Drawing.Color.Maroon;
-            this.group13.Location = new System.Drawing.Point(979, 5);
-            this.group13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.group13.Location = new System.Drawing.Point(734, 4);
+            this.group13.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.group13.Name = "group13";
-            this.group13.Size = new System.Drawing.Size(79, 23);
+            this.group13.Size = new System.Drawing.Size(59, 19);
             this.group13.TabIndex = 14;
             this.group13.Text = "group13";
             this.group13.UseVisualStyleBackColor = false;
@@ -511,10 +511,10 @@ namespace WindowsFormsApp4
             this.group14.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.group14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group14.ForeColor = System.Drawing.Color.Maroon;
-            this.group14.Location = new System.Drawing.Point(1060, 5);
-            this.group14.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.group14.Location = new System.Drawing.Point(795, 4);
+            this.group14.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.group14.Name = "group14";
-            this.group14.Size = new System.Drawing.Size(79, 23);
+            this.group14.Size = new System.Drawing.Size(59, 19);
             this.group14.TabIndex = 13;
             this.group14.Text = "group14";
             this.group14.UseVisualStyleBackColor = false;
@@ -529,10 +529,10 @@ namespace WindowsFormsApp4
             this.group15.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.group15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group15.ForeColor = System.Drawing.Color.Maroon;
-            this.group15.Location = new System.Drawing.Point(1141, 5);
-            this.group15.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.group15.Location = new System.Drawing.Point(856, 4);
+            this.group15.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.group15.Name = "group15";
-            this.group15.Size = new System.Drawing.Size(79, 23);
+            this.group15.Size = new System.Drawing.Size(59, 19);
             this.group15.TabIndex = 12;
             this.group15.Text = "group15";
             this.group15.UseVisualStyleBackColor = false;
@@ -547,10 +547,10 @@ namespace WindowsFormsApp4
             this.group16.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.group16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group16.ForeColor = System.Drawing.Color.Maroon;
-            this.group16.Location = new System.Drawing.Point(12, 32);
-            this.group16.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.group16.Location = new System.Drawing.Point(9, 26);
+            this.group16.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.group16.Name = "group16";
-            this.group16.Size = new System.Drawing.Size(79, 23);
+            this.group16.Size = new System.Drawing.Size(59, 19);
             this.group16.TabIndex = 31;
             this.group16.Text = "group16";
             this.group16.UseVisualStyleBackColor = false;
@@ -565,10 +565,10 @@ namespace WindowsFormsApp4
             this.group17.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.group17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group17.ForeColor = System.Drawing.Color.Maroon;
-            this.group17.Location = new System.Drawing.Point(92, 32);
-            this.group17.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.group17.Location = new System.Drawing.Point(69, 26);
+            this.group17.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.group17.Name = "group17";
-            this.group17.Size = new System.Drawing.Size(79, 23);
+            this.group17.Size = new System.Drawing.Size(59, 19);
             this.group17.TabIndex = 30;
             this.group17.Text = "group17";
             this.group17.UseVisualStyleBackColor = false;
@@ -583,10 +583,10 @@ namespace WindowsFormsApp4
             this.group18.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.group18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group18.ForeColor = System.Drawing.Color.Maroon;
-            this.group18.Location = new System.Drawing.Point(173, 32);
-            this.group18.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.group18.Location = new System.Drawing.Point(130, 26);
+            this.group18.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.group18.Name = "group18";
-            this.group18.Size = new System.Drawing.Size(79, 23);
+            this.group18.Size = new System.Drawing.Size(59, 19);
             this.group18.TabIndex = 29;
             this.group18.Text = "group18";
             this.group18.UseVisualStyleBackColor = false;
@@ -601,10 +601,10 @@ namespace WindowsFormsApp4
             this.group19.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.group19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group19.ForeColor = System.Drawing.Color.Maroon;
-            this.group19.Location = new System.Drawing.Point(253, 32);
-            this.group19.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.group19.Location = new System.Drawing.Point(190, 26);
+            this.group19.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.group19.Name = "group19";
-            this.group19.Size = new System.Drawing.Size(79, 23);
+            this.group19.Size = new System.Drawing.Size(59, 19);
             this.group19.TabIndex = 28;
             this.group19.Text = "group19";
             this.group19.UseVisualStyleBackColor = false;
@@ -619,10 +619,10 @@ namespace WindowsFormsApp4
             this.group20.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.group20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group20.ForeColor = System.Drawing.Color.Maroon;
-            this.group20.Location = new System.Drawing.Point(334, 32);
-            this.group20.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.group20.Location = new System.Drawing.Point(250, 26);
+            this.group20.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.group20.Name = "group20";
-            this.group20.Size = new System.Drawing.Size(79, 23);
+            this.group20.Size = new System.Drawing.Size(59, 19);
             this.group20.TabIndex = 27;
             this.group20.Text = "group20";
             this.group20.UseVisualStyleBackColor = false;
@@ -637,10 +637,10 @@ namespace WindowsFormsApp4
             this.group21.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.group21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group21.ForeColor = System.Drawing.Color.Maroon;
-            this.group21.Location = new System.Drawing.Point(414, 32);
-            this.group21.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.group21.Location = new System.Drawing.Point(310, 26);
+            this.group21.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.group21.Name = "group21";
-            this.group21.Size = new System.Drawing.Size(79, 23);
+            this.group21.Size = new System.Drawing.Size(59, 19);
             this.group21.TabIndex = 26;
             this.group21.Text = "group21";
             this.group21.UseVisualStyleBackColor = false;
@@ -655,10 +655,10 @@ namespace WindowsFormsApp4
             this.group22.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.group22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group22.ForeColor = System.Drawing.Color.Maroon;
-            this.group22.Location = new System.Drawing.Point(495, 32);
-            this.group22.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.group22.Location = new System.Drawing.Point(371, 26);
+            this.group22.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.group22.Name = "group22";
-            this.group22.Size = new System.Drawing.Size(79, 23);
+            this.group22.Size = new System.Drawing.Size(59, 19);
             this.group22.TabIndex = 25;
             this.group22.Text = "group22";
             this.group22.UseVisualStyleBackColor = false;
@@ -673,10 +673,10 @@ namespace WindowsFormsApp4
             this.group23.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.group23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group23.ForeColor = System.Drawing.Color.Maroon;
-            this.group23.Location = new System.Drawing.Point(576, 32);
-            this.group23.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.group23.Location = new System.Drawing.Point(432, 26);
+            this.group23.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.group23.Name = "group23";
-            this.group23.Size = new System.Drawing.Size(79, 23);
+            this.group23.Size = new System.Drawing.Size(59, 19);
             this.group23.TabIndex = 24;
             this.group23.Text = "group23";
             this.group23.UseVisualStyleBackColor = false;
@@ -691,10 +691,10 @@ namespace WindowsFormsApp4
             this.group24.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.group24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group24.ForeColor = System.Drawing.Color.Maroon;
-            this.group24.Location = new System.Drawing.Point(657, 32);
-            this.group24.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.group24.Location = new System.Drawing.Point(493, 26);
+            this.group24.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.group24.Name = "group24";
-            this.group24.Size = new System.Drawing.Size(79, 23);
+            this.group24.Size = new System.Drawing.Size(59, 19);
             this.group24.TabIndex = 23;
             this.group24.Text = "group24";
             this.group24.UseVisualStyleBackColor = false;
@@ -709,10 +709,10 @@ namespace WindowsFormsApp4
             this.group25.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.group25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group25.ForeColor = System.Drawing.Color.Maroon;
-            this.group25.Location = new System.Drawing.Point(738, 32);
-            this.group25.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.group25.Location = new System.Drawing.Point(554, 26);
+            this.group25.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.group25.Name = "group25";
-            this.group25.Size = new System.Drawing.Size(79, 23);
+            this.group25.Size = new System.Drawing.Size(59, 19);
             this.group25.TabIndex = 22;
             this.group25.Text = "group25";
             this.group25.UseVisualStyleBackColor = false;
@@ -727,10 +727,10 @@ namespace WindowsFormsApp4
             this.group26.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.group26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group26.ForeColor = System.Drawing.Color.Maroon;
-            this.group26.Location = new System.Drawing.Point(818, 32);
-            this.group26.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.group26.Location = new System.Drawing.Point(614, 26);
+            this.group26.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.group26.Name = "group26";
-            this.group26.Size = new System.Drawing.Size(79, 23);
+            this.group26.Size = new System.Drawing.Size(59, 19);
             this.group26.TabIndex = 21;
             this.group26.Text = "group26";
             this.group26.UseVisualStyleBackColor = false;
@@ -745,10 +745,10 @@ namespace WindowsFormsApp4
             this.group27.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.group27.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group27.ForeColor = System.Drawing.Color.Maroon;
-            this.group27.Location = new System.Drawing.Point(899, 32);
-            this.group27.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.group27.Location = new System.Drawing.Point(674, 26);
+            this.group27.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.group27.Name = "group27";
-            this.group27.Size = new System.Drawing.Size(79, 23);
+            this.group27.Size = new System.Drawing.Size(59, 19);
             this.group27.TabIndex = 20;
             this.group27.Text = "group27";
             this.group27.UseVisualStyleBackColor = false;
@@ -763,10 +763,10 @@ namespace WindowsFormsApp4
             this.group28.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.group28.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group28.ForeColor = System.Drawing.Color.Maroon;
-            this.group28.Location = new System.Drawing.Point(979, 32);
-            this.group28.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.group28.Location = new System.Drawing.Point(734, 26);
+            this.group28.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.group28.Name = "group28";
-            this.group28.Size = new System.Drawing.Size(79, 23);
+            this.group28.Size = new System.Drawing.Size(59, 19);
             this.group28.TabIndex = 19;
             this.group28.Text = "group28";
             this.group28.UseVisualStyleBackColor = false;
@@ -781,10 +781,10 @@ namespace WindowsFormsApp4
             this.group29.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.group29.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group29.ForeColor = System.Drawing.Color.Maroon;
-            this.group29.Location = new System.Drawing.Point(1060, 32);
-            this.group29.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.group29.Location = new System.Drawing.Point(795, 26);
+            this.group29.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.group29.Name = "group29";
-            this.group29.Size = new System.Drawing.Size(79, 23);
+            this.group29.Size = new System.Drawing.Size(59, 19);
             this.group29.TabIndex = 18;
             this.group29.Text = "group29";
             this.group29.UseVisualStyleBackColor = false;
@@ -799,10 +799,10 @@ namespace WindowsFormsApp4
             this.group30.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.group30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group30.ForeColor = System.Drawing.Color.Maroon;
-            this.group30.Location = new System.Drawing.Point(1141, 32);
-            this.group30.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.group30.Location = new System.Drawing.Point(856, 26);
+            this.group30.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.group30.Name = "group30";
-            this.group30.Size = new System.Drawing.Size(79, 23);
+            this.group30.Size = new System.Drawing.Size(59, 19);
             this.group30.TabIndex = 17;
             this.group30.Text = "group30";
             this.group30.UseVisualStyleBackColor = false;
@@ -813,9 +813,10 @@ namespace WindowsFormsApp4
             // 
             this.label1.BackColor = System.Drawing.Color.Maroon;
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label1.Location = new System.Drawing.Point(-1, 59);
+            this.label1.Location = new System.Drawing.Point(-1, 48);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1225, 1);
+            this.label1.Size = new System.Drawing.Size(919, 1);
             this.label1.TabIndex = 32;
             this.label1.Text = "label1";
             // 
@@ -828,10 +829,10 @@ namespace WindowsFormsApp4
             this.tab1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab1.ForeColor = System.Drawing.Color.Black;
-            this.tab1.Location = new System.Drawing.Point(11, 94);
+            this.tab1.Location = new System.Drawing.Point(8, 76);
             this.tab1.Margin = new System.Windows.Forms.Padding(0);
             this.tab1.Name = "tab1";
-            this.tab1.Size = new System.Drawing.Size(60, 39);
+            this.tab1.Size = new System.Drawing.Size(45, 32);
             this.tab1.TabIndex = 33;
             this.tab1.Text = "1";
             this.tab1.UseVisualStyleBackColor = false;
@@ -841,18 +842,20 @@ namespace WindowsFormsApp4
             // nest
             // 
             this.nest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nest.Location = new System.Drawing.Point(1014, 92);
+            this.nest.Location = new System.Drawing.Point(760, 75);
+            this.nest.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.nest.Name = "nest";
-            this.nest.Size = new System.Drawing.Size(61, 23);
+            this.nest.Size = new System.Drawing.Size(46, 19);
             this.nest.TabIndex = 34;
             this.nest.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(1099, 70);
+            this.label3.Location = new System.Drawing.Point(824, 57);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(59, 23);
+            this.label3.Size = new System.Drawing.Size(44, 19);
             this.label3.TabIndex = 37;
             this.label3.Text = "Bill N#";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -861,19 +864,20 @@ namespace WindowsFormsApp4
             // 
             this.bill.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.bill.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bill.Location = new System.Drawing.Point(1102, 96);
+            this.bill.Location = new System.Drawing.Point(826, 78);
+            this.bill.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.bill.Name = "bill";
-            this.bill.Size = new System.Drawing.Size(55, 20);
+            this.bill.Size = new System.Drawing.Size(42, 17);
             this.bill.TabIndex = 36;
             this.bill.Text = "bill";
             this.bill.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // command
             // 
-            this.command.Location = new System.Drawing.Point(1085, 437);
-            this.command.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.command.Location = new System.Drawing.Point(814, 355);
+            this.command.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.command.Name = "command";
-            this.command.Size = new System.Drawing.Size(75, 23);
+            this.command.Size = new System.Drawing.Size(56, 19);
             this.command.TabIndex = 38;
             this.command.Tag = "none";
             this.command.Text = "command";
@@ -889,10 +893,10 @@ namespace WindowsFormsApp4
             this.tab2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab2.ForeColor = System.Drawing.Color.Black;
-            this.tab2.Location = new System.Drawing.Point(72, 94);
+            this.tab2.Location = new System.Drawing.Point(54, 76);
             this.tab2.Margin = new System.Windows.Forms.Padding(0);
             this.tab2.Name = "tab2";
-            this.tab2.Size = new System.Drawing.Size(60, 39);
+            this.tab2.Size = new System.Drawing.Size(45, 32);
             this.tab2.TabIndex = 39;
             this.tab2.Text = "2";
             this.tab2.UseVisualStyleBackColor = false;
@@ -908,10 +912,10 @@ namespace WindowsFormsApp4
             this.tab3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab3.ForeColor = System.Drawing.Color.Black;
-            this.tab3.Location = new System.Drawing.Point(133, 94);
+            this.tab3.Location = new System.Drawing.Point(100, 76);
             this.tab3.Margin = new System.Windows.Forms.Padding(0);
             this.tab3.Name = "tab3";
-            this.tab3.Size = new System.Drawing.Size(60, 39);
+            this.tab3.Size = new System.Drawing.Size(45, 32);
             this.tab3.TabIndex = 40;
             this.tab3.Text = "3";
             this.tab3.UseVisualStyleBackColor = false;
@@ -927,10 +931,10 @@ namespace WindowsFormsApp4
             this.tab4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab4.ForeColor = System.Drawing.Color.Black;
-            this.tab4.Location = new System.Drawing.Point(195, 94);
+            this.tab4.Location = new System.Drawing.Point(146, 76);
             this.tab4.Margin = new System.Windows.Forms.Padding(0);
             this.tab4.Name = "tab4";
-            this.tab4.Size = new System.Drawing.Size(60, 39);
+            this.tab4.Size = new System.Drawing.Size(45, 32);
             this.tab4.TabIndex = 41;
             this.tab4.Text = "4";
             this.tab4.UseVisualStyleBackColor = false;
@@ -946,10 +950,10 @@ namespace WindowsFormsApp4
             this.tab5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab5.ForeColor = System.Drawing.Color.Black;
-            this.tab5.Location = new System.Drawing.Point(256, 94);
+            this.tab5.Location = new System.Drawing.Point(192, 76);
             this.tab5.Margin = new System.Windows.Forms.Padding(0);
             this.tab5.Name = "tab5";
-            this.tab5.Size = new System.Drawing.Size(60, 39);
+            this.tab5.Size = new System.Drawing.Size(45, 32);
             this.tab5.TabIndex = 42;
             this.tab5.Text = "5";
             this.tab5.UseVisualStyleBackColor = false;
@@ -958,11 +962,11 @@ namespace WindowsFormsApp4
             // 
             // ManagerBox
             // 
-            this.ManagerBox.Location = new System.Drawing.Point(790, 67);
-            this.ManagerBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ManagerBox.Location = new System.Drawing.Point(592, 54);
+            this.ManagerBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ManagerBox.Name = "ManagerBox";
             this.ManagerBox.PasswordChar = '+';
-            this.ManagerBox.Size = new System.Drawing.Size(193, 22);
+            this.ManagerBox.Size = new System.Drawing.Size(146, 20);
             this.ManagerBox.TabIndex = 43;
             this.ManagerBox.Text = "manager";
             this.ManagerBox.Enter += new System.EventHandler(this.ManagerBox_Enter);
@@ -977,10 +981,10 @@ namespace WindowsFormsApp4
             this.department1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.department1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.department1.ForeColor = System.Drawing.Color.Maroon;
-            this.department1.Location = new System.Drawing.Point(16, 62);
+            this.department1.Location = new System.Drawing.Point(12, 50);
             this.department1.Margin = new System.Windows.Forms.Padding(0);
             this.department1.Name = "department1";
-            this.department1.Size = new System.Drawing.Size(82, 25);
+            this.department1.Size = new System.Drawing.Size(62, 20);
             this.department1.TabIndex = 44;
             this.department1.Text = "dep1";
             this.department1.UseVisualStyleBackColor = false;
@@ -996,10 +1000,10 @@ namespace WindowsFormsApp4
             this.department2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.department2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.department2.ForeColor = System.Drawing.Color.Maroon;
-            this.department2.Location = new System.Drawing.Point(101, 62);
+            this.department2.Location = new System.Drawing.Point(76, 50);
             this.department2.Margin = new System.Windows.Forms.Padding(0);
             this.department2.Name = "department2";
-            this.department2.Size = new System.Drawing.Size(82, 25);
+            this.department2.Size = new System.Drawing.Size(62, 20);
             this.department2.TabIndex = 45;
             this.department2.Text = "dep2";
             this.department2.UseVisualStyleBackColor = false;
@@ -1015,10 +1019,10 @@ namespace WindowsFormsApp4
             this.department3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.department3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.department3.ForeColor = System.Drawing.Color.Maroon;
-            this.department3.Location = new System.Drawing.Point(185, 62);
+            this.department3.Location = new System.Drawing.Point(139, 50);
             this.department3.Margin = new System.Windows.Forms.Padding(0);
             this.department3.Name = "department3";
-            this.department3.Size = new System.Drawing.Size(82, 25);
+            this.department3.Size = new System.Drawing.Size(62, 20);
             this.department3.TabIndex = 46;
             this.department3.Text = "dep3";
             this.department3.UseVisualStyleBackColor = false;
@@ -1034,10 +1038,10 @@ namespace WindowsFormsApp4
             this.department4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.department4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.department4.ForeColor = System.Drawing.Color.Maroon;
-            this.department4.Location = new System.Drawing.Point(269, 62);
+            this.department4.Location = new System.Drawing.Point(202, 50);
             this.department4.Margin = new System.Windows.Forms.Padding(0);
             this.department4.Name = "department4";
-            this.department4.Size = new System.Drawing.Size(82, 25);
+            this.department4.Size = new System.Drawing.Size(62, 20);
             this.department4.TabIndex = 47;
             this.department4.Text = "dep4";
             this.department4.UseVisualStyleBackColor = false;
@@ -1048,9 +1052,10 @@ namespace WindowsFormsApp4
             // 
             this.label4.BackColor = System.Drawing.Color.Maroon;
             this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label4.Location = new System.Drawing.Point(-4, 89);
+            this.label4.Location = new System.Drawing.Point(-3, 72);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(443, 1);
+            this.label4.Size = new System.Drawing.Size(332, 1);
             this.label4.TabIndex = 48;
             this.label4.Text = "label4";
             // 
@@ -1058,9 +1063,10 @@ namespace WindowsFormsApp4
             // 
             this.label5.BackColor = System.Drawing.Color.Maroon;
             this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label5.Location = new System.Drawing.Point(440, 62);
+            this.label5.Location = new System.Drawing.Point(330, 50);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(1, 436);
+            this.label5.Size = new System.Drawing.Size(1, 354);
             this.label5.TabIndex = 49;
             this.label5.Text = "label5";
             // 
@@ -1073,10 +1079,10 @@ namespace WindowsFormsApp4
             this.tab7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab7.ForeColor = System.Drawing.Color.Black;
-            this.tab7.Location = new System.Drawing.Point(379, 94);
+            this.tab7.Location = new System.Drawing.Point(284, 76);
             this.tab7.Margin = new System.Windows.Forms.Padding(0);
             this.tab7.Name = "tab7";
-            this.tab7.Size = new System.Drawing.Size(60, 39);
+            this.tab7.Size = new System.Drawing.Size(45, 32);
             this.tab7.TabIndex = 51;
             this.tab7.Text = "7";
             this.tab7.UseVisualStyleBackColor = false;
@@ -1092,10 +1098,10 @@ namespace WindowsFormsApp4
             this.tab6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab6.ForeColor = System.Drawing.Color.Black;
-            this.tab6.Location = new System.Drawing.Point(317, 94);
+            this.tab6.Location = new System.Drawing.Point(238, 76);
             this.tab6.Margin = new System.Windows.Forms.Padding(0);
             this.tab6.Name = "tab6";
-            this.tab6.Size = new System.Drawing.Size(60, 39);
+            this.tab6.Size = new System.Drawing.Size(45, 32);
             this.tab6.TabIndex = 50;
             this.tab6.Text = "6";
             this.tab6.UseVisualStyleBackColor = false;
@@ -1111,10 +1117,10 @@ namespace WindowsFormsApp4
             this.tab14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab14.ForeColor = System.Drawing.Color.Black;
-            this.tab14.Location = new System.Drawing.Point(379, 134);
+            this.tab14.Location = new System.Drawing.Point(284, 109);
             this.tab14.Margin = new System.Windows.Forms.Padding(0);
             this.tab14.Name = "tab14";
-            this.tab14.Size = new System.Drawing.Size(60, 39);
+            this.tab14.Size = new System.Drawing.Size(45, 32);
             this.tab14.TabIndex = 61;
             this.tab14.Text = "14";
             this.tab14.UseVisualStyleBackColor = false;
@@ -1130,10 +1136,10 @@ namespace WindowsFormsApp4
             this.tab13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab13.ForeColor = System.Drawing.Color.Black;
-            this.tab13.Location = new System.Drawing.Point(317, 134);
+            this.tab13.Location = new System.Drawing.Point(238, 109);
             this.tab13.Margin = new System.Windows.Forms.Padding(0);
             this.tab13.Name = "tab13";
-            this.tab13.Size = new System.Drawing.Size(60, 39);
+            this.tab13.Size = new System.Drawing.Size(45, 32);
             this.tab13.TabIndex = 60;
             this.tab13.Text = "13";
             this.tab13.UseVisualStyleBackColor = false;
@@ -1149,10 +1155,10 @@ namespace WindowsFormsApp4
             this.tab12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab12.ForeColor = System.Drawing.Color.Black;
-            this.tab12.Location = new System.Drawing.Point(256, 134);
+            this.tab12.Location = new System.Drawing.Point(192, 109);
             this.tab12.Margin = new System.Windows.Forms.Padding(0);
             this.tab12.Name = "tab12";
-            this.tab12.Size = new System.Drawing.Size(60, 39);
+            this.tab12.Size = new System.Drawing.Size(45, 32);
             this.tab12.TabIndex = 59;
             this.tab12.Text = "12";
             this.tab12.UseVisualStyleBackColor = false;
@@ -1168,10 +1174,10 @@ namespace WindowsFormsApp4
             this.tab11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab11.ForeColor = System.Drawing.Color.Black;
-            this.tab11.Location = new System.Drawing.Point(195, 134);
+            this.tab11.Location = new System.Drawing.Point(146, 109);
             this.tab11.Margin = new System.Windows.Forms.Padding(0);
             this.tab11.Name = "tab11";
-            this.tab11.Size = new System.Drawing.Size(60, 39);
+            this.tab11.Size = new System.Drawing.Size(45, 32);
             this.tab11.TabIndex = 58;
             this.tab11.Text = "11";
             this.tab11.UseVisualStyleBackColor = false;
@@ -1187,10 +1193,10 @@ namespace WindowsFormsApp4
             this.tab10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab10.ForeColor = System.Drawing.Color.Black;
-            this.tab10.Location = new System.Drawing.Point(133, 134);
+            this.tab10.Location = new System.Drawing.Point(100, 109);
             this.tab10.Margin = new System.Windows.Forms.Padding(0);
             this.tab10.Name = "tab10";
-            this.tab10.Size = new System.Drawing.Size(60, 39);
+            this.tab10.Size = new System.Drawing.Size(45, 32);
             this.tab10.TabIndex = 57;
             this.tab10.Text = "10";
             this.tab10.UseVisualStyleBackColor = false;
@@ -1206,10 +1212,10 @@ namespace WindowsFormsApp4
             this.tab9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab9.ForeColor = System.Drawing.Color.Black;
-            this.tab9.Location = new System.Drawing.Point(72, 134);
+            this.tab9.Location = new System.Drawing.Point(54, 109);
             this.tab9.Margin = new System.Windows.Forms.Padding(0);
             this.tab9.Name = "tab9";
-            this.tab9.Size = new System.Drawing.Size(60, 39);
+            this.tab9.Size = new System.Drawing.Size(45, 32);
             this.tab9.TabIndex = 56;
             this.tab9.Text = "9";
             this.tab9.UseVisualStyleBackColor = false;
@@ -1225,10 +1231,10 @@ namespace WindowsFormsApp4
             this.tab8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab8.ForeColor = System.Drawing.Color.Black;
-            this.tab8.Location = new System.Drawing.Point(11, 134);
+            this.tab8.Location = new System.Drawing.Point(8, 109);
             this.tab8.Margin = new System.Windows.Forms.Padding(0);
             this.tab8.Name = "tab8";
-            this.tab8.Size = new System.Drawing.Size(60, 39);
+            this.tab8.Size = new System.Drawing.Size(45, 32);
             this.tab8.TabIndex = 55;
             this.tab8.Text = "8";
             this.tab8.UseVisualStyleBackColor = false;
@@ -1244,10 +1250,10 @@ namespace WindowsFormsApp4
             this.tab21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab21.ForeColor = System.Drawing.Color.Black;
-            this.tab21.Location = new System.Drawing.Point(379, 175);
+            this.tab21.Location = new System.Drawing.Point(284, 142);
             this.tab21.Margin = new System.Windows.Forms.Padding(0);
             this.tab21.Name = "tab21";
-            this.tab21.Size = new System.Drawing.Size(60, 39);
+            this.tab21.Size = new System.Drawing.Size(45, 32);
             this.tab21.TabIndex = 68;
             this.tab21.Text = "21";
             this.tab21.UseVisualStyleBackColor = false;
@@ -1263,10 +1269,10 @@ namespace WindowsFormsApp4
             this.tab20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab20.ForeColor = System.Drawing.Color.Black;
-            this.tab20.Location = new System.Drawing.Point(317, 175);
+            this.tab20.Location = new System.Drawing.Point(238, 142);
             this.tab20.Margin = new System.Windows.Forms.Padding(0);
             this.tab20.Name = "tab20";
-            this.tab20.Size = new System.Drawing.Size(60, 39);
+            this.tab20.Size = new System.Drawing.Size(45, 32);
             this.tab20.TabIndex = 67;
             this.tab20.Text = "20";
             this.tab20.UseVisualStyleBackColor = false;
@@ -1282,10 +1288,10 @@ namespace WindowsFormsApp4
             this.tab19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab19.ForeColor = System.Drawing.Color.Black;
-            this.tab19.Location = new System.Drawing.Point(256, 175);
+            this.tab19.Location = new System.Drawing.Point(192, 142);
             this.tab19.Margin = new System.Windows.Forms.Padding(0);
             this.tab19.Name = "tab19";
-            this.tab19.Size = new System.Drawing.Size(60, 39);
+            this.tab19.Size = new System.Drawing.Size(45, 32);
             this.tab19.TabIndex = 66;
             this.tab19.Text = "19";
             this.tab19.UseVisualStyleBackColor = false;
@@ -1301,10 +1307,10 @@ namespace WindowsFormsApp4
             this.tab18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab18.ForeColor = System.Drawing.Color.Black;
-            this.tab18.Location = new System.Drawing.Point(195, 175);
+            this.tab18.Location = new System.Drawing.Point(146, 142);
             this.tab18.Margin = new System.Windows.Forms.Padding(0);
             this.tab18.Name = "tab18";
-            this.tab18.Size = new System.Drawing.Size(60, 39);
+            this.tab18.Size = new System.Drawing.Size(45, 32);
             this.tab18.TabIndex = 65;
             this.tab18.Text = "18";
             this.tab18.UseVisualStyleBackColor = false;
@@ -1320,10 +1326,10 @@ namespace WindowsFormsApp4
             this.tab17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab17.ForeColor = System.Drawing.Color.Black;
-            this.tab17.Location = new System.Drawing.Point(133, 175);
+            this.tab17.Location = new System.Drawing.Point(100, 142);
             this.tab17.Margin = new System.Windows.Forms.Padding(0);
             this.tab17.Name = "tab17";
-            this.tab17.Size = new System.Drawing.Size(60, 39);
+            this.tab17.Size = new System.Drawing.Size(45, 32);
             this.tab17.TabIndex = 64;
             this.tab17.Text = "17";
             this.tab17.UseVisualStyleBackColor = false;
@@ -1339,10 +1345,10 @@ namespace WindowsFormsApp4
             this.tab16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab16.ForeColor = System.Drawing.Color.Black;
-            this.tab16.Location = new System.Drawing.Point(72, 175);
+            this.tab16.Location = new System.Drawing.Point(54, 142);
             this.tab16.Margin = new System.Windows.Forms.Padding(0);
             this.tab16.Name = "tab16";
-            this.tab16.Size = new System.Drawing.Size(60, 39);
+            this.tab16.Size = new System.Drawing.Size(45, 32);
             this.tab16.TabIndex = 63;
             this.tab16.Text = "16";
             this.tab16.UseVisualStyleBackColor = false;
@@ -1358,10 +1364,10 @@ namespace WindowsFormsApp4
             this.tab15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab15.ForeColor = System.Drawing.Color.Black;
-            this.tab15.Location = new System.Drawing.Point(11, 175);
+            this.tab15.Location = new System.Drawing.Point(8, 142);
             this.tab15.Margin = new System.Windows.Forms.Padding(0);
             this.tab15.Name = "tab15";
-            this.tab15.Size = new System.Drawing.Size(60, 39);
+            this.tab15.Size = new System.Drawing.Size(45, 32);
             this.tab15.TabIndex = 62;
             this.tab15.Text = "15";
             this.tab15.UseVisualStyleBackColor = false;
@@ -1377,10 +1383,10 @@ namespace WindowsFormsApp4
             this.tab28.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab28.ForeColor = System.Drawing.Color.Black;
-            this.tab28.Location = new System.Drawing.Point(379, 215);
+            this.tab28.Location = new System.Drawing.Point(284, 175);
             this.tab28.Margin = new System.Windows.Forms.Padding(0);
             this.tab28.Name = "tab28";
-            this.tab28.Size = new System.Drawing.Size(60, 39);
+            this.tab28.Size = new System.Drawing.Size(45, 32);
             this.tab28.TabIndex = 75;
             this.tab28.Text = "28";
             this.tab28.UseVisualStyleBackColor = false;
@@ -1396,10 +1402,10 @@ namespace WindowsFormsApp4
             this.tab27.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab27.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab27.ForeColor = System.Drawing.Color.Black;
-            this.tab27.Location = new System.Drawing.Point(317, 215);
+            this.tab27.Location = new System.Drawing.Point(238, 175);
             this.tab27.Margin = new System.Windows.Forms.Padding(0);
             this.tab27.Name = "tab27";
-            this.tab27.Size = new System.Drawing.Size(60, 39);
+            this.tab27.Size = new System.Drawing.Size(45, 32);
             this.tab27.TabIndex = 74;
             this.tab27.Text = "27";
             this.tab27.UseVisualStyleBackColor = false;
@@ -1415,10 +1421,10 @@ namespace WindowsFormsApp4
             this.tab26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab26.ForeColor = System.Drawing.Color.Black;
-            this.tab26.Location = new System.Drawing.Point(256, 215);
+            this.tab26.Location = new System.Drawing.Point(192, 175);
             this.tab26.Margin = new System.Windows.Forms.Padding(0);
             this.tab26.Name = "tab26";
-            this.tab26.Size = new System.Drawing.Size(60, 39);
+            this.tab26.Size = new System.Drawing.Size(45, 32);
             this.tab26.TabIndex = 73;
             this.tab26.Text = "26";
             this.tab26.UseVisualStyleBackColor = false;
@@ -1434,10 +1440,10 @@ namespace WindowsFormsApp4
             this.tab25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab25.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab25.ForeColor = System.Drawing.Color.Black;
-            this.tab25.Location = new System.Drawing.Point(195, 215);
+            this.tab25.Location = new System.Drawing.Point(146, 175);
             this.tab25.Margin = new System.Windows.Forms.Padding(0);
             this.tab25.Name = "tab25";
-            this.tab25.Size = new System.Drawing.Size(60, 39);
+            this.tab25.Size = new System.Drawing.Size(45, 32);
             this.tab25.TabIndex = 72;
             this.tab25.Text = "25";
             this.tab25.UseVisualStyleBackColor = false;
@@ -1453,10 +1459,10 @@ namespace WindowsFormsApp4
             this.tab24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab24.ForeColor = System.Drawing.Color.Black;
-            this.tab24.Location = new System.Drawing.Point(133, 215);
+            this.tab24.Location = new System.Drawing.Point(100, 175);
             this.tab24.Margin = new System.Windows.Forms.Padding(0);
             this.tab24.Name = "tab24";
-            this.tab24.Size = new System.Drawing.Size(60, 39);
+            this.tab24.Size = new System.Drawing.Size(45, 32);
             this.tab24.TabIndex = 71;
             this.tab24.Text = "24";
             this.tab24.UseVisualStyleBackColor = false;
@@ -1472,10 +1478,10 @@ namespace WindowsFormsApp4
             this.tab23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab23.ForeColor = System.Drawing.Color.Black;
-            this.tab23.Location = new System.Drawing.Point(72, 215);
+            this.tab23.Location = new System.Drawing.Point(54, 175);
             this.tab23.Margin = new System.Windows.Forms.Padding(0);
             this.tab23.Name = "tab23";
-            this.tab23.Size = new System.Drawing.Size(60, 39);
+            this.tab23.Size = new System.Drawing.Size(45, 32);
             this.tab23.TabIndex = 70;
             this.tab23.Text = "23";
             this.tab23.UseVisualStyleBackColor = false;
@@ -1491,10 +1497,10 @@ namespace WindowsFormsApp4
             this.tab22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab22.ForeColor = System.Drawing.Color.Black;
-            this.tab22.Location = new System.Drawing.Point(11, 215);
+            this.tab22.Location = new System.Drawing.Point(8, 175);
             this.tab22.Margin = new System.Windows.Forms.Padding(0);
             this.tab22.Name = "tab22";
-            this.tab22.Size = new System.Drawing.Size(60, 39);
+            this.tab22.Size = new System.Drawing.Size(45, 32);
             this.tab22.TabIndex = 69;
             this.tab22.Text = "22";
             this.tab22.UseVisualStyleBackColor = false;
@@ -1510,10 +1516,10 @@ namespace WindowsFormsApp4
             this.tab35.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab35.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab35.ForeColor = System.Drawing.Color.Black;
-            this.tab35.Location = new System.Drawing.Point(379, 256);
+            this.tab35.Location = new System.Drawing.Point(284, 208);
             this.tab35.Margin = new System.Windows.Forms.Padding(0);
             this.tab35.Name = "tab35";
-            this.tab35.Size = new System.Drawing.Size(60, 39);
+            this.tab35.Size = new System.Drawing.Size(45, 32);
             this.tab35.TabIndex = 82;
             this.tab35.Text = "35";
             this.tab35.UseVisualStyleBackColor = false;
@@ -1529,10 +1535,10 @@ namespace WindowsFormsApp4
             this.tab34.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab34.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab34.ForeColor = System.Drawing.Color.Black;
-            this.tab34.Location = new System.Drawing.Point(317, 256);
+            this.tab34.Location = new System.Drawing.Point(238, 208);
             this.tab34.Margin = new System.Windows.Forms.Padding(0);
             this.tab34.Name = "tab34";
-            this.tab34.Size = new System.Drawing.Size(60, 39);
+            this.tab34.Size = new System.Drawing.Size(45, 32);
             this.tab34.TabIndex = 81;
             this.tab34.Text = "34";
             this.tab34.UseVisualStyleBackColor = false;
@@ -1548,10 +1554,10 @@ namespace WindowsFormsApp4
             this.tab33.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab33.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab33.ForeColor = System.Drawing.Color.Black;
-            this.tab33.Location = new System.Drawing.Point(256, 256);
+            this.tab33.Location = new System.Drawing.Point(192, 208);
             this.tab33.Margin = new System.Windows.Forms.Padding(0);
             this.tab33.Name = "tab33";
-            this.tab33.Size = new System.Drawing.Size(60, 39);
+            this.tab33.Size = new System.Drawing.Size(45, 32);
             this.tab33.TabIndex = 80;
             this.tab33.Text = "33";
             this.tab33.UseVisualStyleBackColor = false;
@@ -1567,10 +1573,10 @@ namespace WindowsFormsApp4
             this.tab32.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab32.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab32.ForeColor = System.Drawing.Color.Black;
-            this.tab32.Location = new System.Drawing.Point(195, 256);
+            this.tab32.Location = new System.Drawing.Point(146, 208);
             this.tab32.Margin = new System.Windows.Forms.Padding(0);
             this.tab32.Name = "tab32";
-            this.tab32.Size = new System.Drawing.Size(60, 39);
+            this.tab32.Size = new System.Drawing.Size(45, 32);
             this.tab32.TabIndex = 79;
             this.tab32.Text = "32";
             this.tab32.UseVisualStyleBackColor = false;
@@ -1586,10 +1592,10 @@ namespace WindowsFormsApp4
             this.tab31.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab31.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab31.ForeColor = System.Drawing.Color.Black;
-            this.tab31.Location = new System.Drawing.Point(133, 256);
+            this.tab31.Location = new System.Drawing.Point(100, 208);
             this.tab31.Margin = new System.Windows.Forms.Padding(0);
             this.tab31.Name = "tab31";
-            this.tab31.Size = new System.Drawing.Size(60, 39);
+            this.tab31.Size = new System.Drawing.Size(45, 32);
             this.tab31.TabIndex = 78;
             this.tab31.Text = "31";
             this.tab31.UseVisualStyleBackColor = false;
@@ -1605,10 +1611,10 @@ namespace WindowsFormsApp4
             this.tab30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab30.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab30.ForeColor = System.Drawing.Color.Black;
-            this.tab30.Location = new System.Drawing.Point(72, 256);
+            this.tab30.Location = new System.Drawing.Point(54, 208);
             this.tab30.Margin = new System.Windows.Forms.Padding(0);
             this.tab30.Name = "tab30";
-            this.tab30.Size = new System.Drawing.Size(60, 39);
+            this.tab30.Size = new System.Drawing.Size(45, 32);
             this.tab30.TabIndex = 77;
             this.tab30.Text = "30";
             this.tab30.UseVisualStyleBackColor = false;
@@ -1624,10 +1630,10 @@ namespace WindowsFormsApp4
             this.tab29.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab29.ForeColor = System.Drawing.Color.Black;
-            this.tab29.Location = new System.Drawing.Point(11, 256);
+            this.tab29.Location = new System.Drawing.Point(8, 208);
             this.tab29.Margin = new System.Windows.Forms.Padding(0);
             this.tab29.Name = "tab29";
-            this.tab29.Size = new System.Drawing.Size(60, 39);
+            this.tab29.Size = new System.Drawing.Size(45, 32);
             this.tab29.TabIndex = 76;
             this.tab29.Text = "29";
             this.tab29.UseVisualStyleBackColor = false;
@@ -1643,10 +1649,10 @@ namespace WindowsFormsApp4
             this.tab42.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab42.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab42.ForeColor = System.Drawing.Color.Black;
-            this.tab42.Location = new System.Drawing.Point(379, 297);
+            this.tab42.Location = new System.Drawing.Point(284, 241);
             this.tab42.Margin = new System.Windows.Forms.Padding(0);
             this.tab42.Name = "tab42";
-            this.tab42.Size = new System.Drawing.Size(60, 39);
+            this.tab42.Size = new System.Drawing.Size(45, 32);
             this.tab42.TabIndex = 89;
             this.tab42.Text = "42";
             this.tab42.UseVisualStyleBackColor = false;
@@ -1662,10 +1668,10 @@ namespace WindowsFormsApp4
             this.tab41.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab41.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab41.ForeColor = System.Drawing.Color.Black;
-            this.tab41.Location = new System.Drawing.Point(317, 297);
+            this.tab41.Location = new System.Drawing.Point(238, 241);
             this.tab41.Margin = new System.Windows.Forms.Padding(0);
             this.tab41.Name = "tab41";
-            this.tab41.Size = new System.Drawing.Size(60, 39);
+            this.tab41.Size = new System.Drawing.Size(45, 32);
             this.tab41.TabIndex = 88;
             this.tab41.Text = "41";
             this.tab41.UseVisualStyleBackColor = false;
@@ -1681,10 +1687,10 @@ namespace WindowsFormsApp4
             this.tab40.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab40.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab40.ForeColor = System.Drawing.Color.Black;
-            this.tab40.Location = new System.Drawing.Point(256, 297);
+            this.tab40.Location = new System.Drawing.Point(192, 241);
             this.tab40.Margin = new System.Windows.Forms.Padding(0);
             this.tab40.Name = "tab40";
-            this.tab40.Size = new System.Drawing.Size(60, 39);
+            this.tab40.Size = new System.Drawing.Size(45, 32);
             this.tab40.TabIndex = 87;
             this.tab40.Text = "40";
             this.tab40.UseVisualStyleBackColor = false;
@@ -1700,10 +1706,10 @@ namespace WindowsFormsApp4
             this.tab39.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab39.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab39.ForeColor = System.Drawing.Color.Black;
-            this.tab39.Location = new System.Drawing.Point(195, 297);
+            this.tab39.Location = new System.Drawing.Point(146, 241);
             this.tab39.Margin = new System.Windows.Forms.Padding(0);
             this.tab39.Name = "tab39";
-            this.tab39.Size = new System.Drawing.Size(60, 39);
+            this.tab39.Size = new System.Drawing.Size(45, 32);
             this.tab39.TabIndex = 86;
             this.tab39.Text = "39";
             this.tab39.UseVisualStyleBackColor = false;
@@ -1719,10 +1725,10 @@ namespace WindowsFormsApp4
             this.tab38.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab38.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab38.ForeColor = System.Drawing.Color.Black;
-            this.tab38.Location = new System.Drawing.Point(133, 297);
+            this.tab38.Location = new System.Drawing.Point(100, 241);
             this.tab38.Margin = new System.Windows.Forms.Padding(0);
             this.tab38.Name = "tab38";
-            this.tab38.Size = new System.Drawing.Size(60, 39);
+            this.tab38.Size = new System.Drawing.Size(45, 32);
             this.tab38.TabIndex = 85;
             this.tab38.Text = "38";
             this.tab38.UseVisualStyleBackColor = false;
@@ -1738,10 +1744,10 @@ namespace WindowsFormsApp4
             this.tab37.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab37.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab37.ForeColor = System.Drawing.Color.Black;
-            this.tab37.Location = new System.Drawing.Point(72, 297);
+            this.tab37.Location = new System.Drawing.Point(54, 241);
             this.tab37.Margin = new System.Windows.Forms.Padding(0);
             this.tab37.Name = "tab37";
-            this.tab37.Size = new System.Drawing.Size(60, 39);
+            this.tab37.Size = new System.Drawing.Size(45, 32);
             this.tab37.TabIndex = 84;
             this.tab37.Text = "37";
             this.tab37.UseVisualStyleBackColor = false;
@@ -1757,10 +1763,10 @@ namespace WindowsFormsApp4
             this.tab36.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab36.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab36.ForeColor = System.Drawing.Color.Black;
-            this.tab36.Location = new System.Drawing.Point(11, 297);
+            this.tab36.Location = new System.Drawing.Point(8, 241);
             this.tab36.Margin = new System.Windows.Forms.Padding(0);
             this.tab36.Name = "tab36";
-            this.tab36.Size = new System.Drawing.Size(60, 39);
+            this.tab36.Size = new System.Drawing.Size(45, 32);
             this.tab36.TabIndex = 83;
             this.tab36.Text = "36";
             this.tab36.UseVisualStyleBackColor = false;
@@ -1776,10 +1782,10 @@ namespace WindowsFormsApp4
             this.tab49.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab49.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab49.ForeColor = System.Drawing.Color.Black;
-            this.tab49.Location = new System.Drawing.Point(379, 337);
+            this.tab49.Location = new System.Drawing.Point(284, 274);
             this.tab49.Margin = new System.Windows.Forms.Padding(0);
             this.tab49.Name = "tab49";
-            this.tab49.Size = new System.Drawing.Size(60, 39);
+            this.tab49.Size = new System.Drawing.Size(45, 32);
             this.tab49.TabIndex = 96;
             this.tab49.Text = "49";
             this.tab49.UseVisualStyleBackColor = false;
@@ -1795,10 +1801,10 @@ namespace WindowsFormsApp4
             this.tab48.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab48.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab48.ForeColor = System.Drawing.Color.Black;
-            this.tab48.Location = new System.Drawing.Point(317, 337);
+            this.tab48.Location = new System.Drawing.Point(238, 274);
             this.tab48.Margin = new System.Windows.Forms.Padding(0);
             this.tab48.Name = "tab48";
-            this.tab48.Size = new System.Drawing.Size(60, 39);
+            this.tab48.Size = new System.Drawing.Size(45, 32);
             this.tab48.TabIndex = 95;
             this.tab48.Text = "48";
             this.tab48.UseVisualStyleBackColor = false;
@@ -1814,10 +1820,10 @@ namespace WindowsFormsApp4
             this.tab47.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab47.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab47.ForeColor = System.Drawing.Color.Black;
-            this.tab47.Location = new System.Drawing.Point(256, 337);
+            this.tab47.Location = new System.Drawing.Point(192, 274);
             this.tab47.Margin = new System.Windows.Forms.Padding(0);
             this.tab47.Name = "tab47";
-            this.tab47.Size = new System.Drawing.Size(60, 39);
+            this.tab47.Size = new System.Drawing.Size(45, 32);
             this.tab47.TabIndex = 94;
             this.tab47.Text = "47";
             this.tab47.UseVisualStyleBackColor = false;
@@ -1833,10 +1839,10 @@ namespace WindowsFormsApp4
             this.tab46.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab46.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab46.ForeColor = System.Drawing.Color.Black;
-            this.tab46.Location = new System.Drawing.Point(195, 337);
+            this.tab46.Location = new System.Drawing.Point(146, 274);
             this.tab46.Margin = new System.Windows.Forms.Padding(0);
             this.tab46.Name = "tab46";
-            this.tab46.Size = new System.Drawing.Size(60, 39);
+            this.tab46.Size = new System.Drawing.Size(45, 32);
             this.tab46.TabIndex = 93;
             this.tab46.Text = "46";
             this.tab46.UseVisualStyleBackColor = false;
@@ -1852,10 +1858,10 @@ namespace WindowsFormsApp4
             this.tab45.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab45.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab45.ForeColor = System.Drawing.Color.Black;
-            this.tab45.Location = new System.Drawing.Point(133, 337);
+            this.tab45.Location = new System.Drawing.Point(100, 274);
             this.tab45.Margin = new System.Windows.Forms.Padding(0);
             this.tab45.Name = "tab45";
-            this.tab45.Size = new System.Drawing.Size(60, 39);
+            this.tab45.Size = new System.Drawing.Size(45, 32);
             this.tab45.TabIndex = 92;
             this.tab45.Text = "45";
             this.tab45.UseVisualStyleBackColor = false;
@@ -1871,10 +1877,10 @@ namespace WindowsFormsApp4
             this.tab44.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab44.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab44.ForeColor = System.Drawing.Color.Black;
-            this.tab44.Location = new System.Drawing.Point(72, 337);
+            this.tab44.Location = new System.Drawing.Point(54, 274);
             this.tab44.Margin = new System.Windows.Forms.Padding(0);
             this.tab44.Name = "tab44";
-            this.tab44.Size = new System.Drawing.Size(60, 39);
+            this.tab44.Size = new System.Drawing.Size(45, 32);
             this.tab44.TabIndex = 91;
             this.tab44.Text = "44";
             this.tab44.UseVisualStyleBackColor = false;
@@ -1890,10 +1896,10 @@ namespace WindowsFormsApp4
             this.tab43.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab43.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab43.ForeColor = System.Drawing.Color.Black;
-            this.tab43.Location = new System.Drawing.Point(11, 337);
+            this.tab43.Location = new System.Drawing.Point(8, 274);
             this.tab43.Margin = new System.Windows.Forms.Padding(0);
             this.tab43.Name = "tab43";
-            this.tab43.Size = new System.Drawing.Size(60, 39);
+            this.tab43.Size = new System.Drawing.Size(45, 32);
             this.tab43.TabIndex = 90;
             this.tab43.Text = "43";
             this.tab43.UseVisualStyleBackColor = false;
@@ -1909,10 +1915,10 @@ namespace WindowsFormsApp4
             this.tab56.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab56.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab56.ForeColor = System.Drawing.Color.Black;
-            this.tab56.Location = new System.Drawing.Point(379, 377);
+            this.tab56.Location = new System.Drawing.Point(284, 306);
             this.tab56.Margin = new System.Windows.Forms.Padding(0);
             this.tab56.Name = "tab56";
-            this.tab56.Size = new System.Drawing.Size(60, 39);
+            this.tab56.Size = new System.Drawing.Size(45, 32);
             this.tab56.TabIndex = 103;
             this.tab56.Text = "56";
             this.tab56.UseVisualStyleBackColor = false;
@@ -1928,10 +1934,10 @@ namespace WindowsFormsApp4
             this.tab55.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab55.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab55.ForeColor = System.Drawing.Color.Black;
-            this.tab55.Location = new System.Drawing.Point(317, 377);
+            this.tab55.Location = new System.Drawing.Point(238, 306);
             this.tab55.Margin = new System.Windows.Forms.Padding(0);
             this.tab55.Name = "tab55";
-            this.tab55.Size = new System.Drawing.Size(60, 39);
+            this.tab55.Size = new System.Drawing.Size(45, 32);
             this.tab55.TabIndex = 102;
             this.tab55.Text = "55";
             this.tab55.UseVisualStyleBackColor = false;
@@ -1947,10 +1953,10 @@ namespace WindowsFormsApp4
             this.tab54.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab54.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab54.ForeColor = System.Drawing.Color.Black;
-            this.tab54.Location = new System.Drawing.Point(256, 377);
+            this.tab54.Location = new System.Drawing.Point(192, 306);
             this.tab54.Margin = new System.Windows.Forms.Padding(0);
             this.tab54.Name = "tab54";
-            this.tab54.Size = new System.Drawing.Size(60, 39);
+            this.tab54.Size = new System.Drawing.Size(45, 32);
             this.tab54.TabIndex = 101;
             this.tab54.Text = "54";
             this.tab54.UseVisualStyleBackColor = false;
@@ -1966,10 +1972,10 @@ namespace WindowsFormsApp4
             this.tab53.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab53.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab53.ForeColor = System.Drawing.Color.Black;
-            this.tab53.Location = new System.Drawing.Point(195, 377);
+            this.tab53.Location = new System.Drawing.Point(146, 306);
             this.tab53.Margin = new System.Windows.Forms.Padding(0);
             this.tab53.Name = "tab53";
-            this.tab53.Size = new System.Drawing.Size(60, 39);
+            this.tab53.Size = new System.Drawing.Size(45, 32);
             this.tab53.TabIndex = 100;
             this.tab53.Text = "53";
             this.tab53.UseVisualStyleBackColor = false;
@@ -1985,10 +1991,10 @@ namespace WindowsFormsApp4
             this.tab52.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab52.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab52.ForeColor = System.Drawing.Color.Black;
-            this.tab52.Location = new System.Drawing.Point(133, 377);
+            this.tab52.Location = new System.Drawing.Point(100, 306);
             this.tab52.Margin = new System.Windows.Forms.Padding(0);
             this.tab52.Name = "tab52";
-            this.tab52.Size = new System.Drawing.Size(60, 39);
+            this.tab52.Size = new System.Drawing.Size(45, 32);
             this.tab52.TabIndex = 99;
             this.tab52.Text = "52";
             this.tab52.UseVisualStyleBackColor = false;
@@ -2004,10 +2010,10 @@ namespace WindowsFormsApp4
             this.tab51.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab51.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab51.ForeColor = System.Drawing.Color.Black;
-            this.tab51.Location = new System.Drawing.Point(72, 377);
+            this.tab51.Location = new System.Drawing.Point(54, 306);
             this.tab51.Margin = new System.Windows.Forms.Padding(0);
             this.tab51.Name = "tab51";
-            this.tab51.Size = new System.Drawing.Size(60, 39);
+            this.tab51.Size = new System.Drawing.Size(45, 32);
             this.tab51.TabIndex = 98;
             this.tab51.Text = "51";
             this.tab51.UseVisualStyleBackColor = false;
@@ -2023,10 +2029,10 @@ namespace WindowsFormsApp4
             this.tab50.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab50.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab50.ForeColor = System.Drawing.Color.Black;
-            this.tab50.Location = new System.Drawing.Point(11, 377);
+            this.tab50.Location = new System.Drawing.Point(8, 306);
             this.tab50.Margin = new System.Windows.Forms.Padding(0);
             this.tab50.Name = "tab50";
-            this.tab50.Size = new System.Drawing.Size(60, 39);
+            this.tab50.Size = new System.Drawing.Size(45, 32);
             this.tab50.TabIndex = 97;
             this.tab50.Text = "50";
             this.tab50.UseVisualStyleBackColor = false;
@@ -2042,10 +2048,10 @@ namespace WindowsFormsApp4
             this.tab63.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab63.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab63.ForeColor = System.Drawing.Color.Black;
-            this.tab63.Location = new System.Drawing.Point(379, 418);
+            this.tab63.Location = new System.Drawing.Point(284, 340);
             this.tab63.Margin = new System.Windows.Forms.Padding(0);
             this.tab63.Name = "tab63";
-            this.tab63.Size = new System.Drawing.Size(60, 39);
+            this.tab63.Size = new System.Drawing.Size(45, 32);
             this.tab63.TabIndex = 110;
             this.tab63.Text = "63";
             this.tab63.UseVisualStyleBackColor = false;
@@ -2061,10 +2067,10 @@ namespace WindowsFormsApp4
             this.tab61.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab61.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab61.ForeColor = System.Drawing.Color.Black;
-            this.tab61.Location = new System.Drawing.Point(256, 418);
+            this.tab61.Location = new System.Drawing.Point(192, 340);
             this.tab61.Margin = new System.Windows.Forms.Padding(0);
             this.tab61.Name = "tab61";
-            this.tab61.Size = new System.Drawing.Size(60, 39);
+            this.tab61.Size = new System.Drawing.Size(45, 32);
             this.tab61.TabIndex = 108;
             this.tab61.Text = "61";
             this.tab61.UseVisualStyleBackColor = false;
@@ -2080,10 +2086,10 @@ namespace WindowsFormsApp4
             this.tab60.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab60.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab60.ForeColor = System.Drawing.Color.Black;
-            this.tab60.Location = new System.Drawing.Point(195, 418);
+            this.tab60.Location = new System.Drawing.Point(146, 340);
             this.tab60.Margin = new System.Windows.Forms.Padding(0);
             this.tab60.Name = "tab60";
-            this.tab60.Size = new System.Drawing.Size(60, 39);
+            this.tab60.Size = new System.Drawing.Size(45, 32);
             this.tab60.TabIndex = 107;
             this.tab60.Text = "60";
             this.tab60.UseVisualStyleBackColor = false;
@@ -2099,10 +2105,10 @@ namespace WindowsFormsApp4
             this.tab59.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab59.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab59.ForeColor = System.Drawing.Color.Black;
-            this.tab59.Location = new System.Drawing.Point(133, 418);
+            this.tab59.Location = new System.Drawing.Point(100, 340);
             this.tab59.Margin = new System.Windows.Forms.Padding(0);
             this.tab59.Name = "tab59";
-            this.tab59.Size = new System.Drawing.Size(60, 39);
+            this.tab59.Size = new System.Drawing.Size(45, 32);
             this.tab59.TabIndex = 106;
             this.tab59.Text = "59";
             this.tab59.UseVisualStyleBackColor = false;
@@ -2118,10 +2124,10 @@ namespace WindowsFormsApp4
             this.tab58.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab58.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab58.ForeColor = System.Drawing.Color.Black;
-            this.tab58.Location = new System.Drawing.Point(72, 418);
+            this.tab58.Location = new System.Drawing.Point(54, 340);
             this.tab58.Margin = new System.Windows.Forms.Padding(0);
             this.tab58.Name = "tab58";
-            this.tab58.Size = new System.Drawing.Size(60, 39);
+            this.tab58.Size = new System.Drawing.Size(45, 32);
             this.tab58.TabIndex = 105;
             this.tab58.Text = "58";
             this.tab58.UseVisualStyleBackColor = false;
@@ -2137,10 +2143,10 @@ namespace WindowsFormsApp4
             this.tab57.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab57.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab57.ForeColor = System.Drawing.Color.Black;
-            this.tab57.Location = new System.Drawing.Point(11, 418);
+            this.tab57.Location = new System.Drawing.Point(8, 340);
             this.tab57.Margin = new System.Windows.Forms.Padding(0);
             this.tab57.Name = "tab57";
-            this.tab57.Size = new System.Drawing.Size(60, 39);
+            this.tab57.Size = new System.Drawing.Size(45, 32);
             this.tab57.TabIndex = 104;
             this.tab57.Text = "57";
             this.tab57.UseVisualStyleBackColor = false;
@@ -2151,9 +2157,10 @@ namespace WindowsFormsApp4
             // 
             this.label6.BackColor = System.Drawing.Color.Maroon;
             this.label6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label6.Location = new System.Drawing.Point(-1, 500);
+            this.label6.Location = new System.Drawing.Point(-1, 406);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(1168, 1);
+            this.label6.Size = new System.Drawing.Size(876, 1);
             this.label6.TabIndex = 111;
             this.label6.Text = "label6";
             // 
@@ -2170,7 +2177,7 @@ namespace WindowsFormsApp4
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4});
-            this.dataGridView2.Location = new System.Drawing.Point(787, 206);
+            this.dataGridView2.Location = new System.Drawing.Point(590, 167);
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(0);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
@@ -2179,7 +2186,7 @@ namespace WindowsFormsApp4
             this.dataGridView2.RowTemplate.Height = 24;
             this.dataGridView2.RowTemplate.ReadOnly = true;
             this.dataGridView2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView2.Size = new System.Drawing.Size(537, 196);
+            this.dataGridView2.Size = new System.Drawing.Size(403, 159);
             this.dataGridView2.TabIndex = 112;
             this.dataGridView2.Tag = "none";
             this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
@@ -2247,10 +2254,10 @@ namespace WindowsFormsApp4
             this.number8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.number8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.number8.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.number8.Location = new System.Drawing.Point(1000, 122);
+            this.number8.Location = new System.Drawing.Point(750, 99);
             this.number8.Margin = new System.Windows.Forms.Padding(0);
             this.number8.Name = "number8";
-            this.number8.Size = new System.Drawing.Size(69, 39);
+            this.number8.Size = new System.Drawing.Size(52, 32);
             this.number8.TabIndex = 113;
             this.number8.Text = "8";
             this.number8.UseVisualStyleBackColor = false;
@@ -2264,10 +2271,10 @@ namespace WindowsFormsApp4
             this.number3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.number3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.number3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.number3.Location = new System.Drawing.Point(1000, 164);
+            this.number3.Location = new System.Drawing.Point(750, 133);
             this.number3.Margin = new System.Windows.Forms.Padding(0);
             this.number3.Name = "number3";
-            this.number3.Size = new System.Drawing.Size(69, 39);
+            this.number3.Size = new System.Drawing.Size(52, 32);
             this.number3.TabIndex = 114;
             this.number3.Text = "3";
             this.number3.UseVisualStyleBackColor = false;
@@ -2281,10 +2288,10 @@ namespace WindowsFormsApp4
             this.number2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.number2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.number2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.number2.Location = new System.Drawing.Point(929, 164);
+            this.number2.Location = new System.Drawing.Point(697, 133);
             this.number2.Margin = new System.Windows.Forms.Padding(0);
             this.number2.Name = "number2";
-            this.number2.Size = new System.Drawing.Size(69, 39);
+            this.number2.Size = new System.Drawing.Size(52, 32);
             this.number2.TabIndex = 116;
             this.number2.Text = "2";
             this.number2.UseVisualStyleBackColor = false;
@@ -2298,10 +2305,10 @@ namespace WindowsFormsApp4
             this.number1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.number1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.number1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.number1.Location = new System.Drawing.Point(859, 164);
+            this.number1.Location = new System.Drawing.Point(644, 133);
             this.number1.Margin = new System.Windows.Forms.Padding(0);
             this.number1.Name = "number1";
-            this.number1.Size = new System.Drawing.Size(69, 39);
+            this.number1.Size = new System.Drawing.Size(52, 32);
             this.number1.TabIndex = 115;
             this.number1.Text = "1";
             this.number1.UseVisualStyleBackColor = false;
@@ -2315,10 +2322,10 @@ namespace WindowsFormsApp4
             this.number0.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.number0.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.number0.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.number0.Location = new System.Drawing.Point(787, 164);
+            this.number0.Location = new System.Drawing.Point(590, 133);
             this.number0.Margin = new System.Windows.Forms.Padding(0);
             this.number0.Name = "number0";
-            this.number0.Size = new System.Drawing.Size(69, 39);
+            this.number0.Size = new System.Drawing.Size(52, 32);
             this.number0.TabIndex = 117;
             this.number0.Text = "0";
             this.number0.UseVisualStyleBackColor = false;
@@ -2332,10 +2339,10 @@ namespace WindowsFormsApp4
             this.number4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.number4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.number4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.number4.Location = new System.Drawing.Point(1071, 164);
+            this.number4.Location = new System.Drawing.Point(803, 133);
             this.number4.Margin = new System.Windows.Forms.Padding(0);
             this.number4.Name = "number4";
-            this.number4.Size = new System.Drawing.Size(69, 39);
+            this.number4.Size = new System.Drawing.Size(52, 32);
             this.number4.TabIndex = 118;
             this.number4.Text = "4";
             this.number4.UseVisualStyleBackColor = false;
@@ -2349,10 +2356,10 @@ namespace WindowsFormsApp4
             this.number7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.number7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.number7.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.number7.Location = new System.Drawing.Point(929, 122);
+            this.number7.Location = new System.Drawing.Point(697, 99);
             this.number7.Margin = new System.Windows.Forms.Padding(0);
             this.number7.Name = "number7";
-            this.number7.Size = new System.Drawing.Size(69, 39);
+            this.number7.Size = new System.Drawing.Size(52, 32);
             this.number7.TabIndex = 121;
             this.number7.Text = "7";
             this.number7.UseVisualStyleBackColor = false;
@@ -2366,10 +2373,10 @@ namespace WindowsFormsApp4
             this.number6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.number6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.number6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.number6.Location = new System.Drawing.Point(859, 122);
+            this.number6.Location = new System.Drawing.Point(644, 99);
             this.number6.Margin = new System.Windows.Forms.Padding(0);
             this.number6.Name = "number6";
-            this.number6.Size = new System.Drawing.Size(69, 39);
+            this.number6.Size = new System.Drawing.Size(52, 32);
             this.number6.TabIndex = 120;
             this.number6.Text = "6";
             this.number6.UseVisualStyleBackColor = false;
@@ -2383,10 +2390,10 @@ namespace WindowsFormsApp4
             this.number5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.number5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.number5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.number5.Location = new System.Drawing.Point(787, 122);
+            this.number5.Location = new System.Drawing.Point(590, 99);
             this.number5.Margin = new System.Windows.Forms.Padding(0);
             this.number5.Name = "number5";
-            this.number5.Size = new System.Drawing.Size(69, 39);
+            this.number5.Size = new System.Drawing.Size(52, 32);
             this.number5.TabIndex = 119;
             this.number5.Text = "5";
             this.number5.UseVisualStyleBackColor = false;
@@ -2400,10 +2407,10 @@ namespace WindowsFormsApp4
             this.number9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.number9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.number9.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.number9.Location = new System.Drawing.Point(1071, 122);
+            this.number9.Location = new System.Drawing.Point(803, 99);
             this.number9.Margin = new System.Windows.Forms.Padding(0);
             this.number9.Name = "number9";
-            this.number9.Size = new System.Drawing.Size(69, 39);
+            this.number9.Size = new System.Drawing.Size(52, 32);
             this.number9.TabIndex = 122;
             this.number9.Text = "9";
             this.number9.UseVisualStyleBackColor = false;
@@ -2417,10 +2424,10 @@ namespace WindowsFormsApp4
             this.number_enter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.number_enter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.number_enter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.number_enter.Location = new System.Drawing.Point(1232, 149);
+            this.number_enter.Location = new System.Drawing.Point(924, 121);
             this.number_enter.Margin = new System.Windows.Forms.Padding(0);
             this.number_enter.Name = "number_enter";
-            this.number_enter.Size = new System.Drawing.Size(89, 55);
+            this.number_enter.Size = new System.Drawing.Size(67, 45);
             this.number_enter.TabIndex = 123;
             this.number_enter.Tag = "9999999";
             this.number_enter.Text = "Enter";
@@ -2436,10 +2443,10 @@ namespace WindowsFormsApp4
             this.number_point.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.number_point.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.number_point.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.number_point.Location = new System.Drawing.Point(1141, 177);
+            this.number_point.Location = new System.Drawing.Point(856, 144);
             this.number_point.Margin = new System.Windows.Forms.Padding(0);
             this.number_point.Name = "number_point";
-            this.number_point.Size = new System.Drawing.Size(89, 26);
+            this.number_point.Size = new System.Drawing.Size(67, 21);
             this.number_point.TabIndex = 124;
             this.number_point.Text = "o";
             this.number_point.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -2454,10 +2461,10 @@ namespace WindowsFormsApp4
             this.number_delete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.number_delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.number_delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.number_delete.Location = new System.Drawing.Point(1141, 149);
+            this.number_delete.Location = new System.Drawing.Point(856, 121);
             this.number_delete.Margin = new System.Windows.Forms.Padding(0);
             this.number_delete.Name = "number_delete";
-            this.number_delete.Size = new System.Drawing.Size(89, 26);
+            this.number_delete.Size = new System.Drawing.Size(67, 21);
             this.number_delete.TabIndex = 125;
             this.number_delete.Text = "Delete";
             this.number_delete.UseVisualStyleBackColor = false;
@@ -2470,10 +2477,10 @@ namespace WindowsFormsApp4
             this.open_nest.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.open_nest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.open_nest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.open_nest.Location = new System.Drawing.Point(1141, 122);
+            this.open_nest.Location = new System.Drawing.Point(856, 99);
             this.open_nest.Margin = new System.Windows.Forms.Padding(0);
             this.open_nest.Name = "open_nest";
-            this.open_nest.Size = new System.Drawing.Size(89, 26);
+            this.open_nest.Size = new System.Drawing.Size(67, 21);
             this.open_nest.TabIndex = 126;
             this.open_nest.Text = "Open";
             this.open_nest.UseVisualStyleBackColor = false;
@@ -2487,10 +2494,10 @@ namespace WindowsFormsApp4
             this.backspace.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.backspace.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.backspace.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.backspace.Location = new System.Drawing.Point(1232, 122);
+            this.backspace.Location = new System.Drawing.Point(924, 99);
             this.backspace.Margin = new System.Windows.Forms.Padding(0);
             this.backspace.Name = "backspace";
-            this.backspace.Size = new System.Drawing.Size(89, 26);
+            this.backspace.Size = new System.Drawing.Size(67, 21);
             this.backspace.TabIndex = 127;
             this.backspace.Text = "Backspace";
             this.backspace.UseVisualStyleBackColor = false;
@@ -2500,9 +2507,10 @@ namespace WindowsFormsApp4
             // 
             this.label7.BackColor = System.Drawing.Color.Maroon;
             this.label7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label7.Location = new System.Drawing.Point(1224, 5);
+            this.label7.Location = new System.Drawing.Point(918, 4);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(1, 54);
+            this.label7.Size = new System.Drawing.Size(1, 44);
             this.label7.TabIndex = 128;
             this.label7.Text = "label7";
             // 
@@ -2514,10 +2522,10 @@ namespace WindowsFormsApp4
             this.accept.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.accept.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.accept.ForeColor = System.Drawing.Color.Maroon;
-            this.accept.Location = new System.Drawing.Point(1086, 403);
-            this.accept.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.accept.Location = new System.Drawing.Point(814, 327);
+            this.accept.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.accept.Name = "accept";
-            this.accept.Size = new System.Drawing.Size(76, 29);
+            this.accept.Size = new System.Drawing.Size(57, 24);
             this.accept.TabIndex = 130;
             this.accept.Tag = "none";
             this.accept.Text = "Save";
@@ -2533,10 +2541,10 @@ namespace WindowsFormsApp4
             this.printbutton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.printbutton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.printbutton1.ForeColor = System.Drawing.Color.Maroon;
-            this.printbutton1.Location = new System.Drawing.Point(1010, 403);
-            this.printbutton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.printbutton1.Location = new System.Drawing.Point(758, 327);
+            this.printbutton1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.printbutton1.Name = "printbutton1";
-            this.printbutton1.Size = new System.Drawing.Size(76, 29);
+            this.printbutton1.Size = new System.Drawing.Size(57, 24);
             this.printbutton1.TabIndex = 131;
             this.printbutton1.Tag = "none";
             this.printbutton1.Text = "Print";
@@ -2552,10 +2560,10 @@ namespace WindowsFormsApp4
             this.printbutton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.printbutton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.printbutton2.ForeColor = System.Drawing.Color.Maroon;
-            this.printbutton2.Location = new System.Drawing.Point(934, 403);
-            this.printbutton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.printbutton2.Location = new System.Drawing.Point(700, 327);
+            this.printbutton2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.printbutton2.Name = "printbutton2";
-            this.printbutton2.Size = new System.Drawing.Size(76, 29);
+            this.printbutton2.Size = new System.Drawing.Size(57, 24);
             this.printbutton2.TabIndex = 132;
             this.printbutton2.Tag = "none";
             this.printbutton2.Text = "Preview";
@@ -2571,10 +2579,10 @@ namespace WindowsFormsApp4
             this.cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancel.ForeColor = System.Drawing.Color.Maroon;
-            this.cancel.Location = new System.Drawing.Point(854, 403);
-            this.cancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cancel.Location = new System.Drawing.Point(640, 327);
+            this.cancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cancel.Name = "cancel";
-            this.cancel.Size = new System.Drawing.Size(80, 29);
+            this.cancel.Size = new System.Drawing.Size(60, 24);
             this.cancel.TabIndex = 133;
             this.cancel.Tag = "none";
             this.cancel.Text = "Release";
@@ -2587,9 +2595,10 @@ namespace WindowsFormsApp4
             this.amount.BackColor = System.Drawing.Color.White;
             this.amount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.amount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.amount.Location = new System.Drawing.Point(1229, 404);
+            this.amount.Location = new System.Drawing.Point(922, 328);
+            this.amount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.amount.Name = "amount";
-            this.amount.Size = new System.Drawing.Size(91, 23);
+            this.amount.Size = new System.Drawing.Size(69, 19);
             this.amount.TabIndex = 134;
             this.amount.Text = "amount";
             this.amount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2599,9 +2608,10 @@ namespace WindowsFormsApp4
             this.service.BackColor = System.Drawing.Color.White;
             this.service.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.service.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.service.Location = new System.Drawing.Point(1229, 426);
+            this.service.Location = new System.Drawing.Point(922, 346);
+            this.service.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.service.Name = "service";
-            this.service.Size = new System.Drawing.Size(91, 23);
+            this.service.Size = new System.Drawing.Size(69, 19);
             this.service.TabIndex = 135;
             this.service.Tag = "";
             this.service.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2611,9 +2621,10 @@ namespace WindowsFormsApp4
             this.discount.BackColor = System.Drawing.Color.White;
             this.discount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.discount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.discount.Location = new System.Drawing.Point(1229, 448);
+            this.discount.Location = new System.Drawing.Point(922, 364);
+            this.discount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.discount.Name = "discount";
-            this.discount.Size = new System.Drawing.Size(91, 23);
+            this.discount.Size = new System.Drawing.Size(69, 19);
             this.discount.TabIndex = 136;
             this.discount.Tag = "";
             this.discount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2623,9 +2634,10 @@ namespace WindowsFormsApp4
             this.total.BackColor = System.Drawing.Color.White;
             this.total.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.total.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.total.Location = new System.Drawing.Point(1229, 492);
+            this.total.Location = new System.Drawing.Point(922, 400);
+            this.total.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.total.Name = "total";
-            this.total.Size = new System.Drawing.Size(91, 23);
+            this.total.Size = new System.Drawing.Size(69, 19);
             this.total.TabIndex = 137;
             this.total.Text = "total";
             this.total.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2634,9 +2646,10 @@ namespace WindowsFormsApp4
             // 
             this.label2.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(1170, 404);
+            this.label2.Location = new System.Drawing.Point(878, 328);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 23);
+            this.label2.Size = new System.Drawing.Size(44, 19);
             this.label2.TabIndex = 138;
             this.label2.Text = "Amount";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2645,9 +2658,10 @@ namespace WindowsFormsApp4
             // 
             this.label8.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(1189, 427);
+            this.label8.Location = new System.Drawing.Point(892, 347);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(40, 23);
+            this.label8.Size = new System.Drawing.Size(30, 19);
             this.label8.TabIndex = 139;
             this.label8.Text = "+";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2656,9 +2670,10 @@ namespace WindowsFormsApp4
             // 
             this.label9.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(1189, 448);
+            this.label9.Location = new System.Drawing.Point(892, 364);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(40, 23);
+            this.label9.Size = new System.Drawing.Size(30, 19);
             this.label9.TabIndex = 140;
             this.label9.Text = "-";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2667,9 +2682,10 @@ namespace WindowsFormsApp4
             // 
             this.label10.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(1186, 492);
+            this.label10.Location = new System.Drawing.Point(890, 400);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(42, 23);
+            this.label10.Size = new System.Drawing.Size(32, 19);
             this.label10.TabIndex = 141;
             this.label10.Text = "Total";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2683,10 +2699,10 @@ namespace WindowsFormsApp4
             this.tab62.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab62.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab62.ForeColor = System.Drawing.Color.Black;
-            this.tab62.Location = new System.Drawing.Point(319, 418);
+            this.tab62.Location = new System.Drawing.Point(239, 340);
             this.tab62.Margin = new System.Windows.Forms.Padding(0);
             this.tab62.Name = "tab62";
-            this.tab62.Size = new System.Drawing.Size(59, 39);
+            this.tab62.Size = new System.Drawing.Size(44, 32);
             this.tab62.TabIndex = 142;
             this.tab62.Text = "62";
             this.tab62.UseVisualStyleBackColor = false;
@@ -2697,9 +2713,10 @@ namespace WindowsFormsApp4
             // 
             this.label11.BackColor = System.Drawing.Color.Maroon;
             this.label11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label11.Location = new System.Drawing.Point(1167, 403);
+            this.label11.Location = new System.Drawing.Point(875, 327);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(1, 148);
+            this.label11.Size = new System.Drawing.Size(1, 120);
             this.label11.TabIndex = 175;
             this.label11.Text = "label11";
             // 
@@ -2711,10 +2728,10 @@ namespace WindowsFormsApp4
             this.addition10.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.addition10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addition10.ForeColor = System.Drawing.Color.Maroon;
-            this.addition10.Location = new System.Drawing.Point(1051, 503);
-            this.addition10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.addition10.Location = new System.Drawing.Point(788, 409);
+            this.addition10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.addition10.Name = "addition10";
-            this.addition10.Size = new System.Drawing.Size(113, 23);
+            this.addition10.Size = new System.Drawing.Size(85, 19);
             this.addition10.TabIndex = 153;
             this.addition10.Text = "button22";
             this.addition10.UseVisualStyleBackColor = false;
@@ -2728,10 +2745,10 @@ namespace WindowsFormsApp4
             this.addition6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.addition6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addition6.ForeColor = System.Drawing.Color.Maroon;
-            this.addition6.Location = new System.Drawing.Point(592, 503);
-            this.addition6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.addition6.Location = new System.Drawing.Point(444, 409);
+            this.addition6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.addition6.Name = "addition6";
-            this.addition6.Size = new System.Drawing.Size(113, 23);
+            this.addition6.Size = new System.Drawing.Size(85, 19);
             this.addition6.TabIndex = 152;
             this.addition6.Text = "button23";
             this.addition6.UseVisualStyleBackColor = false;
@@ -2745,10 +2762,10 @@ namespace WindowsFormsApp4
             this.addition7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.addition7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addition7.ForeColor = System.Drawing.Color.Maroon;
-            this.addition7.Location = new System.Drawing.Point(707, 503);
-            this.addition7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.addition7.Location = new System.Drawing.Point(530, 409);
+            this.addition7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.addition7.Name = "addition7";
-            this.addition7.Size = new System.Drawing.Size(113, 23);
+            this.addition7.Size = new System.Drawing.Size(85, 19);
             this.addition7.TabIndex = 151;
             this.addition7.Text = "button24";
             this.addition7.UseVisualStyleBackColor = false;
@@ -2762,10 +2779,10 @@ namespace WindowsFormsApp4
             this.addition8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.addition8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addition8.ForeColor = System.Drawing.Color.Maroon;
-            this.addition8.Location = new System.Drawing.Point(821, 503);
-            this.addition8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.addition8.Location = new System.Drawing.Point(616, 409);
+            this.addition8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.addition8.Name = "addition8";
-            this.addition8.Size = new System.Drawing.Size(113, 23);
+            this.addition8.Size = new System.Drawing.Size(85, 19);
             this.addition8.TabIndex = 150;
             this.addition8.Text = "button25";
             this.addition8.UseVisualStyleBackColor = false;
@@ -2779,10 +2796,10 @@ namespace WindowsFormsApp4
             this.addition9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.addition9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addition9.ForeColor = System.Drawing.Color.Maroon;
-            this.addition9.Location = new System.Drawing.Point(936, 503);
-            this.addition9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.addition9.Location = new System.Drawing.Point(702, 409);
+            this.addition9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.addition9.Name = "addition9";
-            this.addition9.Size = new System.Drawing.Size(113, 23);
+            this.addition9.Size = new System.Drawing.Size(85, 19);
             this.addition9.TabIndex = 149;
             this.addition9.Text = "button26";
             this.addition9.UseVisualStyleBackColor = false;
@@ -2796,10 +2813,10 @@ namespace WindowsFormsApp4
             this.addition5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.addition5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addition5.ForeColor = System.Drawing.Color.Maroon;
-            this.addition5.Location = new System.Drawing.Point(477, 503);
-            this.addition5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.addition5.Location = new System.Drawing.Point(358, 409);
+            this.addition5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.addition5.Name = "addition5";
-            this.addition5.Size = new System.Drawing.Size(113, 23);
+            this.addition5.Size = new System.Drawing.Size(85, 19);
             this.addition5.TabIndex = 148;
             this.addition5.Text = "button3";
             this.addition5.UseVisualStyleBackColor = false;
@@ -2813,10 +2830,10 @@ namespace WindowsFormsApp4
             this.addition3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.addition3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addition3.ForeColor = System.Drawing.Color.Maroon;
-            this.addition3.Location = new System.Drawing.Point(248, 503);
-            this.addition3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.addition3.Location = new System.Drawing.Point(186, 409);
+            this.addition3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.addition3.Name = "addition3";
-            this.addition3.Size = new System.Drawing.Size(113, 23);
+            this.addition3.Size = new System.Drawing.Size(85, 19);
             this.addition3.TabIndex = 147;
             this.addition3.Text = "button28";
             this.addition3.UseVisualStyleBackColor = false;
@@ -2831,10 +2848,10 @@ namespace WindowsFormsApp4
             this.addition4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.addition4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addition4.ForeColor = System.Drawing.Color.Maroon;
-            this.addition4.Location = new System.Drawing.Point(363, 503);
-            this.addition4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.addition4.Location = new System.Drawing.Point(272, 409);
+            this.addition4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.addition4.Name = "addition4";
-            this.addition4.Size = new System.Drawing.Size(113, 23);
+            this.addition4.Size = new System.Drawing.Size(85, 19);
             this.addition4.TabIndex = 146;
             this.addition4.Text = "button29";
             this.addition4.UseVisualStyleBackColor = false;
@@ -2849,10 +2866,10 @@ namespace WindowsFormsApp4
             this.addition1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.addition1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addition1.ForeColor = System.Drawing.Color.Maroon;
-            this.addition1.Location = new System.Drawing.Point(19, 503);
-            this.addition1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.addition1.Location = new System.Drawing.Point(14, 409);
+            this.addition1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.addition1.Name = "addition1";
-            this.addition1.Size = new System.Drawing.Size(113, 23);
+            this.addition1.Size = new System.Drawing.Size(85, 19);
             this.addition1.TabIndex = 145;
             this.addition1.Text = "button30";
             this.addition1.UseVisualStyleBackColor = false;
@@ -2867,10 +2884,10 @@ namespace WindowsFormsApp4
             this.addition2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.addition2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addition2.ForeColor = System.Drawing.Color.Maroon;
-            this.addition2.Location = new System.Drawing.Point(133, 503);
-            this.addition2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.addition2.Location = new System.Drawing.Point(100, 409);
+            this.addition2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.addition2.Name = "addition2";
-            this.addition2.Size = new System.Drawing.Size(113, 23);
+            this.addition2.Size = new System.Drawing.Size(85, 19);
             this.addition2.TabIndex = 176;
             this.addition2.Text = "button11";
             this.addition2.UseVisualStyleBackColor = false;
@@ -2885,10 +2902,10 @@ namespace WindowsFormsApp4
             this.addition12.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.addition12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addition12.ForeColor = System.Drawing.Color.Maroon;
-            this.addition12.Location = new System.Drawing.Point(133, 528);
-            this.addition12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.addition12.Location = new System.Drawing.Point(100, 429);
+            this.addition12.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.addition12.Name = "addition12";
-            this.addition12.Size = new System.Drawing.Size(113, 23);
+            this.addition12.Size = new System.Drawing.Size(85, 19);
             this.addition12.TabIndex = 186;
             this.addition12.Text = "button11";
             this.addition12.UseVisualStyleBackColor = false;
@@ -2902,10 +2919,10 @@ namespace WindowsFormsApp4
             this.addition20.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.addition20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addition20.ForeColor = System.Drawing.Color.Maroon;
-            this.addition20.Location = new System.Drawing.Point(1051, 528);
-            this.addition20.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.addition20.Location = new System.Drawing.Point(788, 429);
+            this.addition20.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.addition20.Name = "addition20";
-            this.addition20.Size = new System.Drawing.Size(113, 23);
+            this.addition20.Size = new System.Drawing.Size(85, 19);
             this.addition20.TabIndex = 185;
             this.addition20.Text = "button22";
             this.addition20.UseVisualStyleBackColor = false;
@@ -2919,10 +2936,10 @@ namespace WindowsFormsApp4
             this.addition16.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.addition16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addition16.ForeColor = System.Drawing.Color.Maroon;
-            this.addition16.Location = new System.Drawing.Point(592, 528);
-            this.addition16.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.addition16.Location = new System.Drawing.Point(444, 429);
+            this.addition16.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.addition16.Name = "addition16";
-            this.addition16.Size = new System.Drawing.Size(113, 23);
+            this.addition16.Size = new System.Drawing.Size(85, 19);
             this.addition16.TabIndex = 184;
             this.addition16.Text = "button23";
             this.addition16.UseVisualStyleBackColor = false;
@@ -2936,10 +2953,10 @@ namespace WindowsFormsApp4
             this.addition17.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.addition17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addition17.ForeColor = System.Drawing.Color.Maroon;
-            this.addition17.Location = new System.Drawing.Point(707, 528);
-            this.addition17.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.addition17.Location = new System.Drawing.Point(530, 429);
+            this.addition17.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.addition17.Name = "addition17";
-            this.addition17.Size = new System.Drawing.Size(113, 23);
+            this.addition17.Size = new System.Drawing.Size(85, 19);
             this.addition17.TabIndex = 183;
             this.addition17.Text = "button24";
             this.addition17.UseVisualStyleBackColor = false;
@@ -2953,10 +2970,10 @@ namespace WindowsFormsApp4
             this.addition18.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.addition18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addition18.ForeColor = System.Drawing.Color.Maroon;
-            this.addition18.Location = new System.Drawing.Point(821, 528);
-            this.addition18.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.addition18.Location = new System.Drawing.Point(616, 429);
+            this.addition18.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.addition18.Name = "addition18";
-            this.addition18.Size = new System.Drawing.Size(113, 23);
+            this.addition18.Size = new System.Drawing.Size(85, 19);
             this.addition18.TabIndex = 182;
             this.addition18.Text = "button25";
             this.addition18.UseVisualStyleBackColor = false;
@@ -2970,10 +2987,10 @@ namespace WindowsFormsApp4
             this.addition19.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.addition19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addition19.ForeColor = System.Drawing.Color.Maroon;
-            this.addition19.Location = new System.Drawing.Point(936, 528);
-            this.addition19.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.addition19.Location = new System.Drawing.Point(702, 429);
+            this.addition19.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.addition19.Name = "addition19";
-            this.addition19.Size = new System.Drawing.Size(113, 23);
+            this.addition19.Size = new System.Drawing.Size(85, 19);
             this.addition19.TabIndex = 181;
             this.addition19.Text = "button26";
             this.addition19.UseVisualStyleBackColor = false;
@@ -2987,10 +3004,10 @@ namespace WindowsFormsApp4
             this.addition15.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.addition15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addition15.ForeColor = System.Drawing.Color.Maroon;
-            this.addition15.Location = new System.Drawing.Point(477, 528);
-            this.addition15.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.addition15.Location = new System.Drawing.Point(358, 429);
+            this.addition15.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.addition15.Name = "addition15";
-            this.addition15.Size = new System.Drawing.Size(113, 23);
+            this.addition15.Size = new System.Drawing.Size(85, 19);
             this.addition15.TabIndex = 180;
             this.addition15.Text = "button3";
             this.addition15.UseVisualStyleBackColor = false;
@@ -3004,10 +3021,10 @@ namespace WindowsFormsApp4
             this.addition13.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.addition13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addition13.ForeColor = System.Drawing.Color.Maroon;
-            this.addition13.Location = new System.Drawing.Point(248, 528);
-            this.addition13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.addition13.Location = new System.Drawing.Point(186, 429);
+            this.addition13.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.addition13.Name = "addition13";
-            this.addition13.Size = new System.Drawing.Size(113, 23);
+            this.addition13.Size = new System.Drawing.Size(85, 19);
             this.addition13.TabIndex = 179;
             this.addition13.Text = "button28";
             this.addition13.UseVisualStyleBackColor = false;
@@ -3022,10 +3039,10 @@ namespace WindowsFormsApp4
             this.addition14.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.addition14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addition14.ForeColor = System.Drawing.Color.Maroon;
-            this.addition14.Location = new System.Drawing.Point(363, 528);
-            this.addition14.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.addition14.Location = new System.Drawing.Point(272, 429);
+            this.addition14.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.addition14.Name = "addition14";
-            this.addition14.Size = new System.Drawing.Size(113, 23);
+            this.addition14.Size = new System.Drawing.Size(85, 19);
             this.addition14.TabIndex = 178;
             this.addition14.Text = "button29";
             this.addition14.UseVisualStyleBackColor = false;
@@ -3040,10 +3057,10 @@ namespace WindowsFormsApp4
             this.addition11.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.addition11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addition11.ForeColor = System.Drawing.Color.Maroon;
-            this.addition11.Location = new System.Drawing.Point(19, 528);
-            this.addition11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.addition11.Location = new System.Drawing.Point(14, 429);
+            this.addition11.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.addition11.Name = "addition11";
-            this.addition11.Size = new System.Drawing.Size(113, 23);
+            this.addition11.Size = new System.Drawing.Size(85, 19);
             this.addition11.TabIndex = 177;
             this.addition11.Text = "button30";
             this.addition11.UseVisualStyleBackColor = false;
@@ -3051,9 +3068,10 @@ namespace WindowsFormsApp4
             // 
             // DepartmentClick
             // 
-            this.DepartmentClick.Location = new System.Drawing.Point(1004, 436);
+            this.DepartmentClick.Location = new System.Drawing.Point(753, 354);
+            this.DepartmentClick.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.DepartmentClick.Name = "DepartmentClick";
-            this.DepartmentClick.Size = new System.Drawing.Size(75, 23);
+            this.DepartmentClick.Size = new System.Drawing.Size(56, 19);
             this.DepartmentClick.TabIndex = 187;
             this.DepartmentClick.Tag = "1";
             this.DepartmentClick.Text = "DepartmentClick";
@@ -3068,10 +3086,10 @@ namespace WindowsFormsApp4
             this.GroupClick.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Green;
             this.GroupClick.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.GroupClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.GroupClick.Location = new System.Drawing.Point(1086, 459);
-            this.GroupClick.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.GroupClick.Location = new System.Drawing.Point(814, 373);
+            this.GroupClick.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GroupClick.Name = "GroupClick";
-            this.GroupClick.Size = new System.Drawing.Size(72, 23);
+            this.GroupClick.Size = new System.Drawing.Size(54, 19);
             this.GroupClick.TabIndex = 189;
             this.GroupClick.Tag = "1";
             this.GroupClick.Text = "GroupClick";
@@ -3086,10 +3104,10 @@ namespace WindowsFormsApp4
             this.AdditionClick.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Green;
             this.AdditionClick.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.AdditionClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AdditionClick.Location = new System.Drawing.Point(1006, 459);
-            this.AdditionClick.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.AdditionClick.Location = new System.Drawing.Point(754, 373);
+            this.AdditionClick.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AdditionClick.Name = "AdditionClick";
-            this.AdditionClick.Size = new System.Drawing.Size(72, 23);
+            this.AdditionClick.Size = new System.Drawing.Size(54, 19);
             this.AdditionClick.TabIndex = 191;
             this.AdditionClick.Tag = "1";
             this.AdditionClick.Text = "AdditionClick";
@@ -3106,14 +3124,14 @@ namespace WindowsFormsApp4
             this.dataGridView3.ColumnHeadersHeight = 4;
             this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn5});
-            this.dataGridView3.Location = new System.Drawing.Point(2, 94);
+            this.dataGridView3.Location = new System.Drawing.Point(2, 76);
             this.dataGridView3.Margin = new System.Windows.Forms.Padding(0);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.ReadOnly = true;
             this.dataGridView3.RowHeadersWidth = 8;
             this.dataGridView3.RowTemplate.Height = 30;
             this.dataGridView3.RowTemplate.ReadOnly = true;
-            this.dataGridView3.Size = new System.Drawing.Size(31, 362);
+            this.dataGridView3.Size = new System.Drawing.Size(23, 294);
             this.dataGridView3.TabIndex = 192;
             this.dataGridView3.Tag = "-1";
             this.dataGridView3.Visible = false;
@@ -3135,9 +3153,10 @@ namespace WindowsFormsApp4
             this.label13.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.label13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(1170, 522);
+            this.label13.Location = new System.Drawing.Point(878, 424);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(60, 23);
+            this.label13.Size = new System.Drawing.Size(45, 19);
             this.label13.TabIndex = 196;
             this.label13.Text = "Tipmoney";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -3151,14 +3170,14 @@ namespace WindowsFormsApp4
             this.dataGridViewTextBoxColumn,
             this.Column2});
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridView1.Location = new System.Drawing.Point(442, 91);
+            this.dataGridView1.Location = new System.Drawing.Point(332, 74);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 8;
             this.dataGridView1.RowTemplate.Height = 30;
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView1.Size = new System.Drawing.Size(341, 407);
+            this.dataGridView1.Size = new System.Drawing.Size(256, 331);
             this.dataGridView1.TabIndex = 199;
             this.dataGridView1.Tag = "inorder";
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
@@ -3193,10 +3212,10 @@ namespace WindowsFormsApp4
             // 
             // ShtrichCode
             // 
-            this.ShtrichCode.Location = new System.Drawing.Point(790, 94);
-            this.ShtrichCode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ShtrichCode.Location = new System.Drawing.Point(592, 76);
+            this.ShtrichCode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ShtrichCode.Name = "ShtrichCode";
-            this.ShtrichCode.Size = new System.Drawing.Size(220, 22);
+            this.ShtrichCode.Size = new System.Drawing.Size(166, 20);
             this.ShtrichCode.TabIndex = 200;
             this.ShtrichCode.Text = "barcode";
             this.ShtrichCode.Enter += new System.EventHandler(this.ShtrichCode_Enter);
@@ -3205,9 +3224,10 @@ namespace WindowsFormsApp4
             // label12
             // 
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(1157, 69);
+            this.label12.Location = new System.Drawing.Point(868, 56);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(67, 23);
+            this.label12.Size = new System.Drawing.Size(50, 19);
             this.label12.TabIndex = 204;
             this.label12.Text = "Session";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -3216,9 +3236,10 @@ namespace WindowsFormsApp4
             // 
             this.Seans.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Seans.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Seans.Location = new System.Drawing.Point(1163, 95);
+            this.Seans.Location = new System.Drawing.Point(872, 77);
+            this.Seans.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Seans.Name = "Seans";
-            this.Seans.Size = new System.Drawing.Size(55, 20);
+            this.Seans.Size = new System.Drawing.Size(42, 17);
             this.Seans.TabIndex = 203;
             this.Seans.Text = "Seans";
             this.Seans.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -3232,9 +3253,10 @@ namespace WindowsFormsApp4
             this.panel1.Controls.Add(this.numericUpDown1);
             this.panel1.Controls.Add(this.PartnersComboBox);
             this.panel1.Controls.Add(this.label14);
-            this.panel1.Location = new System.Drawing.Point(1227, 4);
+            this.panel1.Location = new System.Drawing.Point(920, 3);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(99, 116);
+            this.panel1.Size = new System.Drawing.Size(74, 94);
             this.panel1.TabIndex = 205;
             // 
             // numericUpDown2
@@ -3242,7 +3264,8 @@ namespace WindowsFormsApp4
             this.numericUpDown2.BackColor = System.Drawing.Color.White;
             this.numericUpDown2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDown2.ForeColor = System.Drawing.Color.Black;
-            this.numericUpDown2.Location = new System.Drawing.Point(46, 50);
+            this.numericUpDown2.Location = new System.Drawing.Point(34, 41);
+            this.numericUpDown2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -3254,7 +3277,7 @@ namespace WindowsFormsApp4
             0,
             0});
             this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(49, 30);
+            this.numericUpDown2.Size = new System.Drawing.Size(37, 26);
             this.numericUpDown2.TabIndex = 239;
             this.numericUpDown2.Tag = "";
             this.numericUpDown2.Value = new decimal(new int[] {
@@ -3269,9 +3292,10 @@ namespace WindowsFormsApp4
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.White;
-            this.label16.Location = new System.Drawing.Point(7, 54);
+            this.label16.Location = new System.Drawing.Point(5, 44);
+            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(37, 18);
+            this.label16.Size = new System.Drawing.Size(31, 15);
             this.label16.TabIndex = 238;
             this.label16.Text = "pers";
             // 
@@ -3280,9 +3304,10 @@ namespace WindowsFormsApp4
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(2, 88);
+            this.label15.Location = new System.Drawing.Point(2, 72);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(43, 18);
+            this.label15.Size = new System.Drawing.Size(38, 15);
             this.label15.TabIndex = 237;
             this.label15.Text = "guide";
             // 
@@ -3291,14 +3316,15 @@ namespace WindowsFormsApp4
             this.numericUpDown1.BackColor = System.Drawing.Color.White;
             this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDown1.ForeColor = System.Drawing.Color.Black;
-            this.numericUpDown1.Location = new System.Drawing.Point(45, 82);
+            this.numericUpDown1.Location = new System.Drawing.Point(34, 67);
+            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             10,
             0,
             0,
             0});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(49, 30);
+            this.numericUpDown1.Size = new System.Drawing.Size(37, 26);
             this.numericUpDown1.TabIndex = 236;
             this.numericUpDown1.Tag = "";
             this.numericUpDown1.Enter += new System.EventHandler(this.numericUpDown1_Enter);
@@ -3361,9 +3387,10 @@ namespace WindowsFormsApp4
             "48",
             "49",
             "50"});
-            this.PartnersComboBox.Location = new System.Drawing.Point(10, 20);
+            this.PartnersComboBox.Location = new System.Drawing.Point(8, 16);
+            this.PartnersComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PartnersComboBox.Name = "PartnersComboBox";
-            this.PartnersComboBox.Size = new System.Drawing.Size(83, 26);
+            this.PartnersComboBox.Size = new System.Drawing.Size(63, 23);
             this.PartnersComboBox.TabIndex = 235;
             this.PartnersComboBox.SelectedValueChanged += new System.EventHandler(this.PartnersComboBox_SelectedValueChanged);
             // 
@@ -3373,8 +3400,9 @@ namespace WindowsFormsApp4
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.White;
             this.label14.Location = new System.Drawing.Point(2, 1);
+            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(69, 18);
+            this.label14.Size = new System.Drawing.Size(57, 15);
             this.label14.TabIndex = 234;
             this.label14.Text = "Order N#";
             // 
@@ -3383,9 +3411,10 @@ namespace WindowsFormsApp4
             this.gid.BackColor = System.Drawing.Color.White;
             this.gid.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.gid.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gid.Location = new System.Drawing.Point(1229, 470);
+            this.gid.Location = new System.Drawing.Point(922, 382);
+            this.gid.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.gid.Name = "gid";
-            this.gid.Size = new System.Drawing.Size(91, 23);
+            this.gid.Size = new System.Drawing.Size(69, 19);
             this.gid.TabIndex = 206;
             this.gid.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.gid.Visible = false;
@@ -3399,10 +3428,10 @@ namespace WindowsFormsApp4
             this.tab69.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab69.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab69.ForeColor = System.Drawing.Color.Black;
-            this.tab69.Location = new System.Drawing.Point(319, 459);
+            this.tab69.Location = new System.Drawing.Point(239, 373);
             this.tab69.Margin = new System.Windows.Forms.Padding(0);
             this.tab69.Name = "tab69";
-            this.tab69.Size = new System.Drawing.Size(59, 39);
+            this.tab69.Size = new System.Drawing.Size(44, 32);
             this.tab69.TabIndex = 213;
             this.tab69.Text = "X";
             this.tab69.UseVisualStyleBackColor = false;
@@ -3417,10 +3446,10 @@ namespace WindowsFormsApp4
             this.tab70.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab70.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab70.ForeColor = System.Drawing.Color.Black;
-            this.tab70.Location = new System.Drawing.Point(379, 459);
+            this.tab70.Location = new System.Drawing.Point(284, 373);
             this.tab70.Margin = new System.Windows.Forms.Padding(0);
             this.tab70.Name = "tab70";
-            this.tab70.Size = new System.Drawing.Size(60, 39);
+            this.tab70.Size = new System.Drawing.Size(45, 32);
             this.tab70.TabIndex = 212;
             this.tab70.Text = "=>";
             this.tab70.UseVisualStyleBackColor = false;
@@ -3435,10 +3464,10 @@ namespace WindowsFormsApp4
             this.tab68.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab68.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab68.ForeColor = System.Drawing.Color.Black;
-            this.tab68.Location = new System.Drawing.Point(256, 459);
+            this.tab68.Location = new System.Drawing.Point(192, 373);
             this.tab68.Margin = new System.Windows.Forms.Padding(0);
             this.tab68.Name = "tab68";
-            this.tab68.Size = new System.Drawing.Size(60, 39);
+            this.tab68.Size = new System.Drawing.Size(45, 32);
             this.tab68.TabIndex = 211;
             this.tab68.Text = "68";
             this.tab68.UseVisualStyleBackColor = false;
@@ -3454,10 +3483,10 @@ namespace WindowsFormsApp4
             this.tab67.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab67.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab67.ForeColor = System.Drawing.Color.Black;
-            this.tab67.Location = new System.Drawing.Point(195, 459);
+            this.tab67.Location = new System.Drawing.Point(146, 373);
             this.tab67.Margin = new System.Windows.Forms.Padding(0);
             this.tab67.Name = "tab67";
-            this.tab67.Size = new System.Drawing.Size(60, 39);
+            this.tab67.Size = new System.Drawing.Size(45, 32);
             this.tab67.TabIndex = 210;
             this.tab67.Text = "67";
             this.tab67.UseVisualStyleBackColor = false;
@@ -3473,10 +3502,10 @@ namespace WindowsFormsApp4
             this.tab66.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab66.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab66.ForeColor = System.Drawing.Color.Black;
-            this.tab66.Location = new System.Drawing.Point(133, 459);
+            this.tab66.Location = new System.Drawing.Point(100, 373);
             this.tab66.Margin = new System.Windows.Forms.Padding(0);
             this.tab66.Name = "tab66";
-            this.tab66.Size = new System.Drawing.Size(60, 39);
+            this.tab66.Size = new System.Drawing.Size(45, 32);
             this.tab66.TabIndex = 209;
             this.tab66.Text = "66";
             this.tab66.UseVisualStyleBackColor = false;
@@ -3492,10 +3521,10 @@ namespace WindowsFormsApp4
             this.tab65.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab65.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab65.ForeColor = System.Drawing.Color.Black;
-            this.tab65.Location = new System.Drawing.Point(72, 459);
+            this.tab65.Location = new System.Drawing.Point(54, 373);
             this.tab65.Margin = new System.Windows.Forms.Padding(0);
             this.tab65.Name = "tab65";
-            this.tab65.Size = new System.Drawing.Size(60, 39);
+            this.tab65.Size = new System.Drawing.Size(45, 32);
             this.tab65.TabIndex = 208;
             this.tab65.Text = "65";
             this.tab65.UseVisualStyleBackColor = false;
@@ -3511,10 +3540,10 @@ namespace WindowsFormsApp4
             this.tab64.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tab64.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab64.ForeColor = System.Drawing.Color.Black;
-            this.tab64.Location = new System.Drawing.Point(11, 459);
+            this.tab64.Location = new System.Drawing.Point(8, 373);
             this.tab64.Margin = new System.Windows.Forms.Padding(0);
             this.tab64.Name = "tab64";
-            this.tab64.Size = new System.Drawing.Size(60, 39);
+            this.tab64.Size = new System.Drawing.Size(45, 32);
             this.tab64.TabIndex = 207;
             this.tab64.Text = "64";
             this.tab64.UseVisualStyleBackColor = false;
@@ -3525,9 +3554,10 @@ namespace WindowsFormsApp4
             // 
             this.label18.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(1187, 470);
+            this.label18.Location = new System.Drawing.Point(890, 382);
+            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(40, 23);
+            this.label18.Size = new System.Drawing.Size(30, 19);
             this.label18.TabIndex = 214;
             this.label18.Text = "-Gid";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -3537,9 +3567,10 @@ namespace WindowsFormsApp4
             this.legend.BackColor = System.Drawing.Color.NavajoWhite;
             this.legend.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.legend.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.legend.Location = new System.Drawing.Point(806, 467);
+            this.legend.Location = new System.Drawing.Point(604, 379);
+            this.legend.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.legend.Name = "legend";
-            this.legend.Size = new System.Drawing.Size(91, 23);
+            this.legend.Size = new System.Drawing.Size(69, 19);
             this.legend.TabIndex = 215;
             this.legend.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.legend.Visible = false;
@@ -3552,10 +3583,10 @@ namespace WindowsFormsApp4
             this.cancel2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancel2.ForeColor = System.Drawing.Color.Maroon;
-            this.cancel2.Location = new System.Drawing.Point(854, 433);
-            this.cancel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cancel2.Location = new System.Drawing.Point(640, 352);
+            this.cancel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cancel2.Name = "cancel2";
-            this.cancel2.Size = new System.Drawing.Size(80, 29);
+            this.cancel2.Size = new System.Drawing.Size(60, 24);
             this.cancel2.TabIndex = 216;
             this.cancel2.Tag = "none";
             this.cancel2.Text = "release";
@@ -3568,14 +3599,15 @@ namespace WindowsFormsApp4
             this.numericUpDown3.BackColor = System.Drawing.Color.White;
             this.numericUpDown3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDown3.ForeColor = System.Drawing.Color.Black;
-            this.numericUpDown3.Location = new System.Drawing.Point(1019, 63);
+            this.numericUpDown3.Location = new System.Drawing.Point(764, 51);
+            this.numericUpDown3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.numericUpDown3.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
             this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(78, 30);
+            this.numericUpDown3.Size = new System.Drawing.Size(58, 26);
             this.numericUpDown3.TabIndex = 241;
             this.numericUpDown3.Tag = "";
             this.numericUpDown3.Value = new decimal(new int[] {
@@ -3590,9 +3622,10 @@ namespace WindowsFormsApp4
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.White;
-            this.label17.Location = new System.Drawing.Point(981, 67);
+            this.label17.Location = new System.Drawing.Point(736, 54);
+            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(41, 18);
+            this.label17.Size = new System.Drawing.Size(34, 15);
             this.label17.TabIndex = 240;
             this.label17.Text = "pers.";
             // 
@@ -3605,10 +3638,10 @@ namespace WindowsFormsApp4
             this.department5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.department5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.department5.ForeColor = System.Drawing.Color.Maroon;
-            this.department5.Location = new System.Drawing.Point(353, 62);
+            this.department5.Location = new System.Drawing.Point(265, 50);
             this.department5.Margin = new System.Windows.Forms.Padding(0);
             this.department5.Name = "department5";
-            this.department5.Size = new System.Drawing.Size(82, 25);
+            this.department5.Size = new System.Drawing.Size(62, 20);
             this.department5.TabIndex = 190;
             this.department5.Text = "dep5";
             this.department5.UseVisualStyleBackColor = false;
@@ -3617,13 +3650,14 @@ namespace WindowsFormsApp4
             // 
             // HelpButton
             // 
-            this.HelpButton.BackColor = System.Drawing.Color.Orange;
+            this.HelpButton.BackColor = System.Drawing.Color.Peru;
             this.HelpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.HelpButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HelpButton.ForeColor = System.Drawing.Color.White;
-            this.HelpButton.Location = new System.Drawing.Point(787, 403);
+            this.HelpButton.Location = new System.Drawing.Point(590, 327);
+            this.HelpButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.HelpButton.Name = "HelpButton";
-            this.HelpButton.Size = new System.Drawing.Size(35, 31);
+            this.HelpButton.Size = new System.Drawing.Size(26, 25);
             this.HelpButton.TabIndex = 242;
             this.HelpButton.Text = "?";
             this.HelpButton.UseVisualStyleBackColor = false;
@@ -3631,11 +3665,11 @@ namespace WindowsFormsApp4
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Font = new System.Drawing.Font("Arial Unicode", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.Location = new System.Drawing.Point(738, 464);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(20, 3, 3, 3);
+            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox1.Location = new System.Drawing.Point(554, 377);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(15, 2, 2, 2);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(29, 26);
+            this.richTextBox1.Size = new System.Drawing.Size(23, 22);
             this.richTextBox1.TabIndex = 243;
             this.richTextBox1.Text = "";
             this.richTextBox1.Visible = false;
@@ -3645,11 +3679,11 @@ namespace WindowsFormsApp4
             this.TipMoney.BackColor = System.Drawing.Color.WhiteSmoke;
             this.TipMoney.Enabled = false;
             this.TipMoney.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TipMoney.Location = new System.Drawing.Point(1229, 520);
-            this.TipMoney.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TipMoney.Location = new System.Drawing.Point(922, 422);
+            this.TipMoney.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.TipMoney.Multiline = true;
             this.TipMoney.Name = "TipMoney";
-            this.TipMoney.Size = new System.Drawing.Size(91, 25);
+            this.TipMoney.Size = new System.Drawing.Size(69, 21);
             this.TipMoney.TabIndex = 244;
             this.TipMoney.Enter += new System.EventHandler(this.TipMoney_Enter);
             this.TipMoney.Leave += new System.EventHandler(this.TipMoney_Leave);
@@ -3658,40 +3692,45 @@ namespace WindowsFormsApp4
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.panel2.Location = new System.Drawing.Point(-1, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1226, 56);
+            this.panel2.Size = new System.Drawing.Size(920, 46);
             this.panel2.TabIndex = 245;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.panel3.Location = new System.Drawing.Point(2, 61);
+            this.panel3.Location = new System.Drawing.Point(2, 50);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(437, 30);
+            this.panel3.Size = new System.Drawing.Size(328, 24);
             this.panel3.TabIndex = 246;
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.RosyBrown;
-            this.panel4.Location = new System.Drawing.Point(438, 59);
+            this.panel4.Location = new System.Drawing.Point(328, 48);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(347, 31);
+            this.panel4.Size = new System.Drawing.Size(260, 25);
             this.panel4.TabIndex = 247;
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.panel5.Location = new System.Drawing.Point(-1, 501);
+            this.panel5.Location = new System.Drawing.Point(-1, 407);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1169, 50);
+            this.panel5.Size = new System.Drawing.Size(877, 41);
             this.panel5.TabIndex = 247;
             // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.panel6.Location = new System.Drawing.Point(1168, 400);
+            this.panel6.Location = new System.Drawing.Point(876, 325);
+            this.panel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(158, 151);
+            this.panel6.Size = new System.Drawing.Size(118, 123);
             this.panel6.TabIndex = 248;
             // 
             // remove
@@ -3702,10 +3741,10 @@ namespace WindowsFormsApp4
             this.remove.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.remove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.remove.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.remove.Location = new System.Drawing.Point(691, 65);
-            this.remove.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.remove.Location = new System.Drawing.Point(518, 53);
+            this.remove.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.remove.Name = "remove";
-            this.remove.Size = new System.Drawing.Size(85, 25);
+            this.remove.Size = new System.Drawing.Size(64, 20);
             this.remove.TabIndex = 52;
             this.remove.Text = "move";
             this.remove.UseVisualStyleBackColor = false;
@@ -3716,10 +3755,10 @@ namespace WindowsFormsApp4
             // 
             this.radioButton1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.radioButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.radioButton1.Location = new System.Drawing.Point(451, 67);
-            this.radioButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.radioButton1.Location = new System.Drawing.Point(338, 54);
+            this.radioButton1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(77, 19);
+            this.radioButton1.Size = new System.Drawing.Size(58, 15);
             this.radioButton1.TabIndex = 53;
             this.radioButton1.TabStop = true;
             this.radioButton1.Tag = "0";
@@ -3731,10 +3770,10 @@ namespace WindowsFormsApp4
             // 
             this.radioButton2.BackColor = System.Drawing.Color.Yellow;
             this.radioButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.radioButton2.Location = new System.Drawing.Point(537, 67);
-            this.radioButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.radioButton2.Location = new System.Drawing.Point(403, 54);
+            this.radioButton2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(63, 18);
+            this.radioButton2.Size = new System.Drawing.Size(47, 15);
             this.radioButton2.TabIndex = 143;
             this.radioButton2.TabStop = true;
             this.radioButton2.Tag = "0";
@@ -3746,10 +3785,10 @@ namespace WindowsFormsApp4
             // 
             this.radioButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.radioButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.radioButton3.Location = new System.Drawing.Point(606, 66);
-            this.radioButton3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.radioButton3.Location = new System.Drawing.Point(454, 54);
+            this.radioButton3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(78, 19);
+            this.radioButton3.Size = new System.Drawing.Size(58, 15);
             this.radioButton3.TabIndex = 144;
             this.radioButton3.TabStop = true;
             this.radioButton3.Tag = "0";
@@ -3759,10 +3798,10 @@ namespace WindowsFormsApp4
             // 
             // order
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.ClientSize = new System.Drawing.Size(1327, 552);
+            this.ClientSize = new System.Drawing.Size(995, 448);
             this.Controls.Add(this.TipMoney);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.HelpButton);
@@ -3956,7 +3995,7 @@ namespace WindowsFormsApp4
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel6);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "order";
             this.Load += new System.EventHandler(this.order_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();

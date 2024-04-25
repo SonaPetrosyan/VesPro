@@ -120,13 +120,13 @@
             this.dateTimePicker1.Location = new System.Drawing.Point(172, 23);
             this.dateTimePicker1.MinDate = new System.DateTime(2024, 1, 1, 0, 0, 0, 0);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(170, 27);
+            this.dateTimePicker1.Size = new System.Drawing.Size(170, 23);
             this.dateTimePicker1.TabIndex = 63;
             this.dateTimePicker1.Value = new System.DateTime(2024, 1, 1, 5, 30, 0, 0);
             // 
             // HelpButton
             // 
-            this.HelpButton.BackColor = System.Drawing.Color.Orange;
+            this.HelpButton.BackColor = System.Drawing.Color.Peru;
             this.HelpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.HelpButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HelpButton.ForeColor = System.Drawing.Color.White;
@@ -159,7 +159,7 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(759, 33);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 16);
+            this.label2.Size = new System.Drawing.Size(39, 13);
             this.label2.TabIndex = 54;
             this.label2.Text = "search";
             this.label2.UseWaitCursor = true;
@@ -171,7 +171,7 @@
             this.SearchBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchBox1.Location = new System.Drawing.Point(734, 50);
             this.SearchBox1.Name = "SearchBox1";
-            this.SearchBox1.Size = new System.Drawing.Size(96, 24);
+            this.SearchBox1.Size = new System.Drawing.Size(96, 21);
             this.SearchBox1.TabIndex = 53;
             this.SearchBox1.TextChanged += new System.EventHandler(this.SearchBox1_TextChanged);
             this.SearchBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SearchBox1_KeyPress);
@@ -182,7 +182,7 @@
             this.DepartmentIdBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.DepartmentIdBox.Location = new System.Drawing.Point(346, 27);
             this.DepartmentIdBox.Name = "DepartmentIdBox";
-            this.DepartmentIdBox.Size = new System.Drawing.Size(30, 22);
+            this.DepartmentIdBox.Size = new System.Drawing.Size(30, 20);
             this.DepartmentIdBox.TabIndex = 48;
             this.DepartmentIdBox.Text = "1";
             // 
@@ -194,7 +194,7 @@
             this.DateLabel.ForeColor = System.Drawing.Color.White;
             this.DateLabel.Location = new System.Drawing.Point(190, 0);
             this.DateLabel.Name = "DateLabel";
-            this.DateLabel.Size = new System.Drawing.Size(100, 20);
+            this.DateLabel.Size = new System.Drawing.Size(86, 17);
             this.DateLabel.TabIndex = 45;
             this.DateLabel.Text = "Ժամանակը";
             this.DateLabel.UseWaitCursor = true;
@@ -208,7 +208,7 @@
             this.DepartmentComboBox.FormattingEnabled = true;
             this.DepartmentComboBox.Location = new System.Drawing.Point(379, 25);
             this.DepartmentComboBox.Name = "DepartmentComboBox";
-            this.DepartmentComboBox.Size = new System.Drawing.Size(132, 26);
+            this.DepartmentComboBox.Size = new System.Drawing.Size(132, 23);
             this.DepartmentComboBox.TabIndex = 47;
             this.DepartmentComboBox.SelectedIndexChanged += new System.EventHandler(this.DepartmentComboBox_SelectedIndexChanged);
             // 
@@ -220,7 +220,7 @@
             this.DepartmentLabel.ForeColor = System.Drawing.Color.White;
             this.DepartmentLabel.Location = new System.Drawing.Point(392, 2);
             this.DepartmentLabel.Name = "DepartmentLabel";
-            this.DepartmentLabel.Size = new System.Drawing.Size(64, 20);
+            this.DepartmentLabel.Size = new System.Drawing.Size(54, 17);
             this.DepartmentLabel.TabIndex = 46;
             this.DepartmentLabel.Text = "Բաժին";
             this.DepartmentLabel.UseWaitCursor = true;
@@ -245,7 +245,7 @@
             this.radioButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton3.Location = new System.Drawing.Point(9, 43);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(104, 22);
+            this.radioButton3.Size = new System.Drawing.Size(87, 19);
             this.radioButton3.TabIndex = 11;
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = "Հիմնական";
@@ -258,7 +258,7 @@
             this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton2.Location = new System.Drawing.Point(9, 24);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(118, 22);
+            this.radioButton2.Size = new System.Drawing.Size(99, 19);
             this.radioButton2.TabIndex = 9;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Տնտեսական";
@@ -285,7 +285,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(69, 34);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 16);
+            this.label1.Size = new System.Drawing.Size(39, 13);
             this.label1.TabIndex = 42;
             this.label1.Text = "search";
             this.label1.UseWaitCursor = true;
@@ -297,7 +297,7 @@
             this.SearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchBox.Location = new System.Drawing.Point(23, 50);
             this.SearchBox.Name = "SearchBox";
-            this.SearchBox.Size = new System.Drawing.Size(130, 24);
+            this.SearchBox.Size = new System.Drawing.Size(130, 21);
             this.SearchBox.TabIndex = 28;
             this.SearchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
             this.SearchBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SearchBox_KeyPress);
@@ -522,7 +522,7 @@
             this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(8, 11);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(137, 16);
+            this.label3.Size = new System.Drawing.Size(118, 13);
             this.label3.TabIndex = 62;
             this.label3.Text = "Վերջին գույքագրածը";
             this.label3.UseWaitCursor = true;
@@ -535,7 +535,7 @@
             this.LastLabel.ForeColor = System.Drawing.Color.Black;
             this.LastLabel.Location = new System.Drawing.Point(147, 9);
             this.LastLabel.Name = "LastLabel";
-            this.LastLabel.Size = new System.Drawing.Size(190, 20);
+            this.LastLabel.Size = new System.Drawing.Size(164, 17);
             this.LastLabel.TabIndex = 61;
             this.LastLabel.Text = "01/01/2000 00:00:00 PM";
             this.LastLabel.UseWaitCursor = true;

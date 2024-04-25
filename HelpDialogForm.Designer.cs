@@ -33,6 +33,8 @@
             // 
             // richTextBoxHelpContent
             // 
+            this.richTextBoxHelpContent.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.richTextBoxHelpContent.ForeColor = System.Drawing.SystemColors.InfoText;
             this.richTextBoxHelpContent.Location = new System.Drawing.Point(-3, 2);
             this.richTextBoxHelpContent.Name = "richTextBoxHelpContent";
             this.richTextBoxHelpContent.Size = new System.Drawing.Size(785, 377);

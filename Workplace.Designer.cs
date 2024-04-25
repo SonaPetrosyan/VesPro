@@ -76,20 +76,22 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.savebutton);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Location = new System.Drawing.Point(0, -3);
+            this.panel1.Location = new System.Drawing.Point(0, -2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1549, 111);
+            this.panel1.Size = new System.Drawing.Size(1162, 90);
             this.panel1.TabIndex = 9;
             // 
             // HelpButton
             // 
-            this.HelpButton.BackColor = System.Drawing.Color.Orange;
+            this.HelpButton.BackColor = System.Drawing.Color.Peru;
             this.HelpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.HelpButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HelpButton.ForeColor = System.Drawing.Color.White;
-            this.HelpButton.Location = new System.Drawing.Point(3, 7);
+            this.HelpButton.Location = new System.Drawing.Point(2, 6);
+            this.HelpButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.HelpButton.Name = "HelpButton";
-            this.HelpButton.Size = new System.Drawing.Size(35, 35);
+            this.HelpButton.Size = new System.Drawing.Size(26, 28);
             this.HelpButton.TabIndex = 69;
             this.HelpButton.Text = "?";
             this.HelpButton.UseVisualStyleBackColor = false;
@@ -99,10 +101,11 @@
             // 
             this.getprinterbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.getprinterbox.FormattingEnabled = true;
-            this.getprinterbox.ItemHeight = 20;
-            this.getprinterbox.Location = new System.Drawing.Point(682, 2);
+            this.getprinterbox.ItemHeight = 17;
+            this.getprinterbox.Location = new System.Drawing.Point(512, 2);
+            this.getprinterbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.getprinterbox.Name = "getprinterbox";
-            this.getprinterbox.Size = new System.Drawing.Size(216, 104);
+            this.getprinterbox.Size = new System.Drawing.Size(163, 72);
             this.getprinterbox.TabIndex = 15;
             this.getprinterbox.Visible = false;
             this.getprinterbox.Click += new System.EventHandler(this.getprinterbox_Click);
@@ -110,7 +113,8 @@
             // HollUpDown
             // 
             this.HollUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HollUpDown.Location = new System.Drawing.Point(1167, 47);
+            this.HollUpDown.Location = new System.Drawing.Point(875, 38);
+            this.HollUpDown.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.HollUpDown.Maximum = new decimal(new int[] {
             10,
             0,
@@ -122,7 +126,7 @@
             0,
             0});
             this.HollUpDown.Name = "HollUpDown";
-            this.HollUpDown.Size = new System.Drawing.Size(79, 27);
+            this.HollUpDown.Size = new System.Drawing.Size(59, 23);
             this.HollUpDown.TabIndex = 14;
             this.HollUpDown.Value = new decimal(new int[] {
             1,
@@ -135,18 +139,20 @@
             // 
             this.comboBoxRest.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxRest.FormattingEnabled = true;
-            this.comboBoxRest.Location = new System.Drawing.Point(927, 47);
+            this.comboBoxRest.Location = new System.Drawing.Point(695, 38);
+            this.comboBoxRest.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBoxRest.Name = "comboBoxRest";
-            this.comboBoxRest.Size = new System.Drawing.Size(194, 28);
+            this.comboBoxRest.Size = new System.Drawing.Size(146, 25);
             this.comboBoxRest.TabIndex = 13;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(1175, 19);
+            this.label2.Location = new System.Drawing.Point(881, 15);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 20);
+            this.label2.Size = new System.Drawing.Size(46, 17);
             this.label2.TabIndex = 12;
             this.label2.Text = "Սրահ";
             // 
@@ -154,9 +160,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(978, 19);
+            this.label1.Location = new System.Drawing.Point(734, 15);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(95, 20);
+            this.label1.Size = new System.Drawing.Size(83, 17);
             this.label1.TabIndex = 11;
             this.label1.Text = "Ռեստորան";
             // 
@@ -165,9 +172,10 @@
             this.savebutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.savebutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.savebutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.savebutton.Location = new System.Drawing.Point(144, 61);
+            this.savebutton.Location = new System.Drawing.Point(108, 50);
+            this.savebutton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.savebutton.Name = "savebutton";
-            this.savebutton.Size = new System.Drawing.Size(75, 42);
+            this.savebutton.Size = new System.Drawing.Size(56, 34);
             this.savebutton.TabIndex = 10;
             this.savebutton.Text = "Save";
             this.savebutton.UseVisualStyleBackColor = false;
@@ -179,9 +187,10 @@
             this.button1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(48, 61);
+            this.button1.Location = new System.Drawing.Point(36, 50);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 42);
+            this.button1.Size = new System.Drawing.Size(56, 34);
             this.button1.TabIndex = 9;
             this.button1.Text = "Add +";
             this.button1.UseVisualStyleBackColor = false;
@@ -213,11 +222,12 @@
             this.Column19,
             this.Column20,
             this.Column21});
-            this.dataGridView1.Location = new System.Drawing.Point(2, 114);
+            this.dataGridView1.Location = new System.Drawing.Point(2, 93);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 6;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1546, 620);
+            this.dataGridView1.Size = new System.Drawing.Size(1160, 504);
             this.dataGridView1.TabIndex = 10;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
@@ -367,23 +377,24 @@
             // richTextBox1
             // 
             this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.Location = new System.Drawing.Point(1488, 422);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(20, 3, 3, 3);
+            this.richTextBox1.Location = new System.Drawing.Point(1116, 343);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(15, 2, 2, 2);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(52, 29);
+            this.richTextBox1.Size = new System.Drawing.Size(40, 24);
             this.richTextBox1.TabIndex = 70;
             this.richTextBox1.Text = "";
             this.richTextBox1.Visible = false;
             // 
             // Workplace
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(1550, 745);
+            this.ClientSize = new System.Drawing.Size(1162, 605);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Workplace";
             this.Text = "Workplace";
             this.Load += new System.EventHandler(this.Workplace_Load);

@@ -81,11 +81,11 @@ namespace WindowsFormsApp4
             this.Column27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.HelpButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.SearchBox = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.HelpButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
@@ -252,7 +252,7 @@ namespace WindowsFormsApp4
             this.SearchBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchBox4.Location = new System.Drawing.Point(4, 45);
             this.SearchBox4.Name = "SearchBox4";
-            this.SearchBox4.Size = new System.Drawing.Size(150, 24);
+            this.SearchBox4.Size = new System.Drawing.Size(150, 21);
             this.SearchBox4.TabIndex = 8;
             this.SearchBox4.Tag = "0";
             this.SearchBox4.TextChanged += new System.EventHandler(this.SearchBox4_TextChanged);
@@ -265,7 +265,7 @@ namespace WindowsFormsApp4
             this.SearchBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchBox3.Location = new System.Drawing.Point(6, 299);
             this.SearchBox3.Name = "SearchBox3";
-            this.SearchBox3.Size = new System.Drawing.Size(150, 24);
+            this.SearchBox3.Size = new System.Drawing.Size(150, 21);
             this.SearchBox3.TabIndex = 9;
             this.SearchBox3.Tag = "0";
             this.SearchBox3.TextChanged += new System.EventHandler(this.SearchBox3_TextChanged);
@@ -279,7 +279,7 @@ namespace WindowsFormsApp4
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(196, 301);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(150, 18);
+            this.label1.Size = new System.Drawing.Size(124, 15);
             this.label1.TabIndex = 10;
             this.label1.Text = " կիսապատրաստուկ";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -291,7 +291,7 @@ namespace WindowsFormsApp4
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(224, 46);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(136, 18);
+            this.label2.Size = new System.Drawing.Size(113, 15);
             this.label2.TabIndex = 11;
             this.label2.Text = "բաղադրիչ նյութեր";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -300,14 +300,14 @@ namespace WindowsFormsApp4
             // 
             this.textBox1.Location = new System.Drawing.Point(679, 3);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(55, 22);
+            this.textBox1.Size = new System.Drawing.Size(55, 20);
             this.textBox1.TabIndex = 12;
             // 
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(765, 3);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(55, 22);
+            this.textBox2.Size = new System.Drawing.Size(55, 20);
             this.textBox2.TabIndex = 13;
             // 
             // label3
@@ -317,7 +317,7 @@ namespace WindowsFormsApp4
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(738, 4);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(24, 20);
+            this.label3.Size = new System.Drawing.Size(20, 17);
             this.label3.TabIndex = 14;
             this.label3.Text = "%";
             // 
@@ -416,12 +416,26 @@ namespace WindowsFormsApp4
             this.panel1.Size = new System.Drawing.Size(1214, 43);
             this.panel1.TabIndex = 25;
             // 
+            // HelpButton
+            // 
+            this.HelpButton.BackColor = System.Drawing.Color.Peru;
+            this.HelpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.HelpButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HelpButton.ForeColor = System.Drawing.Color.White;
+            this.HelpButton.Location = new System.Drawing.Point(0, 0);
+            this.HelpButton.Name = "HelpButton";
+            this.HelpButton.Size = new System.Drawing.Size(35, 33);
+            this.HelpButton.TabIndex = 62;
+            this.HelpButton.Text = "?";
+            this.HelpButton.UseVisualStyleBackColor = false;
+            this.HelpButton.Click += new System.EventHandler(this.HelpButton_Click);
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(889, 6);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 16);
+            this.label5.Size = new System.Drawing.Size(36, 13);
             this.label5.TabIndex = 65;
             this.label5.Text = "Սրահ";
             // 
@@ -448,7 +462,7 @@ namespace WindowsFormsApp4
             this.SearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchBox.Location = new System.Drawing.Point(387, 16);
             this.SearchBox.Name = "SearchBox";
-            this.SearchBox.Size = new System.Drawing.Size(174, 24);
+            this.SearchBox.Size = new System.Drawing.Size(174, 21);
             this.SearchBox.TabIndex = 15;
             this.SearchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
             this.SearchBox.Enter += new System.EventHandler(this.SearchBox_Enter);
@@ -461,20 +475,6 @@ namespace WindowsFormsApp4
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1215, 62);
             this.panel2.TabIndex = 26;
-            // 
-            // HelpButton
-            // 
-            this.HelpButton.BackColor = System.Drawing.Color.Orange;
-            this.HelpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.HelpButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HelpButton.ForeColor = System.Drawing.Color.White;
-            this.HelpButton.Location = new System.Drawing.Point(0, 0);
-            this.HelpButton.Name = "HelpButton";
-            this.HelpButton.Size = new System.Drawing.Size(35, 33);
-            this.HelpButton.TabIndex = 62;
-            this.HelpButton.Text = "?";
-            this.HelpButton.UseVisualStyleBackColor = false;
-            this.HelpButton.Click += new System.EventHandler(this.HelpButton_Click);
             // 
             // button1
             // 
@@ -578,7 +578,7 @@ namespace WindowsFormsApp4
             "10"});
             this.checkedListBox1.Location = new System.Drawing.Point(864, 27);
             this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(141, 213);
+            this.checkedListBox1.Size = new System.Drawing.Size(141, 212);
             this.checkedListBox1.TabIndex = 67;
             this.checkedListBox1.Visible = false;
             // 
