@@ -31,5 +31,7 @@ namespace WindowsFormsApp4
             // Adjust the form height by the additional height needed
             this.Height += additionalHeight;
         }
+
+
     }
 }

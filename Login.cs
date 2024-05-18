@@ -115,8 +115,8 @@ namespace WindowsFormsApp4
             int orderer = 0;
             int observer = 0;
             int workplace = 0;
-            string lang = "";
-
+            string lang = "Armenian";
+            string restaurantname = "";
             if (Table_Login.Rows.Count > 0) //user - ը գոյություն ունի
             {
                 foreach (DataRow row in Table_Login.Rows)//ստուգում ենք լիազորությունը
@@ -138,7 +138,7 @@ namespace WindowsFormsApp4
                 connection.Close();
                 if (manager + editor + orderer + previous + observer > 0)
                 {
-                    Form1 form1 = new Form1(oօperatorname, opperator, holl, restaurant, manager, editor, orderer, previous, observer, workplace, lang);
+                    Form1 form1 = new Form1(oօperatorname, opperator, holl, restaurant, restaurantname, manager, editor, orderer, previous, observer, workplace, lang);
                     form1.Show();
                 }
                 else

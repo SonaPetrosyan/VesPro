@@ -1,0 +1,10 @@
+    - Seleccione el número de pedido
+   
+    - completar o editar un pedido para 1 persona
+   
+    - haga clic en el botón <aceptar>
+   
+    Estos pedidos estándar se utilizan
+    <Servicio de Visitantes> en funcionamiento
+   
+    Haga clic en el botón <X> inferior derecho para cerrar la ventana.

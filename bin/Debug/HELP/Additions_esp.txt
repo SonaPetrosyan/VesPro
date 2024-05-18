@@ -1,0 +1,25 @@
+ 
+   Aparecen los nombres de los grupos en la tabla de la derecha
+   en  las líneas de abajo 'Aceptación del pedido':
+   en forma de botones.
+   
+   Cuando haces clic en ellos las líneas del número de 
+   tabla dado a la izquierda se abren en forma de tabla,
+   de donde se selecciona la descripción de la comida:
+   dulces, amargas, sin cebolla, etc.
+ 
+    Cómo poner un número de grupo en la descripción 
+    en la línea
+   
+    - Pararse en la línea requerida de la mesa derecha. El número
+      de línea aparecerá arriba del botón 'V'
+   
+    - Párate en la línea requerida de la mesa izquierda. El número
+      de línea aparecerá debajo del botón 'V'.
+   
+    - Presione el botón 'V' y número arriba se colocará en esa línea.
+   
+    Haga clic en el botón 'Save' cuando haya terminado; de lo contrario
+    Tu trabajo no tendrá consecuencias.
+   
+    Haga clic en el botón amarillo 'X' para cerrar la ventana.

@@ -1,0 +1,11 @@
+    - Wählen Sie die Bestellnummer aus
+   
+    - Eine Bestellung für 1 Person abschließen oder bearbeiten
+   
+    - Klicken Sie auf die Schaltfläche <Save>
+   
+    Diese Standardbestellungen werden verwendet
+    in Betrieb <Besucherservice> 
+   
+    Klicken Sie auf die Schaltfläche <X> unten rechts, um das Fenster zu schließen.
+	

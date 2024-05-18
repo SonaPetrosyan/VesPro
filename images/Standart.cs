@@ -1,7 +1,5 @@
 ﻿using Amazon.DynamoDBv2;
-using MySql.Data.MySqlClient;
-using Mysqlx.Crud;
-using MySqlX.XDevAPI.Relational;
+
 using System;
 using System.Data;
 using System.Diagnostics;
@@ -20,7 +18,7 @@ namespace WindowsFormsApp4.images
     {
         private int _restaurant;
 
-        private MySQLDatabaseHelper dbHelper;
+
 
         private BindingSource bindingSource = new BindingSource();
 

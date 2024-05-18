@@ -40,8 +40,6 @@ namespace WindowsFormsApp4
 
         private DataTable ControlsPurchase = new DataTable();
 
-        private DataTable Table_Number = new DataTable();
-
         private DataTable Table_Purchase;
 
         private DataView dataView;
@@ -73,7 +71,6 @@ namespace WindowsFormsApp4
                 row["Changed"] = 0;
             }
             Table_Purchase = Table_211.Clone();
-            Table_Purchase.Columns.Add("Number", typeof(int));
             Table_Purchase.Columns.Add("DepartmentIn", typeof(int));
             Table_Purchase.Columns.Add("DepartmentOut", typeof(int));
             Table_Purchase.Columns.Add("Debitor", typeof(int));
@@ -1353,28 +1350,15 @@ namespace WindowsFormsApp4
             SqlConnection connection = new SqlConnection(connectionString);
             SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
             connection.Open();
-             string query = $"SELECT Number FROM actions WHERE Restaurant=  {_restaurant}";
-            Table_Number = dbHelper.ExecuteQuery(query);
-            int number = 0;
-            foreach (DataRow row in Table_Number.Rows)
-            {
-                if (int.Parse(row["Number"].ToString()) > number)
-                {
-                    number = int.Parse(row["Number"].ToString());
-                }
-            }
-            number = number + 1;
             foreach (DataRow row in Table_Purchase.Rows)
             {
 
-                row["Number"] = number;
-                string InsertQuery = $"INSERT INTO actions  (Number,Code,Date,DepartmentIn," +
+                string InsertQuery = $"INSERT INTO actions  (Code,Date,DepartmentIn," +
                     $" DepartmentOut,Debitor, Kreditor,Debet,Kredit,Quantity,CostAmount,SalesAmount, Operator, " +
-                    $"RestaurantIn,RestaurantOut, Restaurant, Note) VALUES  (@number, @code, @date, @departmentin,@departmentout," +
+                    $"RestaurantIn,RestaurantOut, Restaurant, Note) VALUES  (@code, @date, @departmentin,@departmentout," +
                     $" @debitor, @kreditor, @debet, @kredit, @quantity, @costamount, @salesamount, @operator, @restaurantin, @restaurantout, @restaurant, @note)";
                 using (SqlCommand updatCommand = new SqlCommand(InsertQuery, connection))
                 {
-                    updatCommand.Parameters.AddWithValue("@number", row["Number"]);
                     updatCommand.Parameters.AddWithValue("@code", row["Code"]);
                     updatCommand.Parameters.AddWithValue("@date", dateTimePicker1.Value);
                     updatCommand.Parameters.AddWithValue("@departmentin", row["DepartmentIn"]);

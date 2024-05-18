@@ -1,9 +1,16 @@
-Seleccione las opciones requeridas y presione el botón <Adelant>
+    
+	
+	Seleccione las opciones requeridas y presione el botón <Adelant>
    
     Para imprimir una copia del cupón, marque la casilla <imprimir boleto>,
     luego párese en la línea requerida. Espera un momento y aparecerá el prototipo del cupón.
    
-    Para volver a abrir la tabla impresa para la sesión actual, desmarque la columna <impreso>
+    Para volver a abrir la mesa impresa para la sesión actual, desmarque la columna <impreso>
     y haga clic en el botón <Save>.
    
-        Haga clic en el botón amarillo <X> para cerrar.
+    Para cerrar la sesión, haga clic en el botón <sesión actual>.
+    Si todas las mesas están cerradas, el botón <cerrar sesión> está activo.
+    Pinchalo. Si hay mesas pendientes, tendrás que esperar hasta
+    serán extinguidos.
+   
+        Haga clic en el botón naranja <X> para cerrar.

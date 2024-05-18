@@ -1,0 +1,17 @@
+
+
+	
+    In the left table are Delivery orders.
+
+    To cancel an order, check its <Dele> box,
+    then click the <Remove> button above.
+
+    Stand in the order line to send the order to the kitchen.
+    The order content will be displayed in the right table.
+    Click the <Kitchen> button.
+
+    If you need to print, click the <Print> button.
+
+    After receiving the money, click the <Pay> button to finish.
+	 
+     

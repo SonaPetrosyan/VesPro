@@ -1,0 +1,20 @@
+
+
+	
+    For provide information about food preparation
+	process to distribution points
+    
+
+    When the ready meal is delivered to the waiter, then
+    check the left <given> box to remove the food from the list.
+    
+
+     If you set <Printer> to 0, all meals
+     appear in the list. Otherwise only for the given number
+     the printer-related feeds are visible.
+
+ 
+    
+     When making any changes, click the <Edit> button.
+	 
+     

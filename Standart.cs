@@ -85,10 +85,10 @@ namespace WindowsFormsApp4
 
             string query4 = $"SELECT * FROM FoodGroupp WHERE  Restaurant='{_restaurant}' ";
             FoodGroupp = dbHelper.ExecuteQuery(query4);
-            foreach (DataRow row in FoodGroupp.Rows)
-            {
-                row["Name"] = row[_language].ToString();
-            }
+         //   foreach (DataRow row in FoodGroupp.Rows)
+         //   {
+         //       row["Name"] = row[_language].ToString();
+        //    }
 
 
 
@@ -455,7 +455,7 @@ namespace WindowsFormsApp4
                         }
                         if (k == 1) continue;
                         i++;
-                        groupArray[i].Text = matchingRows[0]["Name"].ToString();
+                        groupArray[i].Text = matchingRows[0][_language].ToString();
                         groupArray[i].Tag = matchingRows[0]["Groupp"].ToString();
                         groupArray[i].Visible = true;
                     }

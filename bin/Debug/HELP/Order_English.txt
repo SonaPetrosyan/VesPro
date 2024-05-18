@@ -4,7 +4,7 @@
 	 
 	 Order acceptance
 
-     Click on the desired table
+     Click on the desired seat
 
      Click <Kitchen> or <Bar> to filter the list of products.
      Then select the product group with the buttons above.
@@ -32,10 +32,10 @@
      bottom of table with a minus sign. Enter the quantity and press <Enter>.
 
      Only the manager can allow a change at the table where the coupon is printed
-     with his card: stop at the <Manager> window. It will turn green. Read the card.
+     with his card: stand at the <Manager> window. It will turn green. Read the card.
 
-     To move a table, click on that table, then on the <move> button,
-     then click on the table that you want.
+     To move a seat, click on that seat, then on the <move> button,
+     then click on the seat that you want.
 
      If you need to accept a standard order, please select from the top left
      order number, insert the number of persons, insert in the guide window
@@ -55,6 +55,6 @@
      change the property of the product.
      If <none> is marked, then that product will not be sold.
 
-     Click the yellow <X> button to close the window.
+     Click the oranje <X> button to close the window.
      
      

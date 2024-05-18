@@ -75,43 +75,15 @@ namespace WindowsFormsApp4
             string connectionString = Properties.Settings.Default.CafeRestDB;
             SqlConnection connection = new SqlConnection(connectionString);
             SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
-            string query1 = $"SELECT * FROM SeansState Where Id={_restaurant} ";
-            Table_SeansState = dbHelper.ExecuteQuery(query1);
-            int sseans = 1;
-            foreach (DataRow row in Table_SeansState.Rows)
-            {
-                sseans = int.Parse(row["Seans"].ToString());
-            }
-            numericUpDown1.Value = sseans;
-            numericUpDown2.Value = sseans;
-            radioButton6.Tag = sseans.ToString();
+            //radioButton6.Tag = sseans.ToString();
 
             string query4 = $"SELECT * FROM Table_215  WHERE Restaurant={_restaurant}";
             Table_215 = dbHelper.ExecuteQuery(query4);
 
             string query3 = $"SELECT * FROM Seans  WHERE  restaurant={_restaurant} ";
             Table_Seans = dbHelper.ExecuteQuery(query3);
-            Table_Seans.Columns.Add("NonComposite", typeof(string));
-            var query5 = from row1 in Table_Seans.AsEnumerable()  // տեղադրում ենք <NonComposite> դաշտը, որպեսսզի որոշ սրահներից վաճառքի
-                                                                  // դեպքում բաղադրիչները չհանվի բաժնից
-                         join row2 in Table_215.AsEnumerable()
-                         on row1.Field<string>("Code") equals row2.Field<string>("Code") into gj
-                         from subRow2 in gj.DefaultIfEmpty()
-                         select new
-                         {
-                             Row1 = row1,
-                             Row2 = subRow2
-                         };
 
-            foreach (var item in query5)
-            {
-                if (item.Row2 != null)
-                {
-                    item.Row1["NonComposite"] = item.Row2["NonComposite"];
-                }
-            }
-
-            string query2 = $"SELECT DateBegin,Seans,Ticket,Nest,Costamount,Salesamount," +
+            string query2 = $"SELECT DateBegin,Ticket,Nest,Costamount,Salesamount," +
                 $"Delivery,Music,Service,Discount,Tipmoney,gid,cash,Nestgroup,Holl,Paid,cashless,Person,printed FROM TicketsOrdered WHERE Previous={0} AND Restaurant={_restaurant} ";
             Table_TicketsOrdered = dbHelper.ExecuteQuery(query2);
 
@@ -122,7 +94,7 @@ namespace WindowsFormsApp4
             Table_TicketsOrdered.Columns.Add("password", typeof(string));
             foreach (DataRow row in Table_TicketsOrdered.Rows)
             {
-                button2.Tag = row["seans"].ToString();
+
                 row["Total"] = 0;
                 row["Paidamount"] = 0;
                 row["profit"] = 0;
@@ -144,28 +116,27 @@ namespace WindowsFormsApp4
             dataGridView1.DataSource = Table_TicketsOrdered;
             dataView = new DataView(Table_TicketsOrdered);
             dataGridView1.Columns[0].DataPropertyName = "DateBegin";
-            dataGridView1.Columns[1].DataPropertyName = "Seans";
-            dataGridView1.Columns[2].DataPropertyName = "Ticket";
-            dataGridView1.Columns[3].DataPropertyName = "Nest";
-            dataGridView1.Columns[4].DataPropertyName = "Costamount";
-            dataGridView1.Columns[5].DataPropertyName = "Salesamount";
-            dataGridView1.Columns[6].DataPropertyName = "Delivery";
-            dataGridView1.Columns[7].DataPropertyName = "Music";
-            dataGridView1.Columns[8].DataPropertyName = "Service";
-            dataGridView1.Columns[9].DataPropertyName = "Discount";
-            dataGridView1.Columns[10].DataPropertyName = "Tipmoney";
-            dataGridView1.Columns[11].DataPropertyName = "Total";
-            dataGridView1.Columns[12].DataPropertyName = "Paidamount";
-            dataGridView1.Columns[13].DataPropertyName = "cashless";
-            dataGridView1.Columns[14].DataPropertyName = "profit";
-            dataGridView1.Columns[15].DataPropertyName = "Person";
-            dataGridView1.Columns[16].DataPropertyName = "Printed";
+            dataGridView1.Columns[1].DataPropertyName = "Ticket";
+            dataGridView1.Columns[2].DataPropertyName = "Nest";
+            dataGridView1.Columns[3].DataPropertyName = "Costamount";
+            dataGridView1.Columns[4].DataPropertyName = "Salesamount";
+            dataGridView1.Columns[5].DataPropertyName = "Delivery";
+            dataGridView1.Columns[6].DataPropertyName = "Music";
+            dataGridView1.Columns[7].DataPropertyName = "Service";
+            dataGridView1.Columns[8].DataPropertyName = "Discount";
+            dataGridView1.Columns[9].DataPropertyName = "Tipmoney";
+            dataGridView1.Columns[10].DataPropertyName = "Total";
+            dataGridView1.Columns[11].DataPropertyName = "Paidamount";
+            dataGridView1.Columns[12].DataPropertyName = "cashless";
+            dataGridView1.Columns[13].DataPropertyName = "profit";
+            dataGridView1.Columns[14].DataPropertyName = "Person";
+            dataGridView1.Columns[15].DataPropertyName = "Printed";
 
 
             foreach (DataGridViewColumn column in dataGridView1.Columns)
             {
 
-                if (column.Index > 16)
+                if (column.Index > 15)
                 {
                     column.Visible = false;
                 }
@@ -210,7 +181,7 @@ namespace WindowsFormsApp4
             dataGridView1.Visible = true;
             dataGridView2.Visible = false;
 
-            if (_editor == 0) button1.Enabled = false; button3.Enabled = false;
+            if (_editor == 0) button3.Enabled = false;
 
                 dateTimePicker2.Value = DateTime.Now;
 
@@ -360,7 +331,6 @@ namespace WindowsFormsApp4
             float Costamount = 0, Salesamount = 0, Delivery = 0, Music = 0, Service = 0,
     Discount = 0, Total = 0, profit = 0, cashless = 0, Tipmoney = 0, Paidamount = 0, sumPaid = 0;
             decimal Person = 0;
-            button1.Enabled = false;
 
 
             //******************************************* կտրոնով 
@@ -374,7 +344,6 @@ namespace WindowsFormsApp4
                 foreach (DataRow row in Table_TicketsOrdered.Rows)
                 {
                     
-                    seans = int.Parse(row["Seans"].ToString());
                     if (row["DateBegin"] != DBNull.Value)
                     {
                         DateTime dateTime = (DateTime)row["DateBegin"];
@@ -384,11 +353,6 @@ namespace WindowsFormsApp4
                     {
                         if (checkBox1.Checked && (data1 < dateTimePicker1.Value || data1 > dateTimePicker2.Value)) continue;
                         
-                        if (checkBox2.Checked && (seans < numericUpDown1.Value || seans > numericUpDown2.Value)) continue;
-                    }
-                    else
-                    {
-                        if (seans != int.Parse(radioButton6.Tag.ToString())) continue;
                     }
 
                     if (numericUpDown3.Value > 0 && int.Parse(row["Holl"].ToString()) != numericUpDown3.Value)
@@ -397,13 +361,11 @@ namespace WindowsFormsApp4
                         continue;
                     }
                     if (comboBox2.SelectedIndex != 0 && int.Parse(row["Nestgroup"].ToString()) != comboBox2.SelectedIndex) continue;
-                    button1.Enabled = true;
                     DataRow newRow1 = newinformation.NewRow();
                     newinformation.Rows.Add(newRow1);
                     newRow1["total"] = 0;
                     newRow1["Paidamount"] = 0;
                     newRow1["DateBegin"] = (DateTime)row["DateBegin"];
-                    newRow1["seans"] = decimal.Parse(row["seans"].ToString());
                     newRow1["ticket"] = decimal.Parse(row["ticket"].ToString());
                     newRow1["nest"] = row["nest"].ToString();
                     newRow1["costamount"] = float.Parse(row["costamount"].ToString());
@@ -438,11 +400,6 @@ namespace WindowsFormsApp4
                     cashless = cashless + float.Parse(newRow1["cashless"].ToString());
                     profit = profit + float.Parse(newRow1["profit"].ToString());
                     Person = Person + decimal.Parse(newRow1["Person"].ToString());
-                    if (float.Parse(newRow1["paidamount"].ToString()) == 0)
-                    {
-                        button1.BackColor = Color.LightYellow;
-                        button1.Enabled = false;
-                    }
 
                 }
                 DataRow newRow2 = newinformation.NewRow();
@@ -497,15 +454,12 @@ namespace WindowsFormsApp4
                         column.Visible = false;
                     }
                 }
-                int seans = 0;
                 string code = "";
                 DateTime data1 = DateTime.Now;
                 foreach (DataRow row in Table_Action_215.Rows)
                 {
                     data1 = (DateTime)row["DateOfEntry"];
-                    seans = int.Parse(row["Seans"].ToString());
                     if (checkBox1.Checked && (data1 < dateTimePicker1.Value || data1 > dateTimePicker2.Value)) continue;
-                    if (checkBox2.Checked && (seans < numericUpDown1.Value || seans > numericUpDown2.Value)) continue;
                     if (numericUpDown3.Value > 0 && int.Parse(row["Holl"].ToString()) != numericUpDown3.Value) continue;
                     if (comboBox2.SelectedIndex != 0 && int.Parse(row["Nestgroup"].ToString()) != comboBox2.SelectedIndex) continue;
                     if (radioButton5.Checked && float.Parse(row["Quantity"].ToString()) >= 0) continue; // մինուսները 
@@ -548,9 +502,7 @@ namespace WindowsFormsApp4
                 foreach (DataRow row in Table_Seans.Rows)
                 {
                     data1 = (DateTime)row["DateOfEntry"];
-                    seans = int.Parse(row["Seans"].ToString());
                     if (checkBox1.Checked && (data1 < dateTimePicker1.Value || data1 > dateTimePicker2.Value)) continue;
-                    if (checkBox2.Checked && (seans < numericUpDown1.Value || seans > numericUpDown2.Value)) continue;
                     if (numericUpDown3.Value > 0 && int.Parse(row["Holl"].ToString()) != numericUpDown3.Value) continue;
                     if (comboBox2.SelectedIndex != 0 && int.Parse(row["Nestgroup"].ToString()) != comboBox2.SelectedIndex) continue;
                     if (radioButton5.Checked && float.Parse(row["Quantity"].ToString()) >= 0) continue; // մինուսները 
@@ -616,6 +568,7 @@ namespace WindowsFormsApp4
             {
                 DataTable newinformation = new DataTable();
                 newinformation = Table_TicketsOrdered.Clone();
+                newinformation.Columns.Add("seans", typeof(string));
                 DateTime data1 = DateTime.Now;
                 int month = 0;
                 int year = 0;
@@ -712,6 +665,7 @@ namespace WindowsFormsApp4
             {
                 DataTable newinformation = new DataTable();
                 newinformation = Table_TicketsOrdered.Clone();
+                newinformation.Columns.Add("seans", typeof(string));
                 DateTime data1 = DateTime.Now;
                 int month = 0;
                 int year = 0;
@@ -816,9 +770,7 @@ namespace WindowsFormsApp4
         }
         private void checkBox1_Click(object sender, EventArgs e)
         {
-            checkBox2.Checked = false;
             checkBox1.BackColor = Color.LightGreen;
-            checkBox2.BackColor = panel1.BackColor;
             checkBox1.Checked = true;
 
         }
@@ -826,9 +778,7 @@ namespace WindowsFormsApp4
         private void checkBox2_Click(object sender, EventArgs e)
         {
             checkBox1.Checked = false;
-            checkBox2.BackColor = Color.LightGreen;
             checkBox1.BackColor = panel1.BackColor;
-            checkBox2.Checked = true;
         }
 
         private void radioButton1_Click(object sender, EventArgs e)
@@ -1029,16 +979,13 @@ namespace WindowsFormsApp4
             radioButton6.BackColor = Color.LightGreen;
             radioButton7.BackColor = panel3.BackColor;
             checkBox1.Enabled = false;
-            checkBox2.Enabled = false;
             dateTimePicker1.Enabled = false;
             dateTimePicker2.Enabled = false;
-            numericUpDown1.Enabled = false;
-            numericUpDown2.Enabled = false;
             radioButton1.Focus();
             SendKeys.Send("{ENTER}");
             button2.Focus();
             SendKeys.Send("{ENTER}");
-            button1.Visible = true;
+
         }
 
         private void radioButton7_CheckedChanged(object sender, EventArgs e)
@@ -1046,11 +993,8 @@ namespace WindowsFormsApp4
             radioButton7.BackColor = Color.LightGreen;
             radioButton6.BackColor = panel3.BackColor;
             checkBox1.Enabled = true;
-            checkBox2.Enabled = true;
             dateTimePicker1.Enabled = true;
             dateTimePicker2.Enabled = true;
-            numericUpDown1.Enabled = true;
-            numericUpDown2.Enabled = true;
             radioButton1.Focus();
             SendKeys.Send("{ENTER}");
         }
@@ -1063,151 +1007,30 @@ namespace WindowsFormsApp4
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            string connectionString = Properties.Settings.Default.CafeRestDB;
-            SqlConnection connection = new SqlConnection(connectionString);
-            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
-            string query0 = $"SELECT * FROM SeansState  WHERE Id='{_restaurant}' ";
-            Table_Seans = dbHelper.ExecuteQuery(query0);
 
-            string query1 = $"SELECT * FROM Seans  WHERE  restaurant='{_restaurant}' ";
-            Table_Seans = dbHelper.ExecuteQuery(query1);
-
-
-
-            string query2 = $"SELECT * FROM Composite  WHERE restaurant='{_restaurant}' ";
-            Table_Composite = dbHelper.ExecuteQuery(query2);
-            string query3 = $"SELECT * FROM Actions where Id=0";
-            Table_Actions = dbHelper.ExecuteQuery(query3);
-            connection.Open();
-            foreach (DataRow row in Table_Seans.Rows)
-            {
-                string noncomp = row["Holl"].ToString().Trim() + ",";
-                if (row["NonComposite"].ToString().IndexOf(noncomp) >= 0) continue; //տվյալ սրահում չի բաղադրվում ճաշատեսակը
-
-                string InsertQuery = $"INSERT INTO Actions_215 ( Code , Groupp, DateOfEntry, Seans, Ticket, Paid," +
-                    $"Nest ,Quantity , Price, Costamount, Salesamount, Service, Discount, Free, Taxpaid, Restaurant, Holl, Operator, DepartmentOut)" +
-                    $" values (@Code , @Groupp, @DateOfEntry, @Seans, @Ticket, @Paid, @Nest ," +
-                    $"@Quantity ,@Price, @Costamount, @Salesamount, @Service, @Discount, @Free, @Taxpaid, @Restaurant, @Holl, @Operator, @Departmentout ) ";
-                using (SqlCommand insertCommand = new SqlCommand(InsertQuery, connection))
-
-                {
-                    insertCommand.Parameters.AddWithValue("@Code", row["code"]);
-                    insertCommand.Parameters.AddWithValue("@Groupp", row["groupp"]);
-                    insertCommand.Parameters.AddWithValue("@DateOfEntry", row["DateOfEntry"]);
-                    insertCommand.Parameters.AddWithValue("@Seans", row["seans"]);
-                    insertCommand.Parameters.AddWithValue("@Ticket", row["ticket"]);
-                    insertCommand.Parameters.AddWithValue("@Paid", row["paid"]);
-                    insertCommand.Parameters.AddWithValue("@Nest", row["nest"]);
-                    insertCommand.Parameters.AddWithValue("@Quantity", row["quantity"]);
-                    insertCommand.Parameters.AddWithValue("@Price", row["price"]);
-                    insertCommand.Parameters.AddWithValue("@Costamount", row["Costamount"]);
-                    insertCommand.Parameters.AddWithValue("@Salesamount", row["salesamount"]);
-                    insertCommand.Parameters.AddWithValue("@Service", row["Service"]);
-                    insertCommand.Parameters.AddWithValue("@Discount", row["Discount"]);
-                    insertCommand.Parameters.AddWithValue("@Departmentout", row["departmentout"]);
-                    insertCommand.Parameters.AddWithValue("@Free", row["Free"]);
-                    insertCommand.Parameters.AddWithValue("@Taxpaid", row["taxpaid"]);
-                    insertCommand.Parameters.AddWithValue("@Restaurant", _restaurant);
-                    insertCommand.Parameters.AddWithValue("@Holl", row["holl"]);
-                    insertCommand.Parameters.AddWithValue("@Operator", row["operator"]);
-
-                    insertCommand.ExecuteNonQuery();
-                }
-            }
-            foreach (DataRow row1 in Table_Seans.Rows)
-            {
-                DataRow[] foundRows1 = Table_Composite.Select($"Code_215 = {row1["Code"]}");
-                if (foundRows1.Length > 0)
-                {
-                    foreach (DataRow row2 in foundRows1)
-                    {
-                        DataRow[] foundRows2 = Table_Actions.Select($"Code = {row2["Code_211"]} AND Code_215 = {row1["Code"]} AND DepartmentOut= {row1["DepartmentOut"]}");
-                        if (foundRows2.Length == 0)
-                        {
-                            DataRow newRow = Table_Actions.NewRow();
-                            Table_Actions.Rows.Add(newRow);
-                            newRow["Date"] = row1["DateOfEntry"]; newRow["seans"] = row1["Seans"];
-                            newRow["Code"] = row2["code_211"]; newRow["Code_215"] = row1["Code"];
-                            newRow["DepartmentOut"] = row1["DepartmentOut"]; newRow["Restaurant"] = row1["Restaurant"];
-                            newRow["Quantity"] = float.Parse(row1["Quantity"].ToString()) * float.Parse(row2["Quantity"].ToString());
-                            newRow["Costamount"] = float.Parse(newRow["Quantity"].ToString()) * float.Parse(row2["CostPrice"].ToString());
-                            newRow["SalesAmount"] = row1["SalesAmount"];
-                        }
-                        else
-                        {
-                            foundRows2[0]["Quantity"] = float.Parse(foundRows2[0]["Quantity"].ToString()) +
-                                float.Parse(row1["Quantity"].ToString()) * float.Parse(row2["Quantity"].ToString());
-                            foundRows2[0]["Costamount"] = float.Parse(foundRows2[0]["Costamount"].ToString()) +
-                                float.Parse(row1["Quantity"].ToString()) * float.Parse(row2["Quantity"].ToString()) *
-                                float.Parse(row2["CostPrice"].ToString());
-                            foundRows2[0]["SalesAmount"] = float.Parse(foundRows2[0]["SalesAmount"].ToString()) +
-                                float.Parse(row1["SalesAmount"].ToString());
-                        }
-                    }
-                }
-            }
-            foreach (DataRow row3 in Table_Actions.Rows)
-            {
-                string InsertQuery1 = $"INSERT INTO Actions (Date, seans,  Code, Code_215, Quantity , Costamount, Salesamount, DepartmentOut, Restaurant, debet, kredit )" +
-                         $" values (@Date, @seans,  @Code, @code_215, @Quantity , @Costamount, @Salesamount, @DepartmentOut, @Restaurant, @debet, @kredit ) ";
-                using (SqlCommand insertCommand = new SqlCommand(InsertQuery1, connection))
-
-                {
-                    insertCommand.Parameters.AddWithValue("@Date", row3["Date"]);
-                    insertCommand.Parameters.AddWithValue("@Seans", row3["Seans"]);
-                    insertCommand.Parameters.AddWithValue("@Code", row3["Code"]);
-                    insertCommand.Parameters.AddWithValue("@Code_215", row3["Code_215"]);
-                    insertCommand.Parameters.AddWithValue("@Quantity", row3["Quantity"]);
-                    insertCommand.Parameters.AddWithValue("@Costamount", row3["Costamount"]);
-                    insertCommand.Parameters.AddWithValue("@Salesamount", 0);
-                    insertCommand.Parameters.AddWithValue("@DepartmentOut", row3["DepartmentOut"]);
-                    insertCommand.Parameters.AddWithValue("@Restaurant", row3["Restaurant"]);
-                    insertCommand.Parameters.AddWithValue("@debet", "7111");
-                    insertCommand.Parameters.AddWithValue("@kredit", "2111");
-                    insertCommand.ExecuteNonQuery();
-                }
-            }
-
-            string UpdateQuery = $"UPDATE SeansState SET State = @State WHERE Id = @Id  ";
-            using (SqlCommand command = new SqlCommand(UpdateQuery, connection))
-            {
-                command.Parameters.AddWithValue("@State", 0);
-                command.Parameters.AddWithValue("@Id", _restaurant);
-                command.ExecuteNonQuery();
-            }
-
-            string DeleteQuery = $"DELETE FROM seans ";
-            using (SqlCommand deleteCommand = new SqlCommand(DeleteQuery, connection))
-                deleteCommand.ExecuteNonQuery();
-
-            connection.Close();
-            button1.Visible = false;
-        }
-
+        private HelpDialogForm helpDialogForm;
         private void HelpButton_Click(object sender, EventArgs e)
         {
-            string help = FindFolder.Folder("Help");
-            string filePath = "";
             if (HelpButton.Text == "?")
             {
                 HelpButton.Text = "X";
-                richTextBox1.Height = this.Height - 50;
-                richTextBox1.ReadOnly = true;
-                filePath = help+"\\stocktaking_"+_language+".txt";
+                string helpFolderPath = FindFolder.Folder("Help");
+                string filePath = Path.Combine(helpFolderPath, $"Stocktaking_{_language}.txt");
                 string fileContent = File.ReadAllText(filePath);
-                richTextBox1.Text = fileContent;
-                richTextBox1.Visible = true;
-                richTextBox1.Top = dataGridView1.Top;
-                this.Text = richTextBox1.Top.ToString();
-                richTextBox1.Height = dataGridView1.Height;
-                richTextBox1.Width = panel3.Width;
+
+                if (helpDialogForm == null)
+                {
+                    helpDialogForm = new HelpDialogForm();
+                    helpDialogForm.FormClosed += (s, args) => helpDialogForm = null; // Reset the helpDialogForm reference when the form is closed
+                }
+
+                helpDialogForm.SetHelpContent(fileContent);
+                helpDialogForm.Show();
             }
             else
             {
-                richTextBox1.Visible = false;
                 HelpButton.Text = "?";
+                helpDialogForm?.Close(); // Close the help dialog form if it's open
             }
         }
 
@@ -1279,6 +1102,11 @@ namespace WindowsFormsApp4
                     e.FormattingApplied = true;
                 }
             }
+        }
+
+        private void dataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+
         }
     }
 } 

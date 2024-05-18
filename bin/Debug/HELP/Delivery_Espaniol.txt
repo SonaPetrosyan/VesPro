@@ -1,0 +1,17 @@
+
+
+	
+   En la tabla de la izquierda están los pedidos de entrega.
+
+   Para cancelar un pedido, marque su casilla <Eliminar>,
+   luego haga clic en el botón <Eliminar> de arriba.
+
+   Párese en la fila de pedidos para enviar el pedido a la cocina.
+   El contenido del pedido se mostrará en la tabla de la derecha.
+   Haga clic en el botón <Cocina>.
+
+   Si necesita imprimir, haga clic en el botón <Imprimir>.
+
+   Después de recibir el dinero, haga clic en el botón <Pagar> para finalizar.
+	 
+     

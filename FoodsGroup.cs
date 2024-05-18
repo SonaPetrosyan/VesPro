@@ -1,6 +1,7 @@
 ﻿using System.Data.SqlClient;
 using System;
 using System.Data;
+using System.IO;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp4
@@ -20,6 +21,8 @@ namespace WindowsFormsApp4
         private DataTable Food_Group = new DataTable();
 
         private DataTable Resize = new DataTable();
+
+        private DataTable ControlsFoodGroups = new DataTable();
 
         private DataTable Table_Rest = new DataTable();
 
@@ -43,11 +46,10 @@ namespace WindowsFormsApp4
 
             string query1 = $"SELECT * FROM table_215 WHERE Restaurant='{_restaurant}'" ;
             Tablte_215 = dbHelper.ExecuteQuery(query1);
-            Tablte_215.Columns.Add("Name", typeof(string));
-
+            Tablte_215.Columns.Add("Changed", typeof(int));
             dataGridView1.DataSource = Tablte_215;
             dataGridView1.Columns[0].DataPropertyName = "Code";
-            dataGridView1.Columns[1].DataPropertyName = "Name";
+            dataGridView1.Columns[1].DataPropertyName = _language;
             dataGridView1.Columns[2].DataPropertyName = "Department";
             dataGridView1.Columns[3].DataPropertyName = "Free";
             dataGridView1.Columns[4].DataPropertyName = "Groupp";
@@ -61,14 +63,15 @@ namespace WindowsFormsApp4
             }
             foreach (DataRow row in Tablte_215.Rows)
             {
-                row["Name"] = row[_language];
+                row["Changed"] = 0;
             }
 
             string query2 = $"SELECT * FROM FoodGroupp WHERE Restaurant='{_restaurant}'";
             Food_Group = dbHelper.ExecuteQuery(query2);
+            Food_Group.Columns.Add("Changed", typeof(int));
             dataGridView2.DataSource = Food_Group;
             dataGridView2.Columns[0].DataPropertyName = "Groupp";
-            dataGridView2.Columns[1].DataPropertyName = "Name";
+            dataGridView2.Columns[1].DataPropertyName = _language;
             foreach (DataGridViewColumn column in dataGridView2.Columns)
             {
                 if (column.Index > 1)
@@ -78,13 +81,13 @@ namespace WindowsFormsApp4
             }
             foreach (DataRow row in Food_Group.Rows)
             {
-                row["Name"] = row[_language];
+                row["Changed"] = 0;
             }
             string query3 = $"SELECT * FROM Restaurants WHERE Id = '{_restaurant}'";
             Table_Rest = dbHelper.ExecuteQuery(query3);
             foreach (DataRow row in Table_Rest.Rows)
             {
-                this.Text = row["Name"].ToString();
+                this.Text = row[_language].ToString();
             }
 
             Resize.Columns.Add("BeginWidth", typeof(decimal));
@@ -98,9 +101,61 @@ namespace WindowsFormsApp4
 
             if (_editor == 0)
             {
-                Savebutton1.Enabled=false;
                 Savebutton2.Enabled = false;
             }
+            SetLanguage(_language);
+        }
+
+        private void SetLanguage(string lang)
+        {
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            SqlConnection connection = new SqlConnection(connectionString);
+            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
+            connection.Open();
+            DataTable ControlsForm1 = new DataTable();
+            string query1 = $"SELECT * FROM ControlsFoodGroups  ";
+            ControlsFoodGroups = dbHelper.ExecuteQuery(query1);
+
+            foreach (Control control in this.Controls)
+            {
+                string columnName = control.Name.Trim();
+                DataRow[] foundRows = ControlsFoodGroups.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0)
+                {
+                    control.Text = foundRows[0][lang].ToString();
+                }
+            }
+
+            foreach (Control control in panel1.Controls)
+            {
+                string columnName = control.Name.Trim();
+                DataRow[] foundRows = ControlsFoodGroups.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0)
+                {
+                    control.Text = foundRows[0][lang].ToString();
+                }
+            }
+            for (int colIndex = 0; colIndex < dataGridView1.Columns.Count; colIndex++)
+            {
+                string columnName = dataGridView1.Columns[colIndex].DataPropertyName.Trim();
+                DataRow[] foundRows = ControlsFoodGroups.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0)
+                {
+                    dataGridView1.Columns[colIndex].HeaderText = foundRows[0][lang].ToString();
+                }
+
+            }
+            for (int colIndex = 0; colIndex < dataGridView2.Columns.Count; colIndex++)
+            {
+                string columnName = dataGridView2.Columns[colIndex].DataPropertyName.Trim();
+                DataRow[] foundRows = ControlsFoodGroups.Select($"TRIM(Name) = '{columnName}'");
+                if (foundRows.Length > 0)
+                {
+                    dataGridView2.Columns[colIndex].HeaderText = foundRows[0][lang].ToString();
+                }
+
+            }
+            connection.Close();
         }
 
         private void FoodsGroup_ResizeBegin(object sender, EventArgs e)
@@ -153,15 +208,15 @@ namespace WindowsFormsApp4
         private void AddButton2_Click(object sender, EventArgs e)
         {
             Savebutton2.Visible = true;
-            int groupp = 0;
+            decimal groupp = 0;
 
             foreach (DataRow row in Food_Group.Rows)
             {
-                groupp = int.Parse(row["Groupp"].ToString());
-                if (int.Parse(row["Groupp"].ToString()) > groupp) { groupp++; }
+               if (decimal.Parse(row["Groupp"].ToString()) > groupp) { groupp = decimal.Parse(row["Groupp"].ToString()); }
             }
             DataRow newRow = Food_Group.NewRow();
             newRow["Groupp"] = groupp + 1;
+            newRow["Changed"] = 1;
             Food_Group.Rows.Add(newRow);
             int lastRowIndex = Food_Group.Rows.Count - 1;
             dataGridView2.CurrentCell = dataGridView2.Rows[lastRowIndex].Cells[1];
@@ -195,11 +250,21 @@ namespace WindowsFormsApp4
         }
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            Savebutton1.Visible = true;
+             if (e.RowIndex >= 0 && e.RowIndex <= dataGridView1.Rows.Count)
+            {
+                DataGridView dataGridView = (DataGridView)sender;
+                dataGridView.Rows[e.RowIndex].Cells["Changed"].Value = 1;
+            }
+            Savebutton2.Visible = true;
         }
 
         private void dataGridView2_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex >= 0 && e.RowIndex <= dataGridView2.Rows.Count)
+            {
+                DataGridView dataGridView = (DataGridView)sender;
+                dataGridView.Rows[e.RowIndex].Cells["Changed"].Value = 1;
+            }
             Savebutton2.Visible = true;
         }
 
@@ -209,48 +274,57 @@ namespace WindowsFormsApp4
             SqlConnection connection = new SqlConnection(connectionString);
             SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
             connection.Open();
-
-            for (int i = 0; i < dataGridView2.Rows.Count - 1; i++)
+            foreach (DataRow row in Food_Group.Rows)
             {
-                if (dataGridView2.Rows[i].Cells[0].Value != null)
+                if (int.Parse(row["Changed"].ToString()) == 0) continue;
+                Exist = new DataTable();
+                int groupp = int.Parse(row["Groupp"].ToString());
+                string name1 = row[_language].ToString();
+                string query = $"SELECT * FROM FoodGroupp WHERE Groupp = '{groupp}' AND Restaurant='{_restaurant}'";
+                Exist = dbHelper.ExecuteQuery(query);
+                int count = Exist.Rows.Count;
+                if (count > 0)
                 {
-
-                    Exist = new DataTable();
-                    int groupp = int.Parse(dataGridView2.Rows[i].Cells[0].Value.ToString());
-                    string name1 = dataGridView2.Rows[i].Cells[1].Value.ToString();
-                    string query = $"SELECT * FROM FoodGroupp WHERE Groupp = '{groupp}' AND Restaurant='{_restaurant}'";
-                    Exist = dbHelper.ExecuteQuery(query);
-                    int count = Exist.Rows.Count;
-                    if (count > 0)
+                    string UpdateQuery = $"UPDATE FoodGroupp SET {_language}= @language WHERE Groupp= @Groupp ";
+                    using (SqlCommand command = new SqlCommand(UpdateQuery, connection))
                     {
-                        string UpdateQuery = $"UPDATE FoodGroupp SET {_language}= @language WHERE Groupp= @Groupp ";
-                        using (SqlCommand command = new SqlCommand(UpdateQuery, connection))
-                        {
-                            command.Parameters.AddWithValue("@language", name1);
-                            command.Parameters.AddWithValue("@Groupp", groupp);
-                              command.ExecuteNonQuery();
-                        }
-
-
-
+                        command.Parameters.AddWithValue("@language", name1);
+                        command.Parameters.AddWithValue("@Groupp", groupp);
+                        command.ExecuteNonQuery();
                     }
-                    else
+                }
+                else
+                {
+                    string InsertQuery = $"INSERT INTO FoodGroupp (Groupp,{_language},Restaurant) VALUES (@Groupp, @language, @Restaurant)";
+                    using (SqlCommand command = new SqlCommand(InsertQuery, connection))
                     {
-                        string InsertQuery = $"INSERT INTO FoodGroupp SET (Groupp,{_language},Restaurant) VALUES (@Groupp, @language, @Restaurant)";
-                        using (SqlCommand command = new SqlCommand(InsertQuery, connection))
-                        {
-                            command.Parameters.AddWithValue("@Groupp", groupp);
-                            command.Parameters.AddWithValue("@language", name1);
-                            command.Parameters.AddWithValue("@Restaurant", _restaurant);
-                            command.ExecuteNonQuery();
-                        }
-
-
-
+                        command.Parameters.AddWithValue("@Groupp", groupp);
+                        command.Parameters.AddWithValue("@language", name1);
+                        command.Parameters.AddWithValue("@Restaurant", _restaurant);
+                        command.ExecuteNonQuery();
                     }
-
                 }
             }
+            int free = 0;
+            foreach (DataRow row in Tablte_215.Rows)
+            {
+                if (int.Parse(row["Changed"].ToString()) ==0) continue;
+                string code = row["Code"].ToString();
+                int group = int.Parse(row["Groupp"].ToString());
+                if (row["Free"].GetType() == typeof(int))
+                {
+                    free = int.Parse(row["Free"].ToString());
+                }
+                else
+                {
+                    free = 0;
+                }
+                string UpdateQuery = $"UPDATE table_215 SET Groupp= '{group}',Free= '{free}' WHERE Code= '{code}' AND Restaurant='{_restaurant}' ";
+                using (SqlCommand updatCommand = new SqlCommand(UpdateQuery, connection))
+                        updatCommand.ExecuteNonQuery();
+
+            }
+            connection.Close();
             Savebutton2.Visible = false;
         }
 
@@ -258,43 +332,51 @@ namespace WindowsFormsApp4
         {
             if (label2.Text.Length > 0 && label3.Text.Length > 0)
             {
-                int rowindex = int.Parse(label3.Tag.ToString());
-                dataGridView1.Rows[rowindex].Cells["Groupp"].Value = int.Parse(label2.Text);
-                label3.Text = "";
-                dataGridView1.Refresh();
-                Savebutton1.Visible = true;
-            }
-        }
+                DataRow[] foundRows = Tablte_215.Select($"TRIM(Code) = '{label3.Text}'");
 
-        private void Savebutton1_Click(object sender, EventArgs e)
-        {
-            string connectionString = Properties.Settings.Default.CafeRestDB;
-            SqlConnection connection = new SqlConnection(connectionString);
-            SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
-            connection.Open();
-            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
-            {
-                if (dataGridView1.Rows[i].Cells[0].Value != null)
+                if (foundRows.Length > 0)
                 {
-                    string code = dataGridView1.Rows[i].Cells[0].Value.ToString();
-                    int free = int.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString());
-                    int group = int.Parse(dataGridView1.Rows[i].Cells[4].Value.ToString());
-                    string UpdateQuery = $"UPDATE table_215 SET Groupp= '{group}',Free= '{free}' WHERE Code= '{code}' AND Restaurant='{_restaurant}' ";
-                    using (SqlCommand updatCommand = new SqlCommand(UpdateQuery, connection))
-                    updatCommand.ExecuteNonQuery();
+                    foundRows[0]["Groupp"] = label2.Text;
+                    label3.Text = "";
+                    Savebutton2.Visible = true;
                 }
             }
-            Savebutton1.Visible=false;
         }
 
         private void SearchBox_TextChanged(object sender, EventArgs e)
         {
             dataView = new DataView(Tablte_215);
             string txt = SearchBox.Text.Trim();
-            dataView.RowFilter = $"(Code+Name) LIKE '%{txt}%'";
+            dataView.RowFilter = $"(Code+{_language}) LIKE '%{txt}%'";
             dataGridView1.DataSource = dataView;
         }
 
+        private HelpDialogForm helpDialogForm;
+        private void HelpButton_Click(object sender, EventArgs e)
+        {
+            string help = FindFolder.Folder("Help");
+            string filePath = "";
+            if (HelpButton.Text == "?")
+            {
+                HelpButton.Text = "X";
 
+                filePath = help + "\\FoodGroups_" + _language + ".txt";
+                string fileContent = File.ReadAllText(filePath);
+
+                if (helpDialogForm == null)
+                {
+                    helpDialogForm = new HelpDialogForm();
+                    helpDialogForm.FormClosed += (s, args) => helpDialogForm = null; // Reset the helpDialogForm reference when the form is closed
+                }
+
+                helpDialogForm.SetHelpContent(fileContent);
+                helpDialogForm.Show();
+            }
+            else
+            {
+                HelpButton.Text = "?";
+                helpDialogForm?.Close(); // Close the help dialog form if it's open
+            }
+        }
     }
 }

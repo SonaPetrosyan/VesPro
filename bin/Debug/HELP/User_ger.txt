@@ -1,0 +1,46 @@
+
+      Jeder Mitarbeiter, der am Programm teilnimmt, verfügt über die folgenden Funktionen:
+
+       - Restaurantnummer: <Restaurant>
+
+       - Hallennummer: <Holl>
+
+       und Befugnisse:
+
+          — Auftragsnehmer: <orderer> + Arbeitsplatz: <workplace> (ist eine Zahl – Arbeitsplatznummer)
+            Wenn diese Felder aktiviert sind, kann dieser Mitarbeiter eine Bestellung entgegennehmen
+
+          — vorheriger Besteller: <previous> + Arbeitsplatz: <workplace>
+            Wenn diese Felder aktiviert sind, kann dieser Mitarbeiter eine Vorbestellung entgegennehmen
+
+          — Manager: <Manager>
+            Wenn dieses Feld aktiviert ist, hat dieser Peer das Recht, überall zu bearbeiten
+            einschließlich dieser Tabelle
+ 
+          — Herausgeber: <editor>
+            Wenn dieses Feld aktiviert ist, hat dieser Peer das Recht, überall zu bearbeiten
+            dieser Tisch gehört nicht dazu.
+
+          — Beobachter: <observer>
+            Wenn nur dieses Feld markiert ist, hat dieser Mitarbeiter nur das Recht zur Beobachtung.
+            kann nicht bearbeitet werden
+
+        Verfügt der Mitarbeiter über keine dieser Funktionen, kann er nicht am Programm teilnehmen.
+
+
+        Diese Berechtigungen werden mit der Schaltfläche <Mitarbeiter> festgelegt
+  
+
+       Jeder kann unterschiedliche Kombinationen dieser Eigenschaften haben.
+  
+       Welche Drucker zum Ausdrucken der Bestellung und der Belege benötigt werden, wird vom Arbeitsplatz bestimmt.
+  
+       Die übrigen Felder haben folgende Bedeutung:
+
+       Passwort: Passwort
+       Passqart: Passwort auf magnetischen Datenträgern
+       Position: die Position
+       Name: Der Name des Mitarbeiters
+
+
+       Klicken Sie zum Schließen auf die Schaltfläche <X> oben links.

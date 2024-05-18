@@ -172,7 +172,11 @@ namespace WindowsFormsApp4
                 newRow["observer"] = 0;
                 newRow["Password"] = "";
                 newRow["Login"] = "";
+                newRow["Name"] = "";
                 newRow["Workplace"] = 0;
+                newRow["Language"] = "";
+                newRow["Position"] = "";
+                newRow["Passqart"] = "";
                 {
                     int lastRowIndex = dataGridView1.Rows.Count - 2;
                     for (int colIndex = 0; colIndex < dataGridView1.Columns.Count; colIndex++)
@@ -263,12 +267,6 @@ namespace WindowsFormsApp4
             if (HelpButton.Text == "?")
             {
                 HelpButton.Text = "X";
-                richTextBox1.Height = this.Height - 50;
-                richTextBox1.Top = 0;
-                richTextBox1.Left = HelpButton.Width+5;
-                richTextBox1.Width = this.Width/2;
-                richTextBox1.ReadOnly = true;
-                richTextBox1.Visible = true;
                 filePath = help+"\\User_"+_language+".txt";
                 string fileContent = File.ReadAllText(filePath);
 

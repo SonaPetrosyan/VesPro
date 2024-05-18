@@ -1,0 +1,26 @@
+ 
+   The names of the groups in the table on the right appear
+   In the top lines of the <Delivery groups> form:
+   in the form of buttons.
+   Clicking on them will bring up the menu
+   is filtered by that group. It is done in order to
+   food selection will be made easier.
+ 
+    How to insert a group number for a product
+    on the line
+   
+    - Stand on the line of the right table. 
+    the number of line will appear above the <V> button.
+   
+    - Stand on the required line of the left table. 
+	  the number of line will appear below the <V> button.
+   
+    - Press the <V> button and the top number will be placed on that line.
+   
+    - if you check the <other> box for the given product, then that
+    service and discount percentages will not be calculated on the product.
+   
+    Click the <Save> button when you are done, otherwise
+    your work will have no consequences.
+   
+    Click the orange <X> button to close the window.

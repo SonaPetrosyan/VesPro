@@ -1,0 +1,20 @@
+    
+     Select a product group using the buttons above.
+
+     Click on the desired food line. A picture of the dish will be shown,
+     if it exists, and underneath it is its composition.
+	 Using the <+1> and <+0.5> buttons enter the required quantity.
+     Use the <-1> and <-0.5> buttons to decrease the quantity.
+
+     Having collected the entire order, click the <Save> button, first
+     filling in the fields <address> and <telephone>.
+
+     If the message “Your order has been accepted. Our employee will call you” 
+     or “Your order has been accepted. The waiter will come to you"
+	 appears at the top - then wait and they will come up to you or call you.
+	 
+     Even after clicking the <Save> button, you can enter
+     Changes to the order if the program has not yet been closed.
+
+     
+     

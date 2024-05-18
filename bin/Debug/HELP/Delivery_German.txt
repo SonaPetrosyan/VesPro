@@ -1,0 +1,17 @@
+
+
+	
+    In der linken Tabelle sind Lieferaufträge aufgeführt.
+
+    Um eine Bestellung zu stornieren, aktivieren Sie das Kontrollkästchen <Löschen>.
+    Klicken Sie dann oben auf die Schaltfläche <Entfernen>.
+
+    Stellen Sie sich in die Bestellschlange, um die Bestellung an die Küche zu senden.
+    Der Bestellinhalt wird in der rechten Tabelle angezeigt.
+    Klicken Sie auf die Schaltfläche <Küche>.
+
+    Wenn Sie drucken müssen, klicken Sie auf die Schaltfläche <Drucken>.
+
+    Nachdem Sie das Geld erhalten haben, klicken Sie zum Abschluss auf die Schaltfläche <Bezahlen>.
+	 
+     

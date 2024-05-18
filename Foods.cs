@@ -132,10 +132,12 @@ namespace WindowsFormsApp4
              string query3 = $"SELECT * FROM table_215  ";
             Table_215 = dbHelper.ExecuteQuery(query3);
             //Table_215.Columns.Add("Name", typeof(string));
-            Table_215.Columns.Add("Changed", typeof(decimal));// DB - ում ֆայլը խմբագրելու համար է
+            Table_215.Columns.Add("Changed", typeof(int));// DB - ում ֆայլը խմբագրելու համար է
+            Table_215.Columns.Add("Dele", typeof(int));
             foreach (DataRow row in Table_215.Rows)
             {
                 row["Changed"] = 0;
+                row["Dele"] = 0;
                 //row["Unit"] = "բաժ";
             }
             dataView = new DataView(Table_215);
@@ -152,15 +154,16 @@ namespace WindowsFormsApp4
             dataGridView1.Columns[8].DataPropertyName = "Price2";
             dataGridView1.Columns[9].DataPropertyName = "Price3";
             dataGridView1.Columns[10].DataPropertyName = "Price4";
-            dataGridView1.Columns[11].DataPropertyName = "Price5";
+            dataGridView1.Columns[11].DataPropertyName = "Price9";
             dataGridView1.Columns[12].DataPropertyName = "ATG";
             dataGridView1.Columns[13].DataPropertyName = "InHoll";
             dataGridView1.Columns[14].DataPropertyName = "NonComposite";
-             dataGridView1.Columns[0].ReadOnly = true;
+            dataGridView1.Columns[15].DataPropertyName = "Dele";
+            //   dataGridView1.Columns[0].ReadOnly = true;
 
             foreach (DataGridViewColumn column in dataGridView1.Columns)
             {
-                if (column.Index > 14)
+                if (column.Index > 15)
                 {
                     column.Visible = false;
                 }
@@ -171,8 +174,14 @@ namespace WindowsFormsApp4
             string query4 = $"SELECT * FROM Composition ";
             Table_Composition = dbHelper.ExecuteQuery(query4);
             Table_Composition.Columns.Add("Name", typeof(string));
-            Table_Composition.Columns.Add("Changed", typeof(decimal));// DB - ում ֆայլը խմբագրելու համար է
-
+            Table_Composition.Columns.Add("Changed", typeof(int));// DB - ում ֆայլը խմբագրելու համար է
+            Table_Composition.Columns.Add("Dele", typeof(int));
+            foreach (DataRow row in Table_Composition.Rows)
+            {
+                row["Name"] = "";
+                row["Changed"] = 0;
+                row["Dele"] = 0;
+            }
          //*********************տեղադրում ենք անվանումները 
             var query = from row1 in Table_211.AsEnumerable()
                         join row2 in Table_Composition.AsEnumerable()
@@ -225,13 +234,14 @@ namespace WindowsFormsApp4
             dataGridView2.Columns[5].DataPropertyName = "Neto";
             dataGridView2.Columns[6].DataPropertyName = "Bruto";
             dataGridView2.Columns[7].DataPropertyName = "Note";
+            dataGridView2.Columns[8].DataPropertyName = "Dele";
 
 
 
             foreach (DataGridViewColumn column in dataGridView2.Columns)
             {
 
-                if (column.Index > 7)
+                if (column.Index > 8)
                 {
                     column.Visible = false;
                 }
@@ -523,74 +533,6 @@ namespace WindowsFormsApp4
                 }
             }
         }
-
-
-        private void dataGridView3_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            DataGridView dgv = (DataGridView)sender;
-            DataGridViewCell currentCell = dgv.CurrentCell;
-
-            if (currentCell != null)
-            {
-                int rowIndex = currentCell.RowIndex;
-                int columnIndex = currentCell.ColumnIndex;
-                object cellValue = dgv.CurrentCell.Value;
-
-                string codevalue = "";
-                string namevalue = "";
-                float costprice = 0;
-
-                for (int colIndex = 0; colIndex < Table_215_Semi.Columns.Count; colIndex++)
-                {
-                    if (dataGridView3.Columns[colIndex].DataPropertyName == "Code")
-                    {
-                        codevalue = dataGridView3.Rows[rowIndex].Cells[colIndex].Value.ToString();
-                    }
-                    if (dataGridView3.Columns[colIndex].DataPropertyName == "Name")
-                    {
-                        namevalue = dataGridView3.Rows[rowIndex].Cells[colIndex].Value.ToString();
-                    }
-                    if (dataGridView3.Columns[colIndex].DataPropertyName == "CostPrice")
-                    {
-                        costprice = float.Parse(dataGridView3.Rows[rowIndex].Cells[colIndex].Value.ToString());
-                    }
-                }
-
-                string cname = dataGridView3.Columns[columnIndex].DataPropertyName;
-                if (cellValue != null && cellValue.ToString() != string.Empty && cname == "Quantity" && float.Parse(cellValue.ToString()) > 0)
-                {
-
-                    DataRow newRow = Table_Composition.NewRow();
-                    Table_Composition.Rows.Add(newRow);
-                    newRow["Code_215"] = dataGridView4.Tag.ToString();
-                    newRow["Code_211"] = codevalue;
-                    newRow["Name"] = namevalue;
-                    newRow["Quantity"] = dgv.CurrentCell.Value;
-                    newRow["CostPrice"] = costprice;
-                    newRow["Changed"] = 1;
-
-                    dgv.CurrentCell.Value = 0;
-                    dgv.EndEdit();
-
-                }
-                int lastRowIndex = Math.Min(0, Table_Composition.Rows.Count - 2);
-                for (int colIndex = 0; colIndex < dataGridView2.Columns.Count; colIndex++)
-                {
-                    if (dataGridView2.Columns[colIndex].Visible)
-                    {
-                        dataGridView2.CurrentCell = dataGridView2.Rows[lastRowIndex].Cells[colIndex];
-                        dataGridView2.BeginEdit(true);
-                        break;
-                    }
-                }
-                SearchBox3.Focus();
-            }
-        }
-
-
-
-
-
         private void SearchBox_TextChanged(object sender, EventArgs e)
         {
             dataView = new DataView(Table_215);
@@ -642,18 +584,64 @@ namespace WindowsFormsApp4
             string connectionString = Properties.Settings.Default.CafeRestDB;
             Save_.Save(Table_215, "Table_215", _restaurant);
             Save.UpdateTableFromDatatable(connectionString, Table_Composition, "Composition", _restaurant);
+            SaveButton.Visible = false;
         }
-
-        private void Foods_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            return;
-        }
-
 
         private void dataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
 
 
+        }
+
+        private void dataGridView3_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView dgv = (DataGridView)sender;
+            DataGridViewCell currentCell = dgv.CurrentCell;
+
+            if (currentCell != null)
+            {
+                int rowIndex = currentCell.RowIndex;
+                int columnIndex = currentCell.ColumnIndex;
+                object cellValue = dgv.CurrentCell.Value;
+                if (e.RowIndex >= 0 && e.RowIndex <= dataGridView3.Rows.Count)
+                {
+                    DataGridView dataGridView = (DataGridView)sender;
+                    string codevalue = dataGridView.Rows[e.RowIndex].Cells["Code"].Value.ToString();
+                    string namevalue = dataGridView.Rows[e.RowIndex].Cells["Name"].Value.ToString();
+                    float costprice = float.Parse(dataGridView.Rows[e.RowIndex].Cells["CostPrice"].Value.ToString());
+                    float quantity = float.Parse(dataGridView.Rows[e.RowIndex].Cells["Quantity"].Value.ToString());
+                    string unit = dataGridView.Rows[e.RowIndex].Cells["Unit"].Value.ToString();
+                    if (quantity > 0)
+                    {
+                        DataRow newRow = Table_Composition.NewRow();
+                        Table_Composition.Rows.Add(newRow);
+                        newRow["Code_215"] = dataGridView4.Tag.ToString();
+                        newRow["Code_211"] = codevalue;
+                        newRow["Name"] = namevalue;
+                        newRow["Quantity"] = quantity;
+                        newRow["Unit"] = unit;
+                        newRow["CostPrice"] = costprice;
+                        newRow["Neto"] = 0;
+                        newRow["bruto"] = 1;
+                        newRow["coefficient"] = 0;
+                        newRow["Note"] = "";
+                        newRow["Changed"] = 1;
+                        newRow["Dele"] = 0;
+                    }
+                }
+                int lastRowIndex = Math.Min(0, Table_Composition.Rows.Count - 1);
+                for (int colIndex = 0; colIndex < dataGridView2.Columns.Count; colIndex++)
+                {
+                    if (dataGridView2.Columns[colIndex].Visible)
+                    {
+                        dataGridView2.CurrentCell = dataGridView2.Rows[lastRowIndex].Cells[colIndex];
+                        dataGridView2.BeginEdit(true);
+                        break;
+                    }
+                }
+                SearchBox3.Focus();
+                SaveButton.Visible = true;
+            }
         }
         private void dataGridView4_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
@@ -665,46 +653,33 @@ namespace WindowsFormsApp4
                 int rowIndex = currentCell.RowIndex;
                 int columnIndex = currentCell.ColumnIndex;
                 object cellValue = dgv.CurrentCell.Value;
-
-                string codevalue = "";
-                string namevalue = "";
-                float costprice = 0;
-
-                for (int colIndex = 0; colIndex < Table_211_Component.Columns.Count; colIndex++)
+                if (e.RowIndex >= 0 && e.RowIndex <= dataGridView4.Rows.Count)
                 {
-                    if (dataGridView4.Columns[colIndex].DataPropertyName == "Code")
+                    DataGridView dataGridView = (DataGridView)sender;
+                    string codevalue = dataGridView.Rows[e.RowIndex].Cells["Code"].Value.ToString();
+                    string namevalue = dataGridView.Rows[e.RowIndex].Cells["Name"].Value.ToString();
+                    float costprice = float.Parse(dataGridView.Rows[e.RowIndex].Cells["CostPrice"].Value.ToString());
+                    float quantity = float.Parse(dataGridView.Rows[e.RowIndex].Cells["Quantity"].Value.ToString());
+                    string unit = dataGridView.Rows[e.RowIndex].Cells["Unit"].Value.ToString();
+                    if (quantity > 0)
                     {
-                        codevalue = dataGridView4.Rows[rowIndex].Cells[colIndex].Value.ToString();
-                    }
-                    if (dataGridView4.Columns[colIndex].DataPropertyName == "Name")
-                    {
-                        namevalue = dataGridView4.Rows[rowIndex].Cells[colIndex].Value.ToString();
-                    }
-                    if (dataGridView4.Columns[colIndex].DataPropertyName == "CostPrice")
-                    {
-                        costprice = float.Parse(dataGridView4.Rows[rowIndex].Cells[colIndex].Value.ToString());
+                        DataRow newRow = Table_Composition.NewRow();
+                        Table_Composition.Rows.Add(newRow);
+                        newRow["Code_215"] = dataGridView4.Tag.ToString();
+                        newRow["Code_211"] = codevalue;
+                        newRow["Name"] = namevalue;
+                        newRow["Quantity"] = quantity;
+                        newRow["Unit"] = unit;
+                        newRow["CostPrice"] = costprice;
+                        newRow["Neto"] = 0;
+                        newRow["bruto"] = 1;
+                        newRow["coefficient"] = 0;
+                        newRow["Note"] = "";
+                        newRow["Changed"] = 1;
+                        newRow["Dele"] = 0;
                     }
                 }
-
-                string cname = dataGridView4.Columns[columnIndex].DataPropertyName;
-                if (cellValue != null && cellValue.ToString() != string.Empty && cname == "Quantity" && float.Parse(cellValue.ToString()) > 0)
-                {
-
-                    DataRow newRow = Table_Composition.NewRow();
-                    Table_Composition.Rows.Add(newRow);
-                    newRow["Code_215"] = dataGridView4.Tag.ToString();
-                    newRow["Code_211"] = codevalue;
-                    newRow["Name"] = namevalue;
-                    newRow["Quantity"] = dgv.CurrentCell.Value;
-                    newRow["CostPrice"] = costprice;
-                    newRow["Changed"] = 1;
-
-                    dgv.CurrentCell.Value = 0;
-                    dgv.EndEdit();
-
-
-                }
-                int lastRowIndex = Math.Min(0, Table_Composition.Rows.Count - 2);
+                int lastRowIndex = Math.Min(0, Table_Composition.Rows.Count - 1);
                 for (int colIndex = 0; colIndex < dataGridView2.Columns.Count; colIndex++)
                 {
                     if (dataGridView2.Columns[colIndex].Visible)
@@ -715,6 +690,7 @@ namespace WindowsFormsApp4
                     }
                 }
                 SearchBox4.Focus();
+                SaveButton.Visible = true;
             }
         }
 
@@ -894,13 +870,13 @@ namespace WindowsFormsApp4
             button2.Tag = currentCell.ColumnIndex.ToString();// ֆիքսում ենք ընթացիկ բջիջի ինդեքսները
             checkedListBox1.Tag=currentCell.RowIndex.ToString();
 
-            if (currentCell != null && (currentCell.ColumnIndex == 21 || currentCell.ColumnIndex == 22))
+            if (currentCell != null && (currentCell.ColumnIndex == 23 || currentCell.ColumnIndex == 24))
             {
                 checkedListBox1.Visible = true;
                 button2.Visible = true;
             }
-           // this.Text = button2.Tag.ToString() + " , " + dataGridView1.Columns[currentCell.ColumnIndex].DataPropertyName+
-           //     " v= "+ dataGridView1.Columns[currentCell.ColumnIndex].ValueType;
+         //   this.Text = button2.Tag.ToString() + " , " + dataGridView1.Columns[currentCell.ColumnIndex].DataPropertyName+
+         //       " v= "+ dataGridView1.Columns[currentCell.ColumnIndex].ValueType;
 
         }
 
@@ -925,10 +901,11 @@ namespace WindowsFormsApp4
 
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewCell currentCell = dataGridView1.CurrentCell;
-            button2.Tag = currentCell.ColumnIndex.ToString();// ֆիքսում ենք ընթացիկ բջիջի ինդեքսները
-            checkedListBox1.Tag = currentCell.RowIndex.ToString();
-            dataGridView1.Rows[currentCell.RowIndex].Cells["Changed"].Value = 1;
+            if (e.RowIndex >= 0 && e.RowIndex <= dataGridView1.Rows.Count)
+            {
+                DataGridView dataGridView = (DataGridView)sender;
+                dataGridView.Rows[e.RowIndex].Cells["Changed"].Value = 1;
+            }
             SaveButton.Visible = true;
 
         }
@@ -959,6 +936,14 @@ namespace WindowsFormsApp4
             }
         }
 
-
+        private void dataGridView2_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex <= dataGridView2.Rows.Count)
+            {
+                DataGridView dataGridView = (DataGridView)sender;
+                dataGridView.Rows[e.RowIndex].Cells["Changed"].Value = 1;
+            }
+            SaveButton.Visible = true;
+        }
     }
 }

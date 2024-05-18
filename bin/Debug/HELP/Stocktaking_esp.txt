@@ -1,0 +1,9 @@
+Seleccione las opciones requeridas y presione el botón <Adelant>
+   
+    Para imprimir una copia del cupón, marque la casilla <imprimir boleto>,
+    luego párese en la línea requerida. Espera un momento y aparecerá el prototipo del cupón.
+   
+    Para volver a abrir la tabla impresa para la sesión actual, desmarque la columna <impreso>
+    y haga clic en el botón <Save>.
+   
+        Haga clic en el botón amarillo <X> para cerrar.

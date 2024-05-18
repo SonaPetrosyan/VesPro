@@ -55,7 +55,7 @@ namespace WindowsFormsApp4
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(344, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(123, 37);
+            this.label1.Size = new System.Drawing.Size(150, 46);
             this.label1.TabIndex = 0;
             this.label1.Text = "Մուտք";
             // 
@@ -66,7 +66,7 @@ namespace WindowsFormsApp4
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(144, 102);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(102, 26);
+            this.label2.Size = new System.Drawing.Size(130, 32);
             this.label2.TabIndex = 1;
             this.label2.Text = "Օգտվող";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -79,7 +79,7 @@ namespace WindowsFormsApp4
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(88, 167);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(158, 26);
+            this.label3.Size = new System.Drawing.Size(200, 32);
             this.label3.TabIndex = 2;
             this.label3.Text = "Գաղտնաբառ";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -92,7 +92,7 @@ namespace WindowsFormsApp4
             this.loginfield.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.loginfield.Location = new System.Drawing.Point(252, 100);
             this.loginfield.Name = "loginfield";
-            this.loginfield.Size = new System.Drawing.Size(292, 30);
+            this.loginfield.Size = new System.Drawing.Size(292, 36);
             this.loginfield.TabIndex = 3;
             this.loginfield.TextChanged += new System.EventHandler(this.loginfield_TextChanged);
             this.loginfield.Enter += new System.EventHandler(this.loginfield_Enter);
@@ -105,7 +105,8 @@ namespace WindowsFormsApp4
             this.passfield.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.passfield.Location = new System.Drawing.Point(252, 162);
             this.passfield.Name = "passfield";
-            this.passfield.Size = new System.Drawing.Size(292, 30);
+            this.passfield.PasswordChar = '*';
+            this.passfield.Size = new System.Drawing.Size(292, 36);
             this.passfield.TabIndex = 4;
             this.passfield.TextChanged += new System.EventHandler(this.passfield_TextChanged);
             this.passfield.Enter += new System.EventHandler(this.passfield_Enter);
@@ -134,7 +135,7 @@ namespace WindowsFormsApp4
             this.textBox3.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.textBox3.Location = new System.Drawing.Point(550, 104);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(29, 19);
+            this.textBox3.Size = new System.Drawing.Size(29, 23);
             this.textBox3.TabIndex = 6;
             this.textBox3.Text = "x";
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -150,7 +151,7 @@ namespace WindowsFormsApp4
             this.textBox4.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.textBox4.Location = new System.Drawing.Point(550, 169);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(29, 19);
+            this.textBox4.Size = new System.Drawing.Size(29, 23);
             this.textBox4.TabIndex = 7;
             this.textBox4.Text = "x";
             this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;

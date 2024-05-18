@@ -1,0 +1,21 @@
+
+
+	
+     Para brindar información sobre el proceso de preparación
+	 de alimentos a los puntos de distribución.
+    
+
+     Cuando la comida preparada se entrega al camarero, entonces
+     marque la casilla <dada> de la izquierda para eliminar
+	 el alimento de la lista.
+    
+
+      Si configura <Impresora> en 0, todas las comidas
+      aparecen en la lista. De lo contrario sólo para el número dado
+      Los feeds relacionados con la impresora son visibles.
+
+      Al realizar cambios, haga clic en el botón <Editar>.
+
+
+	 
+     

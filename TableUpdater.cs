@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
 using Newtonsoft.Json.Linq;
 
 public static class TableUpdater
@@ -13,7 +13,7 @@ public static class TableUpdater
     {
         //       try
         //       {
-        using (MySqlConnection connection = new MySqlConnection(connectionString))
+        using (SqlConnection connection = new SqlConnection(connectionString))
         {
             connection.Open();
             string parameter = Parameter;//File.ReadAllText(Parameter);
@@ -26,7 +26,7 @@ public static class TableUpdater
             if (parameter == "215")
             {
                 string query = $"TRUNCATE TABLE table_215";
-                using (MySqlCommand command = new MySqlCommand(query, connection))
+                using (SqlCommand command = new SqlCommand(query, connection))
                     foreach (var item in items)
                 {
                     string code = item["Code"].ToString().Trim();
@@ -57,7 +57,7 @@ public static class TableUpdater
                 JArray items1 = (JArray)json1["items"];
 
                 string query0 = $"TRUNCATE TABLE composition";
-                using (MySqlCommand command = new MySqlCommand(query0, connection))
+                using (SqlCommand command = new SqlCommand(query0, connection))
                     foreach (var item in items1)
                 {
                     string code_215 = item["Code_215"].ToString().Trim();
@@ -78,7 +78,7 @@ public static class TableUpdater
             if (parameter == "group")
             {
                 string query = $"TRUNCATE TABLE food_groupp";
-                using (MySqlCommand command = new MySqlCommand(query, connection))
+                using (SqlCommand command = new SqlCommand(query, connection))
                 foreach (var item in items)
                 {
                     string name1 = item["Name"].ToString();
@@ -92,7 +92,7 @@ public static class TableUpdater
             if (parameter == "211")
             {
                 string query = $"TRUNCATE TABLE table_211";
-                using (MySqlCommand command = new MySqlCommand(query, connection))
+                using (SqlCommand command = new SqlCommand(query, connection))
                 foreach (var item in items)
                 {
                     string code = item["Code"].ToString().Trim();
@@ -109,7 +109,7 @@ public static class TableUpdater
             if (parameter == "213")
             {
                 string query = $"TRUNCATE TABLE table_213";
-                using (MySqlCommand command = new MySqlCommand(query, connection))
+                using (SqlCommand command = new SqlCommand(query, connection))
                 foreach (var item in items)
                 {
                     string code = item["Code"].ToString().Trim();
@@ -127,7 +127,7 @@ public static class TableUpdater
             if (parameter == "111")
             {
                 string query = $"TRUNCATE TABLE table_111";
-                using (MySqlCommand command = new MySqlCommand(query, connection))
+                using (SqlCommand command = new SqlCommand(query, connection))
                     foreach (var item in items)
                 {
                     string code = item["Code"].ToString().Trim();
@@ -144,7 +144,7 @@ public static class TableUpdater
             if (parameter == "addition")
             {
                 string query = $"TRUNCATE TABLE AdditionGroups";
-                using (MySqlCommand command = new MySqlCommand(query, connection))
+                using (SqlCommand command = new SqlCommand(query, connection))
                     foreach (var item in items)
                     {
                         int number = int.Parse(item["Number"].ToString().Trim());
@@ -163,7 +163,7 @@ public static class TableUpdater
                 // Process each item in the 'items' array
                 JArray items1 = (JArray)json1["items"];
                 string query1 = $"TRUNCATE TABLE AdditionNames";
-                using (MySqlCommand command = new MySqlCommand(query1, connection))
+                using (SqlCommand command = new SqlCommand(query1, connection))
                     foreach (var item in items1)
                     {
                         int number = int.Parse(item["Number"].ToString().Trim());
@@ -187,13 +187,13 @@ public static class TableUpdater
 
 
 
-    private static void InsertRecordCalcul(MySqlConnection connection, string tableName, string code_215,
+    private static void InsertRecordCalcul(SqlConnection connection, string tableName, string code_215,
     string code_211, string name1, string note, string unit, float coefficient, float quantity, float bruto, float neto)
     {
          string query = $"INSERT INTO {tableName} (Code_215,Code_211, Name, Note, Unit, Coefficient, Quantity, Bruto,Neto) " +
                        $"VALUES (@Code_215, @Code_211, @Name1, @Note, @Unit, @Coefficient, @Quantity, @Bruto, @Neto)";
 
-        using (MySqlCommand command = new MySqlCommand(query, connection))
+        using (SqlCommand command = new SqlCommand(query, connection))
         {
             command.Parameters.AddWithValue("@Code_215", code_215);
             command.Parameters.AddWithValue("@Code_211", code_211);
@@ -207,14 +207,14 @@ public static class TableUpdater
             command.ExecuteNonQuery();
         }
     }
-    private static void InsertRecord215(MySqlConnection connection, string tableName, string code, string name1,
+    private static void InsertRecord215(SqlConnection connection, string tableName, string code, string name1,
         string name2, string name3, string unit, int group,bool semiprepared, int printer, float price, float price1,
         float price2, float price3, float price4, float price5, int department, string inholl)
     {
         string query = $"INSERT INTO {tableName} (Code, Name, Eng, Rus, Unit, Group,SemiPrepared," +
             $" Printer, Price, Price1, Price2, Price3, Price4, Price5, Department, InHoll) VALUES (@Code, @Name1," +
             $" @Name2, @Name3, @Unit, @Group, @Printer, @Price, @Price1, @Price2, @Price3, @Price4, @Price5, @Department, @InHoll)";
-        using (MySqlCommand command = new MySqlCommand(query, connection))
+        using (SqlCommand command = new SqlCommand(query, connection))
         {
             command.Parameters.AddWithValue("@Code", code);
             command.Parameters.AddWithValue("@Name1", name1);
@@ -236,12 +236,12 @@ public static class TableUpdater
         }
     }
 
-    private static void InsertRecord(MySqlConnection connection, string tableName, string code, string name1, string name2, string name3, string unit, float price, int group)
+    private static void InsertRecord(SqlConnection connection, string tableName, string code, string name1, string name2, string name3, string unit, float price, int group)
     {
         string query = $"INSERT INTO {tableName} (Code, Name, Eng, Rus, Unit, CostPrice, Group) " +
                        $"VALUES (@Code, @Name1, @Name2, @Name3, @Unit, @Price,@Group)";
 
-        using (MySqlCommand command = new MySqlCommand(query, connection))
+        using (SqlCommand command = new SqlCommand(query, connection))
         {
             command.Parameters.AddWithValue("@Code", code);
             command.Parameters.AddWithValue("@Name1", name1);
@@ -253,12 +253,12 @@ public static class TableUpdater
             command.ExecuteNonQuery();
         }
     }
-    private static void InsertRecordgroup(MySqlConnection connection, string tableName,  string name1, string name2, string name3, int group)
+    private static void InsertRecordgroup(SqlConnection connection, string tableName,  string name1, string name2, string name3, int group)
     {
         string query = $"INSERT INTO {tableName} (Name, Eng, Rus, Group) " +
                        $"VALUES ( @Name1, @Name2, @Name3,@Group)";
 
-        using (MySqlCommand command = new MySqlCommand(query, connection))
+        using (SqlCommand command = new SqlCommand(query, connection))
         {
             command.Parameters.AddWithValue("@Name1", name1);
             command.Parameters.AddWithValue("@Name2", name2);
@@ -267,12 +267,12 @@ public static class TableUpdater
             command.ExecuteNonQuery();
         }
     }
-    private static void InsertRecordaddgr(MySqlConnection connection, string tableName, int number, string name1, string name2, string name3)
+    private static void InsertRecordaddgr(SqlConnection connection, string tableName, int number, string name1, string name2, string name3)
     {
         string query = $"INSERT INTO {tableName} (Number,Name, Eng, Rus) " +
                        $"VALUES (@Number, @Name1, @Name2, @Name3)";
 
-        using (MySqlCommand command = new MySqlCommand(query, connection))
+        using (SqlCommand command = new SqlCommand(query, connection))
         {
             command.Parameters.AddWithValue("@Name1", name1);
             command.Parameters.AddWithValue("@Name2", name2);

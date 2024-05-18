@@ -1,0 +1,28 @@
+   
+   
+   Die Namen der Gruppen in der Tabelle rechts werden angezeigt
+   In den oberen Zeilen des Formulars <Mittagsgruppen>:
+   in Form von Knöpfen.
+   Wenn Sie darauf klicken, wird das Menü angezeigt
+   wird nach dieser Gruppe gefiltert. Es geschieht, um
+   Die Lebensmittelauswahl wird erleichtert.
+ 
+    So fügen Sie eine Gruppennummer für ein Produkt ein
+    an der Leitung
+   
+    - Stellen Sie sich auf die rechte Tabelle. Ausrichten
+    Die Nummer wird über der Schaltfläche <V> angezeigt.
+   
+    - Stellen Sie sich auf die gewünschte Zeile des linken Tabelle. Ausrichten
+    Die Nummer wird unter der Schaltfläche <V> angezeigt.
+   
+    - Drücken Sie die Taste <V> und die oberste Zahl wird in dieser Zeile platziert.
+   
+    - Wenn Sie das Kontrollkästchen <Andere> für das 
+	  angegebene Produkt aktivieren, dann ist dies der Fall
+    Service- und Rabattprozentsätze werden nicht auf das Produkt berechnet.
+   
+    Klicken Sie andernfalls auf die Schaltfläche <Speichern>, wenn Sie fertig sind
+    Ihre Arbeit wird keine Konsequenzen haben.
+   
+    Klicken Sie auf die orangefarbene Schaltfläche <X>, um das Fenster zu schließen.

@@ -7,7 +7,8 @@
       Komponenten werden aus Abschnitt 2 exportiert.
 
       Preis – ist der aktuelle Verkaufspreis, außer für die Hallen 1, 2, 3, 4 und 5
-      Die Preise der Hallen 1, 2, 3, 4, 5 betragen Preis 1, Preis 2, Preis 3, Preis 4, Preis 5.
+      Die Preise der Hallen 1, 2, 3, 4, 5 entsprechend handelt es sich um die Preise
+	  für halle1, halle2, halle3, halle4 und Lieferung.
 
         Drucker ist eine Nummer. Es ist die Druckernummer, die die Bestellung für dieses Produkt bestimmt
       Wo wird gedruckt: Küche, Bar, Grill usw.

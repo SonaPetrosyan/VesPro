@@ -2,7 +2,7 @@
 	 
 	Bestellannahme:
 
-      Klicken Sie auf die gewünschte Tabelle
+      Klicken Sie auf die gewünschte Sitz
 
       Klicken Sie auf <Küche> oder <Bar>, um die Produktliste zu filtern.
       Anschließend wählen Sie mit den Buttons oben die Produktgruppe aus.

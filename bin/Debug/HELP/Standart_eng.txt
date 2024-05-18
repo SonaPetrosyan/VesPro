@@ -1,0 +1,11 @@
+    - Select the order number
+   
+    - complete or edit an order for 1 person
+   
+    - click the <Save> button
+   
+    These standart orders are used
+    in operation <Visitor Service> 
+   
+    Click the bottom right <X> button to close the window.
+	

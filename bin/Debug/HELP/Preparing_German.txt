@@ -1,0 +1,21 @@
+
+
+	
+     Zur Bereitstellung von Informationen über den 
+	 Lebensmittelzubereitungsprozess an Verteilungsstellen
+    
+
+     Wenn das Fertiggericht dann beim Kellner abgegeben wird
+     Aktivieren Sie das linke Kästchen <gegeben>, 
+	 um das Lebensmittel aus der Liste zu entfernen.
+    
+
+      Wenn Sie <Drucker> auf 0 setzen, werden alle Mahlzeiten angezeigt
+      erscheinen in der Liste. Ansonsten nur für die angegebene Nummer
+      Die druckerbezogenen Feeds sind sichtbar.
+
+ 
+    
+      Wenn Sie Änderungen vornehmen, klicken Sie auf die Schaltfläche <Bearbeiten>.
+	 
+     

@@ -1,12 +1,8 @@
 ﻿
-using Amazon.DynamoDBv2.Model;
+
 using System;
 using System.Data;
-
 using System.Data.SqlClient;
-using System.Diagnostics;
-using System.Reflection;
-using System.Xml.Linq;
 namespace WindowsFormsApp4
 {
     public static class Save
@@ -66,30 +62,31 @@ namespace WindowsFormsApp4
                 {
                     foreach (DataRow row in datatable.Rows)
                     {
-                        if (row["Changed"] != DBNull.Value && decimal.Parse(row["Changed"].ToString()) == 0)
-                        {
-                            continue; //տողը փոփոխված չի
-                        }
 
+                        if (row["Changed"] != DBNull.Value && int.Parse(row["Changed"].ToString()) == 0) continue; //տողը փոփոխված չի
+                       
                         string code_215 = row["Code_215"].ToString().Trim();
                         string code_211 = row["Code_211"].ToString().Trim();
-                       string unit = row["Unit"].ToString();
+
+                        string unit = row["Unit"].ToString();
                         string note = row["Note"].ToString();
                         decimal coefficient = decimal.Parse(row["Coefficient"].ToString().Trim());
                         decimal quantity = decimal.Parse(row["Quantity"].ToString().Trim());
                         decimal bruto = decimal.Parse(row["Bruto"].ToString().Trim());
                         decimal neto = decimal.Parse(row["Neto"].ToString().Trim());
-
+                        int dele = int.Parse(row["Dele"].ToString().Trim());
                         bool codeExists = CheckIfCodeExistsCalc(connection, "Composition", code_215, code_211);
                         if (codeExists)
                         {
                             // Update the fields if the code exists
-                            UpdateFieldsCalcul(connection, "Composition", code_215, code_211, note, unit, coefficient, quantity, bruto, neto);
+                            UpdateFieldsCalcul(connection, "Composition", code_215, code_211, note, unit, coefficient, quantity, bruto, neto, dele);
                         }
                         else
                         {
-                            // Insert a new record if the code doesn't exist
-                            InsertRecordCalcul(connection, "Composition", code_215, code_211,  note, unit, coefficient, quantity, bruto, neto, _restaurant);
+                            if (quantity > 0)
+                            {// Insert a new record if the code doesn't exist
+                                InsertRecordCalcul(connection, "Composition", code_215, code_211, note, unit, coefficient, quantity, bruto, neto, _restaurant);
+                            }
                         }
 
                     }
@@ -414,23 +411,48 @@ namespace WindowsFormsApp4
             }
         }
         private static void UpdateFieldsCalcul(SqlConnection connection, string tableName, string code_215,
-                    string code_211, string note, string unit, decimal coefficient, decimal quantity, decimal bruto, decimal neto)
+                    string code_211, string note, string unit, decimal coefficient, decimal quantity, decimal bruto, decimal neto,int dele)
         {
-            string query = $"UPDATE {tableName} SET Note = @Note, Unit = @Unit, " +
-                $"Coefficient = @Coefficient, Quantity = @quantity, Bruto = @Bruto," +
-                $" Neto = @Neto WHERE Code_215 = @Code_215 AND Code_211 = @Code_211 ";
-            using (SqlCommand command = new SqlCommand(query, connection))
+            if (quantity > 0)
             {
-                command.Parameters.AddWithValue("@Code_215", code_215);
-                command.Parameters.AddWithValue("@Code_211", code_211);
-                command.Parameters.AddWithValue("@Note", note);
-                command.Parameters.AddWithValue("@Coefficient", coefficient);
-                command.Parameters.AddWithValue("@Unit", unit);
-                command.Parameters.AddWithValue("@Quantity", quantity);
-                command.Parameters.AddWithValue("@Bruto", bruto);
-                command.Parameters.AddWithValue("@Neto", neto);
-                command.ExecuteNonQuery();
+                string query = $"UPDATE {tableName} SET Note = @Note, Unit = @Unit, " +
+                    $"Coefficient = @Coefficient, Quantity = @quantity, Bruto = @Bruto," +
+                    $" Neto = @Neto WHERE Code_215 = @Code_215 AND Code_211 = @Code_211 ";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Code_215", code_215);
+                    command.Parameters.AddWithValue("@Code_211", code_211);
+                    command.Parameters.AddWithValue("@Note", note);
+                    command.Parameters.AddWithValue("@Coefficient", coefficient);
+                    command.Parameters.AddWithValue("@Unit", unit);
+                    command.Parameters.AddWithValue("@Quantity", quantity);
+                    command.Parameters.AddWithValue("@Bruto", bruto);
+                    command.Parameters.AddWithValue("@Neto", neto);
+                    command.ExecuteNonQuery();
+                }
             }
+            else
+            {
+
+                string delete = $"Delete From {tableName}  WHERE Code_215 = @Code_215 AND Code_211 = @Code_211 ";
+                using (SqlCommand command = new SqlCommand(delete, connection))
+                {
+                    command.Parameters.AddWithValue("@Code_215", code_215);
+                    command.Parameters.AddWithValue("@Code_211", code_211);
+                    command.ExecuteNonQuery();
+                }
+            }
+            if (dele == 1)
+            {
+                string delete = $"Delete From {tableName}  WHERE Code_215 = @Code_215 AND Code_211 = @Code_211 ";
+                using (SqlCommand command = new SqlCommand(delete, connection))
+                {
+                    command.Parameters.AddWithValue("@Code_215", code_215);
+                    command.Parameters.AddWithValue("@Code_211", code_211);
+                    command.ExecuteNonQuery();
+                }
+            }
+
         }
 
         private static void InsertRecordCalcul(SqlConnection connection, string tableName, string code_215,

@@ -14,21 +14,28 @@ namespace WindowsFormsApp4
         {
             int id = 0;
             DataTable Tp = new DataTable();
+            DataTable Tpp = new DataTable();
             string connectionString = Properties.Settings.Default.CafeRestDB;
             SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
             foreach (DataRow row in DataTable.Rows)
             {
                 if (int.Parse(row["Changed"].ToString()) == 0) continue;
                 id = int.Parse(row["Id"].ToString());
+                if (int.Parse(row["Dele"].ToString()) == 1)
+                {
+                  string dele = $"DELETE  FROM {SqlTable} WHERE Id={id} AND Restaurant='{Rest}' ";
+                  Tp = dbHelper.ExecuteQuery(dele);
+                  continue;
+                }
                 string query = $"SELECT * FROM {SqlTable} WHERE Id={id} AND Restaurant='{Rest}' ";
-                Tp = dbHelper.ExecuteQuery(query);
-                if (Tp.Rows.Count > 0)
+                Tpp = dbHelper.ExecuteQuery(query);
+                if (Tpp.Rows.Count > 0)
                 {
                     foreach (DataColumn column in DataTable.Columns)
                     {
                         string columnName = column.ColumnName;
 
-                        if (columnName == "Id" || columnName == "Name1" || columnName == "Name2" || columnName == "Changed") continue;
+                        if (columnName == "Id" || columnName == "Changed" || columnName == "Dele") continue;
 
                         string UpdateQuery = $"UPDATE {SqlTable} SET {columnName} = @Name  WHERE Id = @Id";
                         using (SqlConnection connection = new SqlConnection(connectionString))

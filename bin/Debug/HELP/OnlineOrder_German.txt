@@ -1,0 +1,21 @@
+      
+	  
+	  Wählen Sie über die Schaltflächen oben eine Produktgruppe aus.
+
+      Klicken Sie auf die gewünschte Lebensmittelzeile. Es wird ein Bild des Gerichts
+	  angezeigt, wenn es existiert, und darunter ist seine Zusammensetzung.
+      Geben Sie mit den Tasten <+1> und <+0,5> die gewünschte Menge ein.
+      Verwenden Sie die Tasten <-1> und <-0,5>, um die Menge zu verringern.
+
+      Nachdem Sie die gesamte Bestellung gesammelt haben, klicken Sie zunächst
+	  auf die Schaltfläche <Speichern> Ausfüllen der Felder <Adresse> und <Telefon>.
+
+      Wenn die Meldung „Ihre Bestellung wurde angenommen. Unser Mitarbeiter wird Sie anrufen“
+      oder „Ihre Bestellung wurde angenommen. Der Kellner kommt zu Ihnen“
+      erscheint oben – dann warten Sie und sie kommen auf Sie zu oder rufen Sie an.
+
+      Auch nachdem Sie auf die Schaltfläche <Speichern> geklickt haben, können Sie teilnehmen
+      Änderungen an der Bestellung, wenn das Programm noch nicht geschlossen wurde.
+
+     
+     

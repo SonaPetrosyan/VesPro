@@ -1,0 +1,21 @@
+      
+	  
+      Seleccione un grupo de productos usando los botones de arriba.
+
+      Haga clic en la línea de alimentos deseada. Se mostrará una imagen del plato,
+      si existe, y debajo está su composición.
+      Usando los botones <+1> y <+0.5> ingrese la cantidad requerida.
+      Utilice los botones <-1> y <-0.5> para disminuir la cantidad.
+
+      Habiendo recogido todo el pedido, haga clic en el botón <Guardar>, primero
+      rellenando los campos <dirección> y <teléfono>.
+
+      Si aparece el mensaje “Tu pedido ha sido aceptado. Nuestro empleado le llamará”
+      o “Su pedido ha sido aceptado. El camarero vendrá a verte"
+      aparece en la parte superior; luego espere y se acercarán a usted o lo llamarán.
+
+      Incluso después de hacer clic en el botón <Guardar>, puede ingresar
+      Cambios en el pedido si el programa aún no se ha cerrado.
+
+     
+     

@@ -33,27 +33,27 @@
             // 
             // richTextBoxHelpContent
             // 
-            this.richTextBoxHelpContent.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.richTextBoxHelpContent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxHelpContent.BackColor = System.Drawing.Color.SeaShell;
+            this.richTextBoxHelpContent.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBoxHelpContent.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.richTextBoxHelpContent.Location = new System.Drawing.Point(-4, 2);
-            this.richTextBoxHelpContent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBoxHelpContent.Location = new System.Drawing.Point(-5, 2);
+            this.richTextBoxHelpContent.Margin = new System.Windows.Forms.Padding(5);
             this.richTextBoxHelpContent.Name = "richTextBoxHelpContent";
-            this.richTextBoxHelpContent.Size = new System.Drawing.Size(1045, 463);
+            this.richTextBoxHelpContent.Size = new System.Drawing.Size(891, 440);
             this.richTextBoxHelpContent.TabIndex = 0;
             this.richTextBoxHelpContent.Text = "";
             this.richTextBoxHelpContent.TextChanged += new System.EventHandler(this.richTextBoxHelpContent_TextChanged);
             // 
             // HelpDialogForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1032, 458);
+            this.ClientSize = new System.Drawing.Size(887, 442);
             this.Controls.Add(this.richTextBoxHelpContent);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "HelpDialogForm";
-            this.Text = "Օգնություն";
+            this.Text = "Help";
             this.ResumeLayout(false);
 
         }

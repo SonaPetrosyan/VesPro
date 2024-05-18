@@ -72,9 +72,8 @@ namespace WindowsFormsApp4
             this.group = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
-            this.main15 = new System.Windows.Forms.Button();
+            this.main33 = new System.Windows.Forms.Button();
             this.HelpButton = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -83,6 +82,10 @@ namespace WindowsFormsApp4
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.main16 = new System.Windows.Forms.Button();
+            this.main410 = new System.Windows.Forms.Button();
+            this.main34 = new System.Windows.Forms.Button();
+            this.main17 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -107,7 +110,7 @@ namespace WindowsFormsApp4
             this.label3.Location = new System.Drawing.Point(105, 101);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(128, 17);
+            this.label3.Size = new System.Drawing.Size(147, 20);
             this.label3.TabIndex = 15;
             this.label3.Text = "գործողություններ";
             // 
@@ -119,7 +122,7 @@ namespace WindowsFormsApp4
             this.label4.Location = new System.Drawing.Point(419, 101);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(112, 17);
+            this.label4.Size = new System.Drawing.Size(128, 20);
             this.label4.TabIndex = 16;
             this.label4.Text = "Տեղեկատուներ";
             // 
@@ -131,7 +134,7 @@ namespace WindowsFormsApp4
             this.label5.Location = new System.Drawing.Point(704, 101);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(144, 17);
+            this.label5.Size = new System.Drawing.Size(165, 20);
             this.label5.TabIndex = 17;
             this.label5.Text = "Հաշվետվություններ";
             // 
@@ -143,7 +146,7 @@ namespace WindowsFormsApp4
             this.label6.Location = new System.Drawing.Point(1000, 101);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(128, 17);
+            this.label6.Size = new System.Drawing.Size(148, 20);
             this.label6.TabIndex = 18;
             this.label6.Text = "Կարգաբերումներ";
             // 
@@ -293,10 +296,10 @@ namespace WindowsFormsApp4
             this.main11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.main11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.main11.ForeColor = System.Drawing.Color.Brown;
-            this.main11.Location = new System.Drawing.Point(40, 158);
+            this.main11.Location = new System.Drawing.Point(36, 158);
             this.main11.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.main11.Name = "main11";
-            this.main11.Size = new System.Drawing.Size(284, 68);
+            this.main11.Size = new System.Drawing.Size(289, 68);
             this.main11.TabIndex = 30;
             this.main11.Text = "Այցելուի սպասարկում";
             this.main11.UseVisualStyleBackColor = true;
@@ -309,10 +312,10 @@ namespace WindowsFormsApp4
             this.main12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.main12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.main12.ForeColor = System.Drawing.Color.Brown;
-            this.main12.Location = new System.Drawing.Point(40, 230);
+            this.main12.Location = new System.Drawing.Point(36, 307);
             this.main12.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.main12.Name = "main12";
-            this.main12.Size = new System.Drawing.Size(284, 82);
+            this.main12.Size = new System.Drawing.Size(289, 61);
             this.main12.TabIndex = 31;
             this.main12.Text = "գնում, տեղափոխում, վաճառք, ծախս";
             this.main12.UseVisualStyleBackColor = true;
@@ -325,10 +328,10 @@ namespace WindowsFormsApp4
             this.main13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.main13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.main13.ForeColor = System.Drawing.Color.Brown;
-            this.main13.Location = new System.Drawing.Point(40, 318);
+            this.main13.Location = new System.Drawing.Point(36, 374);
             this.main13.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.main13.Name = "main13";
-            this.main13.Size = new System.Drawing.Size(284, 82);
+            this.main13.Size = new System.Drawing.Size(289, 61);
             this.main13.TabIndex = 32;
             this.main13.Text = "Գույքագրում";
             this.main13.UseVisualStyleBackColor = true;
@@ -341,10 +344,10 @@ namespace WindowsFormsApp4
             this.main14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.main14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.main14.ForeColor = System.Drawing.Color.Brown;
-            this.main14.Location = new System.Drawing.Point(40, 405);
+            this.main14.Location = new System.Drawing.Point(36, 441);
             this.main14.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.main14.Name = "main14";
-            this.main14.Size = new System.Drawing.Size(284, 82);
+            this.main14.Size = new System.Drawing.Size(289, 61);
             this.main14.TabIndex = 33;
             this.main14.Text = "Նախնական պատվեր";
             this.main14.UseVisualStyleBackColor = true;
@@ -437,7 +440,7 @@ namespace WindowsFormsApp4
             this.main32.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.main32.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.main32.ForeColor = System.Drawing.Color.DarkGreen;
-            this.main32.Location = new System.Drawing.Point(649, 225);
+            this.main32.Location = new System.Drawing.Point(649, 222);
             this.main32.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.main32.Name = "main32";
             this.main32.Size = new System.Drawing.Size(284, 60);
@@ -453,7 +456,7 @@ namespace WindowsFormsApp4
             this.main41.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.main41.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.main41.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.main41.Location = new System.Drawing.Point(954, 216);
+            this.main41.Location = new System.Drawing.Point(954, 206);
             this.main41.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.main41.Name = "main41";
             this.main41.Size = new System.Drawing.Size(284, 54);
@@ -469,7 +472,7 @@ namespace WindowsFormsApp4
             this.main46.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.main46.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.main46.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.main46.Location = new System.Drawing.Point(954, 499);
+            this.main46.Location = new System.Drawing.Point(954, 488);
             this.main46.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.main46.Name = "main46";
             this.main46.Size = new System.Drawing.Size(284, 51);
@@ -485,7 +488,7 @@ namespace WindowsFormsApp4
             this.main42.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.main42.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.main42.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.main42.Location = new System.Drawing.Point(954, 274);
+            this.main42.Location = new System.Drawing.Point(954, 263);
             this.main42.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.main42.Name = "main42";
             this.main42.Size = new System.Drawing.Size(284, 47);
@@ -501,10 +504,10 @@ namespace WindowsFormsApp4
             this.main43.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.main43.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.main43.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.main43.Location = new System.Drawing.Point(954, 324);
+            this.main43.Location = new System.Drawing.Point(954, 313);
             this.main43.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.main43.Name = "main43";
-            this.main43.Size = new System.Drawing.Size(284, 54);
+            this.main43.Size = new System.Drawing.Size(139, 54);
             this.main43.TabIndex = 47;
             this.main43.Text = "Ճաշերի խմբեր";
             this.main43.UseVisualStyleBackColor = true;
@@ -517,7 +520,7 @@ namespace WindowsFormsApp4
             this.main44.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.main44.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.main44.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.main44.Location = new System.Drawing.Point(954, 382);
+            this.main44.Location = new System.Drawing.Point(954, 371);
             this.main44.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.main44.Name = "main44";
             this.main44.Size = new System.Drawing.Size(284, 53);
@@ -533,7 +536,7 @@ namespace WindowsFormsApp4
             this.main45.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.main45.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.main45.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.main45.Location = new System.Drawing.Point(954, 440);
+            this.main45.Location = new System.Drawing.Point(954, 429);
             this.main45.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.main45.Name = "main45";
             this.main45.Size = new System.Drawing.Size(284, 54);
@@ -621,31 +624,30 @@ namespace WindowsFormsApp4
             this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button15.ForeColor = System.Drawing.Color.Brown;
-            this.button15.Location = new System.Drawing.Point(109, 491);
+            this.button15.Location = new System.Drawing.Point(408, 442);
             this.button15.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(139, 82);
             this.button15.TabIndex = 59;
             this.button15.Text = "Թարմացում և գույքագրում";
             this.button15.UseVisualStyleBackColor = true;
-            this.button15.Visible = false;
             this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
-            // main15
+            // main33
             // 
-            this.main15.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.main15.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.main15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.main15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.main15.ForeColor = System.Drawing.Color.DarkGreen;
-            this.main15.Location = new System.Drawing.Point(649, 292);
-            this.main15.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.main15.Name = "main15";
-            this.main15.Size = new System.Drawing.Size(284, 82);
-            this.main15.TabIndex = 60;
-            this.main15.Text = "Դիտարկում";
-            this.main15.UseVisualStyleBackColor = true;
-            this.main15.Click += new System.EventHandler(this.main15_Click);
+            this.main33.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.main33.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.main33.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.main33.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.main33.ForeColor = System.Drawing.Color.DarkGreen;
+            this.main33.Location = new System.Drawing.Point(649, 286);
+            this.main33.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.main33.Name = "main33";
+            this.main33.Size = new System.Drawing.Size(284, 82);
+            this.main33.TabIndex = 60;
+            this.main33.Text = "Դիտարկում";
+            this.main33.UseVisualStyleBackColor = true;
+            this.main33.Click += new System.EventHandler(this.main15_Click);
             // 
             // HelpButton
             // 
@@ -661,17 +663,6 @@ namespace WindowsFormsApp4
             this.HelpButton.UseVisualStyleBackColor = false;
             this.HelpButton.Click += new System.EventHandler(this.button1_Click);
             // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(40, 1);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(20, 3, 3, 3);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(50, 46);
-            this.richTextBox1.TabIndex = 65;
-            this.richTextBox1.Text = "";
-            this.richTextBox1.Visible = false;
-            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
-            // 
             // button1
             // 
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -682,7 +673,7 @@ namespace WindowsFormsApp4
             this.button1.Location = new System.Drawing.Point(954, 156);
             this.button1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(204, 54);
+            this.button1.Size = new System.Drawing.Size(204, 47);
             this.button1.TabIndex = 66;
             this.button1.Text = "select the language";
             this.button1.UseVisualStyleBackColor = true;
@@ -699,7 +690,7 @@ namespace WindowsFormsApp4
             this.button2.Location = new System.Drawing.Point(1162, 156);
             this.button2.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 54);
+            this.button2.Size = new System.Drawing.Size(75, 47);
             this.button2.TabIndex = 68;
             this.button2.Text = "Հայ";
             this.button2.UseVisualStyleBackColor = true;
@@ -712,7 +703,7 @@ namespace WindowsFormsApp4
             this.panel1.Controls.Add(this.radioButton3);
             this.panel1.Controls.Add(this.radioButton2);
             this.panel1.Controls.Add(this.radioButton1);
-            this.panel1.Location = new System.Drawing.Point(955, 157);
+            this.panel1.Location = new System.Drawing.Point(958, 156);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 142);
             this.panel1.TabIndex = 69;
@@ -723,7 +714,7 @@ namespace WindowsFormsApp4
             this.radioButton5.AutoSize = true;
             this.radioButton5.Location = new System.Drawing.Point(3, 115);
             this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(80, 21);
+            this.radioButton5.Size = new System.Drawing.Size(94, 24);
             this.radioButton5.TabIndex = 4;
             this.radioButton5.TabStop = true;
             this.radioButton5.Text = "Espaniol";
@@ -735,7 +726,7 @@ namespace WindowsFormsApp4
             this.radioButton4.AutoSize = true;
             this.radioButton4.Location = new System.Drawing.Point(3, 86);
             this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(77, 21);
+            this.radioButton4.Size = new System.Drawing.Size(91, 24);
             this.radioButton4.TabIndex = 3;
             this.radioButton4.TabStop = true;
             this.radioButton4.Text = "Russian";
@@ -747,7 +738,7 @@ namespace WindowsFormsApp4
             this.radioButton3.AutoSize = true;
             this.radioButton3.Location = new System.Drawing.Point(3, 57);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(77, 21);
+            this.radioButton3.Size = new System.Drawing.Size(90, 24);
             this.radioButton3.TabIndex = 2;
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = "German";
@@ -759,7 +750,7 @@ namespace WindowsFormsApp4
             this.radioButton2.AutoSize = true;
             this.radioButton2.Location = new System.Drawing.Point(3, 28);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(72, 21);
+            this.radioButton2.Size = new System.Drawing.Size(85, 24);
             this.radioButton2.TabIndex = 1;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "English";
@@ -771,25 +762,92 @@ namespace WindowsFormsApp4
             this.radioButton1.AutoSize = true;
             this.radioButton1.Location = new System.Drawing.Point(3, 3);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(86, 21);
+            this.radioButton1.Size = new System.Drawing.Size(101, 24);
             this.radioButton1.TabIndex = 0;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Armenian";
             this.radioButton1.UseVisualStyleBackColor = true;
             this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
+            // main16
+            // 
+            this.main16.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.main16.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.main16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.main16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.main16.ForeColor = System.Drawing.Color.Brown;
+            this.main16.Location = new System.Drawing.Point(36, 230);
+            this.main16.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.main16.Name = "main16";
+            this.main16.Size = new System.Drawing.Size(104, 71);
+            this.main16.TabIndex = 70;
+            this.main16.Text = "Առաքման պատվեր";
+            this.main16.UseVisualStyleBackColor = true;
+            this.main16.Click += new System.EventHandler(this.main16_Click);
+            // 
+            // main410
+            // 
+            this.main410.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.main410.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.main410.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.main410.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.main410.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.main410.Location = new System.Drawing.Point(1100, 313);
+            this.main410.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.main410.Name = "main410";
+            this.main410.Size = new System.Drawing.Size(139, 54);
+            this.main410.TabIndex = 71;
+            this.main410.Text = "Առցանց խմբեր";
+            this.main410.UseVisualStyleBackColor = true;
+            this.main410.Click += new System.EventHandler(this.main410_Click);
+            // 
+            // main34
+            // 
+            this.main34.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.main34.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.main34.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.main34.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.main34.ForeColor = System.Drawing.Color.DarkGreen;
+            this.main34.Location = new System.Drawing.Point(649, 373);
+            this.main34.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.main34.Name = "main34";
+            this.main34.Size = new System.Drawing.Size(284, 82);
+            this.main34.TabIndex = 72;
+            this.main34.Text = "պատրաստման ընթացքը";
+            this.main34.UseVisualStyleBackColor = true;
+            this.main34.Click += new System.EventHandler(this.main34_Click);
+            // 
+            // main17
+            // 
+            this.main17.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.main17.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.main17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.main17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.main17.ForeColor = System.Drawing.Color.Brown;
+            this.main17.Location = new System.Drawing.Point(143, 230);
+            this.main17.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.main17.Name = "main17";
+            this.main17.Size = new System.Drawing.Size(182, 71);
+            this.main17.TabIndex = 73;
+            this.main17.Text = "Առաքման պատվերի մշակում";
+            this.main17.UseVisualStyleBackColor = true;
+            this.main17.Click += new System.EventHandler(this.main17_Click);
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1280, 606);
+            this.Controls.Add(this.main17);
+            this.Controls.Add(this.main34);
+            this.Controls.Add(this.main410);
+            this.Controls.Add(this.main16);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.HelpButton);
-            this.Controls.Add(this.main15);
+            this.Controls.Add(this.main33);
             this.Controls.Add(this.button15);
             this.Controls.Add(this.button14);
             this.Controls.Add(this.group);
@@ -901,9 +959,8 @@ namespace WindowsFormsApp4
         private Button group;
         private Button button14;
         private Button button15;
-        private Button main15;
+        private Button main33;
         private Button HelpButton;
-        private RichTextBox richTextBox1;
         private Button button1;
         private Button button2;
         private Panel panel1;
@@ -912,6 +969,10 @@ namespace WindowsFormsApp4
         private RadioButton radioButton5;
         private RadioButton radioButton4;
         private RadioButton radioButton3;
+        private Button main16;
+        private Button main410;
+        private Button main34;
+        private Button main17;
     }
 }
 

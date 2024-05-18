@@ -7,7 +7,7 @@
       Los componentes se exportarán desde la sección 2.
 
       - precio - es el precio de venta actual, excepto para los pabellones 1, 2, 3, 4 y 5
-      Los precios de las salas 1, 2, 3, 4, 5 son precio 1, precio 2, precio 3, precio 4, precio 5, respectivamente.
+      respectivamente, son los precios del holl1, holl2, holl3, holl4 y entrega.
 
       - La impresora es un número. Es el número de impresora el que determina el pedido de ese producto.
       donde se imprimirá: cocina, bar, parrilla, etc.

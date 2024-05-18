@@ -5,7 +5,6 @@ using System.IO;
 using System.Windows.Forms;
 using Microsoft.ReportingServices.Diagnostics.Internal;
 using MySql.Data.MySqlClient;
-using Mysqlx.Crud;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 namespace WindowsFormsApp4
 {
@@ -23,7 +22,7 @@ namespace WindowsFormsApp4
         private int _observer; // եթե _observer == 0 , բացի պատվերից և նախնականից մնացած տեղերը արգելված են
         private int _workplace;//աշխատատեղ։ տպիչները որոշելու համար է
         private string _language;//աշխատանքային լեզուն է։ որոշվում է user-ի ընտրած լեզվով
-
+        private string _Restaurantname;
 
         private SQLDatabaseHelper dbHelper;
 
@@ -37,14 +36,12 @@ namespace WindowsFormsApp4
 
         private DataTable Table_Languages = new DataTable();
 
-        private DataTable Table_Seans = new DataTable();
-
-        private DataTable Օpening = new DataTable();// Table_215-ի բաղադրորթյուններն են կիսապատռասորաստուկները բացված
+         private DataTable Օpening = new DataTable();// Table_215-ի բաղադրորթյուններն են կիսապատռասորաստուկները բացված
 
         private DataTable Resize = new DataTable();
 
         private DataTable Table_Rest = new DataTable();
-        public Form1(string opperatorname, int opperator, int holl, int restaurant,int manager,
+        public Form1(string opperatorname, int opperator, int holl, int restaurant, string Restaurantname, int manager,
             int editor, int orderer, int previous, int observer, int workplace, string language)
         {
 
@@ -53,6 +50,7 @@ namespace WindowsFormsApp4
             _ooperator = opperator;
             _holl = holl;
             _restaurant = restaurant;
+            _Restaurantname = Restaurantname;
             _manager = manager;
             _editor = editor;
             _orderer = orderer;
@@ -75,6 +73,7 @@ namespace WindowsFormsApp4
 
         private void Load()
         {
+            _Restaurantname = "";
             string connectionString = Properties.Settings.Default.CafeRestDB;
             SqlConnection connection = new SqlConnection(connectionString);
             SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
@@ -83,18 +82,7 @@ namespace WindowsFormsApp4
             Table_Rest = dbHelper.ExecuteQuery(query1);
             foreach (DataRow row in Table_Rest.Rows)
             {
-                this.Text = row["Name"].ToString();
-            }
-            string query2 = $"SELECT * FROM SeansState WHERE Id='{_restaurant}' ";
-            Table_Seans = dbHelper.ExecuteQuery(query2);
-            foreach (DataRow row in Table_Seans.Rows)
-            {
-                if (decimal.Parse(row["state"].ToString()) == 0)
-                {
-                    string UpdateQuery = $"Update SeansState set Seans=Seans+1,state=1 where Id='{_restaurant}' ";
-                    using (SqlCommand updatCommand = new SqlCommand(UpdateQuery, connection))
-                        updatCommand.ExecuteNonQuery();
-                }
+                _Restaurantname = row["Name"].ToString();
             }
             string query3 = $"SELECT * FROM Languages";
             Table_Languages = dbHelper.ExecuteQuery(query3);
@@ -259,7 +247,6 @@ namespace WindowsFormsApp4
                 control.Width = (int)(control.Width * (double)kw);
                 control.Height = (int)(control.Height * (double)kh);
             }
-            richTextBox1.Height = label8.Height + 32;
         }
 
         private void main13_Click(object sender, EventArgs e)
@@ -570,9 +557,6 @@ namespace WindowsFormsApp4
         {
             string help = FindFolder.Folder("Help");
             string filePath = "";
-            if (HelpButton.Text == "?")
-            {
-                HelpButton.Text = "X";
                 
                 filePath = help + "\\Form1_" + _language + ".txt";
                 string fileContent = File.ReadAllText(filePath);
@@ -585,12 +569,6 @@ namespace WindowsFormsApp4
 
                 helpDialogForm.SetHelpContent(fileContent);
                 helpDialogForm.Show();
-            }
-            else
-            {
-                HelpButton.Text = "?";
-                helpDialogForm?.Close(); // Close the help dialog form if it's open
-            }
         }
 
 
@@ -954,6 +932,36 @@ namespace WindowsFormsApp4
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void main410_Click(object sender, EventArgs e)
+        {
+            if (_manager == 1) _editor = 1;
+            DeliveryGroups DeliveryGroups = new DeliveryGroups(_editor, _restaurant, _language);
+            DeliveryGroups.Show();
+        }
+
+        private void main16_Click(object sender, EventArgs e)
+        {
+            if (_manager == 1) _editor = 1;
+            _holl = 9;
+            string _nest = "9-1";
+            DeliveryOrder DeliveryOrder = new DeliveryOrder(_ooperatorname, _ooperator, _holl, _nest, _restaurant, _editor, 0, _workplace, _language);
+            DeliveryOrder.Show();
+        }
+
+        private void main34_Click(object sender, EventArgs e)
+        {
+            Preparation Preparation = new Preparation(_editor, _restaurant, _language);
+            Preparation.Show();
+        }
+
+        private void main17_Click(object sender, EventArgs e)
+        {
+            _holl = 9;
+            string _nest = "9-1";
+            Delivery Delivery = new Delivery(_ooperatorname, _ooperator, _holl, _nest, _restaurant, _Restaurantname, _editor, _language);
+            Delivery.Show();
         }
     }
 }

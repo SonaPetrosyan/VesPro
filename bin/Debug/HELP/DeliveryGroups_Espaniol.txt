@@ -1,0 +1,26 @@
+ 
+   Aparecen los nombres de los grupos en la tabla de la derecha.
+   En las líneas superiores del formulario <Grupos de entrega>:
+   en forma de botones.
+   Al hacer clic en ellos aparecerá el menú.
+   es filtrado por ese grupo. Se hace con el fin de
+   La selección de alimentos será más fácil.
+ 
+    Cómo insertar un número de grupo para un producto
+    en la línea
+   
+    - Párate en la línea derecha de la tabla. Póngase en fila
+    el número aparecerá encima del botón 'V'.
+   
+    - Párate en la línea requerida de la tabla izquierda. Póngase en fila
+    el número aparecerá debajo del botón 'V'.
+   
+    - Presione el botón <V> y el número superior se colocará en esa línea.
+   
+    - si marca la casilla <otro> para el producto dado, entonces eso
+    Los porcentajes de servicio y descuento no se calcularán sobre el producto.
+   
+    Haga clic en el botón <Guardar> cuando haya terminado; de lo contrario
+    Tu trabajo no tendrá consecuencias.
+   
+    Haga clic en el botón naranja 'X' para cerrar la ventana.

@@ -203,9 +203,6 @@ namespace WindowsFormsApp4
             this.addition13 = new System.Windows.Forms.Button();
             this.addition14 = new System.Windows.Forms.Button();
             this.addition11 = new System.Windows.Forms.Button();
-            this.DepartmentClick = new System.Windows.Forms.Button();
-            this.GroupClick = new System.Windows.Forms.Button();
-            this.AdditionClick = new System.Windows.Forms.Button();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label13 = new System.Windows.Forms.Label();
@@ -213,8 +210,6 @@ namespace WindowsFormsApp4
             this.dataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ShtrichCode = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.Seans = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.label16 = new System.Windows.Forms.Label();
@@ -237,7 +232,6 @@ namespace WindowsFormsApp4
             this.label17 = new System.Windows.Forms.Label();
             this.department5 = new System.Windows.Forms.Button();
             this.HelpButton = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.TipMoney = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -841,17 +835,19 @@ namespace WindowsFormsApp4
             // 
             // nest
             // 
+            this.nest.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.nest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nest.Location = new System.Drawing.Point(1013, 92);
+            this.nest.Location = new System.Drawing.Point(1105, 94);
             this.nest.Name = "nest";
-            this.nest.Size = new System.Drawing.Size(61, 23);
+            this.nest.Size = new System.Drawing.Size(51, 23);
             this.nest.TabIndex = 34;
+            this.nest.Text = "nest";
             this.nest.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(1099, 70);
+            this.label3.Location = new System.Drawing.Point(1162, 70);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 23);
             this.label3.TabIndex = 37;
@@ -862,7 +858,7 @@ namespace WindowsFormsApp4
             // 
             this.bill.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.bill.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bill.Location = new System.Drawing.Point(1101, 96);
+            this.bill.Location = new System.Drawing.Point(1164, 96);
             this.bill.Name = "bill";
             this.bill.Size = new System.Drawing.Size(55, 20);
             this.bill.TabIndex = 36;
@@ -963,7 +959,7 @@ namespace WindowsFormsApp4
             this.ManagerBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ManagerBox.Name = "ManagerBox";
             this.ManagerBox.PasswordChar = '+';
-            this.ManagerBox.Size = new System.Drawing.Size(213, 22);
+            this.ManagerBox.Size = new System.Drawing.Size(198, 22);
             this.ManagerBox.TabIndex = 43;
             this.ManagerBox.Text = " ";
             this.ManagerBox.Enter += new System.EventHandler(this.ManagerBox_Enter);
@@ -3049,54 +3045,6 @@ namespace WindowsFormsApp4
             this.addition11.UseVisualStyleBackColor = false;
             this.addition11.Click += new System.EventHandler(this.addition11_Click);
             // 
-            // DepartmentClick
-            // 
-            this.DepartmentClick.Location = new System.Drawing.Point(1004, 436);
-            this.DepartmentClick.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.DepartmentClick.Name = "DepartmentClick";
-            this.DepartmentClick.Size = new System.Drawing.Size(75, 23);
-            this.DepartmentClick.TabIndex = 187;
-            this.DepartmentClick.Tag = "1";
-            this.DepartmentClick.Text = "DepartmentClick";
-            this.DepartmentClick.UseVisualStyleBackColor = true;
-            this.DepartmentClick.Click += new System.EventHandler(this.departmentclick_Click);
-            // 
-            // GroupClick
-            // 
-            this.GroupClick.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.GroupClick.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.GroupClick.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
-            this.GroupClick.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Green;
-            this.GroupClick.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.GroupClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.GroupClick.Location = new System.Drawing.Point(1085, 459);
-            this.GroupClick.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.GroupClick.Name = "GroupClick";
-            this.GroupClick.Size = new System.Drawing.Size(72, 23);
-            this.GroupClick.TabIndex = 189;
-            this.GroupClick.Tag = "1";
-            this.GroupClick.Text = "GroupClick";
-            this.GroupClick.UseVisualStyleBackColor = false;
-            this.GroupClick.Click += new System.EventHandler(this.GroupClick_Click);
-            // 
-            // AdditionClick
-            // 
-            this.AdditionClick.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.AdditionClick.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.AdditionClick.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
-            this.AdditionClick.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Green;
-            this.AdditionClick.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.AdditionClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AdditionClick.Location = new System.Drawing.Point(1005, 459);
-            this.AdditionClick.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.AdditionClick.Name = "AdditionClick";
-            this.AdditionClick.Size = new System.Drawing.Size(72, 23);
-            this.AdditionClick.TabIndex = 191;
-            this.AdditionClick.Tag = "1";
-            this.AdditionClick.Text = "AdditionClick";
-            this.AdditionClick.UseVisualStyleBackColor = false;
-            this.AdditionClick.Click += new System.EventHandler(this.AdditionClick_Click);
-            // 
             // dataGridView3
             // 
             this.dataGridView3.AllowUserToAddRows = false;
@@ -3202,27 +3150,6 @@ namespace WindowsFormsApp4
             this.ShtrichCode.Text = "barcode";
             this.ShtrichCode.Enter += new System.EventHandler(this.ShtrichCode_Enter);
             this.ShtrichCode.Leave += new System.EventHandler(this.ShtrichCode_Leave);
-            // 
-            // label12
-            // 
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(1157, 69);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(67, 23);
-            this.label12.TabIndex = 204;
-            this.label12.Text = "Session";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // Seans
-            // 
-            this.Seans.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Seans.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Seans.Location = new System.Drawing.Point(1163, 95);
-            this.Seans.Name = "Seans";
-            this.Seans.Size = new System.Drawing.Size(55, 20);
-            this.Seans.TabIndex = 203;
-            this.Seans.Text = "Seans";
-            this.Seans.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel1
             // 
@@ -3573,7 +3500,7 @@ namespace WindowsFormsApp4
             this.numericUpDown3.BackColor = System.Drawing.Color.White;
             this.numericUpDown3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDown3.ForeColor = System.Drawing.Color.Black;
-            this.numericUpDown3.Location = new System.Drawing.Point(1019, 63);
+            this.numericUpDown3.Location = new System.Drawing.Point(1017, 60);
             this.numericUpDown3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.numericUpDown3.Maximum = new decimal(new int[] {
             10000,
@@ -3636,17 +3563,6 @@ namespace WindowsFormsApp4
             this.HelpButton.UseVisualStyleBackColor = false;
             this.HelpButton.Click += new System.EventHandler(this.HelpButton_Click);
             // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.Location = new System.Drawing.Point(739, 464);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(20, 2, 3, 2);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(29, 26);
-            this.richTextBox1.TabIndex = 243;
-            this.richTextBox1.Text = "";
-            this.richTextBox1.Visible = false;
-            // 
             // TipMoney
             // 
             this.TipMoney.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -3672,7 +3588,7 @@ namespace WindowsFormsApp4
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.panel3.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel3.Location = new System.Drawing.Point(3, 62);
             this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
@@ -3785,10 +3701,9 @@ namespace WindowsFormsApp4
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.ClientSize = new System.Drawing.Size(1327, 551);
+            this.ClientSize = new System.Drawing.Size(1327, 559);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.TipMoney);
-            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.HelpButton);
             this.Controls.Add(this.numericUpDown3);
             this.Controls.Add(this.label17);
@@ -3804,16 +3719,11 @@ namespace WindowsFormsApp4
             this.Controls.Add(this.tab64);
             this.Controls.Add(this.gid);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.Seans);
             this.Controls.Add(this.ShtrichCode);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.dataGridView3);
-            this.Controls.Add(this.AdditionClick);
             this.Controls.Add(this.department5);
-            this.Controls.Add(this.GroupClick);
-            this.Controls.Add(this.DepartmentClick);
             this.Controls.Add(this.addition12);
             this.Controls.Add(this.addition20);
             this.Controls.Add(this.addition16);
@@ -3995,48 +3905,7 @@ namespace WindowsFormsApp4
             this.PerformLayout();
 
         }
-        public void InitForm()
-        {
 
-            decimal screenWidth = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width;
-            decimal screenHeight = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height;
-
-            //   Screen primaryScreen = Screen.PrimaryScreen;
-            //   int screenWidth = primaryScreen.Bounds.Width;
-            //   int screenHeigh = primaryScreen.Bounds.Height;
-            decimal kw = screenWidth / this.Width;
-            decimal kh = screenHeight / this.Height;
-            foreach (Control control in this.Controls)
-            {
-                // Փոփոխվում են օբյեկների չափն ու տեղադրությունը ** Objects are resized and positioned
-                control.Left = (int)(control.Left * (double)kw);
-                control.Top = (int)(control.Top * (double)kh);
-                control.Width = (int)(control.Width * (double)kw);
-                control.Height = (int)(control.Height * (double)kh);
-            }
-            dataGridView1.Columns[0].Width = (int)(dataGridView1.Columns[0].Width * 1.15);
-            dataGridView1.Columns[1].Width = (int)(dataGridView1.Columns[1].Width * 1.15);
-            dataGridView2.Columns[0].Width = (int)(dataGridView2.Columns[0].Width * 1.15);
-            dataGridView2.Columns[1].Width = (int)(dataGridView2.Columns[1].Width * 1.15);
-            dataGridView2.Columns[2].Width = (int)(dataGridView2.Columns[2].Width * 1.15);
-            dataGridView2.Columns[3].Width = (int)(dataGridView2.Columns[3].Width * 1.15);
-
-            foreach (Control control in panel1.Controls)
-            {
-                control.Width = (int)(control.Width * kw);
-                control.Height = (int)(control.Height * kh);
-                control.Top = (int)(control.Top * kh);
-                control.Left = (int)(control.Left * kw);
-            }
-
-            this.Width = (int)screenWidth;
-            this.Height = (int)screenHeight;
-            this.Top = 0;
-            this.Left = 0;
-            /////////////////////////////////////////////// 
-            //NestUpdate();
-
-        }
         #endregion
         private System.Windows.Forms.Button group1;
         private System.Diagnostics.Process process1;
@@ -4194,16 +4063,11 @@ namespace WindowsFormsApp4
         private Button addition13;
         private Button addition14;
         private Button addition11;
-        private Button DepartmentClick;
-        private Button GroupClick;
-        private Button AdditionClick;
         private DataGridView dataGridView3;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private Label label13;
         private DataGridView dataGridView1;
         private TextBox ShtrichCode;
-        private Label label12;
-        private Label Seans;
         private Panel panel1;
         private Label label14;
         private ComboBox PartnersComboBox;
@@ -4226,7 +4090,6 @@ namespace WindowsFormsApp4
         private Label label17;
         private Button HelpButton;
         private Button department5;
-        private RichTextBox richTextBox1;
         private TextBox TipMoney;
         private Button group2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn;

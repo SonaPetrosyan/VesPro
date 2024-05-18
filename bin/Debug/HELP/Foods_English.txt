@@ -7,7 +7,7 @@
      components will be exported from section 2.
 
      price - is the current sale price, except for halls 1, 2, 3, 4 and 5
-     The prices of halls 1, 2, 3, 4, 5 are price 1, price 2, price 3, price 4, price 5, respectively.
+     The prices of halls 1, 2, 3, 4, 5 correspondingly, they are the prices of hall1, hall2, hall3, hall4 and delivery.
 
        Printer is a number. It is the printer number that determines the order for that product
      where will it be printed: kitchen, bar, grill, etc.

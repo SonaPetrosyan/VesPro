@@ -9,6 +9,7 @@ using Microsoft.ReportingServices.Diagnostics.Internal;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 using ReportPrinter;
 using System.Collections.Generic;
+using System.Net.Sockets;
 
 
 namespace WindowsFormsApp4
@@ -52,11 +53,13 @@ namespace WindowsFormsApp4
         private DataTable TableNest = new DataTable();   // Սեղանների ֆայլն է։ սպասարկման և զեղչի տոկոսների համար։ և ընթացիկ
                                                          // <ocupied>,<forbidden>,<ticket>,<printed>,<taxprinted>,<person>,<tipmoney> դաշտերով։
 
+        private DataTable Table_Composite = new DataTable();
+
+        private DataTable Table_Actions = new DataTable();
+
         private DataTable Department = new DataTable();   // բաժինների ֆայլն է։։ 
 
         private DataTable TicketsOrdered = new DataTable(); // հաշիվների մասին տեղեկություններ են ։ 
-
-        private DataTable Seans_State = new DataTable();//Ընթացիկ սեանսի համարն է։։ 
 
         private DataTable CurrentOrder = new DataTable();    // ընթացիկ պատվերի աղյուսակն է։ Ստեղծվում է ծրագիր մտնելիս
 
@@ -65,8 +68,6 @@ namespace WindowsFormsApp4
         private DataTable BillPrint = new DataTable();    // կտրոնը տպելու համար է 
 
         private DataTable Table_Restaurants = new DataTable();    // Ռեստորանների ցանկն է
-
-
 
         private DataTable ControlsOrder = new DataTable();
 
@@ -110,17 +111,19 @@ namespace WindowsFormsApp4
 
             string query1 = $"SELECT * FROM Table_215 WHERE  Restaurant='{_restaurant}' ORDER BY [Groupp] ";
             Table215 = dbHelper.ExecuteQuery(query1);
-            Table_215 = Table215.Clone();
-            Table_215.Columns.Add("Name", typeof(string));
             Table215.Columns.Add("Name", typeof(string));
+            Table_215 = Table215.Clone();
+
             string inh = _holl.ToString() + ",";
             foreach (DataRow row in Table215.Rows) //տվյալ սրահի համար չնախատեսված ապրանքները հանում ենք
             {
+                row["Name"] = row[_language];
                 if (_holl == 1) row["Price"] = row["Price1"];
                 if (_holl == 2) row["Price"] = row["Price2"];
                 if (_holl == 3) row["Price"] = row["Price3"];
                 if (_holl == 4) row["Price"] = row["Price4"];
                 if (_holl == 5) row["Price"] = row["Price5"];
+                if (_holl == 9) row["Price"] = row["Price9"];
                 string inholl = row["inholl"].ToString();
                 if (float.Parse(row["Price"].ToString()) == 0 ) continue;
                 if ((row["inholl"].ToString().Trim() != "0" && row["inholl"].ToString().Trim() != string.Empty) && inholl.IndexOf(inh) < 0) continue;
@@ -132,7 +135,8 @@ namespace WindowsFormsApp4
                     newRow[columnName] = row[columnName];
                 }
             }
-            Translate.translation(Table_215,Table215, _language, "1");
+            
+            //Translate.translation(Table_215,Table215, _language, "1");
 
             string query2 = $"SELECT * FROM AdditionGroups WHERE  Restaurant='{_restaurant}' ";
             AdditionGroups = dbHelper.ExecuteQuery(query2);
@@ -144,12 +148,8 @@ namespace WindowsFormsApp4
 
             string query4 = $"SELECT * FROM FoodGroupp WHERE  Restaurant='{_restaurant}' ";
             FoodGroupp = dbHelper.ExecuteQuery(query4);
-            foreach (DataRow row in FoodGroupp.Rows)
-            {
-                row["Name"] = row[_language].ToString();
-            }
 
-            string query7 = $"SELECT * FROM TicketsOrdered WHERE  Restaurant='{_restaurant}' AND Previous='{_previous}' ";
+            string query7 = $"SELECT * FROM TicketsOrdered WHERE  Restaurant='{_restaurant}' AND Holl='{_holl}' AND Previous='{_previous}' ";
             TicketsOrdered = dbHelper.ExecuteQuery(query7);
 
             string query8 = $"SELECT * FROM Restaurants";
@@ -163,42 +163,7 @@ namespace WindowsFormsApp4
                 if (_previous == 1) this.Text = this.Text + " - նախնական պատվեր";
             }
 
-            int seans_state = 0;
-            string query10 = $"SELECT * FROM SeansState WHERE Id='{_restaurant}' ";
-            Seans_State = dbHelper.ExecuteQuery(query10);
-            DataRow[] foundRows = Seans_State.Select($"id = '{_restaurant}'");
-            if (foundRows.Length > 0)
-            {
-                if (decimal.Parse(foundRows[0]["state"].ToString()) == 0)
-                {
-                    string UpdateQuery = $"Update SeansState set Seans=Seans+1,state=1 where Id='{_restaurant}' ";
-                    using (SqlCommand updatCommand = new SqlCommand(UpdateQuery, connection))
-                        updatCommand.ExecuteNonQuery();
-                }
-            }
-            string query12 = $"SELECT * FROM SeansState WHERE Id='{_restaurant}' ";
-            Seans_State = dbHelper.ExecuteQuery(query12);
-            DataRow[] foundRows12 = Seans_State.Select($"id = '{_restaurant}'");
-            if (foundRows12.Length > 0) seans_state = int.Parse(foundRows12[0]["Seans"].ToString());
-
-
-            if (_previous == 0)
-            {
-                string query9 = $"SELECT * FROM seans WHERE Holl='{_holl}' AND Restaurant='{_restaurant}'  ";
-                TableSeans = dbHelper.ExecuteQuery(query9);
-                Seans.Text = seans_state.ToString();
-            }
-            else
-            {
-                string query9 = $"SELECT * FROM Previous_215 WHERE Holl='{_holl}' AND Restaurant='{_restaurant}'  ";
-                TableSeans = dbHelper.ExecuteQuery(query9);
-                Seans.Text = seans_state.ToString();
-            }
-           // TableSeans.Columns.Add("name", typeof(string));
-
-            Translate.translation(Table215, Table_215,  _language, "1");
-
-
+            //Translate.translation(Table215, Table_215,  _language, "1");
 
             dataGridView1.DataSource = Table_215;
             dataGridView1.Columns[0].DataPropertyName = "Name";
@@ -255,7 +220,6 @@ namespace WindowsFormsApp4
             CurrentOrder.Columns.Add("standart", typeof(decimal));
             CurrentOrder.Columns.Add("date1", typeof(DateTime));
             CurrentOrder.Columns.Add("date2", typeof(DateTime));
-            CurrentOrder.Columns.Add("seans", typeof(int));
             CurrentOrder.Columns.Add("ticket", typeof(int));
             CurrentOrder.Columns.Add("nest", typeof(string));
             CurrentOrder.Columns.Add("printed", typeof(bool));
@@ -267,6 +231,7 @@ namespace WindowsFormsApp4
             CurrentOrder.Columns.Add("Department", typeof(decimal));
             CurrentOrder.Columns.Add("id", typeof(int));
             CurrentOrder.Columns.Add("free", typeof(int));
+            CurrentOrder.Columns.Add("NonComposite", typeof(string)); 
 
 
             dataGridView2.DataSource = CurrentOrder;
@@ -388,211 +353,151 @@ namespace WindowsFormsApp4
 
         private void group1_Click(object sender, EventArgs e)
         {
-            GroupClick.Tag = group1.Tag;
-            GroupClick.Focus();
-            SendKeys.Send("{ENTER}");
+            GroupClick(group1.Tag);
         }
 
         private void group2_Click(object sender, EventArgs e)
         {
-            GroupClick.Tag = group2.Tag;
-            GroupClick.Focus();
-            SendKeys.Send("{ENTER}");
+            GroupClick(group2.Tag);
         }
         private void group3_Click(object sender, EventArgs e)
         {
-            GroupClick.Tag = group3.Tag;
-            GroupClick.Focus();
-            SendKeys.Send("{ENTER}");
+            GroupClick(group3.Tag);
         }
 
         private void group4_Click(object sender, EventArgs e)
         {
-            GroupClick.Tag = group4.Tag;
-            GroupClick.Focus();
-            SendKeys.Send("{ENTER}");
+            GroupClick(group4.Tag);
         }
 
         private void group5_Click(object sender, EventArgs e)
         {
-            GroupClick.Tag = group5.Tag;
-            GroupClick.Focus();
-            SendKeys.Send("{ENTER}");
+            GroupClick(group5.Tag);
         }
 
         private void group6_Click(object sender, EventArgs e)
         {
-            GroupClick.Tag = group6.Tag;
-            GroupClick.Focus();
-            SendKeys.Send("{ENTER}");
+            GroupClick(group6.Tag);
         }
 
         private void group7_Click(object sender, EventArgs e)
         {
-            GroupClick.Tag = group7.Tag;
-            GroupClick.Focus();
-            SendKeys.Send("{ENTER}");
+            GroupClick(group7.Tag);
         }
 
         private void group8_Click(object sender, EventArgs e)
         {
-            GroupClick.Tag = group8.Tag;
-            GroupClick.Focus();
-            SendKeys.Send("{ENTER}");
+            GroupClick(group8.Tag);
         }
 
         private void group9_Click(object sender, EventArgs e)
         {
-            GroupClick.Tag = group9.Tag;
-            GroupClick.Focus();
-            SendKeys.Send("{ENTER}");
+            GroupClick(group9.Tag);
         }
 
         private void group10_Click(object sender, EventArgs e)
         {
-            GroupClick.Tag = group10.Tag;
-            GroupClick.Focus();
-            SendKeys.Send("{ENTER}");
+            GroupClick(group10.Tag);
         }
 
         private void group11_Click(object sender, EventArgs e)
         {
-            GroupClick.Tag = group11.Tag;
-            GroupClick.Focus();
-            SendKeys.Send("{ENTER}");
+            GroupClick(group11.Tag);
         }
 
         private void group12_Click(object sender, EventArgs e)
         {
-            GroupClick.Tag = group12.Tag;
-            GroupClick.Focus();
-            SendKeys.Send("{ENTER}");
+            GroupClick(group12.Tag);
         }
 
         private void group13_Click(object sender, EventArgs e)
         {
-            GroupClick.Tag = group13.Tag;
-            GroupClick.Focus();
-            SendKeys.Send("{ENTER}");
+            GroupClick(group13.Tag);
         }
 
         private void group14_Click(object sender, EventArgs e)
         {
-            GroupClick.Tag = group14.Tag;
-            GroupClick.Focus();
-            SendKeys.Send("{ENTER}");
+            GroupClick(group14.Tag);
         }
 
         private void group15_Click(object sender, EventArgs e)
         {
-            GroupClick.Tag = group15.Tag;
-            GroupClick.Focus();
-            SendKeys.Send("{ENTER}");
+            GroupClick(group15.Tag);
         }
 
         private void group16_Click(object sender, EventArgs e)
         {
-            GroupClick.Tag = group16.Tag;
-            GroupClick.Focus();
-            SendKeys.Send("{ENTER}");
+            GroupClick(group16.Tag);
         }
 
         private void group17_Click(object sender, EventArgs e)
         {
-            GroupClick.Tag = group17.Tag;
-            GroupClick.Focus();
-            SendKeys.Send("{ENTER}");
+            GroupClick(group17.Tag);
         }
 
         private void group18_Click(object sender, EventArgs e)
         {
-            GroupClick.Tag = group18.Tag;
-            GroupClick.Focus();
-            SendKeys.Send("{ENTER}");
+            GroupClick(group18.Tag);
         }
 
         private void group19_Click(object sender, EventArgs e)
         {
-            GroupClick.Tag = group19.Tag;
-            GroupClick.Focus();
-            SendKeys.Send("{ENTER}");
+            GroupClick(group19.Tag);
         }
 
         private void group20_Click(object sender, EventArgs e)
         {
-            GroupClick.Tag = group20.Tag;
-            GroupClick.Focus();
-            SendKeys.Send("{ENTER}");
+            GroupClick(group20.Tag);
         }
 
         private void group21_Click(object sender, EventArgs e)
         {
-            GroupClick.Tag = group21.Tag;
-            GroupClick.Focus();
-            SendKeys.Send("{ENTER}");
+            GroupClick(group21.Tag);
         }
 
         private void group22_Click(object sender, EventArgs e)
         {
-            GroupClick.Tag = group22.Tag;
-            GroupClick.Focus();
-            SendKeys.Send("{ENTER}");
+            GroupClick(group22.Tag);
         }
 
         private void group23_Click(object sender, EventArgs e)
         {
-            GroupClick.Tag = group23.Tag;
-            GroupClick.Focus();
-            SendKeys.Send("{ENTER}");
+            GroupClick(group23.Tag);
         }
 
         private void group24_Click(object sender, EventArgs e)
         {
-            GroupClick.Tag = group24.Tag;
-            GroupClick.Focus();
-            SendKeys.Send("{ENTER}");
+            GroupClick(group24.Tag);
         }
 
         private void group25_Click(object sender, EventArgs e)
         {
-            GroupClick.Tag = group25.Tag;
-            GroupClick.Focus();
-            SendKeys.Send("{ENTER}");
+            GroupClick(group25.Tag);
         }
 
         private void group26_Click(object sender, EventArgs e)
         {
-            GroupClick.Tag = group26.Tag;
-            GroupClick.Focus();
-            SendKeys.Send("{ENTER}");
+            GroupClick(group26.Tag);
         }
 
         private void group27_Click(object sender, EventArgs e)
         {
-            GroupClick.Tag = group27.Tag;
-            GroupClick.Focus();
-            SendKeys.Send("{ENTER}");
+            GroupClick(group27.Tag);
         }
 
         private void group28_Click(object sender, EventArgs e)
         {
-            GroupClick.Tag = group28.Tag;
-            GroupClick.Focus();
-            SendKeys.Send("{ENTER}");
+            GroupClick(group28.Tag);
         }
 
         private void group29_Click(object sender, EventArgs e)
         {
-            GroupClick.Tag = group29.Tag;
-            GroupClick.Focus();
-            SendKeys.Send("{ENTER}");
+            GroupClick(group29.Tag);
         }
 
         private void group30_Click(object sender, EventArgs e)
         {
-            GroupClick.Tag = group30.Tag;
-            GroupClick.Focus();
-            SendKeys.Send("{ENTER}");
+            GroupClick(group20.Tag);
         }
         private bool DoesButtonExist(string buttonName)
         {
@@ -650,9 +555,6 @@ namespace WindowsFormsApp4
             }
 
             this.command.Left = this.Width + 5;
-            this.DepartmentClick.Left = this.Width + 5;
-            this.GroupClick.Left = this.Width + 5;
-            this.AdditionClick.Left = this.Width + 5;
 
             //NestUpdate();
         }
@@ -660,36 +562,33 @@ namespace WindowsFormsApp4
 
         private void department1_Click(object sender, EventArgs e)
         {
-            this.DepartmentClick.Tag = "1";
-            this.DepartmentClick.Focus();
-            SendKeys.Send("{ENTER}");
+            department1.Tag = "1";
+            Department_Click("1");
+
+
         }
 
         private void department2_Click(object sender, EventArgs e)
         {
-            this.DepartmentClick.Tag = "2";
-            this.DepartmentClick.Focus();
-            SendKeys.Send("{ENTER}");
+            department1.Tag = "2";
+            Department_Click("2");
         }
 
         private void department3_Click(object sender, EventArgs e)
         {
-            this.DepartmentClick.Tag = "3";
-            this.DepartmentClick.Focus();
-            SendKeys.Send("{ENTER}");
+            department1.Tag = "3";
+            Department_Click("3");
         }
 
         private void department4_Click(object sender, EventArgs e)
         {
-            this.DepartmentClick.Tag = "4";
-            this.DepartmentClick.Focus();
-            SendKeys.Send("{ENTER}");
+            department1.Tag = "4";
+            Department_Click("4");
         }
         private void department5_Click(object sender, EventArgs e)
         {
-            this.DepartmentClick.Tag = "5";
-            this.DepartmentClick.Focus();
-            SendKeys.Send("{ENTER}");
+            department1.Tag = "5";
+            Department_Click("5");
         }
 
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -708,6 +607,7 @@ namespace WindowsFormsApp4
                 object accValue = dataGridView.Rows[e.RowIndex].Cells["accepted"].Value;
                 object idValue = dataGridView.Rows[e.RowIndex].Cells["id"].Value;
                 object freeValue = dataGridView.Rows[e.RowIndex].Cells["free"].Value;
+                object noncompositeValue = dataGridView.Rows[e.RowIndex].Cells["NonComposite"].Value;
                 object grouppValue = dataGridView.Rows[e.RowIndex].Cells["groupp"].Value;
                 object departValue = dataGridView.Rows[e.RowIndex].Cells["department"].Value;
                 int qan = Convert.ToInt32(quantValue);
@@ -734,7 +634,7 @@ namespace WindowsFormsApp4
                     float price = float.Parse(priceValue.ToString());
                     float costprice = float.Parse(costpriceValue.ToString());
                     int free = int.Parse(freeValue.ToString());
-
+                    string noncomposite= noncompositeValue.ToString();
 
                     DataRow[] foundRows1 = CurrentOrder.Select($"code = '{code}' and accepted='false'");
                     if (foundRows1.Length > 0)
@@ -758,7 +658,6 @@ namespace WindowsFormsApp4
                         {
                             DataRow newRow = CurrentOrder.NewRow();
                             CurrentOrder.Rows.Add(newRow);
-                            newRow["seans"] = int.Parse(Seans.Text);
                             newRow["ticket"] = bill.Text;
                             newRow["nest"] = nest.Text;
                             newRow["groupp"] = groupp;
@@ -776,6 +675,8 @@ namespace WindowsFormsApp4
                             newRow["printer"] = printer;
                             newRow["department"] = department;
                             newRow["free"] = free;
+                            newRow["noncomposite"] = noncomposite;
+
                             newRow["qanak"] = "-";
                             dataGridView2.BeginEdit(true);
                         }
@@ -825,14 +726,39 @@ namespace WindowsFormsApp4
             {
                 string query = $"SELECT * FROM Seans WHERE Holl='{_holl}' AND Restaurant='{_restaurant}'"; //սեանսի աղյուսակը թարմացնում ենք
                 TableSeans = dbHelper.ExecuteQuery(query);
+
             }
             else
             {
                 string query = $"SELECT * FROM Previous_215 WHERE Holl='{_holl}' AND Restaurant='{_restaurant}'"; //սեանսի աղյուսակը թարմացնում ենք
                 TableSeans = dbHelper.ExecuteQuery(query);
             }
+            TableSeans.Columns.Add("Department", typeof(int));
+            TableSeans.Columns.Add("groupp", typeof(int));
+            TableSeans.Columns.Add("free", typeof(int));
+            TableSeans.Columns.Add("noncomposite", typeof(string));
             TableSeans.Columns.Add("name", typeof(string));
-            Translate.translation(Table215, TableSeans, _language, "1");
+            var query0 = from row1 in Table215.AsEnumerable()
+                        join row2 in TableSeans.AsEnumerable()
+                        on row1.Field<string>("Code") equals row2.Field<string>("Code") into gj
+                        from subRow2 in gj.DefaultIfEmpty()
+                        select new
+                        {
+                            Row1 = row1,
+                            Row2 = subRow2
+                        };
+
+            foreach (var item in query0)
+            {
+                if (item.Row2 != null)
+                {
+                    item.Row2["Name"] = item.Row1[_language];
+                    item.Row2["groupp"] = item.Row1["groupp"];
+                    item.Row2["free"] = item.Row1["free"];
+                    item.Row2["Department"] = item.Row1["Department"];
+                    item.Row2["noncomposite"] = item.Row1["noncomposite"];
+                }
+            }
 
             string query1 = $"SELECT * FROM tablenest WHERE Restaurant='{_restaurant}' and Previous='{_previous}' ";//սեղանների աղյուսակը թարմացնում ենք
             TableNest = dbHelper.ExecuteQuery(query1);
@@ -912,10 +838,8 @@ namespace WindowsFormsApp4
                     DataRow newRow = CurrentOrder.NewRow();
                     newRow["code"] = row["code"];
                     newRow["nest"] = row["nest"];
-                    newRow["seans"] = row["seans"];
                     newRow["ticket"] = row["ticket"];
                     newRow["name"] = row["name"];
-                    newRow["groupp"] = row["groupp"];
                     newRow["costprice"] = row["costprice"];
                     newRow["price"] = row["price"];
                     newRow["quantity"] = row["quantity"];
@@ -924,8 +848,10 @@ namespace WindowsFormsApp4
                     newRow["costamount"] = row["costamount"];
                     newRow["service"] = row["service"];
                     newRow["discount"] = row["discount"];
-                    newRow["free"] = row["free"];
-                    newRow["printer"] = printer;
+                    //newRow["groupp"] = row["groupp"];
+                    //newRow["free"] = row["free"];
+                    //newRow["noncomposite"] = row["noncomposite"];
+                    //newRow["printer"] = printer;
                     newRow["taxpaid"] = row["taxpaid"];
                     newRow["id"] = 0;
                     newRow["current"] = 0;
@@ -985,13 +911,12 @@ namespace WindowsFormsApp4
                 {
                     if (nest.ForeColor == Color.Black)
                     {
-                        int seans = int.Parse(Seans.Text);
                         string r1 = this.nest.Text;
                         string r2 = remove.Tag.ToString();
                         string r3 = bill.Text;
                         string r8 = TipMoney.Text;
                         connection.Open();
-                        string UpdateQuery = $"UPDATE TicketsOrdered SET  Nest= '{r1}' WHERE Nest= '{r2}' AND Ticket = '{r3}' AND Seans = '{seans}'  AND Previous='{_previous}' ";
+                        string UpdateQuery = $"UPDATE TicketsOrdered SET  Nest= '{r1}' WHERE Nest= '{r2}' AND Ticket = '{r3}' AND Previous='{_previous}' ";
                         using (SqlCommand updatCommand = new SqlCommand(UpdateQuery, connection))
                             updatCommand.ExecuteNonQuery();
 
@@ -2070,7 +1995,7 @@ namespace WindowsFormsApp4
                 SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
                 if (connection.State == ConnectionState.Closed) connection.Open();
                 string UpdateQuery1 = $"UPDATE TicketsOrdered SET Person = '{int.Parse(numericUpDown3.Text)}'" +
-    $"  WHERE Seans = '{Seans.Text}' AND Nest = '{nest.Text}' AND Ticket = '{int.Parse(bill.Text)}' AND Restaurant='{_restaurant}' ";
+    $"  WHERE  Nest = '{nest.Text}' AND Ticket = '{int.Parse(bill.Text)}' AND Restaurant='{_restaurant}' ";
                 using (SqlCommand updatCommand = new SqlCommand(UpdateQuery1, connection))
                     updatCommand.ExecuteNonQuery();
                 connection.Close();
@@ -2083,7 +2008,7 @@ namespace WindowsFormsApp4
                 SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
                 if (connection.State == ConnectionState.Closed) connection.Open();
                 string UpdateQuery1 = $"UPDATE TicketsOrdered SET Tipmoney = '{float.Parse(TipMoney.Text)}'" +
-    $"  WHERE Seans = '{Seans.Text}' AND Nest = '{nest.Text}' AND Ticket = '{int.Parse(bill.Text)}' AND Restaurant='{_restaurant}' ";
+    $"  WHERE Nest = '{nest.Text}' AND Ticket = '{int.Parse(bill.Text)}' AND Restaurant='{_restaurant}' ";
                 using (SqlCommand updatCommand = new SqlCommand(UpdateQuery1, connection))
                     updatCommand.ExecuteNonQuery();
 
@@ -2241,7 +2166,6 @@ namespace WindowsFormsApp4
                 if (int.Parse(row["Ticket"].ToString()) >= tick) tick = int.Parse(row["Ticket"].ToString()) + 1;
             }
             bill.Text = tick.ToString();
-            int seans_state = int.Parse(Seans.Text);
             int person = 0;
             if (numericUpDown3.Value.ToString().Length > 0) person = int.Parse(numericUpDown3.Value.ToString());
             float tipmoney = 0;
@@ -2269,13 +2193,17 @@ namespace WindowsFormsApp4
                 cost = cost + float.Parse(row["costamount"].ToString());
                 string name = row["name"].ToString();
                 bool accepted = bool.Parse(row["accepted"].ToString());
+                if (accepted == true)
+                {
+                    continue; // Skip the loop if conditions are met
+                }
                 int groupp = int.Parse(row["groupp"].ToString());
 
-                if (groupp == 291)
+                if (groupp == 43)
                 {
                     delivery = delivery + float.Parse(row["salesamount"].ToString());
                 }
-                if (groupp == 292) music = music + float.Parse(row["salesamount"].ToString());
+                if (groupp == 44) music = music + float.Parse(row["salesamount"].ToString());
                 if (accepted == true)
                 {
 
@@ -2295,20 +2223,19 @@ namespace WindowsFormsApp4
 
                 if (_previous == 0)
                 {
-                    string InsertQuery = $"INSERT INTO Seans ( Code, Groupp, DateOfEntry, Seans, Ticket, Paid," +
-                        $"Nest ,Quantity ,Costprice , Price, Costamount, Salesamount, Service, Discount, Free, Taxpaid, Restaurant, Holl, Operator, DepartmentOut,Waiter,Manager,Qart)" +
-                        $" values (@Code , @Groupp, @DateOfEntry, @Seans, @Ticket, @Paid, @Nest ," +
-                        $"@Quantity,@Costprice ,@Price, @Costamount, @Salesamount, @Service, @Discount, @Free, @Taxpaid, @Restaurant, @Holl, @Operator, @Department,@Waiter,@Manager,@Qart)";
+                    string InsertQuery = $"INSERT INTO Seans ( Code, DateOfEntry,  Ticket, Paid," +
+                        $"Nest ,State, Quantity ,Costprice , Price, Costamount, Salesamount, Service, Discount, Taxpaid, Restaurant, Holl, Operator,Waiter,Manager,Qart)" +
+                        $" values (@Code , @DateOfEntry,  @Ticket, @Paid, @Nest ,@State," +
+                        $"@Quantity,@Costprice ,@Price, @Costamount, @Salesamount, @Service, @Discount, @Taxpaid, @Restaurant, @Holl, @Operator,@Waiter,@Manager,@Qart)";
                     using (SqlCommand insertCommand = new SqlCommand(InsertQuery, connection)) 
 
                     {
                         insertCommand.Parameters.AddWithValue("@Code", row["code"]);
-                        insertCommand.Parameters.AddWithValue("@Groupp", groupp);
                         insertCommand.Parameters.AddWithValue("@DateOfEntry", DateTime.Now);
-                        insertCommand.Parameters.AddWithValue("@Seans", Seans.Text);
                         insertCommand.Parameters.AddWithValue("@Ticket", tick);
                         insertCommand.Parameters.AddWithValue("@Paid", 0);
                         insertCommand.Parameters.AddWithValue("@Nest", nest.Text);
+                        insertCommand.Parameters.AddWithValue("@State", 1);
                         insertCommand.Parameters.AddWithValue("@Quantity", row["quantity"]);
                         insertCommand.Parameters.AddWithValue("@Costprice", row["Costprice"]);
                         insertCommand.Parameters.AddWithValue("@Price", row["price"]);
@@ -2316,8 +2243,6 @@ namespace WindowsFormsApp4
                         insertCommand.Parameters.AddWithValue("@Salesamount", row["salesamount"]);
                         insertCommand.Parameters.AddWithValue("@Service", row["Service"]);
                         insertCommand.Parameters.AddWithValue("@Discount", row["Discount"]);
-                        insertCommand.Parameters.AddWithValue("@Department", row["department"]);
-                        insertCommand.Parameters.AddWithValue("@Free", row["Free"]);
                         insertCommand.Parameters.AddWithValue("@Taxpaid", 0);
                         insertCommand.Parameters.AddWithValue("@Restaurant", _restaurant);
                         insertCommand.Parameters.AddWithValue("@Holl", _holl);
@@ -2330,9 +2255,9 @@ namespace WindowsFormsApp4
                 }
                 else
                 {
-                    string InsertQuery = $"INSERT INTO Previous_215 ( Code, Groupp, DateOfEntry, Seans, Ticket, Paid," +
+                    string InsertQuery = $"INSERT INTO Previous_215 ( Code, Groupp, DateOfEntry, Ticket, Paid," +
     $"Nest ,Quantity ,Costprice, Price, Costamount, Salesamount, Service, Discount, Free, Taxpaid, Restaurant, Holl, Operator,  DepartmentOut,Qart)" +
-    $" values (@Code, @Groupp, @DateOfEntry, @Seans, @Ticket, @Paid, @Nest ," +
+    $" values (@Code, @Groupp, @DateOfEntry, @Ticket, @Paid, @Nest ," +
     $"@Quantity,@Costprice ,@Price, @Costamount, @Salesamount, @Service, @Discount, @Free, @Taxpaid, @Restaurant, @Holl, @Operator, @Department,@Qart ) ";
                     using (SqlCommand insertCommand = new SqlCommand(InsertQuery, connection))
 
@@ -2340,7 +2265,6 @@ namespace WindowsFormsApp4
                         insertCommand.Parameters.AddWithValue("@Code", row["code"]);
                         insertCommand.Parameters.AddWithValue("@Groupp", groupp);
                         insertCommand.Parameters.AddWithValue("@DateOfEntry", DateTime.Now);
-                        insertCommand.Parameters.AddWithValue("@Seans", Seans.Text);
                         insertCommand.Parameters.AddWithValue("@Ticket", tick);
                         insertCommand.Parameters.AddWithValue("@Paid", 0);
                         insertCommand.Parameters.AddWithValue("@Nest", nest.Text);
@@ -2364,17 +2288,16 @@ namespace WindowsFormsApp4
             }
             ManagerBox.Text = "";
             DataRow[] foundRowsTI = TicketsOrdered.Select($"Nest= '{nest.Text}' AND Ticket= '{tick}' AND" +
-                $" Seans = '{seans_state}' AND Restaurant = '{_restaurant}' AND Holl = '{_holl}' ");
+                $" Restaurant = '{_restaurant}' AND Holl = '{_holl}' ");
 
             if (foundRowsTI.Length == 0)
             {
-                string InsertQuery = $"INSERT INTO TicketsOrdered  (Seans,Nest,DateBegin,DateEnd,Ticket," +
-                    $"SalesAmount,Costamount,Delivery,Music,Cash,Cashless,Service,Discount,Paid,Person,Tipmoney,Nestgroup,Holl,Restaurant,Gid,Previous) VALUES  (@seans, @nest, @DateBegin, @DateEnd," +
+                string InsertQuery = $"INSERT INTO TicketsOrdered  (Nest,DateBegin,DateEnd,Ticket," +
+                    $"SalesAmount,Costamount,Delivery,Music,Cash,Cashless,Service,Discount,Paid,Person,Tipmoney,Nestgroup,Holl,Restaurant,Gid,Previous) VALUES  (@nest, @DateBegin, @DateEnd," +
                     $" @ticket,@salesamount,@Costamount,@delivery,@music,@cash,@cashless, @service, @discount,@paid, @person,@tipmoney,@group,@holl, @restaurant,@gid,@Previous)";
                 using (SqlCommand updatCommand = new SqlCommand(InsertQuery, connection))
 
                 {
-                    updatCommand.Parameters.AddWithValue("@seans", seans_state);
                     updatCommand.Parameters.AddWithValue("@nest", nest.Text);
                     updatCommand.Parameters.AddWithValue("@DateBegin", DateTime.Now);
                     updatCommand.Parameters.AddWithValue("@DateEnd", DateTime.Now);
@@ -2405,7 +2328,7 @@ namespace WindowsFormsApp4
                 string UpdateQuery1 = $"UPDATE TicketsOrdered SET SalesAmount = '{float.Parse(amount.Text)}',CostAmount= '{cost}'," +
                     $"Service= '{float.Parse(service.Text)}',Discount='{float.Parse(discount.Text)}' , Gid= '{gidd}', " +
                     $"Delivery='{delivery}',Music='{music}',Person= '{person}',Tipmoney = '{tipmoney}'" +
-                    $"  WHERE Seans = '{Seans.Text}' AND Nest = '{nest.Text}' AND Ticket = '{tick}' AND Restaurant='{_restaurant}' ";
+                    $"  WHERE Nest = '{nest.Text}' AND Ticket = '{tick}' AND Restaurant='{_restaurant}' ";
                 using (SqlCommand updatCommand = new SqlCommand(UpdateQuery1, connection))
                     updatCommand.ExecuteNonQuery();
             }
@@ -2421,11 +2344,24 @@ namespace WindowsFormsApp4
             TableNest = dbHelper.ExecuteQuery(query);
             NestUpdate();
             connection.Close();
-
+            string  pers = numericUpDown3.Value.ToString();
+            string ticket = bill.Text;
             // տպվում են պատվերի կտրոնները համաատասխան տպիչների վրա
-            print(1); print(2); print(3); print(4); print(5);
-            print(6); print(7); print(8); print(9); print(10);
-            print(11); print(12); print(13); print(14); print(15);
+            printtocook.printingtocook(1, Table215, tableforprint, ticket, nest.Text, pers, Restaurantname, _ooperatorname, _language);
+            printtocook.printingtocook(2, Table215, tableforprint, ticket, nest.Text, pers, Restaurantname, _ooperatorname, _language); 
+            printtocook.printingtocook(3, Table215, tableforprint, ticket, nest.Text, pers, Restaurantname, _ooperatorname, _language);
+            printtocook.printingtocook(4, Table215, tableforprint, ticket, nest.Text, pers, Restaurantname, _ooperatorname, _language);
+            printtocook.printingtocook(5, Table215, tableforprint, ticket, nest.Text, pers, Restaurantname, _ooperatorname, _language);
+            printtocook.printingtocook(6, Table215, tableforprint, ticket, nest.Text, pers, Restaurantname, _ooperatorname, _language);
+            printtocook.printingtocook(7, Table215, tableforprint, ticket, nest.Text, pers, Restaurantname, _ooperatorname, _language);
+            printtocook.printingtocook(8, Table215, tableforprint, ticket, nest.Text, pers, Restaurantname, _ooperatorname, _language);
+            printtocook.printingtocook(9, Table215, tableforprint, ticket, nest.Text, pers, Restaurantname, _ooperatorname, _language);
+            printtocook.printingtocook(10, Table215, tableforprint, ticket, nest.Text, pers, Restaurantname, _ooperatorname, _language);
+            printtocook.printingtocook(11, Table215, tableforprint, ticket, nest.Text, pers, Restaurantname, _ooperatorname, _language);
+            printtocook.printingtocook(12, Table215, tableforprint, ticket, nest.Text, pers, Restaurantname, _ooperatorname, _language);
+            printtocook.printingtocook(13, Table215, tableforprint, ticket, nest.Text, pers, Restaurantname, _ooperatorname, _language);
+            printtocook.printingtocook(14, Table215, tableforprint, ticket, nest.Text, pers, Restaurantname, _ooperatorname, _language);
+            printtocook.printingtocook(15, Table215, tableforprint, ticket, nest.Text, pers, Restaurantname, _ooperatorname, _language);
 
             printbutton1.Visible = true;
             printbutton2.Visible = true;
@@ -2433,322 +2369,6 @@ namespace WindowsFormsApp4
 
         }
 
-        private void print(int printer1)
-        {
-
-
-            Translate.translation(Table215, tableforprint, _language, "3");
-            int p1 = 0, p2 = 0, p3 = 0, p4 = 0, p5 = 0, p6 = 0, p7 = 0, p8 = 0, p9 = 0, p10 = 0, p11 = 0, p12 = 0, p13 = 0, p14 = 0, p15 = 0;
-
-            DataTable Order = new DataTable();
-            Order.Columns.Add("name", typeof(string));
-            Order.Columns.Add("price", typeof(float));
-            Order.Columns.Add("quantity", typeof(float));
-            Order.Columns.Add("salesamount", typeof(float));
-
-            foreach (DataRow row in tableforprint.Rows)
-            {
-                //****************************** ստուգում ենք որ տպիչի վրա կա տպելիք
-                if (int.Parse(row["printer"].ToString()) == 1) p1 = 1;
-                if (int.Parse(row["printer"].ToString()) == 2) p2 = 1;
-                if (int.Parse(row["printer"].ToString()) == 3) p3 = 1;
-                if (int.Parse(row["printer"].ToString()) == 4) p4 = 1;
-                if (int.Parse(row["printer"].ToString()) == 5) p5 = 1;
-                if (int.Parse(row["printer"].ToString()) == 6) p6 = 1;
-                if (int.Parse(row["printer"].ToString()) == 7) p7 = 1;
-                if (int.Parse(row["printer"].ToString()) == 8) p8 = 1;
-                if (int.Parse(row["printer"].ToString()) == 9) p9 = 1;
-                if (int.Parse(row["printer"].ToString()) == 10) p10 = 1;
-                if (int.Parse(row["printer"].ToString()) == 11) p11 = 1;
-                if (int.Parse(row["printer"].ToString()) == 12) p12 = 1;
-                if (int.Parse(row["printer"].ToString()) == 13) p13 = 1;
-                if (int.Parse(row["printer"].ToString()) == 14) p14 = 1;
-                if (int.Parse(row["printer"].ToString()) == 15) p15 = 1;
-                //******************************************
-                if (int.Parse(row["printer"].ToString()) != printer1 || float.Parse(row["quantity"].ToString()) == 0) continue;
-                DataRow newRow = Order.NewRow();
-                Order.Rows.Add(newRow);
-                newRow["name"] = row["name"];
-                newRow["quantity"] = float.Parse(row["quantity"].ToString());
-                newRow["price"] = float.Parse(row["price"].ToString());
-                newRow["salesamount"] = float.Parse(row["salesamount"].ToString());
-            }
-
-            if (Order.Rows.Count > 0)
-            {
-                DataRow newRow0 = Order.NewRow();
-                Order.Rows.Add(newRow0);
-                newRow0["name"] = "=======================";
-                if (p1 == 1 && printer1 != 1)
-                {
-                    DataRow newRow = Order.NewRow();
-                    Order.Rows.Add(newRow);
-                    newRow["name"] = "=======================";
-                    foreach (DataRow row in tableforprint.Rows)
-                    {
-                        if (int.Parse(row["printer"].ToString()) != 1 || float.Parse(row["quantity"].ToString()) == 0) continue;
-                        DataRow newRow1 = Order.NewRow();
-                        Order.Rows.Add(newRow1);
-                        newRow1["name"] = row["name"];
-                        newRow1["quantity"] = float.Parse(row["quantity"].ToString());
-                        newRow1["price"] = float.Parse(row["price"].ToString());
-                        newRow1["salesamount"] = float.Parse(row["salesamount"].ToString());
-                    }
-
-                }
-                if (p2 == 1 && printer1 != 2)
-                {
-                    DataRow newRow = Order.NewRow();
-                    Order.Rows.Add(newRow);
-                    newRow["name"] = "=======================";
-                    foreach (DataRow row in tableforprint.Rows)
-                    {
-                        if (int.Parse(row["printer"].ToString()) != 2 || float.Parse(row["quantity"].ToString()) == 0) continue;
-                        DataRow newRow1 = Order.NewRow();
-                        Order.Rows.Add(newRow1);
-                        newRow1["name"] = row["name"];
-                        newRow1["quantity"] = float.Parse(row["quantity"].ToString());
-                        newRow1["price"] = float.Parse(row["price"].ToString());
-                        newRow1["salesamount"] = float.Parse(row["salesamount"].ToString());
-                    }
-
-                }
-                if (p3 == 1 && printer1 != 3)
-                {
-                    DataRow newRow = Order.NewRow();
-                    Order.Rows.Add(newRow);
-                    newRow["name"] = "=======================";
-                    foreach (DataRow row in tableforprint.Rows)
-                    {
-                        if (int.Parse(row["printer"].ToString()) != 3 || float.Parse(row["quantity"].ToString()) == 0) continue;
-                        DataRow newRow1 = Order.NewRow();
-                        Order.Rows.Add(newRow1);
-                        newRow1["name"] = row["name"];
-                        newRow1["quantity"] = float.Parse(row["quantity"].ToString());
-                        newRow1["price"] = float.Parse(row["price"].ToString());
-                        newRow1["salesamount"] = float.Parse(row["salesamount"].ToString());
-                    }
-
-                }
-                if (p4 == 1 && printer1 != 4)
-                {
-                    DataRow newRow = Order.NewRow();
-                    Order.Rows.Add(newRow);
-                    newRow["name"] = "=======================";
-                    foreach (DataRow row in tableforprint.Rows)
-                    {
-                        if (int.Parse(row["printer"].ToString()) != 4 || float.Parse(row["quantity"].ToString()) == 0) continue;
-                        DataRow newRow1 = Order.NewRow();
-                        Order.Rows.Add(newRow1);
-                        newRow1["name"] = row["name"];
-                        newRow1["quantity"] = float.Parse(row["quantity"].ToString());
-                        newRow1["price"] = float.Parse(row["price"].ToString());
-                        newRow1["salesamount"] = float.Parse(row["salesamount"].ToString());
-                    }
-
-                }
-                if (p5 == 1 && printer1 != 5)
-                {
-                    DataRow newRow = Order.NewRow();
-                    Order.Rows.Add(newRow);
-                    newRow["name"] = "=======================";
-                    foreach (DataRow row in tableforprint.Rows)
-                    {
-                        if (int.Parse(row["printer"].ToString()) != 5 || float.Parse(row["quantity"].ToString()) == 0) continue;
-                        DataRow newRow1 = Order.NewRow();
-                        Order.Rows.Add(newRow1);
-                        newRow1["name"] = row["name"];
-                        newRow1["quantity"] = float.Parse(row["quantity"].ToString());
-                        newRow1["price"] = float.Parse(row["price"].ToString());
-                        newRow1["salesamount"] = float.Parse(row["salesamount"].ToString());
-                    }
-
-                }
-                if (p6 == 1 && printer1 != 6)
-                {
-                    DataRow newRow = Order.NewRow();
-                    Order.Rows.Add(newRow);
-                    newRow["name"] = "=======================";
-                    foreach (DataRow row in tableforprint.Rows)
-                    {
-                        if (int.Parse(row["printer"].ToString()) != 6 || float.Parse(row["quantity"].ToString()) == 0) continue;
-                        DataRow newRow1 = Order.NewRow();
-                        Order.Rows.Add(newRow1);
-                        newRow1["name"] = row["name"];
-                        newRow1["quantity"] = float.Parse(row["quantity"].ToString());
-                        newRow1["price"] = float.Parse(row["price"].ToString());
-                        newRow1["salesamount"] = float.Parse(row["salesamount"].ToString());
-                    }
-
-                }
-                if (p7 == 1 && printer1 != 7)
-                {
-                    DataRow newRow = Order.NewRow();
-                    Order.Rows.Add(newRow);
-                    newRow["name"] = "=======================";
-                    foreach (DataRow row in tableforprint.Rows)
-                    {
-                        if (int.Parse(row["printer"].ToString()) != 7 || float.Parse(row["quantity"].ToString()) == 0) continue;
-                        DataRow newRow1 = Order.NewRow();
-                        Order.Rows.Add(newRow1);
-                        newRow1["name"] = row["name"];
-                        newRow1["quantity"] = float.Parse(row["quantity"].ToString());
-                        newRow1["price"] = float.Parse(row["price"].ToString());
-                        newRow1["salesamount"] = float.Parse(row["salesamount"].ToString());
-                    }
-
-                }
-                if (p8 == 1 && printer1 != 8)
-                {
-                    DataRow newRow = Order.NewRow();
-                    Order.Rows.Add(newRow);
-                    newRow["name"] = "=======================";
-                    foreach (DataRow row in tableforprint.Rows)
-                    {
-                        if (int.Parse(row["printer"].ToString()) != 8 || float.Parse(row["quantity"].ToString()) == 0) continue;
-                        DataRow newRow1 = Order.NewRow();
-                        Order.Rows.Add(newRow1);
-                        newRow1["name"] = row["name"];
-                        newRow1["quantity"] = float.Parse(row["quantity"].ToString());
-                        newRow1["price"] = float.Parse(row["price"].ToString());
-                        newRow1["salesamount"] = float.Parse(row["salesamount"].ToString());
-                    }
-
-                }
-                if (p9 == 1 && printer1 != 9)
-                {
-                    DataRow newRow = Order.NewRow();
-                    Order.Rows.Add(newRow);
-                    newRow["name"] = "=======================";
-                    foreach (DataRow row in tableforprint.Rows)
-                    {
-                        if (int.Parse(row["printer"].ToString()) != 9 || float.Parse(row["quantity"].ToString()) == 0) continue;
-                        DataRow newRow1 = Order.NewRow();
-                        Order.Rows.Add(newRow1);
-                        newRow1["name"] = row["name"];
-                        newRow1["quantity"] = float.Parse(row["quantity"].ToString());
-                        newRow1["price"] = float.Parse(row["price"].ToString());
-                        newRow1["salesamount"] = float.Parse(row["salesamount"].ToString());
-                    }
-
-                }
-                if (p10 == 1 && printer1 != 10)
-                {
-                    DataRow newRow = Order.NewRow();
-                    Order.Rows.Add(newRow);
-                    newRow["name"] = "=======================";
-                    foreach (DataRow row in tableforprint.Rows)
-                    {
-                        if (int.Parse(row["printer"].ToString()) != 10 || float.Parse(row["quantity"].ToString()) == 0) continue;
-                        DataRow newRow1 = Order.NewRow();
-                        Order.Rows.Add(newRow1);
-                        newRow1["name"] = row["name"];
-                        newRow1["quantity"] = float.Parse(row["quantity"].ToString());
-                        newRow1["price"] = float.Parse(row["price"].ToString());
-                        newRow1["salesamount"] = float.Parse(row["salesamount"].ToString());
-                    }
-
-                }
-                if (p11 == 1 && printer1 != 11)
-                {
-                    DataRow newRow = Order.NewRow();
-                    Order.Rows.Add(newRow);
-                    newRow["name"] = "=======================";
-                    foreach (DataRow row in tableforprint.Rows)
-                    {
-                        if (int.Parse(row["printer"].ToString()) != 11 || float.Parse(row["quantity"].ToString()) == 0) continue;
-                        DataRow newRow1 = Order.NewRow();
-                        Order.Rows.Add(newRow1);
-                        newRow1["name"] = row["name"];
-                        newRow1["quantity"] = float.Parse(row["quantity"].ToString());
-                        newRow1["price"] = float.Parse(row["price"].ToString());
-                        newRow1["salesamount"] = float.Parse(row["salesamount"].ToString());
-                    }
-
-                }
-                if (p12 == 1 && printer1 != 12)
-                {
-                    DataRow newRow = Order.NewRow();
-                    Order.Rows.Add(newRow);
-                    newRow["name"] = "=======================";
-                    foreach (DataRow row in tableforprint.Rows)
-                    {
-                        if (int.Parse(row["printer"].ToString()) != 12 || float.Parse(row["quantity"].ToString()) == 0) continue;
-                        DataRow newRow1 = Order.NewRow();
-                        Order.Rows.Add(newRow1);
-                        newRow1["name"] = row["name"];
-                        newRow1["quantity"] = float.Parse(row["quantity"].ToString());
-                        newRow1["price"] = float.Parse(row["price"].ToString());
-                        newRow1["salesamount"] = float.Parse(row["salesamount"].ToString());
-                    }
-
-                }
-                if (p13 == 1 && printer1 != 13)
-                {
-                    DataRow newRow = Order.NewRow();
-                    Order.Rows.Add(newRow);
-                    newRow["name"] = "=======================";
-                    foreach (DataRow row in tableforprint.Rows)
-                    {
-                        if (int.Parse(row["printer"].ToString()) != 13 || float.Parse(row["quantity"].ToString()) == 0) continue;
-                        DataRow newRow1 = Order.NewRow();
-                        Order.Rows.Add(newRow1);
-                        newRow1["name"] = row["name"];
-                        newRow1["quantity"] = float.Parse(row["quantity"].ToString());
-                        newRow1["price"] = float.Parse(row["price"].ToString());
-                        newRow1["salesamount"] = float.Parse(row["salesamount"].ToString());
-                    }
-
-                }
-                if (p14 == 1 && printer1 != 14)
-                {
-                    DataRow newRow = Order.NewRow();
-                    Order.Rows.Add(newRow);
-                    newRow["name"] = "=======================";
-                    foreach (DataRow row in tableforprint.Rows)
-                    {
-                        if (int.Parse(row["printer"].ToString()) != 14 || float.Parse(row["quantity"].ToString()) == 0) continue;
-                        DataRow newRow1 = Order.NewRow();
-                        Order.Rows.Add(newRow1);
-                        newRow1["name"] = row["name"];
-                        newRow1["quantity"] = float.Parse(row["quantity"].ToString());
-                        newRow1["price"] = float.Parse(row["price"].ToString());
-                        newRow1["salesamount"] = float.Parse(row["salesamount"].ToString());
-                    }
-
-                }
-                if (p15 == 1 && printer1 != 15)
-                {
-                    DataRow newRow = Order.NewRow();
-                    Order.Rows.Add(newRow);
-                    newRow["name"] = "=======================";
-                    foreach (DataRow row in tableforprint.Rows)
-                    {
-                        if (int.Parse(row["printer"].ToString()) != 15 || float.Parse(row["quantity"].ToString()) == 0) continue;
-                        DataRow newRow1 = Order.NewRow();
-                        Order.Rows.Add(newRow1);
-                        newRow1["name"] = row["name"];
-                        newRow1["quantity"] = float.Parse(row["quantity"].ToString());
-                        newRow1["price"] = float.Parse(row["price"].ToString());
-                        newRow1["salesamount"] = float.Parse(row["salesamount"].ToString());
-                    }
-
-                }
-                string reportname = "";
-                Dictionary<string, object> parameters = new Dictionary<string, object>();
-                parameters.Add("nest", nest.Text);
-                parameters.Add("person", numericUpDown3.Value.ToString());
-                parameters.Add("restaurant", Restaurantname);
-                parameters.Add("operator", _ooperatorname);
-                parameters.Add("ticket", bill.Text);
-                string Report = FindFolder.Folder("Report") + "\\OrderReport.rdlc";
-                ReportManager reportManager = new ReportManager();
-                reportManager.PreviewReport("BillReport", Report, Order, parameters, null);
-            }
-
-
-
-        }
         private void printbutton1_Click(object sender, EventArgs e)
         {
             ////////////////////////////////
@@ -2789,12 +2409,12 @@ namespace WindowsFormsApp4
             DateTime DateBegin = DateTime.Now;
             if (_previous == 0)
             {
-                string selectquery1 = $"SELECT * FROM seans  WHERE Nest= '{nest.Text}' AND Ticket='{bill.Text}' And seans='{Seans.Text}' AND Restaurant='{_restaurant}' ";//սեղանների աղյուսակը թարմացնում ենք
+                string selectquery1 = $"SELECT * FROM Seans  WHERE Nest= '{nest.Text}' AND Ticket='{bill.Text}' AND Restaurant='{_restaurant}' ";//սեղանների աղյուսակը թարմացնում ենք
                 TableSeans = dbHelper.ExecuteQuery(selectquery1);
             }
             else
             {
-                string selectquery1 = $"SELECT * FROM Previous_215  WHERE Nest= '{nest.Text}' AND Ticket='{bill.Text}' And seans='{Seans.Text}' AND Restaurant='{_restaurant}' ";//սեղանների աղյուսակը թարմացնում ենք
+                string selectquery1 = $"SELECT * FROM Previous_215  WHERE Nest= '{nest.Text}' AND Ticket='{bill.Text}' AND Restaurant='{_restaurant}' ";//սեղանների աղյուսակը թարմացնում ենք
                 TableSeans = dbHelper.ExecuteQuery(selectquery1);
             }
             foreach (DataRow row in TableSeans.Rows)
@@ -2804,15 +2424,45 @@ namespace WindowsFormsApp4
             }
             //ձևավորում ենք կտրոնի աղյուսակը
             connection.Close();
-            BillPrint = CurrentOrder.Clone();
-            foreach(DataRow row in CurrentOrder.Rows)
+            DataTable BillPrint = new DataTable();
+            BillPrint.Columns.Add("code", typeof(string));
+            BillPrint.Columns.Add("name", typeof(string));
+            BillPrint.Columns.Add("price", typeof(float));
+            BillPrint.Columns.Add("quantity", typeof(float));
+            BillPrint.Columns.Add("service", typeof(float));
+            BillPrint.Columns.Add("discount", typeof(float));
+            BillPrint.Columns.Add("salesamount", typeof(float));
+            BillPrint.Columns.Add("free", typeof(int));
+            foreach (DataRow row in CurrentOrder.Rows)
             {if (float.Parse(row["quantity"].ToString()) == 0) continue;
                 DataRow newRow = BillPrint.NewRow();
                 BillPrint.Rows.Add(newRow);
-                for (int colIndex = 0; colIndex < CurrentOrder.Columns.Count; colIndex++)
+                newRow["code"] = row["code"];
+                newRow["name"] = row["name"];
+                newRow["price"] = row["price"];
+                newRow["quantity"] = row["quantity"];
+                newRow["service"] = row["service"];
+                newRow["discount"] = row["discount"];
+                newRow["salesamount"] = row["salesamount"];
+
+            }
+
+            var query = from row1 in Table_215.AsEnumerable()
+                        join row2 in BillPrint.AsEnumerable()
+                        on row1.Field<string>("Code") equals row2.Field<string>("Code") into gj
+                        from subRow2 in gj.DefaultIfEmpty()
+                        select new
+                        {
+                            Row1 = row1,
+                            Row2 = subRow2
+                        };
+
+            foreach (var item in query)
+            {
+                if (item.Row2 != null)
                 {
-                    string columnName = CurrentOrder.Columns[colIndex].ColumnName;
-                    newRow[columnName] = row[columnName];
+                    item.Row2["free"] = item.Row1["free"];
+
                 }
             }
             Translate.translation(Table215, BillPrint, _language, "1");// տեղադրվում են անունները
@@ -2946,7 +2596,7 @@ namespace WindowsFormsApp4
 
         }
 
-        private void departmentclick_Click(object sender, EventArgs e)
+        private void Department_Click(string sender)
         {
             Button[] groupArray = new System.Windows.Forms.Button[30] { group1, group2, group3, group4, group5, group6, group7, group8, group9, group10,
                 group11, group12, group13, group14, group15, group16, group17, group18, group19, group20,
@@ -2956,7 +2606,7 @@ namespace WindowsFormsApp4
                 groupArray[j].Visible = false;
                 groupArray[j].Tag = "0";
             }
-            string dep = DepartmentClick.Tag.ToString();
+            string dep = sender;
             department1.BackColor = Color.White;
             department2.BackColor = Color.White;
             department3.BackColor = Color.White;
@@ -3002,7 +2652,7 @@ namespace WindowsFormsApp4
                         }
                         if (k == 1) continue; // տվյալ խմբի կոճակը արդեն ֆիքսել ու ձևավորել ենք
                         i++;
-                        groupArray[i].Text = matchingRows[0]["Name"].ToString();
+                        groupArray[i].Text = matchingRows[0][_language].ToString();
                         groupArray[i].Tag = matchingRows[0]["Groupp"].ToString();
                         groupArray[i].Visible = true;
                     }
@@ -3011,7 +2661,7 @@ namespace WindowsFormsApp4
             }
         }
 
-        private void GroupClick_Click(object sender, EventArgs e)
+        private void GroupClick(object groupp)
         {
             Button[] groupArray = new System.Windows.Forms.Button[30] { group1, group2, group3, group4, group5, group6, group7, group8, group9, group10,
                 group11, group12, group13, group14, group15, group16, group17, group18, group19, group20,
@@ -3019,14 +2669,14 @@ namespace WindowsFormsApp4
             for (int i = 0; i < 29; i++)
             {
                 groupArray[i].BackColor = Color.White;
-                if (groupArray[i].Tag == GroupClick.Tag)
+                if (groupArray[i].Tag == groupp)
                 {
                     groupArray[i].BackColor = Color.LightGreen;
                 }
             }
 
             dataView = new DataView(Table_215);
-            dataView.RowFilter = $"Department = " + DepartmentClick.Tag.ToString() + " AND Groupp = " + GroupClick.Tag.ToString();//բաժինը և խումբը ընտրվածներն են
+            dataView.RowFilter = $"Department = " + department1.Tag.ToString() + " AND Groupp = " + groupp.ToString();//բաժինը և խումբը ընտրվածներն են
             dataGridView1.DataSource = dataView;
         }
 
@@ -3039,9 +2689,8 @@ namespace WindowsFormsApp4
             }
             else
             {
-                AdditionClick.Tag = "1";
-                AdditionClick.Focus();
-                SendKeys.Send("{ENTER}");
+                addition1.Tag = "1";
+                AdditionClick();
             }
         }
 
@@ -3054,9 +2703,8 @@ namespace WindowsFormsApp4
             }
             else
             {
-                AdditionClick.Tag = "2";
-                AdditionClick.Focus();
-                SendKeys.Send("{ENTER}");
+                addition1.Tag = "2";
+                AdditionClick();
             }
         }
 
@@ -3069,9 +2717,8 @@ namespace WindowsFormsApp4
             }
             else
             {
-                this.AdditionClick.Tag = "3";
-                this.AdditionClick.Focus();
-                SendKeys.Send("{ENTER}");
+                addition1.Tag = "3";
+                AdditionClick();
             }
         }
 
@@ -3084,9 +2731,8 @@ namespace WindowsFormsApp4
             }
             else
             {
-                this.AdditionClick.Tag = "4";
-                this.AdditionClick.Focus();
-                SendKeys.Send("{ENTER}");
+                addition1.Tag = "4";
+                AdditionClick();
             }
         }
 
@@ -3099,9 +2745,8 @@ namespace WindowsFormsApp4
             }
             else
             {
-                this.AdditionClick.Tag = "5";
-                this.AdditionClick.Focus();
-                SendKeys.Send("{ENTER}");
+                addition1.Tag = "5";
+                AdditionClick();
             }
         }
 
@@ -3114,9 +2759,8 @@ namespace WindowsFormsApp4
             }
             else
             {
-                this.AdditionClick.Tag = "6";
-                this.AdditionClick.Focus();
-                SendKeys.Send("{ENTER}");
+                addition1.Tag = "6";
+                AdditionClick();
             }
         }
 
@@ -3129,9 +2773,8 @@ namespace WindowsFormsApp4
             }
             else
             {
-                this.AdditionClick.Tag = "7";
-                this.AdditionClick.Focus();
-                SendKeys.Send("{ENTER}");
+                addition1.Tag = "7";
+                AdditionClick();
             }
         }
 
@@ -3144,9 +2787,8 @@ namespace WindowsFormsApp4
             }
             else
             {
-                this.AdditionClick.Tag = "8";
-                this.AdditionClick.Focus();
-                SendKeys.Send("{ENTER}");
+                addition1.Tag = "8";
+                AdditionClick();
             }
         }
 
@@ -3159,9 +2801,8 @@ namespace WindowsFormsApp4
             }
             else
             {
-                this.AdditionClick.Tag = "9";
-                this.AdditionClick.Focus();
-                SendKeys.Send("{ENTER}");
+                addition1.Tag = "9";
+                AdditionClick();
             }
         }
 
@@ -3174,9 +2815,8 @@ namespace WindowsFormsApp4
             }
             else
             {
-                this.AdditionClick.Tag = "10";
-                this.AdditionClick.Focus();
-                SendKeys.Send("{ENTER}");
+                addition1.Tag = "10";
+                AdditionClick();
             }
         }
 
@@ -3189,9 +2829,8 @@ namespace WindowsFormsApp4
             }
             else
             {
-                this.AdditionClick.Tag = "11";
-                this.AdditionClick.Focus();
-                SendKeys.Send("{ENTER}");
+                addition1.Tag = "11";
+                AdditionClick();
             }
         }
 
@@ -3204,9 +2843,8 @@ namespace WindowsFormsApp4
             }
             else
             {
-                this.AdditionClick.Tag = "12";
-                this.AdditionClick.Focus();
-                SendKeys.Send("{ENTER}");
+                addition1.Tag = "12";
+                AdditionClick();
             }
         }
 
@@ -3219,9 +2857,8 @@ namespace WindowsFormsApp4
             }
             else
             {
-                this.AdditionClick.Tag = "13";
-                this.AdditionClick.Focus();
-                SendKeys.Send("{ENTER}");
+                addition1.Tag = "13";
+                AdditionClick();
             }
         }
 
@@ -3234,9 +2871,8 @@ namespace WindowsFormsApp4
             }
             else
             {
-                this.AdditionClick.Tag = "14";
-                this.AdditionClick.Focus();
-                SendKeys.Send("{ENTER}");
+                addition1.Tag = "14";
+                AdditionClick();
             }
         }
 
@@ -3249,10 +2885,9 @@ namespace WindowsFormsApp4
             }
             else
             {
-                this.AdditionClick.Tag = "15";
-                this.AdditionClick.Focus();
-                SendKeys.Send("{ENTER}");
-            }
+                addition1.Tag = "15";
+                AdditionClick();
+             }
         }
 
         private void addition16_Click(object sender, EventArgs e)
@@ -3264,9 +2899,8 @@ namespace WindowsFormsApp4
             }
             else
             {
-                this.AdditionClick.Tag = "16";
-                this.AdditionClick.Focus();
-                SendKeys.Send("{ENTER}");
+                addition1.Tag = "16";
+                AdditionClick();
             }
         }
 
@@ -3279,9 +2913,8 @@ namespace WindowsFormsApp4
             }
             else
             {
-                this.AdditionClick.Tag = "17";
-                this.AdditionClick.Focus();
-                SendKeys.Send("{ENTER}");
+                addition1.Tag = "17";
+                AdditionClick();
             }
         }
 
@@ -3294,9 +2927,8 @@ namespace WindowsFormsApp4
             }
             else
             {
-                this.AdditionClick.Tag = "18";
-                this.AdditionClick.Focus();
-                SendKeys.Send("{ENTER}");
+                addition1.Tag = "18";
+                AdditionClick();
             }
         }
 
@@ -3309,9 +2941,8 @@ namespace WindowsFormsApp4
             }
             else
             {
-                this.AdditionClick.Tag = "19";
-                this.AdditionClick.Focus();
-                SendKeys.Send("{ENTER}");
+                addition1.Tag = "19";
+                AdditionClick();
             }
         }
 
@@ -3324,29 +2955,28 @@ namespace WindowsFormsApp4
             }
             else
             {
-                this.AdditionClick.Tag = "20";
-                this.AdditionClick.Focus();
-                SendKeys.Send("{ENTER}");
+                addition1.Tag = "20";
+                AdditionClick();
             }
         }
 
-        private void AdditionClick_Click(object sender, EventArgs e)
+        private void AdditionClick()
         {
             System.Windows.Forms.Button[] buttonArray = new System.Windows.Forms.Button[20] { addition1, addition2, addition3, addition4, addition5, addition6, addition7, addition8, addition9, addition10,
                 addition11, addition12, addition13, addition14, addition15, addition16, addition17, addition18, addition19, addition20 };
             for (int j = 0; j < 19; j++)
             {
                 buttonArray[j].BackColor = Color.White;
-                if (j == int.Parse(AdditionClick.Tag.ToString()) - 1) buttonArray[j].BackColor = Color.LightGreen;
+                if (j == int.Parse(addition1.Tag.ToString()) - 1) buttonArray[j].BackColor = Color.LightGreen;
             }
             dataGridView3.Visible = false;
-            int number = int.Parse(AdditionClick.Tag.ToString());
+            int number = int.Parse(addition1.Tag.ToString());
             dataView = new DataView(AdditionNames);
             dataView.RowFilter = "Number = " + number;
             dataGridView3.DataSource = dataView;
             dataGridView3.Width = dataGridView1.Left - 5;
             dataGridView3.Columns[0].Width = dataGridView3.Width;
-            if (int.Parse(AdditionClick.Tag.ToString()) >= 0)
+            if (int.Parse(addition1.Tag.ToString()) >= 0)
             {
                 dataGridView3.Visible = true;
             }
@@ -3410,12 +3040,15 @@ namespace WindowsFormsApp4
                 object nameValue = dataGridView.Rows[e.RowIndex].Cells["Name"].Value;
                 object grouppValue = dataGridView.Rows[e.RowIndex].Cells["Groupp"].Value;
                 object freeValue = dataGridView.Rows[e.RowIndex].Cells["Free"].Value;
+                object noncompositeValue = dataGridView.Rows[e.RowIndex].Cells["NonComposite"].Value;
                 object departmentvalue = dataGridView.Rows[e.RowIndex].Cells["Department"].Value;
 
                 int printer = int.Parse(printerValue.ToString());
                 int groupp = int.Parse(grouppValue.ToString());
                 string exist = existValue.ToString();
+                string noncomposite = noncompositeValue.ToString();
                 int free = int.Parse(freeValue.ToString());
+
                 decimal department = decimal.Parse(departmentvalue.ToString());
 
                 if (codeValue != null)//տողերի գույները փոփոխելու համար ենք օգտագործելու
@@ -3467,7 +3100,7 @@ namespace WindowsFormsApp4
                         newRow["debet"] = "2211";
                         newRow["kredit"] = "2151";
                         newRow["free"] = free;// եթե 0 է, ապա սպասարկման և զեղչի տոկոսներ չեն կիրառվում
-
+                        newRow["noncomposite"] = noncomposite; 
                         dataGridView3.Tag = newRow["id"].ToString();//հավելումի համար ֆիքսում ենք տողի id-ն
                         if (dataGridView2.Rows.Count > 0)
                         {
@@ -3498,6 +3131,7 @@ namespace WindowsFormsApp4
                             row["printer"] = printer;
                             row["groupp"] = groupp;
                             row["free"] = free;
+                            row["noncomposite"] = noncomposite;
                             row["qanak"] = "";
                             row["department"] = department;
 
@@ -3532,13 +3166,37 @@ namespace WindowsFormsApp4
 
         private void cancel_Click(object sender, EventArgs e)
         {
-            Paiment(1);
+            //Paiment(1);
+            int _ticket = int.Parse(bill.Text);
+            string _nest = nest.Text;
+            string _amount = amount.Text;
+            float _tipmoney = float.Parse(TipMoney.Text);
+            int _person = int.Parse(numericUpDown1.Value.ToString());
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            Paiment.Release(connectionString, 1, _restaurant, _holl,
+            _ticket, _nest, _amount, _previous, _person, _tipmoney);
+            NestUpdate();
+            cancel.Visible = false;
+            printbutton1.Visible = false;
+            printbutton2.Visible = false;
         }
         private void cancel2_Click(object sender, EventArgs e)
         {
-            Paiment(2);
+            //Paiment(2);
+            int _ticket = int.Parse(bill.Text);
+            string _nest = nest.Text;
+            string _amount = amount.Text;
+            float _tipmoney = float.Parse(TipMoney.Text);
+            int _person = int.Parse(numericUpDown1.Value.ToString());
+            string connectionString = Properties.Settings.Default.CafeRestDB;
+            Paiment.Release(connectionString, 2, _restaurant, _holl,
+            _ticket, _nest, _amount, _previous, _person, _tipmoney);
+            NestUpdate();
+            cancel.Visible = false;
+            printbutton1.Visible = false;
+            printbutton2.Visible = false;
         }
-        private void Paiment(int typofpaiment)
+        private void Paiment_(int typofpaiment)
         {
             float PM = float.Parse(amount.Text);//կանխիկ
             float CL = float.Parse(amount.Text);//անկանխիկ
@@ -3547,12 +3205,141 @@ namespace WindowsFormsApp4
             string connectionString = Properties.Settings.Default.CafeRestDB;
             SqlConnection connection = new SqlConnection(connectionString);
             SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
-            int seans_state = int.Parse(Seans.Text);
             int tick = int.Parse(bill.Text);
             DateTime dat = DateTime.Now;
             connection.Open();
+
+            string query1 = $"SELECT * FROM Seans  WHERE Ticket='{tick}' AND Nest='{nest.Text}' AND restaurant='{_restaurant}' ";
+            TableSeans = dbHelper.ExecuteQuery(query1);
+
+            TableSeans.Columns.Add("Department", typeof(int));
+            TableSeans.Columns.Add("groupp", typeof(int));
+            TableSeans.Columns.Add("free", typeof(int));
+            TableSeans.Columns.Add("noncomposite", typeof(string));
+            TableSeans.Columns.Add("name", typeof(string));
+            var query0 = from row1 in Table215.AsEnumerable()
+                         join row2 in TableSeans.AsEnumerable()
+                         on row1.Field<string>("Code") equals row2.Field<string>("Code") into gj
+                         from subRow2 in gj.DefaultIfEmpty()
+                         select new
+                         {
+                             Row1 = row1,
+                             Row2 = subRow2
+                         };
+
+            foreach (var item in query0)
+            {
+                if (item.Row2 != null)
+                {
+                    item.Row2["Name"] = item.Row1[_language];
+                    item.Row2["groupp"] = item.Row1["groupp"];
+                    item.Row2["free"] = item.Row1["free"];
+                    item.Row2["Department"] = item.Row1["Department"];
+                    item.Row2["noncomposite"] = item.Row1["noncomposite"];
+                }
+            }
+
+
+            string query2 = $"SELECT * FROM Composite  WHERE restaurant='{_restaurant}' ";
+            Table_Composite = dbHelper.ExecuteQuery(query2);
+            string query3 = $"SELECT * FROM Actions where Id=0";
+            Table_Actions = dbHelper.ExecuteQuery(query3);
+
+
+            foreach (DataRow row in TableSeans.Rows)
+            {
+                if (row["ticket"].ToString() != bill.Text || row["nest"].ToString() != nest.Text) continue;
+                this.Text = this.Text + " TableSeans.Rows  " + TableSeans.Rows.Count.ToString();
+                string noncomp = row["Holl"].ToString().Trim() + ",";
+                if (row["NonComposite"].ToString().IndexOf(noncomp) >= 0) continue; //տվյալ սրահում չի բաղադրվում ճաշատեսակը
+
+                string InsertQuery = $"INSERT INTO Actions_215 ( Code , DateOfEntry, Ticket, Paid," +
+                    $"Nest ,Quantity , Price, Costamount, Salesamount, Service, Discount, Taxpaid, Restaurant, Holl, Operator)" +
+                    $" values (@Code , @DateOfEntry, @Ticket, @Paid, @Nest ," +
+                    $"@Quantity ,@Price, @Costamount, @Salesamount, @Service, @Discount, @Taxpaid, @Restaurant, @Holl, @Operator ) ";
+                using (SqlCommand insertCommand = new SqlCommand(InsertQuery, connection))
+
+                {
+                    insertCommand.Parameters.AddWithValue("@Code", row["code"]);
+                    insertCommand.Parameters.AddWithValue("@DateOfEntry", row["DateOfEntry"]);
+                    insertCommand.Parameters.AddWithValue("@Ticket", row["ticket"]);
+                    insertCommand.Parameters.AddWithValue("@Paid", row["paid"]);
+                    insertCommand.Parameters.AddWithValue("@Nest", row["nest"]);
+                    insertCommand.Parameters.AddWithValue("@Quantity", row["quantity"]);
+                    insertCommand.Parameters.AddWithValue("@Price", row["price"]);
+                    insertCommand.Parameters.AddWithValue("@Costamount", row["Costamount"]);
+                    insertCommand.Parameters.AddWithValue("@Salesamount", row["salesamount"]);
+                    insertCommand.Parameters.AddWithValue("@Service", row["Service"]);
+                    insertCommand.Parameters.AddWithValue("@Discount", row["Discount"]);
+                    insertCommand.Parameters.AddWithValue("@Taxpaid", row["taxpaid"]);
+                    insertCommand.Parameters.AddWithValue("@Restaurant", _restaurant);
+                    insertCommand.Parameters.AddWithValue("@Holl", row["holl"]);
+                    insertCommand.Parameters.AddWithValue("@Operator", row["operator"]);
+
+                    insertCommand.ExecuteNonQuery();
+                }
+            }
+            foreach (DataRow row1 in TableSeans.Rows)
+            {
+                this.Text = this.Text + " row1[ticket].ToString()=" + row1["ticket"].ToString() + " bill.Text=" + bill.Text + " row1[nest].ToString()=" + nest.Text;
+                if (row1["ticket"].ToString() != bill.Text || row1["nest"].ToString() != nest.Text) continue;
+
+                DataRow[] foundRows1 = Table_Composite.Select($"Code_215 = {row1["Code"]}");
+                if (foundRows1.Length > 0)
+                    this.Text = this.Text + "," + foundRows1.Length.ToString();
+                {
+                    foreach (DataRow row2 in foundRows1)
+                    {
+                        DataRow newRow = Table_Actions.NewRow();
+                        Table_Actions.Rows.Add(newRow);
+
+                        newRow["Date"] = row1["DateOfEntry"];
+                        newRow["Ticket"] = row1["ticket"];
+                        newRow["Nest"] = row1["nest"];
+                        newRow["Code"] = row2["code_211"];
+                        newRow["Code_215"] = row1["Code"];
+                        newRow["Restaurant"] = row1["Restaurant"];
+                        newRow["Quantity"] = float.Parse(row1["Quantity"].ToString()) * float.Parse(row2["Quantity"].ToString());
+                        newRow["Costamount"] = float.Parse(newRow["Quantity"].ToString()) * float.Parse(row2["CostPrice"].ToString());
+                        newRow["SalesAmount"] = row1["SalesAmount"];
+                    }
+                }
+
+
+
+            }
+
+            foreach (DataRow row3 in Table_Actions.Rows)
+            {
+                string InsertQuery1 = $"INSERT INTO Actions (Date,Ticket,Nest , Code, Code_215, Quantity , Costamount, Salesamount, DepartmentOut, Restaurant, debet, kredit )" +
+                         $" values (@Date,@Ticket,@Nest, @Code, @code_215, @Quantity , @Costamount, @Salesamount, @DepartmentOut, @Restaurant, @debet, @kredit ) ";
+                using (SqlCommand insertCommand = new SqlCommand(InsertQuery1, connection))
+
+                {
+                    insertCommand.Parameters.AddWithValue("@Date", row3["Date"]);
+                    insertCommand.Parameters.AddWithValue("@Ticket", row3["Ticket"]);
+                    insertCommand.Parameters.AddWithValue("@Nest", row3["Nest"]);
+                    insertCommand.Parameters.AddWithValue("@Code", row3["Code"]);
+                    insertCommand.Parameters.AddWithValue("@Code_215", row3["Code_215"]);
+                    insertCommand.Parameters.AddWithValue("@Quantity", row3["Quantity"]);
+                    insertCommand.Parameters.AddWithValue("@Costamount", row3["Costamount"]);
+                    insertCommand.Parameters.AddWithValue("@Salesamount", 0);
+                    insertCommand.Parameters.AddWithValue("@DepartmentOut", row3["DepartmentOut"]);
+                    insertCommand.Parameters.AddWithValue("@Restaurant", row3["Restaurant"]);
+                    insertCommand.Parameters.AddWithValue("@debet", "7111");
+                    insertCommand.Parameters.AddWithValue("@kredit", "2111");
+                    insertCommand.ExecuteNonQuery();
+                }
+            }
+
+            string DeleteQuery = $"DELETE FROM seans   WHERE Nest= '{nest.Text}' AND Restaurant ='{_restaurant}'";
+            using (SqlCommand deleteCommand = new SqlCommand(DeleteQuery, connection))
+                deleteCommand.ExecuteNonQuery();
+
+
+
             string query = $"UPDATE TicketsOrdered SET Cash = @PM,Cashless = @CL,  Tipmoney = @Tipmoney, DateEnd = @DateEnd,Person = @Person,Paid=1,Holl=@Holl " +
-                $" WHERE Seans = @Seans AND Ticket = @Ticket  AND Nest = @Nest  AND Restaurant =@Rest AND  Previous='{_previous}'";
+                $" WHERE Ticket = @Ticket  AND Nest = @Nest  AND Restaurant =@Rest AND  Previous='{_previous}'";
             using (SqlCommand command = new SqlCommand(query, connection))
             {
                 command.Parameters.AddWithValue("@PM", PM);
@@ -3560,7 +3347,6 @@ namespace WindowsFormsApp4
                 command.Parameters.AddWithValue("@Tipmoney", float.Parse(TipMoney.Text));
                 command.Parameters.AddWithValue("@DateEnd", dat);
                 command.Parameters.AddWithValue("@Person", numericUpDown3.Text);
-                command.Parameters.AddWithValue("@Seans", seans_state);
                 command.Parameters.AddWithValue("@Ticket", tick);
                 command.Parameters.AddWithValue("@Nest", nest.Text);
                 command.Parameters.AddWithValue("@Rest", _restaurant);
@@ -3580,15 +3366,20 @@ namespace WindowsFormsApp4
             using (SqlCommand updatCommand = new SqlCommand(UpdateQuery0, connection))
                 updatCommand.ExecuteNonQuery();
 
-            dataGridView2.Refresh();
 
             string selectquery = $"SELECT * FROM Tablenest WHERE Restaurant='{_restaurant}'   AND Previous='{_previous}'";//սեղանների աղյուսակը թարմացնում ենք
             TableNest = dbHelper.ExecuteQuery(selectquery);
-            NestUpdate();
             connection.Close();
-            cancel.Visible = false;
-            printbutton1.Visible = false;
-            printbutton2.Visible = false;
+
+        
+            //*****************************************
+
+
+            connection.Close();
+
+
+
+
         }
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -4372,6 +4163,49 @@ namespace WindowsFormsApp4
         {
             legend.Visible=false;
         }
+        public void InitForm()
+        {
+
+            decimal screenWidth = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width;
+            decimal screenHeight = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height;
+
+            //   Screen primaryScreen = Screen.PrimaryScreen;
+            //   int screenWidth = primaryScreen.Bounds.Width;
+            //   int screenHeigh = primaryScreen.Bounds.Height;
+            decimal kw = screenWidth / this.Width;
+            decimal kh = screenHeight / this.Height;
+            foreach (Control control in this.Controls)
+            {
+                // Փոփոխվում են օբյեկների չափն ու տեղադրությունը ** Objects are resized and positioned
+                control.Left = (int)(control.Left * (double)kw);
+                control.Top = (int)(control.Top * (double)kh);
+                control.Width = (int)(control.Width * (double)kw);
+                control.Height = (int)(control.Height * (double)kh);
+            }
+            dataGridView1.Columns[0].Width = (int)(dataGridView1.Columns[0].Width * 1.15);
+            dataGridView1.Columns[1].Width = (int)(dataGridView1.Columns[1].Width * 1.15);
+            dataGridView2.Columns[0].Width = (int)(dataGridView2.Columns[0].Width * 1.15);
+            dataGridView2.Columns[1].Width = (int)(dataGridView2.Columns[1].Width * 1.15);
+            dataGridView2.Columns[2].Width = (int)(dataGridView2.Columns[2].Width * 1.15);
+            dataGridView2.Columns[3].Width = (int)(dataGridView2.Columns[3].Width * 1.15);
+
+            foreach (Control control in panel1.Controls)
+            {
+                control.Width = (int)(control.Width * kw);
+                control.Height = (int)(control.Height * kh);
+                control.Top = (int)(control.Top * kh);
+                control.Left = (int)(control.Left * kw);
+            }
+
+            this.Width = (int)screenWidth;
+            this.Height = (int)screenHeight;
+            this.Top = 0;
+            this.Left = 0;
+            /////////////////////////////////////////////// 
+            //NestUpdate();
+
+        }
+
 
     }
 }
