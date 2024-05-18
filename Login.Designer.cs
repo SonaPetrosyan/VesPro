@@ -52,18 +52,19 @@ namespace WindowsFormsApp4
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(344, 23);
+            this.label1.ForeColor = System.Drawing.Color.DimGray;
+            this.label1.Location = new System.Drawing.Point(308, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(150, 46);
             this.label1.TabIndex = 0;
             this.label1.Text = "Մուտք";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.ForeColor = System.Drawing.Color.DimGray;
             this.label2.Location = new System.Drawing.Point(144, 102);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(130, 32);
@@ -76,7 +77,7 @@ namespace WindowsFormsApp4
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.ForeColor = System.Drawing.Color.DimGray;
             this.label3.Location = new System.Drawing.Point(88, 167);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(200, 32);
@@ -116,9 +117,9 @@ namespace WindowsFormsApp4
             // 
             this.buttonlogin.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.buttonlogin.Enabled = false;
-            this.buttonlogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonlogin.ForeColor = System.Drawing.Color.LightSlateGray;
-            this.buttonlogin.Location = new System.Drawing.Point(332, 224);
+            this.buttonlogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonlogin.ForeColor = System.Drawing.Color.DimGray;
+            this.buttonlogin.Location = new System.Drawing.Point(308, 233);
             this.buttonlogin.Name = "buttonlogin";
             this.buttonlogin.Size = new System.Drawing.Size(150, 48);
             this.buttonlogin.TabIndex = 5;
