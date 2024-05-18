@@ -53,7 +53,7 @@ namespace WindowsFormsApp4
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DimGray;
-            this.label1.Location = new System.Drawing.Point(308, 9);
+            this.label1.Location = new System.Drawing.Point(318, 39);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(150, 46);
             this.label1.TabIndex = 0;
@@ -119,7 +119,7 @@ namespace WindowsFormsApp4
             this.buttonlogin.Enabled = false;
             this.buttonlogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonlogin.ForeColor = System.Drawing.Color.DimGray;
-            this.buttonlogin.Location = new System.Drawing.Point(308, 233);
+            this.buttonlogin.Location = new System.Drawing.Point(318, 223);
             this.buttonlogin.Name = "buttonlogin";
             this.buttonlogin.Size = new System.Drawing.Size(150, 48);
             this.buttonlogin.TabIndex = 5;
