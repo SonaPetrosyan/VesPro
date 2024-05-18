@@ -1234,59 +1234,59 @@ namespace WindowsFormsApp4
             InventoryReport.Columns.Add("Code", typeof(string));
             InventoryReport.Columns.Add("Name1", typeof(string));
             InventoryReport.Columns.Add("Unit", typeof(string));
-            InventoryReport.Columns.Add("CostPrice", typeof(decimal));
-            InventoryReport.Columns.Add("Actually", typeof(decimal));
-            InventoryReport.Columns.Add("Act215", typeof(decimal));
-            InventoryReport.Columns.Add("Calcul", typeof(decimal));
-            InventoryReport.Columns.Add("Over", typeof(decimal));
-            InventoryReport.Columns.Add("Lack", typeof(decimal));
-            Decimal actually = 0;
-            Decimal act215 = 0;
-            decimal sumover = 0;
-            decimal sumlack = 0;
+            InventoryReport.Columns.Add("CostPrice", typeof(float));
+            InventoryReport.Columns.Add("Actually", typeof(float));
+            InventoryReport.Columns.Add("Act215", typeof(float));
+            InventoryReport.Columns.Add("Calcul", typeof(float));
+            InventoryReport.Columns.Add("Over", typeof(float));
+            InventoryReport.Columns.Add("Lack", typeof(float));
+            float actually = 0;
+            float act215 = 0;
+            float sumover = 0;
+            float sumlack = 0;
             foreach (DataRow row in Table_Inventory.Rows)
             {
                 if (int.Parse(DepartmentIdBox.Text) == 1)
                 {
-                    actually = decimal.Parse(row["Actually1"].ToString());
-                    act215 = decimal.Parse(row["Act215_1"].ToString());
+                    actually = float.Parse(row["Actually1"].ToString());
+                    act215 = float.Parse(row["Act215_1"].ToString());
                 }
                 if (int.Parse(DepartmentIdBox.Text) == 2)
                 {
-                    actually = decimal.Parse(row["Actually2"].ToString());
-                    act215 = decimal.Parse(row["Act215_2"].ToString());
+                    actually = float.Parse(row["Actually2"].ToString());
+                    act215 = float.Parse(row["Act215_2"].ToString());
                 }
                 if (int.Parse(DepartmentIdBox.Text) == 3)
                 {
-                    actually = decimal.Parse(row["Actually3"].ToString());
-                    act215 = decimal.Parse(row["Act215_3"].ToString());
+                    actually = float.Parse(row["Actually3"].ToString());
+                    act215 = float.Parse(row["Act215_3"].ToString());
                 }
                 if (int.Parse(DepartmentIdBox.Text) == 4)
                 {
-                    actually = decimal.Parse(row["Actually4"].ToString());
-                    act215 = decimal.Parse(row["Act215_4"].ToString());
+                    actually = float.Parse(row["Actually4"].ToString());
+                    act215 = float.Parse(row["Act215_4"].ToString());
                 }
                 if (int.Parse(DepartmentIdBox.Text) == 5)
                 {
-                    actually = decimal.Parse(row["Actually5"].ToString());
-                    act215 = decimal.Parse(row["Act215_5"].ToString());
+                    actually = float.Parse(row["Actually5"].ToString());
+                    act215 = float.Parse(row["Act215_5"].ToString());
                 }
 
-                if (actually == 0 && act215 == 0 && decimal.Parse(row["Calcul"].ToString()) == 0) continue;
+                if (actually == 0 && act215 == 0 && float.Parse(row["Calcul"].ToString()) == 0) continue;
 
                 DataRow newRow = InventoryReport.NewRow();
                 InventoryReport.Rows.Add(newRow);
                 newRow["Code"] = row["Code"];
                 newRow["Name1"] = row["Name"];
                 newRow["Unit"] = row["Unit"];
-                newRow["CostPrice"] = decimal.Parse(row["CostPrice"].ToString());
+                newRow["CostPrice"] = float.Parse(row["CostPrice"].ToString());
                 newRow["Actually"] = actually;
                 newRow["Act215"] = act215;
-                newRow["Calcul"] = decimal.Parse(row["Calcul"].ToString());
-                newRow["Over"] = decimal.Parse(row["Over"].ToString());
-                newRow["Lack"] = decimal.Parse(row["Lack"].ToString());
-                sumover=sumover + decimal.Parse(row["Over"].ToString()) * decimal.Parse(row["CostPrice"].ToString());
-                sumlack = sumlack + decimal.Parse(row["Lack"].ToString()) * decimal.Parse(row["CostPrice"].ToString());
+                newRow["Calcul"] = float.Parse(row["Calcul"].ToString());
+                newRow["Over"] = float.Parse(row["Over"].ToString());
+                newRow["Lack"] = float.Parse(row["Lack"].ToString());
+                sumover=sumover + float.Parse(row["Over"].ToString()) * float.Parse(row["CostPrice"].ToString());
+                sumlack = sumlack + float.Parse(row["Lack"].ToString()) * float.Parse(row["CostPrice"].ToString());
             }
             DataRow newRow1 = InventoryReport.NewRow();
             InventoryReport.Rows.Add(newRow1);
@@ -1313,30 +1313,30 @@ namespace WindowsFormsApp4
             ReportManager reportManager = new ReportManager();
              reportManager.PreviewReport("BillReport", Report, InventoryReport, parameters, null);
         }
-
+        private HelpDialogForm helpDialogForm;
         private void HelpButton_Click(object sender, EventArgs e)
         {
             string help = FindFolder.Folder("Help");
             string filePath = "";
             if (HelpButton.Text == "?")
             {
-                HelpButton.Text = "X";
-                richTextBox1.Height = this.Height - 50;
-                richTextBox1.ReadOnly = true;
+                HelpButton.Text = "X";               
                 filePath = help + "\\Inventory_" + _language+".txt";
                 string fileContent = File.ReadAllText(filePath);
-                richTextBox1.Text = fileContent;
-                richTextBox1.Visible = true;
-                richTextBox1.Top = 0;
-                richTextBox1.Left = HelpButton.Width + 5;
-                richTextBox1.Width = Savebutton1.Left;
-                richTextBox1.Height=this.Height - 50;
 
+                if (helpDialogForm == null)
+                {
+                    helpDialogForm = new HelpDialogForm();
+                    helpDialogForm.FormClosed += (s, args) => helpDialogForm = null; // Reset the helpDialogForm reference when the form is closed
+                }
+
+                helpDialogForm.SetHelpContent(fileContent);
+                helpDialogForm.Show();
             }
             else
             {
-                richTextBox1.Visible = false;
                 HelpButton.Text = "?";
+                helpDialogForm?.Close(); // Close the help dialog form if it's open
             }
         }
     }

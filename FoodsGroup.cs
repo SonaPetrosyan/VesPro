@@ -87,10 +87,10 @@ namespace WindowsFormsApp4
                 this.Text = row["Name"].ToString();
             }
 
-            Resize.Columns.Add("BeginWidth", typeof(float));
-            Resize.Columns.Add("BeginHeight", typeof(float));
-            Resize.Columns.Add("EndWidth", typeof(float));
-            Resize.Columns.Add("EndHeight", typeof(float));
+            Resize.Columns.Add("BeginWidth", typeof(decimal));
+            Resize.Columns.Add("BeginHeight", typeof(decimal));
+            Resize.Columns.Add("EndWidth", typeof(decimal));
+            Resize.Columns.Add("EndHeight", typeof(decimal));
             Resize.Rows.Add(0, 0, 0, 0);
 
             label2.Text = "";
@@ -114,14 +114,14 @@ namespace WindowsFormsApp4
 
         private void FoodsGroup_ResizeEnd(object sender, EventArgs e)
         {
-            float kw = 0;
-            float kh = 0;
+            decimal kw = 0;
+            decimal kh = 0;
             foreach (DataRow row in Resize.Rows)
             {
                 row["EndWidth"] = this.Width;
                 row["EndHeight"] = this.Height;
-                kw = float.Parse(row["EndWidth"].ToString()) / float.Parse(row["BeginWidth"].ToString());
-                kh = float.Parse(row["EndHeight"].ToString()) / float.Parse(row["BeginHeight"].ToString());
+                kw = decimal.Parse(row["EndWidth"].ToString()) / decimal.Parse(row["BeginWidth"].ToString());
+                kh = decimal.Parse(row["EndHeight"].ToString()) / decimal.Parse(row["BeginHeight"].ToString());
             }
             foreach (Control control in this.Controls)
             {

@@ -126,7 +126,7 @@
             // 
             // HelpButton
             // 
-            this.HelpButton.BackColor = System.Drawing.Color.Orange;
+            this.HelpButton.BackColor = System.Drawing.Color.Peru;
             this.HelpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.HelpButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HelpButton.ForeColor = System.Drawing.Color.White;

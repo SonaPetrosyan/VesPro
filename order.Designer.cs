@@ -248,6 +248,7 @@ namespace WindowsFormsApp4
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.label19 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -349,7 +350,7 @@ namespace WindowsFormsApp4
             this.group5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.group5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group5.ForeColor = System.Drawing.Color.Maroon;
-            this.group5.Location = new System.Drawing.Point(334, 5);
+            this.group5.Location = new System.Drawing.Point(333, 5);
             this.group5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.group5.Name = "group5";
             this.group5.Size = new System.Drawing.Size(79, 23);
@@ -367,7 +368,7 @@ namespace WindowsFormsApp4
             this.group6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.group6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group6.ForeColor = System.Drawing.Color.Maroon;
-            this.group6.Location = new System.Drawing.Point(414, 5);
+            this.group6.Location = new System.Drawing.Point(413, 5);
             this.group6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.group6.Name = "group6";
             this.group6.Size = new System.Drawing.Size(79, 23);
@@ -439,7 +440,7 @@ namespace WindowsFormsApp4
             this.group10.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.group10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group10.ForeColor = System.Drawing.Color.Maroon;
-            this.group10.Location = new System.Drawing.Point(738, 5);
+            this.group10.Location = new System.Drawing.Point(739, 5);
             this.group10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.group10.Name = "group10";
             this.group10.Size = new System.Drawing.Size(79, 23);
@@ -457,7 +458,7 @@ namespace WindowsFormsApp4
             this.group11.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.group11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group11.ForeColor = System.Drawing.Color.Maroon;
-            this.group11.Location = new System.Drawing.Point(818, 5);
+            this.group11.Location = new System.Drawing.Point(819, 5);
             this.group11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.group11.Name = "group11";
             this.group11.Size = new System.Drawing.Size(79, 23);
@@ -619,7 +620,7 @@ namespace WindowsFormsApp4
             this.group20.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.group20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group20.ForeColor = System.Drawing.Color.Maroon;
-            this.group20.Location = new System.Drawing.Point(334, 32);
+            this.group20.Location = new System.Drawing.Point(333, 32);
             this.group20.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.group20.Name = "group20";
             this.group20.Size = new System.Drawing.Size(79, 23);
@@ -637,7 +638,7 @@ namespace WindowsFormsApp4
             this.group21.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.group21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group21.ForeColor = System.Drawing.Color.Maroon;
-            this.group21.Location = new System.Drawing.Point(414, 32);
+            this.group21.Location = new System.Drawing.Point(413, 32);
             this.group21.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.group21.Name = "group21";
             this.group21.Size = new System.Drawing.Size(79, 23);
@@ -709,7 +710,7 @@ namespace WindowsFormsApp4
             this.group25.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.group25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group25.ForeColor = System.Drawing.Color.Maroon;
-            this.group25.Location = new System.Drawing.Point(738, 32);
+            this.group25.Location = new System.Drawing.Point(739, 32);
             this.group25.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.group25.Name = "group25";
             this.group25.Size = new System.Drawing.Size(79, 23);
@@ -727,7 +728,7 @@ namespace WindowsFormsApp4
             this.group26.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.group26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group26.ForeColor = System.Drawing.Color.Maroon;
-            this.group26.Location = new System.Drawing.Point(818, 32);
+            this.group26.Location = new System.Drawing.Point(819, 32);
             this.group26.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.group26.Name = "group26";
             this.group26.Size = new System.Drawing.Size(79, 23);
@@ -841,7 +842,7 @@ namespace WindowsFormsApp4
             // nest
             // 
             this.nest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nest.Location = new System.Drawing.Point(1014, 92);
+            this.nest.Location = new System.Drawing.Point(1013, 92);
             this.nest.Name = "nest";
             this.nest.Size = new System.Drawing.Size(61, 23);
             this.nest.TabIndex = 34;
@@ -861,7 +862,7 @@ namespace WindowsFormsApp4
             // 
             this.bill.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.bill.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bill.Location = new System.Drawing.Point(1102, 96);
+            this.bill.Location = new System.Drawing.Point(1101, 96);
             this.bill.Name = "bill";
             this.bill.Size = new System.Drawing.Size(55, 20);
             this.bill.TabIndex = 36;
@@ -958,15 +959,14 @@ namespace WindowsFormsApp4
             // 
             // ManagerBox
             // 
-            this.ManagerBox.Location = new System.Drawing.Point(790, 67);
+            this.ManagerBox.Location = new System.Drawing.Point(856, 96);
             this.ManagerBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ManagerBox.Name = "ManagerBox";
             this.ManagerBox.PasswordChar = '+';
-            this.ManagerBox.Size = new System.Drawing.Size(193, 22);
+            this.ManagerBox.Size = new System.Drawing.Size(213, 22);
             this.ManagerBox.TabIndex = 43;
-            this.ManagerBox.Text = "manager";
+            this.ManagerBox.Text = " ";
             this.ManagerBox.Enter += new System.EventHandler(this.ManagerBox_Enter);
-            this.ManagerBox.Leave += new System.EventHandler(this.ManagerBox_Leave);
             // 
             // department1
             // 
@@ -980,7 +980,7 @@ namespace WindowsFormsApp4
             this.department1.Location = new System.Drawing.Point(16, 62);
             this.department1.Margin = new System.Windows.Forms.Padding(0);
             this.department1.Name = "department1";
-            this.department1.Size = new System.Drawing.Size(82, 25);
+            this.department1.Size = new System.Drawing.Size(83, 25);
             this.department1.TabIndex = 44;
             this.department1.Text = "dep1";
             this.department1.UseVisualStyleBackColor = false;
@@ -999,7 +999,7 @@ namespace WindowsFormsApp4
             this.department2.Location = new System.Drawing.Point(101, 62);
             this.department2.Margin = new System.Windows.Forms.Padding(0);
             this.department2.Name = "department2";
-            this.department2.Size = new System.Drawing.Size(82, 25);
+            this.department2.Size = new System.Drawing.Size(83, 25);
             this.department2.TabIndex = 45;
             this.department2.Text = "dep2";
             this.department2.UseVisualStyleBackColor = false;
@@ -1018,7 +1018,7 @@ namespace WindowsFormsApp4
             this.department3.Location = new System.Drawing.Point(185, 62);
             this.department3.Margin = new System.Windows.Forms.Padding(0);
             this.department3.Name = "department3";
-            this.department3.Size = new System.Drawing.Size(82, 25);
+            this.department3.Size = new System.Drawing.Size(83, 25);
             this.department3.TabIndex = 46;
             this.department3.Text = "dep3";
             this.department3.UseVisualStyleBackColor = false;
@@ -1037,7 +1037,7 @@ namespace WindowsFormsApp4
             this.department4.Location = new System.Drawing.Point(269, 62);
             this.department4.Margin = new System.Windows.Forms.Padding(0);
             this.department4.Name = "department4";
-            this.department4.Size = new System.Drawing.Size(82, 25);
+            this.department4.Size = new System.Drawing.Size(83, 25);
             this.department4.TabIndex = 47;
             this.department4.Text = "dep4";
             this.department4.UseVisualStyleBackColor = false;
@@ -2514,10 +2514,10 @@ namespace WindowsFormsApp4
             this.accept.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.accept.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.accept.ForeColor = System.Drawing.Color.Maroon;
-            this.accept.Location = new System.Drawing.Point(1086, 403);
+            this.accept.Location = new System.Drawing.Point(1085, 402);
             this.accept.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.accept.Name = "accept";
-            this.accept.Size = new System.Drawing.Size(76, 29);
+            this.accept.Size = new System.Drawing.Size(76, 30);
             this.accept.TabIndex = 130;
             this.accept.Tag = "none";
             this.accept.Text = "Save";
@@ -2533,10 +2533,10 @@ namespace WindowsFormsApp4
             this.printbutton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.printbutton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.printbutton1.ForeColor = System.Drawing.Color.Maroon;
-            this.printbutton1.Location = new System.Drawing.Point(1010, 403);
+            this.printbutton1.Location = new System.Drawing.Point(1011, 402);
             this.printbutton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.printbutton1.Name = "printbutton1";
-            this.printbutton1.Size = new System.Drawing.Size(76, 29);
+            this.printbutton1.Size = new System.Drawing.Size(76, 30);
             this.printbutton1.TabIndex = 131;
             this.printbutton1.Tag = "none";
             this.printbutton1.Text = "Print";
@@ -2552,10 +2552,10 @@ namespace WindowsFormsApp4
             this.printbutton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.printbutton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.printbutton2.ForeColor = System.Drawing.Color.Maroon;
-            this.printbutton2.Location = new System.Drawing.Point(934, 403);
+            this.printbutton2.Location = new System.Drawing.Point(933, 402);
             this.printbutton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.printbutton2.Name = "printbutton2";
-            this.printbutton2.Size = new System.Drawing.Size(76, 29);
+            this.printbutton2.Size = new System.Drawing.Size(76, 30);
             this.printbutton2.TabIndex = 132;
             this.printbutton2.Tag = "none";
             this.printbutton2.Text = "Preview";
@@ -2571,10 +2571,10 @@ namespace WindowsFormsApp4
             this.cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancel.ForeColor = System.Drawing.Color.Maroon;
-            this.cancel.Location = new System.Drawing.Point(854, 403);
+            this.cancel.Location = new System.Drawing.Point(853, 402);
             this.cancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cancel.Name = "cancel";
-            this.cancel.Size = new System.Drawing.Size(80, 29);
+            this.cancel.Size = new System.Drawing.Size(80, 30);
             this.cancel.TabIndex = 133;
             this.cancel.Tag = "none";
             this.cancel.Text = "Release";
@@ -2634,7 +2634,7 @@ namespace WindowsFormsApp4
             // 
             this.label2.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(1170, 404);
+            this.label2.Location = new System.Drawing.Point(1171, 404);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 23);
             this.label2.TabIndex = 138;
@@ -2667,9 +2667,9 @@ namespace WindowsFormsApp4
             // 
             this.label10.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(1186, 492);
+            this.label10.Location = new System.Drawing.Point(1187, 492);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(42, 23);
+            this.label10.Size = new System.Drawing.Size(43, 23);
             this.label10.TabIndex = 141;
             this.label10.Text = "Total";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2697,7 +2697,7 @@ namespace WindowsFormsApp4
             // 
             this.label11.BackColor = System.Drawing.Color.Maroon;
             this.label11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label11.Location = new System.Drawing.Point(1167, 403);
+            this.label11.Location = new System.Drawing.Point(1167, 402);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(1, 148);
             this.label11.TabIndex = 175;
@@ -3052,6 +3052,7 @@ namespace WindowsFormsApp4
             // DepartmentClick
             // 
             this.DepartmentClick.Location = new System.Drawing.Point(1004, 436);
+            this.DepartmentClick.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DepartmentClick.Name = "DepartmentClick";
             this.DepartmentClick.Size = new System.Drawing.Size(75, 23);
             this.DepartmentClick.TabIndex = 187;
@@ -3068,7 +3069,7 @@ namespace WindowsFormsApp4
             this.GroupClick.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Green;
             this.GroupClick.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.GroupClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.GroupClick.Location = new System.Drawing.Point(1086, 459);
+            this.GroupClick.Location = new System.Drawing.Point(1085, 459);
             this.GroupClick.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.GroupClick.Name = "GroupClick";
             this.GroupClick.Size = new System.Drawing.Size(72, 23);
@@ -3086,7 +3087,7 @@ namespace WindowsFormsApp4
             this.AdditionClick.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Green;
             this.AdditionClick.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.AdditionClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AdditionClick.Location = new System.Drawing.Point(1006, 459);
+            this.AdditionClick.Location = new System.Drawing.Point(1005, 459);
             this.AdditionClick.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AdditionClick.Name = "AdditionClick";
             this.AdditionClick.Size = new System.Drawing.Size(72, 23);
@@ -3106,7 +3107,7 @@ namespace WindowsFormsApp4
             this.dataGridView3.ColumnHeadersHeight = 4;
             this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn5});
-            this.dataGridView3.Location = new System.Drawing.Point(2, 94);
+            this.dataGridView3.Location = new System.Drawing.Point(3, 94);
             this.dataGridView3.Margin = new System.Windows.Forms.Padding(0);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.ReadOnly = true;
@@ -3135,7 +3136,7 @@ namespace WindowsFormsApp4
             this.label13.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.label13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(1170, 522);
+            this.label13.Location = new System.Drawing.Point(1171, 522);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(60, 23);
             this.label13.TabIndex = 196;
@@ -3151,7 +3152,7 @@ namespace WindowsFormsApp4
             this.dataGridViewTextBoxColumn,
             this.Column2});
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridView1.Location = new System.Drawing.Point(442, 91);
+            this.dataGridView1.Location = new System.Drawing.Point(443, 91);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -3193,10 +3194,10 @@ namespace WindowsFormsApp4
             // 
             // ShtrichCode
             // 
-            this.ShtrichCode.Location = new System.Drawing.Point(790, 94);
+            this.ShtrichCode.Location = new System.Drawing.Point(787, 65);
             this.ShtrichCode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ShtrichCode.Name = "ShtrichCode";
-            this.ShtrichCode.Size = new System.Drawing.Size(220, 22);
+            this.ShtrichCode.Size = new System.Drawing.Size(189, 22);
             this.ShtrichCode.TabIndex = 200;
             this.ShtrichCode.Text = "barcode";
             this.ShtrichCode.Enter += new System.EventHandler(this.ShtrichCode_Enter);
@@ -3233,6 +3234,7 @@ namespace WindowsFormsApp4
             this.panel1.Controls.Add(this.PartnersComboBox);
             this.panel1.Controls.Add(this.label14);
             this.panel1.Location = new System.Drawing.Point(1227, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(99, 116);
             this.panel1.TabIndex = 205;
@@ -3242,7 +3244,8 @@ namespace WindowsFormsApp4
             this.numericUpDown2.BackColor = System.Drawing.Color.White;
             this.numericUpDown2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDown2.ForeColor = System.Drawing.Color.Black;
-            this.numericUpDown2.Location = new System.Drawing.Point(46, 50);
+            this.numericUpDown2.Location = new System.Drawing.Point(45, 50);
+            this.numericUpDown2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -3280,7 +3283,7 @@ namespace WindowsFormsApp4
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(2, 88);
+            this.label15.Location = new System.Drawing.Point(3, 89);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(43, 18);
             this.label15.TabIndex = 237;
@@ -3292,6 +3295,7 @@ namespace WindowsFormsApp4
             this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDown1.ForeColor = System.Drawing.Color.Black;
             this.numericUpDown1.Location = new System.Drawing.Point(45, 82);
+            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             10,
             0,
@@ -3361,7 +3365,8 @@ namespace WindowsFormsApp4
             "48",
             "49",
             "50"});
-            this.PartnersComboBox.Location = new System.Drawing.Point(10, 20);
+            this.PartnersComboBox.Location = new System.Drawing.Point(11, 20);
+            this.PartnersComboBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PartnersComboBox.Name = "PartnersComboBox";
             this.PartnersComboBox.Size = new System.Drawing.Size(83, 26);
             this.PartnersComboBox.TabIndex = 235;
@@ -3372,7 +3377,7 @@ namespace WindowsFormsApp4
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(2, 1);
+            this.label14.Location = new System.Drawing.Point(3, 1);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(69, 18);
             this.label14.TabIndex = 234;
@@ -3537,7 +3542,7 @@ namespace WindowsFormsApp4
             this.legend.BackColor = System.Drawing.Color.NavajoWhite;
             this.legend.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.legend.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.legend.Location = new System.Drawing.Point(806, 467);
+            this.legend.Location = new System.Drawing.Point(805, 466);
             this.legend.Name = "legend";
             this.legend.Size = new System.Drawing.Size(91, 23);
             this.legend.TabIndex = 215;
@@ -3552,10 +3557,10 @@ namespace WindowsFormsApp4
             this.cancel2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancel2.ForeColor = System.Drawing.Color.Maroon;
-            this.cancel2.Location = new System.Drawing.Point(854, 433);
+            this.cancel2.Location = new System.Drawing.Point(853, 433);
             this.cancel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cancel2.Name = "cancel2";
-            this.cancel2.Size = new System.Drawing.Size(80, 29);
+            this.cancel2.Size = new System.Drawing.Size(80, 30);
             this.cancel2.TabIndex = 216;
             this.cancel2.Tag = "none";
             this.cancel2.Text = "release";
@@ -3569,13 +3574,14 @@ namespace WindowsFormsApp4
             this.numericUpDown3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDown3.ForeColor = System.Drawing.Color.Black;
             this.numericUpDown3.Location = new System.Drawing.Point(1019, 63);
+            this.numericUpDown3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.numericUpDown3.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
             this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(78, 30);
+            this.numericUpDown3.Size = new System.Drawing.Size(77, 30);
             this.numericUpDown3.TabIndex = 241;
             this.numericUpDown3.Tag = "";
             this.numericUpDown3.Value = new decimal(new int[] {
@@ -3590,7 +3596,7 @@ namespace WindowsFormsApp4
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.White;
-            this.label17.Location = new System.Drawing.Point(981, 67);
+            this.label17.Location = new System.Drawing.Point(981, 66);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(41, 18);
             this.label17.TabIndex = 240;
@@ -3608,7 +3614,7 @@ namespace WindowsFormsApp4
             this.department5.Location = new System.Drawing.Point(353, 62);
             this.department5.Margin = new System.Windows.Forms.Padding(0);
             this.department5.Name = "department5";
-            this.department5.Size = new System.Drawing.Size(82, 25);
+            this.department5.Size = new System.Drawing.Size(83, 25);
             this.department5.TabIndex = 190;
             this.department5.Text = "dep5";
             this.department5.UseVisualStyleBackColor = false;
@@ -3617,11 +3623,12 @@ namespace WindowsFormsApp4
             // 
             // HelpButton
             // 
-            this.HelpButton.BackColor = System.Drawing.Color.Orange;
+            this.HelpButton.BackColor = System.Drawing.Color.Peru;
             this.HelpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.HelpButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HelpButton.ForeColor = System.Drawing.Color.White;
-            this.HelpButton.Location = new System.Drawing.Point(787, 403);
+            this.HelpButton.Location = new System.Drawing.Point(787, 402);
+            this.HelpButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.HelpButton.Name = "HelpButton";
             this.HelpButton.Size = new System.Drawing.Size(35, 31);
             this.HelpButton.TabIndex = 242;
@@ -3631,9 +3638,9 @@ namespace WindowsFormsApp4
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Font = new System.Drawing.Font("Arial Unicode", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.Location = new System.Drawing.Point(738, 464);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(20, 3, 3, 3);
+            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox1.Location = new System.Drawing.Point(739, 464);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(20, 2, 3, 2);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(29, 26);
             this.richTextBox1.TabIndex = 243;
@@ -3645,7 +3652,7 @@ namespace WindowsFormsApp4
             this.TipMoney.BackColor = System.Drawing.Color.WhiteSmoke;
             this.TipMoney.Enabled = false;
             this.TipMoney.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TipMoney.Location = new System.Drawing.Point(1229, 520);
+            this.TipMoney.Location = new System.Drawing.Point(1229, 519);
             this.TipMoney.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TipMoney.Multiline = true;
             this.TipMoney.Name = "TipMoney";
@@ -3658,14 +3665,16 @@ namespace WindowsFormsApp4
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.panel2.Location = new System.Drawing.Point(-1, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1226, 56);
+            this.panel2.Size = new System.Drawing.Size(1227, 57);
             this.panel2.TabIndex = 245;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.panel3.Location = new System.Drawing.Point(2, 61);
+            this.panel3.Location = new System.Drawing.Point(3, 62);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(437, 30);
             this.panel3.TabIndex = 246;
@@ -3673,7 +3682,8 @@ namespace WindowsFormsApp4
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.RosyBrown;
-            this.panel4.Location = new System.Drawing.Point(438, 59);
+            this.panel4.Location = new System.Drawing.Point(437, 59);
+            this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(347, 31);
             this.panel4.TabIndex = 247;
@@ -3682,6 +3692,7 @@ namespace WindowsFormsApp4
             // 
             this.panel5.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.panel5.Location = new System.Drawing.Point(-1, 501);
+            this.panel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1169, 50);
             this.panel5.TabIndex = 247;
@@ -3690,8 +3701,9 @@ namespace WindowsFormsApp4
             // 
             this.panel6.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.panel6.Location = new System.Drawing.Point(1168, 400);
+            this.panel6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(158, 151);
+            this.panel6.Size = new System.Drawing.Size(157, 151);
             this.panel6.TabIndex = 248;
             // 
             // remove
@@ -3716,10 +3728,10 @@ namespace WindowsFormsApp4
             // 
             this.radioButton1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.radioButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.radioButton1.Location = new System.Drawing.Point(451, 67);
+            this.radioButton1.Location = new System.Drawing.Point(451, 66);
             this.radioButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(77, 19);
+            this.radioButton1.Size = new System.Drawing.Size(77, 18);
             this.radioButton1.TabIndex = 53;
             this.radioButton1.TabStop = true;
             this.radioButton1.Tag = "0";
@@ -3731,7 +3743,7 @@ namespace WindowsFormsApp4
             // 
             this.radioButton2.BackColor = System.Drawing.Color.Yellow;
             this.radioButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.radioButton2.Location = new System.Drawing.Point(537, 67);
+            this.radioButton2.Location = new System.Drawing.Point(537, 66);
             this.radioButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(63, 18);
@@ -3746,10 +3758,10 @@ namespace WindowsFormsApp4
             // 
             this.radioButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.radioButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.radioButton3.Location = new System.Drawing.Point(606, 66);
+            this.radioButton3.Location = new System.Drawing.Point(605, 66);
             this.radioButton3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(78, 19);
+            this.radioButton3.Size = new System.Drawing.Size(77, 18);
             this.radioButton3.TabIndex = 144;
             this.radioButton3.TabStop = true;
             this.radioButton3.Tag = "0";
@@ -3757,12 +3769,24 @@ namespace WindowsFormsApp4
             this.radioButton3.UseVisualStyleBackColor = false;
             this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
             // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.White;
+            this.label19.Location = new System.Drawing.Point(787, 96);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(66, 18);
+            this.label19.TabIndex = 249;
+            this.label19.Text = "manager";
+            // 
             // order
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.ClientSize = new System.Drawing.Size(1327, 552);
+            this.ClientSize = new System.Drawing.Size(1327, 551);
+            this.Controls.Add(this.label19);
             this.Controls.Add(this.TipMoney);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.HelpButton);
@@ -3974,14 +3998,14 @@ namespace WindowsFormsApp4
         public void InitForm()
         {
 
-            float screenWidth = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width;
-            float screenHeight = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height;
+            decimal screenWidth = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width;
+            decimal screenHeight = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height;
 
             //   Screen primaryScreen = Screen.PrimaryScreen;
             //   int screenWidth = primaryScreen.Bounds.Width;
             //   int screenHeigh = primaryScreen.Bounds.Height;
-            float kw = screenWidth / this.Width;
-            float kh = screenHeight / this.Height;
+            decimal kw = screenWidth / this.Width;
+            decimal kh = screenHeight / this.Height;
             foreach (Control control in this.Controls)
             {
                 // Փոփոխվում են օբյեկների չափն ու տեղադրությունը ** Objects are resized and positioned
@@ -4220,5 +4244,6 @@ namespace WindowsFormsApp4
         private RadioButton radioButton2;
         private RadioButton radioButton1;
         private Button remove;
+        private Label label19;
     }
 }

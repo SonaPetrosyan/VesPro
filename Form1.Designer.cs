@@ -107,7 +107,7 @@ namespace WindowsFormsApp4
             this.label3.Location = new System.Drawing.Point(105, 101);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(147, 20);
+            this.label3.Size = new System.Drawing.Size(128, 17);
             this.label3.TabIndex = 15;
             this.label3.Text = "գործողություններ";
             // 
@@ -119,7 +119,7 @@ namespace WindowsFormsApp4
             this.label4.Location = new System.Drawing.Point(419, 101);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(128, 20);
+            this.label4.Size = new System.Drawing.Size(112, 17);
             this.label4.TabIndex = 16;
             this.label4.Text = "Տեղեկատուներ";
             // 
@@ -131,7 +131,7 @@ namespace WindowsFormsApp4
             this.label5.Location = new System.Drawing.Point(704, 101);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(165, 20);
+            this.label5.Size = new System.Drawing.Size(144, 17);
             this.label5.TabIndex = 17;
             this.label5.Text = "Հաշվետվություններ";
             // 
@@ -143,7 +143,7 @@ namespace WindowsFormsApp4
             this.label6.Location = new System.Drawing.Point(1000, 101);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(148, 20);
+            this.label6.Size = new System.Drawing.Size(128, 17);
             this.label6.TabIndex = 18;
             this.label6.Text = "Կարգաբերումներ";
             // 
@@ -649,7 +649,7 @@ namespace WindowsFormsApp4
             // 
             // HelpButton
             // 
-            this.HelpButton.BackColor = System.Drawing.Color.Orange;
+            this.HelpButton.BackColor = System.Drawing.Color.Peru;
             this.HelpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.HelpButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HelpButton.ForeColor = System.Drawing.Color.White;
@@ -723,7 +723,7 @@ namespace WindowsFormsApp4
             this.radioButton5.AutoSize = true;
             this.radioButton5.Location = new System.Drawing.Point(3, 115);
             this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(94, 24);
+            this.radioButton5.Size = new System.Drawing.Size(80, 21);
             this.radioButton5.TabIndex = 4;
             this.radioButton5.TabStop = true;
             this.radioButton5.Text = "Espaniol";
@@ -735,7 +735,7 @@ namespace WindowsFormsApp4
             this.radioButton4.AutoSize = true;
             this.radioButton4.Location = new System.Drawing.Point(3, 86);
             this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(91, 24);
+            this.radioButton4.Size = new System.Drawing.Size(77, 21);
             this.radioButton4.TabIndex = 3;
             this.radioButton4.TabStop = true;
             this.radioButton4.Text = "Russian";
@@ -747,7 +747,7 @@ namespace WindowsFormsApp4
             this.radioButton3.AutoSize = true;
             this.radioButton3.Location = new System.Drawing.Point(3, 57);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(90, 24);
+            this.radioButton3.Size = new System.Drawing.Size(77, 21);
             this.radioButton3.TabIndex = 2;
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = "German";
@@ -759,7 +759,7 @@ namespace WindowsFormsApp4
             this.radioButton2.AutoSize = true;
             this.radioButton2.Location = new System.Drawing.Point(3, 28);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(85, 24);
+            this.radioButton2.Size = new System.Drawing.Size(72, 21);
             this.radioButton2.TabIndex = 1;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "English";
@@ -771,7 +771,7 @@ namespace WindowsFormsApp4
             this.radioButton1.AutoSize = true;
             this.radioButton1.Location = new System.Drawing.Point(3, 3);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(101, 24);
+            this.radioButton1.Size = new System.Drawing.Size(86, 21);
             this.radioButton1.TabIndex = 0;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Armenian";
@@ -780,7 +780,7 @@ namespace WindowsFormsApp4
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1280, 606);
@@ -846,10 +846,10 @@ namespace WindowsFormsApp4
         private void InitForm()
             //Ֆորմայի չափսերը դարձնում ենք լիաէկրան
         {
-            float screenWidth = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width;
-            float screenHeight = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height;
-            float kw = screenWidth / this.Width;
-            float kh = screenHeight / this.Height;
+            decimal screenWidth = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width;
+            decimal screenHeight = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height;
+            decimal kw = screenWidth / this.Width;
+            decimal kh = screenHeight / this.Height;
             foreach (Control control in this.Controls)
             {
                  control.Left = (int)(control.Left * (double)kw);

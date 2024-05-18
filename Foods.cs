@@ -41,6 +41,8 @@ namespace WindowsFormsApp4
 
         private DataView dataView;
 
+        private DataView dataView_compsidion;
+
         private DataTable Table_Composition = new DataTable();
 
 
@@ -211,7 +213,7 @@ namespace WindowsFormsApp4
            }
 
             //***********************************************
-            dataView = new DataView(Table_Composition);
+            dataView_compsidion = new DataView(Table_Composition);
 
             dataGridView2.DataSource = dataView;
 
@@ -440,7 +442,7 @@ namespace WindowsFormsApp4
                         }
                         else
                         {
-                            if (Table_215.Columns[columnName].DataType == typeof(decimal))
+                            if (Table_215.Columns[columnName].DataType == typeof(float))
                             {
                                 newRow[columnName] = 0;
                             }
@@ -483,31 +485,45 @@ namespace WindowsFormsApp4
 
         }
 
-        private void dataGridView1_CellEnter(object sender, DataGridViewCellEventArgs e)//***************
+        private void dataGridView1_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
             DataGridView dataGridView = (DataGridView)sender;
-        //    DataGridViewCell currentCell = dataGridView.CurrentCell;
-            object codeValue = dataGridView.Rows[e.RowIndex].Cells["Code"].Value;
-
-            object priceValue = dataGridView.Rows[e.RowIndex].Cells["price"].Value;
-
-            object costValue = dataGridView.Rows[e.RowIndex].Cells["Costprice"].Value;
-            string code_25 = codeValue.ToString().Trim();
-            float price = float.Parse(priceValue.ToString());
-            float costprice = float.Parse(costValue.ToString());
-            this.dataGridView4.Tag = code_25;
-            textBox2.Text = "";
-            textBox1.Text = "";
-            textBox1.Text = costprice.ToString();
-            if (costprice != 0)
+            if (e.RowIndex >= 0 && e.RowIndex < dataGridView.Rows.Count)
             {
-                textBox2.Text = (price / costprice * 100).ToString();
-            }
-            dataView = new DataView(Table_Composition);
-            dataView.RowFilter = $"Code_215 LIKE '%{code_25}%'";//dataGridView2 ֆիլտռւմ ենք dataGridView1-ի code_215 -ով
-            dataGridView2.DataSource = dataView;
+                object codeValue = dataGridView.Rows[e.RowIndex].Cells["Code"].Value;
+                object priceValue = dataGridView.Rows[e.RowIndex].Cells["price"].Value;
+                object costValue = dataGridView.Rows[e.RowIndex].Cells["Costprice"].Value;
 
+                if (codeValue != null && priceValue != null && costValue != null)
+                {
+                    string code_25 = codeValue.ToString().Trim();
+                    float price = float.Parse(priceValue.ToString());
+                    float costprice = float.Parse(costValue.ToString());
+                    this.dataGridView4.Tag = code_25;
+                    textBox2.Text = "";
+                    textBox1.Text = costprice.ToString();
+
+                    if (costprice != 0)
+                    {
+                        textBox2.Text = (price / costprice * 100).ToString();
+                    }
+
+                    // Check if the DataTable contains the "Code_215" column before filtering
+                    if (Table_Composition.Columns.Contains("Code_215"))
+                    {
+                        dataView = new DataView(Table_Composition);
+                        dataView.RowFilter = $"Code_215 LIKE '%{code_25}%'";
+                        dataGridView2.DataSource = dataView;
+                    }
+                    else
+                    {
+                        // Handle the case where the column does not exist in the DataTable
+                        MessageBox.Show("The column 'Code_215' does not exist in the DataTable.");
+                    }
+                }
+            }
         }
+
 
         private void dataGridView3_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
@@ -843,6 +859,7 @@ namespace WindowsFormsApp4
             button1.Visible = false;
             connection.Close();
         }
+        private HelpDialogForm helpDialogForm;
 
         private void HelpButton_Click(object sender, EventArgs e)
         {
@@ -850,21 +867,22 @@ namespace WindowsFormsApp4
             if (HelpButton.Text == "?")
             {
                 HelpButton.Text = "X";
-                richTextBox1.Height = this.Height - 50;
-                richTextBox1.ReadOnly = true;
                 string filePath = help + "\\Foods_"+_language+".txt";
                 string fileContent = File.ReadAllText(filePath);
-                richTextBox1.Text = fileContent;
-                richTextBox1.Visible = true;
-                richTextBox1.Top = 0;
-                richTextBox1.Left = HelpButton.Width+5;
-                richTextBox1.Width = this.Width/2;
-                richTextBox1.Height = this.Height - 20;
+
+                if (helpDialogForm == null)
+                {
+                    helpDialogForm = new HelpDialogForm();
+                    helpDialogForm.FormClosed += (s, args) => helpDialogForm = null; // Reset the helpDialogForm reference when the form is closed
+                }
+
+                helpDialogForm.SetHelpContent(fileContent);
+                helpDialogForm.Show();
             }
             else
             {
-                richTextBox1.Visible = false;
                 HelpButton.Text = "?";
+                helpDialogForm?.Close(); // Close the help dialog form if it's open
             }
         }
 

@@ -8,7 +8,7 @@ namespace WindowsFormsApp4
     public static class PrintingBill
     {
         public static void PrintBill(string bill, string nest,  string gid,
-            string TipMoney, decimal paid, decimal pevious, DateTime DateBegin, DateTime DateEnd, DataTable dataTable, string restaurantname, string language)
+            string TipMoney, decimal paid, decimal previous, DateTime DateBegin, DateTime DateEnd, DataTable dataTable, string restaurantname, string language)
         {
             bill= bill.Trim(); nest= nest.Trim(); 
             gid=gid.Trim(); TipMoney= TipMoney.Trim();
@@ -17,13 +17,13 @@ namespace WindowsFormsApp4
             DataTable BillReport = new DataTable();
             BillReport.Columns.Add("code", typeof(string));
             BillReport.Columns.Add("name", typeof(string));
-            BillReport.Columns.Add("price", typeof(decimal));
-            BillReport.Columns.Add("quantity", typeof(decimal));
-            BillReport.Columns.Add("salesamount", typeof(decimal));
+            BillReport.Columns.Add("price", typeof(float));
+            BillReport.Columns.Add("quantity", typeof(float));
+            BillReport.Columns.Add("salesamount", typeof(float));
 
 
             string code = "";
-            decimal sales = 0;
+            float sales = 0;
             float Total = 0;
             float service = 0;
             float discount = 0;
@@ -74,7 +74,7 @@ namespace WindowsFormsApp4
                     Total = Total + float.Parse(row["salesamount"].ToString());
 
                 }
-                sales = sales + decimal.Parse(row["salesamount"].ToString());
+                sales = sales + float.Parse(row["salesamount"].ToString());
             }
             DataRow newRow1 = BillReport.NewRow();
             BillReport.Rows.Add(newRow1);
@@ -125,7 +125,7 @@ namespace WindowsFormsApp4
                     Total=Total+ float.Parse(row["salesamount"].ToString());
 
                 }
-                sales = sales + decimal.Parse(row["salesamount"].ToString());
+                sales = sales + float.Parse(row["salesamount"].ToString());
             }
 
 
@@ -142,7 +142,7 @@ namespace WindowsFormsApp4
             DataRow newRow9 = BillReport.NewRow();
             BillReport.Rows.Add(newRow9);
             newRow9["name"] = Tot; newRow9["salesamount"] = Total;//"Ընդամենը"
-            if ( pevious == 1) newRow9["name"] =Comm;//"Ընդամենը: Կրկնօրինակ է։ Չվաճարե՛լ։ "
+            if ( previous == 1) newRow9["name"] =Comm;//"Ընդամենը: Կրկնօրինակ է։ Չվաճարե՛լ։ "
             if (paid == 1)
             {
                 DataRow newRow11 = BillReport.NewRow();

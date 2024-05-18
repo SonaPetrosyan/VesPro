@@ -63,10 +63,10 @@ namespace WindowsFormsApp4
             string connectionString = Properties.Settings.Default.CafeRestDB; //  Properties.Settings.Default.CafeRestDB;
             SqlConnection connection = new SqlConnection(connectionString);
             SQLDatabaseHelper dbHelper = new SQLDatabaseHelper(connectionString);
-            Resize.Columns.Add("BeginWidth", typeof(float));
-            Resize.Columns.Add("BeginHeight", typeof(float));
-            Resize.Columns.Add("EndWidth", typeof(float));
-            Resize.Columns.Add("EndHeight", typeof(float));
+            Resize.Columns.Add("BeginWidth", typeof(decimal));
+            Resize.Columns.Add("BeginHeight", typeof(decimal));
+            Resize.Columns.Add("EndWidth", typeof(decimal));
+            Resize.Columns.Add("EndHeight", typeof(decimal));
             Resize.Rows.Add(0, 0, 0, 0);
             Load();
             SetLanguage(_language);
@@ -243,14 +243,14 @@ namespace WindowsFormsApp4
 
         private void Form1_ResizeEnd(object sender, EventArgs e)
         {
-            float kw = 0;
-            float kh = 0;
+            decimal kw = 0;
+            decimal kh = 0;
             foreach (DataRow row in Resize.Rows)
             {
                 row["EndWidth"] = this.Width;
                 row["EndHeight"] = this.Height;
-                kw = float.Parse(row["EndWidth"].ToString()) / float.Parse(row["BeginWidth"].ToString());
-                kh = float.Parse(row["EndHeight"].ToString()) / float.Parse(row["BeginHeight"].ToString());
+                kw = decimal.Parse(row["EndWidth"].ToString()) / decimal.Parse(row["BeginWidth"].ToString());
+                kh = decimal.Parse(row["EndHeight"].ToString()) / decimal.Parse(row["BeginHeight"].ToString());
             }
             foreach (Control control in this.Controls)
             {
@@ -356,13 +356,13 @@ namespace WindowsFormsApp4
                         row["Deleted"] = "1";
                         code_215 = row["Code_215"].ToString();
                         code_211 = row["Code_211"].ToString();
-                        float quantity = float.Parse(row["Quantity"].ToString());
+                        decimal quantity = decimal.Parse(row["Quantity"].ToString());
                         string query = $"SELECT * FROM composition WHERE Code_215= '{code_211}' AND Restaurant = '{_restaurant}' ";
                         Temp = dbHelper.ExecuteQuery(query);
                         foreach (DataRow row1 in Temp.Rows)
                         {
                             row1["Code_215"] = code_215;
-                            row1["Quantity"] = float.Parse(row1["Quantity"].ToString()) * quantity;
+                            row1["Quantity"] = decimal.Parse(row1["Quantity"].ToString()) * quantity;
                             DataRow newRow = Temp1.NewRow();
                             Temp1.Rows.Add(newRow);
                             for (int colIndex = 0; colIndex < Temp.Columns.Count; colIndex++)
@@ -411,7 +411,7 @@ namespace WindowsFormsApp4
                 DataRow[] foundRows1 = Table_211.Select($"Code = '{code_211}' ");
                 foreach (DataRow row1 in foundRows1)
                 {
-                    row["CostPrice"] = float.Parse(row1["CostPrice"].ToString());
+                    row["CostPrice"] = decimal.Parse(row1["CostPrice"].ToString());
                 }
                 string pr = row["CostPrice"].ToString();
             }
@@ -424,20 +424,20 @@ namespace WindowsFormsApp4
                     DataRow[] foundRows1 = Table_211.Select($"Code = '{code_211}' ");
                     foreach (DataRow row1 in foundRows1)
                     {
-                        if (row2["CostPrice"] != null && row1["CostPrice"] != null) row2["CostPrice"] = float.Parse(row1["CostPrice"].ToString());
+                        if (row2["CostPrice"] != null && row1["CostPrice"] != null) row2["CostPrice"] = decimal.Parse(row1["CostPrice"].ToString());
                     }
                 }
                 else
                 {
                     DataRow[] foundRows1 = Opened.Select($"Code_215 = '{code_211}' ");
-                    float sum = 0;
+                    decimal sum = 0;
                     foreach (DataRow row1 in foundRows1)
                     {
                         if (row1["CostPrice"] != DBNull.Value && row1["Quantity"] != DBNull.Value)
                         {
-                            float costPrice;
-                            float quantity;
-                            if (float.TryParse(row1["CostPrice"].ToString(), out costPrice) && float.TryParse(row1["Quantity"].ToString(), out quantity))
+                            decimal costPrice;
+                            decimal quantity;
+                            if (decimal.TryParse(row1["CostPrice"].ToString(), out costPrice) && decimal.TryParse(row1["Quantity"].ToString(), out quantity))
                             {
                                 sum += costPrice * quantity;
                             }
@@ -513,14 +513,14 @@ namespace WindowsFormsApp4
                 code_215 = row2["Code_215"].ToString();
 
                 DataRow[] foundRows1 = Temp.Select($"Code_215 = '{code_215}' ");
-                float sum = 0;
+                decimal sum = 0;
                 foreach (DataRow row1 in foundRows1)
                 {
                     if (row1["CostPrice"] != DBNull.Value && row1["Quantity"] != DBNull.Value)
                     {
-                        float costPrice;
-                        float quantity;
-                        if (float.TryParse(row1["CostPrice"].ToString(), out costPrice) && float.TryParse(row1["Quantity"].ToString(), out quantity))
+                        decimal costPrice;
+                        decimal quantity;
+                        if (decimal.TryParse(row1["CostPrice"].ToString(), out costPrice) && decimal.TryParse(row1["Quantity"].ToString(), out quantity))
                         {
                             sum += costPrice * quantity;
                         }
@@ -565,7 +565,7 @@ namespace WindowsFormsApp4
             Observation observationInstance = new Observation(_restaurant, _editor, _language);
             observationInstance.Show();
         }
-
+        private HelpDialogForm helpDialogForm;
         private void button1_Click(object sender, EventArgs e)
         {
             string help = FindFolder.Folder("Help");
@@ -573,20 +573,23 @@ namespace WindowsFormsApp4
             if (HelpButton.Text == "?")
             {
                 HelpButton.Text = "X";
-                richTextBox1.Height = this.Height - 50;
-                richTextBox1.Left = HelpButton.Width + 5;
-                richTextBox1.Width = this.Width / 2;
-                richTextBox1.ReadOnly = true;
-
+                
                 filePath = help + "\\Form1_" + _language + ".txt";
                 string fileContent = File.ReadAllText(filePath);
-                richTextBox1.Text = fileContent;
-                richTextBox1.Visible = true;
+
+                if (helpDialogForm == null)
+                {
+                    helpDialogForm = new HelpDialogForm();
+                    helpDialogForm.FormClosed += (s, args) => helpDialogForm = null; // Reset the helpDialogForm reference when the form is closed
+                }
+
+                helpDialogForm.SetHelpContent(fileContent);
+                helpDialogForm.Show();
             }
             else
             {
-                richTextBox1.Visible = false;
                 HelpButton.Text = "?";
+                helpDialogForm?.Close(); // Close the help dialog form if it's open
             }
         }
 

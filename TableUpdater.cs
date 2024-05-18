@@ -37,12 +37,12 @@ public static class TableUpdater
                     int group = Convert.ToInt32(item["Group"].ToString().Trim());
                     bool semiprepared = bool.Parse(item["SemiPrepared"].ToString());
                     int printer = Convert.ToInt32(item["Printer"].ToString().Trim());
-                    float price = Convert.ToSingle(item["Price"].ToString().Trim());
-                    float price1 = Convert.ToSingle(item["Price1"].ToString().Trim());
-                    float price2 = Convert.ToSingle(item["Price2"].ToString().Trim());
-                    float price3 = Convert.ToSingle(item["Price3"].ToString().Trim());
-                    float price4 = Convert.ToSingle(item["Price4"].ToString().Trim());
-                    float price5 = Convert.ToSingle(item["Price5"].ToString().Trim());
+                    float price = float.Parse(item["Price"].ToString().Trim());
+                    float price1 = float.Parse(item["Price1"].ToString().Trim());
+                    float price2 = float.Parse(item["Price2"].ToString().Trim());
+                    float price3 = float.Parse(item["Price3"].ToString().Trim());
+                    float price4 = float.Parse(item["Price4"].ToString().Trim());
+                    float price5 = float.Parse(item["Price5"].ToString().Trim());
                     int department = Convert.ToInt32(item["Department"].ToString().Trim());
                     string inholl = item["InHoll"].ToString();
                     InsertRecord215(connection, "table_215", code, name1, name2, name3, unit, group, semiprepared, printer, price, price1, price2, price3, price4, price5, department, inholl);
@@ -65,10 +65,10 @@ public static class TableUpdater
                     string name1 = item["Name"].ToString();
                     string note = item["Note"].ToString();
                     string unit = item["Unit"].ToString();
-                    float coefficient = Convert.ToSingle(item["Coefficient"].ToString().Trim());
-                    float quantity = Convert.ToSingle(item["Quantity"].ToString().Trim());
-                    float bruto = Convert.ToSingle(item["Bruto"].ToString().Trim());
-                    float neto = Convert.ToSingle(item["Neto"].ToString().Trim());
+                    float coefficient = float.Parse(item["Coefficient"].ToString().Trim());
+                    float quantity = float.Parse(item["Quantity"].ToString().Trim());
+                    float bruto = float.Parse(item["Bruto"].ToString().Trim());
+                    float neto = float.Parse(item["Neto"].ToString().Trim());
                     InsertRecordCalcul(connection, "composition", code_215, code_211, name1, note, unit, coefficient, quantity, bruto, neto);
 
                 }
@@ -101,7 +101,7 @@ public static class TableUpdater
                     string name3 = item["Rus"].ToString();
                     string unit = item["Unit"].ToString();
                     int group = Convert.ToInt32(item["Group"].ToString().Trim());
-                    float price = Convert.ToSingle(item["Price"].ToString().Trim());
+                    float price = float.Parse(item["Price"].ToString().Trim());
                     InsertRecord(connection, "table_211", code, name1, name2, name3, unit, price, group);
                  }
             }
@@ -118,7 +118,7 @@ public static class TableUpdater
                     string name3 = item["Rus"].ToString();
                     string unit = item["Unit"].ToString();
                     int group = Convert.ToInt32(item["Group"].ToString().Trim());
-                    float price = Convert.ToSingle(item["Price"].ToString().Trim());
+                    float price = float.Parse(item["Price"].ToString().Trim());
                     InsertRecord(connection, "table_213", code, name1, name2, name3, unit, price, group);
                 }
             }
@@ -136,7 +136,7 @@ public static class TableUpdater
                     string name3 = item["Rus"].ToString();
                     string unit = item["Unit"].ToString();
                     int group = Convert.ToInt32(item["Group"].ToString().Trim());
-                    float price = Convert.ToSingle(item["Price"].ToString().Trim());
+                    float price = float.Parse(item["Price"].ToString().Trim());
                     InsertRecord(connection, "table_111", code, name1, name2, name3, unit, price, group);
                 }
             }

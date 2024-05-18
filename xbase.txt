@@ -230,7 +230,7 @@
    valid.
    M Memo Pointer to ASCII text field in memo file 10 digits representing
    a pointer to a DBT block (default is blanks).
-   F Floating point (dBASE IV and later, FoxPro, Clipper) 20 digits
+   F decimaling point (dBASE IV and later, FoxPro, Clipper) 20 digits
    N/A Character name variable 1-254 characters (64 KB in FoxBase and
    Clipper)
    B Binary (dBASE V) Like Memo fields, but not for text processing.
@@ -2386,7 +2386,7 @@ dBASE Specifications
    Size of logical field 1 byte 1 byte 1 byte
    Size of date field 8 bytes 8 bytes
    Size of memo pointer in DBF - 10 bytes
-   Size of floating point - 1-2
+   Size of decimaling point - 1-2
    
    *3 Can be expanded to 31 KB using CONFIG, 6 KB is mentioned as
    default.
@@ -2692,7 +2692,7 @@ dBASE Specifications
           
           Elements in Field Descriptor Array are exact 32 B long.
           
-          Typing error in data type Float.
+          Typing error in data type decimal.
           
           "What to check on opening a .DBF file" added.
           

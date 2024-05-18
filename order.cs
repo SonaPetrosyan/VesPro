@@ -252,7 +252,7 @@ namespace WindowsFormsApp4
             CurrentOrder.Columns.Add("groupp", typeof(int));
             CurrentOrder.Columns.Add("code", typeof(string));
             CurrentOrder.Columns.Add("quantity", typeof(float));
-            CurrentOrder.Columns.Add("standart", typeof(float));
+            CurrentOrder.Columns.Add("standart", typeof(decimal));
             CurrentOrder.Columns.Add("date1", typeof(DateTime));
             CurrentOrder.Columns.Add("date2", typeof(DateTime));
             CurrentOrder.Columns.Add("seans", typeof(int));
@@ -284,6 +284,7 @@ namespace WindowsFormsApp4
                 radioButton1.Enabled = false; radioButton2.Enabled = false; radioButton3.Enabled = false; TipMoney.Enabled = false;
                 numericUpDown3.Enabled = false;
             }
+            ManagerBox.Text = "";
             SetLanguage(_language);
         }
 
@@ -2137,8 +2138,8 @@ namespace WindowsFormsApp4
                         row["costamount"] = float.Parse(row["quantity"].ToString()) * float.Parse(row["costprice"].ToString());
                         if (int.Parse(row["free"].ToString()) == 0)
                         {
-                            row["service"] = float.Parse(row["salesamount"].ToString()) * float.Parse(service.Tag.ToString()) * 0.01;
-                            row["discount"] = float.Parse(row["salesamount"].ToString()) * float.Parse(discount.Tag.ToString()) * 0.01;
+                            row["service"] = float.Parse(row["salesamount"].ToString()) * float.Parse(service.Tag.ToString()) /100;
+                            row["discount"] = float.Parse(row["salesamount"].ToString()) * float.Parse(discount.Tag.ToString()) /100;
                         }
                         else
                         {
@@ -2246,10 +2247,10 @@ namespace WindowsFormsApp4
             float tipmoney = 0;
             if (TipMoney.Text.Length > 0) tipmoney = float.Parse(TipMoney.Text);
             int group = 0;
-            decimal gidd = 0;
+            float gidd = 0;
             if (gid.Text.Length > 0)
             {
-                gidd = decimal.Parse(gid.Text);
+                gidd = float.Parse(gid.Text);
             }
 
             DataRow[] foundRows0 = TableNest.Select($"Nest = '{nest.Text}' ");
@@ -2295,10 +2296,10 @@ namespace WindowsFormsApp4
                 if (_previous == 0)
                 {
                     string InsertQuery = $"INSERT INTO Seans ( Code, Groupp, DateOfEntry, Seans, Ticket, Paid," +
-                        $"Nest ,Quantity ,Costprice , Price, Costamount, Salesamount, Service, Discount, Free, Taxpaid, Restaurant, Holl, Operator, DepartmentOut)" +
+                        $"Nest ,Quantity ,Costprice , Price, Costamount, Salesamount, Service, Discount, Free, Taxpaid, Restaurant, Holl, Operator, DepartmentOut,Waiter,Manager,Qart)" +
                         $" values (@Code , @Groupp, @DateOfEntry, @Seans, @Ticket, @Paid, @Nest ," +
-                        $"@Quantity,@Costprice ,@Price, @Costamount, @Salesamount, @Service, @Discount, @Free, @Taxpaid, @Restaurant, @Holl, @Operator, @Department ) ";
-                    using (SqlCommand insertCommand = new SqlCommand(InsertQuery, connection))
+                        $"@Quantity,@Costprice ,@Price, @Costamount, @Salesamount, @Service, @Discount, @Free, @Taxpaid, @Restaurant, @Holl, @Operator, @Department,@Waiter,@Manager,@Qart)";
+                    using (SqlCommand insertCommand = new SqlCommand(InsertQuery, connection)) 
 
                     {
                         insertCommand.Parameters.AddWithValue("@Code", row["code"]);
@@ -2321,16 +2322,18 @@ namespace WindowsFormsApp4
                         insertCommand.Parameters.AddWithValue("@Restaurant", _restaurant);
                         insertCommand.Parameters.AddWithValue("@Holl", _holl);
                         insertCommand.Parameters.AddWithValue("@Operator", _ooperator);
-
+                        insertCommand.Parameters.AddWithValue("@Waiter", 0);
+                        insertCommand.Parameters.AddWithValue("@Manager", 0);
+                        insertCommand.Parameters.AddWithValue("@Qart", ManagerBox.Text);
                         insertCommand.ExecuteNonQuery();
                     }
                 }
                 else
                 {
                     string InsertQuery = $"INSERT INTO Previous_215 ( Code, Groupp, DateOfEntry, Seans, Ticket, Paid," +
-    $"Nest ,Quantity ,Costprice, Price, Costamount, Salesamount, Service, Discount, Free, Taxpaid, Restaurant, Holl, Operator,  DepartmentOut)" +
+    $"Nest ,Quantity ,Costprice, Price, Costamount, Salesamount, Service, Discount, Free, Taxpaid, Restaurant, Holl, Operator,  DepartmentOut,Qart)" +
     $" values (@Code, @Groupp, @DateOfEntry, @Seans, @Ticket, @Paid, @Nest ," +
-    $"@Quantity,@Costprice ,@Price, @Costamount, @Salesamount, @Service, @Discount, @Free, @Taxpaid, @Restaurant, @Holl, @Operator, @Department ) ";
+    $"@Quantity,@Costprice ,@Price, @Costamount, @Salesamount, @Service, @Discount, @Free, @Taxpaid, @Restaurant, @Holl, @Operator, @Department,@Qart ) ";
                     using (SqlCommand insertCommand = new SqlCommand(InsertQuery, connection))
 
                     {
@@ -2353,13 +2356,13 @@ namespace WindowsFormsApp4
                         insertCommand.Parameters.AddWithValue("@Taxpaid", 0);
                         insertCommand.Parameters.AddWithValue("@Restaurant", _restaurant);
                         insertCommand.Parameters.AddWithValue("@Holl", _holl);
-                        insertCommand.Parameters.AddWithValue("@Operator", _ooperator);
-
+                        insertCommand.Parameters.AddWithValue("@Manager", _ooperator);
+                        insertCommand.Parameters.AddWithValue("@Qart", ManagerBox.Text);
                         insertCommand.ExecuteNonQuery();
                     }
                 }
             }
-
+            ManagerBox.Text = "";
             DataRow[] foundRowsTI = TicketsOrdered.Select($"Nest= '{nest.Text}' AND Ticket= '{tick}' AND" +
                 $" Seans = '{seans_state}' AND Restaurant = '{_restaurant}' AND Holl = '{_holl}' ");
 
@@ -2376,14 +2379,14 @@ namespace WindowsFormsApp4
                     updatCommand.Parameters.AddWithValue("@DateBegin", DateTime.Now);
                     updatCommand.Parameters.AddWithValue("@DateEnd", DateTime.Now);
                     updatCommand.Parameters.AddWithValue("@ticket", tick);
-                    updatCommand.Parameters.AddWithValue("@salesamount", int.Parse(amount.Text));
+                    updatCommand.Parameters.AddWithValue("@salesamount", float.Parse(amount.Text));
                     updatCommand.Parameters.AddWithValue("@costamount", cost);
                     updatCommand.Parameters.AddWithValue("@delivery", delivery);
                     updatCommand.Parameters.AddWithValue("@music", music);
                     updatCommand.Parameters.AddWithValue("@cash", 0);
                     updatCommand.Parameters.AddWithValue("@cashless", 0);
-                    updatCommand.Parameters.AddWithValue("@service", int.Parse(service.Text));
-                    updatCommand.Parameters.AddWithValue("@discount", int.Parse(discount.Text));
+                    updatCommand.Parameters.AddWithValue("@service", float.Parse(service.Text));
+                    updatCommand.Parameters.AddWithValue("@discount", float.Parse(discount.Text));
                     updatCommand.Parameters.AddWithValue("@paid", 0);
                     updatCommand.Parameters.AddWithValue("@person", person);
                     updatCommand.Parameters.AddWithValue("@tipmoney", tipmoney);
@@ -2812,10 +2815,14 @@ namespace WindowsFormsApp4
                     newRow[columnName] = row[columnName];
                 }
             }
-            Translate.translation(Table215, BillPrint, _language, "1");
+            Translate.translation(Table215, BillPrint, _language, "1");// տեղադրվում են անունները
             PrintingBill.PrintBill(bill.Text, nest.Text, gid.Text, TipMoney.Text, 0, previous, DateBegin, DateTime.Now, BillPrint, Restaurantname, _language);
 
         }
+
+
+
+
 
         private void forbidden_Click(object sender, EventArgs e)
         {
@@ -3523,11 +3530,6 @@ namespace WindowsFormsApp4
             }
         }
 
-        private void ManagerBox_Leave(object sender, EventArgs e)
-        {
-            if (ManagerBox.Text == string.Empty) ManagerBox.Text = "manager";
-        }
-
         private void cancel_Click(object sender, EventArgs e)
         {
             Paiment(1);
@@ -3618,9 +3620,9 @@ namespace WindowsFormsApp4
                     }
                 }
                 var cellValue = e.Value;
-                if (cellValue is decimal decimalValue && decimalValue % 1 == 0)
+                if (cellValue is float floatValue && floatValue % 1 == 0)
                 {
-                    e.Value = ((int)decimalValue).ToString();
+                    e.Value = ((int)floatValue).ToString();
                     e.FormattingApplied = true;
                 }
             }
@@ -3673,8 +3675,8 @@ namespace WindowsFormsApp4
                         newRow["printer"] = foundRows[0]["printer"];
                         newRow["qanak"] = newRow["Quantity"].ToString();
 
-                        newRow["service"] = float.Parse(newRow["salesamount"].ToString()) * float.Parse(service.Tag.ToString()) * 0.01;
-                        newRow["discount"] = float.Parse(newRow["salesamount"].ToString()) * float.Parse(discount.Tag.ToString()) * 0.01;
+                        newRow["service"] = float.Parse(newRow["salesamount"].ToString()) * float.Parse(service.Tag.ToString()) / 100;
+                        newRow["discount"] = float.Parse(newRow["salesamount"].ToString()) * float.Parse(discount.Tag.ToString()) / 100;
 
                         a_m += float.Parse(newRow["Quantity"].ToString()) * float.Parse(foundRows[0]["price"].ToString());//սեղանի գումարը 
                         if (service.Tag != null && newRow["service"].ToString().Length > 0)
@@ -4339,70 +4341,32 @@ namespace WindowsFormsApp4
             NestUpdate();
         }
 
+        private HelpDialogForm helpDialogForm;
+
         private void HelpButton_Click(object sender, EventArgs e)
         {
-            string help = FindFolder.Folder("Help");
-            string filePath = "";
             if (HelpButton.Text == "?")
             {
                 HelpButton.Text = "X";
-                richTextBox1.ReadOnly = true;
-                filePath = help + "\\Order_" + _language+".txt";
+                string helpFolderPath = FindFolder.Folder("Help");
+                string filePath = Path.Combine(helpFolderPath, $"Order_{_language}.txt");
                 string fileContent = File.ReadAllText(filePath);
-                richTextBox1.Text = fileContent;
-                richTextBox1.Visible = true;
-                richTextBox1.Top = 0;
-                richTextBox1.Left = 0;
-                richTextBox1.Width = HelpButton.Left - 10;
-                richTextBox1.Height = this.Height - 20;
 
+                if (helpDialogForm == null)
+                {
+                    helpDialogForm = new HelpDialogForm();
+                    helpDialogForm.FormClosed += (s, args) => helpDialogForm = null; // Reset the helpDialogForm reference when the form is closed
+                }
+
+                helpDialogForm.SetHelpContent(fileContent);
+                helpDialogForm.Show();
             }
             else
             {
-                richTextBox1.Visible = false;
                 HelpButton.Text = "?";
+                helpDialogForm?.Close(); // Close the help dialog form if it's open
             }
         }
-//        private void translate(DataTable Table1, DataTable Table2)
-//        {
-//            if (Table1.Columns.Contains("code"))
-//            {
-//                var query = from row1 in Table1.AsEnumerable()
-//                            join row2 in Table2.AsEnumerable()
-//                            on row1.Field<string>("Code") equals row2.Field<string>("Code") into gj
-//                            from subRow2 in gj.DefaultIfEmpty()
-//                            select new
-//                            {
-//                                Row1 = row1,
-//                                Row2 = subRow2
-//                            };
-
-//                foreach (var item in query)
-//                {
-//                    if (item.Row2 != null)
-//                    {
-//                        if (_language == "Armenian") item.Row2["Name"] = item.Row1["Armenian"];
-//                        if (_language == "English") item.Row2["Name"] = item.Row1["English"];
-//                        if (_language == "German") item.Row2["Name"] = item.Row1["German"];
-//                        if (_language == "Russian") item.Row2["Name"] = item.Row1["Russian"];
-//                        if (_language == "Espaniol") item.Row2["Name"] = item.Row1["Espaniol"];
-//                    }
-//                }
-//            }
-//            else
-//            {
-
-//                foreach(DataRow row in  Table1.Rows)
-//                {
-//                    if (_language == "Armenian") row["Name"] = row["Armenian"];
-//                    if (_language == "English") row["Name"] = row["English"];
-//                    if (_language == "German") row["Name"] = row["German"];
-//                    if (_language == "Russian") row["Name"] = row["Russian"];
-//                    if (_language == "Espaniol") row["Name"] = row["Espaniol"];
-//                }
-
-//            }
-//        }
 
         private void dataGridView1_MouseEnter(object sender, EventArgs e)
         {

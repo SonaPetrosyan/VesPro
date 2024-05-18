@@ -83,10 +83,10 @@ namespace WindowsFormsApp4
                 this.Text = row["Name"].ToString();
             }
 
-            Resize.Columns.Add("BeginWidth", typeof(float));
-            Resize.Columns.Add("BeginHeight", typeof(float));
-            Resize.Columns.Add("EndWidth", typeof(float));
-            Resize.Columns.Add("EndHeight", typeof(float));
+            Resize.Columns.Add("BeginWidth", typeof(decimal));
+            Resize.Columns.Add("BeginHeight", typeof(decimal));
+            Resize.Columns.Add("EndWidth", typeof(decimal));
+            Resize.Columns.Add("EndHeight", typeof(decimal));
             Resize.Rows.Add(0, 0, 0, 0);
 
             label2.Text = "";
@@ -109,14 +109,14 @@ namespace WindowsFormsApp4
 
         private void Additions_ResizeEnd(object sender, EventArgs e)
         {
-            float kw = 0;
-            float kh = 0;
+            decimal kw = 0;
+            decimal kh = 0;
             foreach (DataRow row in Resize.Rows)
             {
                 row["EndWidth"] = this.Width;
                 row["EndHeight"] = this.Height;
-                kw = float.Parse(row["EndWidth"].ToString()) / float.Parse(row["BeginWidth"].ToString());
-                kh = float.Parse(row["EndHeight"].ToString()) / float.Parse(row["BeginHeight"].ToString());
+                kw = decimal.Parse(row["EndWidth"].ToString()) / decimal.Parse(row["BeginWidth"].ToString());
+                kh = decimal.Parse(row["EndHeight"].ToString()) / decimal.Parse(row["BeginHeight"].ToString());
             }
             foreach (Control control in this.Controls)
             {
@@ -311,29 +311,30 @@ namespace WindowsFormsApp4
             dataGridView1.CurrentCell = dataGridView1.Rows[lastRowIndex].Cells[0];
             dataGridView1.BeginEdit(true);
         }
-
+        private HelpDialogForm helpDialogForm;
         private void HelpButton_Click(object sender, EventArgs e)  
         {
             string help = FindFolder.Folder("Help");
             string filePath = "";
             if (HelpButton.Text == "?")
             {
-                HelpButton.Text = "X";
-                richTextBox1.Height = this.Height - 50;
-                richTextBox1.Top = 0;
-                richTextBox1.Left = 0;
-                richTextBox1.Width = this.Width- HelpButton.Width-20;
-                richTextBox1.ReadOnly = true;
-                richTextBox1.Visible = true;
+                HelpButton.Text = "X";               
                 filePath = help+"\\Additions_"+_language+".txt";
                 string fileContent = File.ReadAllText(filePath);
-                richTextBox1.Text = fileContent;
-                
+
+                if (helpDialogForm == null)
+                {
+                    helpDialogForm = new HelpDialogForm();
+                    helpDialogForm.FormClosed += (s, args) => helpDialogForm = null; // Reset the helpDialogForm reference when the form is closed
+                }
+
+                helpDialogForm.SetHelpContent(fileContent);
+                helpDialogForm.Show();
             }
             else
             {
-                richTextBox1.Visible = false;
                 HelpButton.Text = "?";
+                helpDialogForm?.Close(); // Close the help dialog form if it's open
             }
         }
 

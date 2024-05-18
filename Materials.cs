@@ -336,8 +336,8 @@ namespace WindowsFormsApp4
                         string columnName = column.ColumnName;
                         if (Table_211.Columns[columnName].DataType == typeof(string)) newRow[columnName] = "";
                         if (Table_211.Columns[columnName].DataType == typeof(int)) newRow[columnName] = 0;
-                        if (Table_211.Columns[columnName].DataType == typeof(float)) newRow[columnName] = 0;
                         if (Table_211.Columns[columnName].DataType == typeof(decimal)) newRow[columnName] = 0;
+                        if (Table_211.Columns[columnName].DataType == typeof(float)) newRow[columnName] = 0;
                     }
                     newRow["Id"] = maxId;
                     newRow["Code"] = maxCode;
@@ -355,8 +355,8 @@ namespace WindowsFormsApp4
                         string columnName = column.ColumnName;
                         if (Table_213.Columns[columnName].DataType == typeof(string)) newRow[columnName] = "";
                         if (Table_213.Columns[columnName].DataType == typeof(int)) newRow[columnName] = 0;
-                        if (Table_213.Columns[columnName].DataType == typeof(float)) newRow[columnName] = 0;
                         if (Table_213.Columns[columnName].DataType == typeof(decimal)) newRow[columnName] = 0;
+                        if (Table_213.Columns[columnName].DataType == typeof(float)) newRow[columnName] = 0;
                     }
                     newRow["Id"] = maxId;
                     newRow["Code"] = maxCode;
@@ -374,8 +374,8 @@ namespace WindowsFormsApp4
                         string columnName = column.ColumnName;
                         if (Table_111.Columns[columnName].DataType == typeof(string)) newRow[columnName] = "";
                         if (Table_111.Columns[columnName].DataType == typeof(int)) newRow[columnName] = 0;
-                        if (Table_111.Columns[columnName].DataType == typeof(float)) newRow[columnName] = 0;
                         if (Table_111.Columns[columnName].DataType == typeof(decimal)) newRow[columnName] = 0;
+                        if (Table_111.Columns[columnName].DataType == typeof(float)) newRow[columnName] = 0;
                     }
                     newRow["Id"] = maxId;
                     newRow["Code"] = maxCode;
@@ -393,8 +393,8 @@ namespace WindowsFormsApp4
                         string columnName = column.ColumnName;
                         if (Table_215.Columns[columnName].DataType == typeof(string)) newRow[columnName] = "";
                         if (Table_215.Columns[columnName].DataType == typeof(int)) newRow[columnName] = 0;
-                        if (Table_215.Columns[columnName].DataType == typeof(float)) newRow[columnName] = 0;
                         if (Table_215.Columns[columnName].DataType == typeof(decimal)) newRow[columnName] = 0;
+                        if (Table_215.Columns[columnName].DataType == typeof(float)) newRow[columnName] = 0;
                     }
                     newRow["Id"] = maxId;
                     newRow["Code"] = maxCode;

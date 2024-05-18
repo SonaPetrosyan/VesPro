@@ -35,12 +35,12 @@ namespace WindowsFormsApp4
                 //        int groupp = Convert.ToInt32(row["Groupp"].ToString().Trim());
                 //        int semiprepared = int.Parse(row["SemiPrepared"].ToString());
                 //        int printer = Convert.ToInt32(row["Printer"].ToString().Trim());
-                //        float price = Convert.ToSingle(row["Price"].ToString().Trim());
-                //        float price1 = Convert.ToSingle(row["Price1"].ToString().Trim());
-                //        float price2 = Convert.ToSingle(row["Price2"].ToString().Trim());
-                //        float price3 = Convert.ToSingle(row["Price3"].ToString().Trim());
-                //        float price4 = Convert.ToSingle(row["Price4"].ToString().Trim());
-                //        float price5 = Convert.ToSingle(row["Price5"].ToString().Trim());
+                //        decimal price = Convert.ToSingle(row["Price"].ToString().Trim());
+                //        decimal price1 = Convert.ToSingle(row["Price1"].ToString().Trim());
+                //        decimal price2 = Convert.ToSingle(row["Price2"].ToString().Trim());
+                //        decimal price3 = Convert.ToSingle(row["Price3"].ToString().Trim());
+                //        decimal price4 = Convert.ToSingle(row["Price4"].ToString().Trim());
+                //        decimal price5 = Convert.ToSingle(row["Price5"].ToString().Trim());
                 //        int department = Convert.ToInt32(row["Department"].ToString().Trim());
                 //        string inholl = row["InHoll"].ToString();
                 //        string non = row["NonComposite"].ToString();
@@ -75,10 +75,10 @@ namespace WindowsFormsApp4
                         string code_211 = row["Code_211"].ToString().Trim();
                        string unit = row["Unit"].ToString();
                         string note = row["Note"].ToString();
-                        float coefficient = Convert.ToSingle(row["Coefficient"].ToString().Trim());
-                        float quantity = Convert.ToSingle(row["Quantity"].ToString().Trim());
-                        float bruto = Convert.ToSingle(row["Bruto"].ToString().Trim());
-                        float neto = Convert.ToSingle(row["Neto"].ToString().Trim());
+                        decimal coefficient = decimal.Parse(row["Coefficient"].ToString().Trim());
+                        decimal quantity = decimal.Parse(row["Quantity"].ToString().Trim());
+                        decimal bruto = decimal.Parse(row["Bruto"].ToString().Trim());
+                        decimal neto = decimal.Parse(row["Neto"].ToString().Trim());
 
                         bool codeExists = CheckIfCodeExistsCalc(connection, "Composition", code_215, code_211);
                         if (codeExists)
@@ -108,7 +108,7 @@ namespace WindowsFormsApp4
                 //        string rus = row["Russian"].ToString();
                 //        string unit = row["Unit"].ToString();
                 //        int groupp = Convert.ToInt32(row["Groupp"].ToString().Trim());
-                //        float costprice = Convert.ToSingle(row["CostPrice"].ToString().Trim());
+                //        decimal costprice = Convert.ToSingle(row["CostPrice"].ToString().Trim());
                 //        bool codeExists = CheckIfCodeExists(connection, "table_211", code);
 
                 //        if (codeExists)
@@ -129,7 +129,7 @@ namespace WindowsFormsApp4
                     {
                         if (row["Changed"] != DBNull.Value && decimal.Parse(row["Changed"].ToString()) == 0) continue;
                         string code = row["Code"].ToString().Trim();
-                        float costprice = Convert.ToSingle(row["CostPrice"].ToString().Trim());
+                        decimal costprice = decimal.Parse(row["CostPrice"].ToString().Trim());
                         UpdateFields_cost(connection, "table_211", code, costprice);
                         UpdateFieldscomposite(connection, "composite", code, costprice);
                     }
@@ -149,7 +149,7 @@ namespace WindowsFormsApp4
                 //        string rus = row["Russian"].ToString();
                 //        string unit = row["Unit"].ToString();
                 //        int groupp = Convert.ToInt32(row["Groupp"].ToString().Trim());
-                //        float costprice = Convert.ToSingle(row["CostPrice"].ToString().Trim());
+                //        decimal costprice = Convert.ToSingle(row["CostPrice"].ToString().Trim());
                 //        // Check if the code already exists in the table
                 //        bool codeExists = CheckIfCodeExists(connection, "table_111", code);
 
@@ -172,7 +172,7 @@ namespace WindowsFormsApp4
                     {
                         if (row["Changed"] != DBNull.Value && decimal.Parse(row["Changed"].ToString()) == 0) continue;
                         string code = row["Code"].ToString().Trim();
-                        float costprice = Convert.ToSingle(row["CostPrice"].ToString().Trim());
+                        decimal costprice = decimal.Parse(row["CostPrice"].ToString().Trim());
                         bool codeExists = CheckIfCodeExists(connection, "table_111", code);
                         if (codeExists)
                         {
@@ -194,7 +194,7 @@ namespace WindowsFormsApp4
                 //        string rus = row["Russian"].ToString();
                 //        string unit = row["Unit"].ToString();
                 //        int groupp = Convert.ToInt32(row["Groupp"].ToString().Trim());
-                //        float costprice = Convert.ToSingle(row["CostPrice"].ToString().Trim());
+                //        decimal costprice = Convert.ToSingle(row["CostPrice"].ToString().Trim());
                 //        // Check if the code already exists in the table
                 //        bool codeExists = CheckIfCodeExists(connection, "table_213", code);
 
@@ -218,7 +218,7 @@ namespace WindowsFormsApp4
                 //        {
                 //            if (row["Changed"] != DBNull.Value && decimal.Parse(row["Changed"].ToString()) == 0) continue;
                 //            string code = row["Code"].ToString().Trim();
-                //            float costprice = Convert.ToSingle(row["CostPrice"].ToString().Trim());
+                //            decimal costprice = Convert.ToSingle(row["CostPrice"].ToString().Trim());
                 //            bool codeExists = CheckIfCodeExists(connection, "table_213", code);
                 //            if (codeExists)
                 //            {
@@ -242,9 +242,9 @@ namespace WindowsFormsApp4
                 //        int departmentout = int.Parse(row["DepartmentOut"].ToString());
                 //        int kreditor = Convert.ToInt32(row["Kreditor"].ToString().Trim());
                 //        int debitor = Convert.ToInt32(row["Debitor"].ToString().Trim());  
-                //        float quantity = Convert.ToSingle(row["Quantity"].ToString().Trim());
-                //        float costamount = Convert.ToSingle(row["Costamount"].ToString().Trim());
-                //        float salesamount = Convert.ToSingle(row["Salesamount"].ToString().Trim());
+                //        decimal quantity = Convert.ToSingle(row["Quantity"].ToString().Trim());
+                //        decimal costamount = Convert.ToSingle(row["Costamount"].ToString().Trim());
+                //        decimal salesamount = Convert.ToSingle(row["Salesamount"].ToString().Trim());
                 //        DateTime accountingdate = Convert.ToDateTime(row["AccountingDate"]);
                 //        DateTime dateofentry = Convert.ToDateTime(row["DateOfEntry"]);
                 //        InsertRecordPurchase(connection, "Table_Purchase",number, code, quantity, costamount, salesamount, opperator, restaurant, debet,
@@ -254,8 +254,8 @@ namespace WindowsFormsApp4
             }
         }
 
-        //private static void InsertRecordPurchase(SqlConnection connection, string tableName, int number, string code, float quantity, float costamount, 
-        //    float salesamount, int opperator, int restaurant, string debet, string kredit, int departmentin, int departmentout,
+        //private static void InsertRecordPurchase(SqlConnection connection, string tableName, int number, string code, decimal quantity, decimal costamount, 
+        //    decimal salesamount, int opperator, int restaurant, string debet, string kredit, int departmentin, int departmentout,
         //    int kreditor, int debitor, DateTime accountingdate, DateTime dateofentry)
         //{
         //    string query = $"INSERT INTO actions (Number,Code, Quantity, CostAmount, SalesAmount, Operator, Restaurant, Debet," +
@@ -305,8 +305,8 @@ namespace WindowsFormsApp4
             }
         }
         private static void UpdateFields215(SqlConnection connection, string tableName, string code, string arm,
-                    string eng, string ger, string esp, string rus, string unit, int groupp, int semiprepared, int printer, float price, float price1, float price2,
-                    float price3, float price4, float price5, int department, string inholl, string  atg, int existent, string non)
+                    string eng, string ger, string esp, string rus, string unit, int groupp, int semiprepared, int printer, decimal price, decimal price1, decimal price2,
+                    decimal price3, decimal price4, decimal price5, int department, string inholl, string  atg, int existent, string non)
         {
             string query = $"UPDATE {tableName} SET Armenian = @Armenian, English = @English, German = @German,Espaniol=@Espaniol," +
                 $" Russian = @Russian, Unit = @Unit, Groupp = @Groupp,SemiPrepared = @semiprepared, Printer = @Printer," +
@@ -341,7 +341,7 @@ namespace WindowsFormsApp4
         }
 
         private static void UpdateFields(SqlConnection connection, string tableName, string code, string arm, string eng,
-            string ger, string esp, string rus, string unit, int groupp, float costprice)
+            string ger, string esp, string rus, string unit, int groupp, decimal costprice)
         {
             string query = $"UPDATE {tableName} SET Armenian = @Armenian, English = @English,German = @German," +
                 $" Espaniol = @Espaniol, Russian = @Russian, Unit = @Unit, Groupp = @Groupp, CostPrice = @costprice" +
@@ -362,7 +362,7 @@ namespace WindowsFormsApp4
             }
         }
 
-        private static void UpdateFields_cost(SqlConnection connection, string tableName, string code, float costprice)
+        private static void UpdateFields_cost(SqlConnection connection, string tableName, string code, decimal costprice)
         {
             string query = $"UPDATE {tableName} SET  CostPrice = @costprice WHERE Code = @Code";
             using (SqlCommand command = new SqlCommand(query, connection))
@@ -375,7 +375,7 @@ namespace WindowsFormsApp4
         }
 
 
-        private static void UpdateFieldscomposite(SqlConnection connection, string tableName, string code, float costprice)
+        private static void UpdateFieldscomposite(SqlConnection connection, string tableName, string code, decimal costprice)
         {
             string query = $"UPDATE {tableName} SET CostPrice = @costprice WHERE Code_211 = @Code";
             using (SqlCommand command = new SqlCommand(query, connection))
@@ -392,7 +392,7 @@ namespace WindowsFormsApp4
                 command.ExecuteNonQuery();
             }
         }
-        private static void InsertRecord(SqlConnection connection, string tableName, string code, string arm, string eng, string ger, string esp, string rus, string unit, int groupp, float costprice, int restaurant)
+        private static void InsertRecord(SqlConnection connection, string tableName, string code, string arm, string eng, string ger, string esp, string rus, string unit, int groupp, decimal costprice, int restaurant)
         {
             string query = $"INSERT INTO {tableName} (Code, Armenian, English, German, Espaniol, Russian," +
                 $" Unit, CostPrice, Groupp, Restaurant) " +
@@ -414,7 +414,7 @@ namespace WindowsFormsApp4
             }
         }
         private static void UpdateFieldsCalcul(SqlConnection connection, string tableName, string code_215,
-                    string code_211, string note, string unit, float coefficient, float quantity, float bruto, float neto)
+                    string code_211, string note, string unit, decimal coefficient, decimal quantity, decimal bruto, decimal neto)
         {
             string query = $"UPDATE {tableName} SET Note = @Note, Unit = @Unit, " +
                 $"Coefficient = @Coefficient, Quantity = @quantity, Bruto = @Bruto," +
@@ -434,7 +434,7 @@ namespace WindowsFormsApp4
         }
 
         private static void InsertRecordCalcul(SqlConnection connection, string tableName, string code_215,
-                string code_211, string note, string unit, float coefficient, float quantity, float bruto, float neto, int restaurant)
+                string code_211, string note, string unit, decimal coefficient, decimal quantity, decimal bruto, decimal neto, int restaurant)
         {
             string query = $"INSERT INTO {tableName} (Code_215,Code_211, Note, Unit, Coefficient, Quantity, Bruto, Neto, Restaurant) " +
                           $"VALUES (@Code_215, @Code_211, @Note, @Unit, @Coefficient, @Quantity, @Bruto, @Neto, @Restaurant)";
@@ -454,8 +454,8 @@ namespace WindowsFormsApp4
             }
         }
         private static void InsertRecord215(SqlConnection connection, string tableName, string code, string arm,
-                    string eng, string ger, string esp, string rus, string unit, int groupp, int semiprepared, int printer, float price, float price1,
-                    float price2, float price3, float price4, float price5, int department, string inholl, string atg,string non, int restaurant)
+                    string eng, string ger, string esp, string rus, string unit, int groupp, int semiprepared, int printer, decimal price, decimal price1,
+                    decimal price2, decimal price3, decimal price4, decimal price5, int department, string inholl, string atg,string non, int restaurant)
         {
             string query = $"INSERT INTO {tableName} (Code, Armenian, English,German,Espaniol, Russian, Unit, Groupp,SemiPrepared," +
                 $" Printer, Price, Price1, Price2, Price3, Price4, Price5, Department, InHoll, ATG,NonComposite,Restaurant)" +

@@ -81,11 +81,11 @@ namespace WindowsFormsApp4
             this.Column27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.HelpButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.SearchBox = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.HelpButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
@@ -416,6 +416,20 @@ namespace WindowsFormsApp4
             this.panel1.Size = new System.Drawing.Size(1214, 43);
             this.panel1.TabIndex = 25;
             // 
+            // HelpButton
+            // 
+            this.HelpButton.BackColor = System.Drawing.Color.Peru;
+            this.HelpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.HelpButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HelpButton.ForeColor = System.Drawing.Color.White;
+            this.HelpButton.Location = new System.Drawing.Point(0, 0);
+            this.HelpButton.Name = "HelpButton";
+            this.HelpButton.Size = new System.Drawing.Size(35, 33);
+            this.HelpButton.TabIndex = 62;
+            this.HelpButton.Text = "?";
+            this.HelpButton.UseVisualStyleBackColor = false;
+            this.HelpButton.Click += new System.EventHandler(this.HelpButton_Click);
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -462,20 +476,6 @@ namespace WindowsFormsApp4
             this.panel2.Size = new System.Drawing.Size(1215, 62);
             this.panel2.TabIndex = 26;
             // 
-            // HelpButton
-            // 
-            this.HelpButton.BackColor = System.Drawing.Color.Orange;
-            this.HelpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.HelpButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HelpButton.ForeColor = System.Drawing.Color.White;
-            this.HelpButton.Location = new System.Drawing.Point(0, 0);
-            this.HelpButton.Name = "HelpButton";
-            this.HelpButton.Size = new System.Drawing.Size(35, 33);
-            this.HelpButton.TabIndex = 62;
-            this.HelpButton.Text = "?";
-            this.HelpButton.UseVisualStyleBackColor = false;
-            this.HelpButton.Click += new System.EventHandler(this.HelpButton_Click);
-            // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -489,7 +489,7 @@ namespace WindowsFormsApp4
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox1.Location = new System.Drawing.Point(801, 447);
             this.richTextBox1.Margin = new System.Windows.Forms.Padding(20, 3, 3, 3);
             this.richTextBox1.Name = "richTextBox1";
@@ -578,7 +578,7 @@ namespace WindowsFormsApp4
             "10"});
             this.checkedListBox1.Location = new System.Drawing.Point(864, 27);
             this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(141, 213);
+            this.checkedListBox1.Size = new System.Drawing.Size(141, 194);
             this.checkedListBox1.TabIndex = 67;
             this.checkedListBox1.Visible = false;
             // 
@@ -830,10 +830,10 @@ namespace WindowsFormsApp4
         private void InitForm()
         //Ֆորմայի չափսերը դարձնում ենք լիաէկրան
         {
-            float screenWidth = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width;
-            float screenHeight = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height;
-            float kw = screenWidth / this.Width;
-            float kh = screenHeight / this.Height;
+            decimal screenWidth = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width;
+            decimal screenHeight = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height;
+            decimal kw = screenWidth / this.Width;
+            decimal kh = screenHeight / this.Height;
             foreach (Control control in this.Controls)
             {
                 control.Left = (int)(control.Left * (double)kw);

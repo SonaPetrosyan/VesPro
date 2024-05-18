@@ -39,13 +39,13 @@ public static class SQLUpdater
                     string unit = item["Unit"].ToString();
                     bool semiprepared = bool.Parse(item["SemiPrepared"].ToString());
                     int printer = Convert.ToInt32(item["Printer"].ToString().Trim());
-                    float price = Convert.ToSingle(item["Price"].ToString().Trim());
-                    float price1 = Convert.ToSingle(item["Price1"].ToString().Trim());
-                    float price2 = Convert.ToSingle(item["Price2"].ToString().Trim());
-                    float price3 = Convert.ToSingle(item["Price3"].ToString().Trim());
-                    float price4 = Convert.ToSingle(item["Price4"].ToString().Trim());
-                    float price5 = Convert.ToSingle(item["Price5"].ToString().Trim());
-                    float act1=0,act2=0,act3 = 0,act4 = 0,act5 = 0 ;
+                    decimal price = decimal.Parse(item["Price"].ToString().Trim());
+                    decimal price1 = decimal.Parse(item["Price1"].ToString().Trim());
+                    decimal price2 = decimal.Parse(item["Price2"].ToString().Trim());
+                    decimal price3 = decimal.Parse(item["Price3"].ToString().Trim());
+                    decimal price4 = decimal.Parse(item["Price4"].ToString().Trim());
+                    decimal price5 = decimal.Parse(item["Price5"].ToString().Trim());
+                    decimal act1=0,act2=0,act3 = 0,act4 = 0,act5 = 0 ;
                     int department = Convert.ToInt32(item["Department"].ToString().Trim());
                     string inholl = item["InHoll"].ToString();
                     int restaurant = 1;
@@ -75,10 +75,10 @@ public static class SQLUpdater
                         string name1 = item["Name"].ToString();
                         string note = item["Note"].ToString();
                         string unit = item["Unit"].ToString();
-                        float coefficient = Convert.ToSingle(item["Coefficient"].ToString().Trim());
-                        float quantity = Convert.ToSingle(item["Quantity"].ToString().Trim());
-                        float bruto = Convert.ToSingle(item["Bruto"].ToString().Trim());
-                        float neto = Convert.ToSingle(item["Neto"].ToString().Trim());
+                        decimal coefficient = decimal.Parse(item["Coefficient"].ToString().Trim());
+                        decimal quantity = decimal.Parse(item["Quantity"].ToString().Trim());
+                        decimal bruto = decimal.Parse(item["Bruto"].ToString().Trim());
+                        decimal neto = decimal.Parse(item["Neto"].ToString().Trim());
                         int restaurant = 1;
                         InsertRecordCalcul(connection, "Composition", code_215, code_211, name1, note, unit, coefficient, quantity, bruto, neto,restaurant);
 
@@ -126,8 +126,8 @@ public static class SQLUpdater
                         string name3 = item["Rus"].ToString();
                         string unit = item["Unit"].ToString();
                         int groupp = Convert.ToInt32(item["Groupp"].ToString().Trim());
-                        float price = Convert.ToSingle(item["Price"].ToString().Trim());
-                    float actually1 = 0, actually2 = 0, actually3 = 0, actually4 = 0, actually5 = 0,
+                        decimal price = decimal.Parse(item["Price"].ToString().Trim());
+                    decimal actually1 = 0, actually2 = 0, actually3 = 0, actually4 = 0, actually5 = 0,
                         act215_1 = 0, act215_2 = 0, act215_3 = 0, act215_4 = 0, act215_5 = 0;
                         int restaurant = 1;
                         InsertRecord(connection, "Table_211", code, name1, name2, name3, unit, price, groupp,restaurant);
@@ -151,7 +151,7 @@ public static class SQLUpdater
                         string name3 = item["Rus"].ToString();
                         string unit = item["Unit"].ToString();
                         int groupp = Convert.ToInt32(item["Groupp"].ToString().Trim());
-                        float price = Convert.ToSingle(item["Price"].ToString().Trim());
+                        decimal price = decimal.Parse(item["Price"].ToString().Trim());
                         int restaurant = 1;
                         InsertRecord(connection, "Table_213", code, name1, name2, name3, unit, price, groupp,restaurant);
                     }
@@ -173,7 +173,7 @@ public static class SQLUpdater
                         string name3 = item["Rus"].ToString();
                         string unit = item["Unit"].ToString();
                         int groupp = Convert.ToInt32(item["Groupp"].ToString().Trim());
-                        float price = Convert.ToSingle(item["Price"].ToString().Trim());
+                        decimal price = decimal.Parse(item["Price"].ToString().Trim());
                         int restaurant = 1;
                         InsertRecord(connection, "Table_111", code, name1, name2, name3, unit, price, groupp, restaurant);
                     }
@@ -225,7 +225,7 @@ public static class SQLUpdater
         }
     }
     private static void InsertRecord(SqlConnection connection, string tableName,  string code, string name1,
-        string name2, string name3, string unit, float price, int groupp,int restaurant)
+        string name2, string name3, string unit, decimal price, int groupp,int restaurant)
     {
         string query = $"INSERT INTO {tableName} ( Code, Name, Eng, Rus, Unit, CostPrice, Groupp,Restaurant) " +
                        $"VALUES (@Code, @Name1, @Name2, @Name3, @Unit, @Price,@Groupp,@Restaurant)";
@@ -245,9 +245,9 @@ public static class SQLUpdater
     }
     
     private static void InsertRecordInventory(SqlConnection connection, string tableName, string code, string name1,
-        string name2, string name3, string unit, float price,  int restaurant,
-        float actually1, float actually2, float actually3, float actually4, float actually5,
-        float act215_1, float act215_2, float act215_3, float act215_4, float act215_5)
+        string name2, string name3, string unit, decimal price,  int restaurant,
+        decimal actually1, decimal actually2, decimal actually3, decimal actually4, decimal actually5,
+        decimal act215_1, decimal act215_2, decimal act215_3, decimal act215_4, decimal act215_5)
     {
         string query = $"INSERT INTO {tableName} ( Code, Name, Eng, Rus, Unit, CostPrice,Restaurant," +
                        $"Actually1,Actually2,Actually3,Actually4,Actually5," +
@@ -312,7 +312,7 @@ public static class SQLUpdater
         }
     }
     private static void InsertRecordCalcul(SqlConnection connection, string tableName, string code_215,
-     string code_211, string name1, string note, string unit, float coefficient, float quantity, float bruto, float neto, int restaurant)
+     string code_211, string name1, string note, string unit, decimal coefficient, decimal quantity, decimal bruto, decimal neto, int restaurant)
     {
         string query = $"INSERT INTO {tableName} (Code_215,Code_211, Name, Note, Unit, Coefficient, Quantity, Bruto,Neto,Restaurant) " +
                       $"VALUES (@Code_215, @Code_211, @Name1, @Note, @Unit, @Coefficient, @Quantity, @Bruto, @Neto,@Restaurant)";
@@ -333,8 +333,8 @@ public static class SQLUpdater
         }
     }
     private static void InsertRecord215(SqlConnection connection, string tableName,  string code, string name1,
-    string name2, string name3, string unit, int groupp, bool semiprepared, int printer, float price, float price1,
-    float price2, float price3, float price4, float price5, int department, string inholl, int restaurant, int existent)
+    string name2, string name3, string unit, int groupp, bool semiprepared, int printer, decimal price, decimal price1,
+    decimal price2, decimal price3, decimal price4, decimal price5, int department, string inholl, int restaurant, int existent)
     {
         string query = $"INSERT INTO {tableName} (Code, Name, Eng, Rus, Unit, Groupp, SemiPrepared," +
             $" Printer, Price, Price1, Price2, Price3, Price4, Price5, Department, InHoll,Restaurant,Existent) VALUES (@Code, @Name1," +
@@ -364,7 +364,7 @@ public static class SQLUpdater
     }
 
     private static void InsertInventory215(SqlConnection connection, string tableName, string code, string name1,
-string name2, string name3, string unit, int groupp, float act1, float act2, float act3, float act4, float act5, int restaurant)
+string name2, string name3, string unit, int groupp, decimal act1, decimal act2, decimal act3, decimal act4, decimal act5, int restaurant)
     {
         string query = $"INSERT INTO {tableName} (Code, Name, Eng, Rus, Unit, Groupp, " +
             $" Act215_1, Act215_2, Act215_3, Act215_4, Act215_5, Restaurant) VALUES (@Code, @Name1," +

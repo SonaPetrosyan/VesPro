@@ -67,10 +67,10 @@ namespace WindowsFormsApp4
             }
 
 
-            Resize.Columns.Add("BeginWidth", typeof(float));
-            Resize.Columns.Add("BeginHeight", typeof(float));
-            Resize.Columns.Add("EndWidth", typeof(float));
-            Resize.Columns.Add("EndHeight", typeof(float));
+            Resize.Columns.Add("BeginWidth", typeof(decimal));
+            Resize.Columns.Add("BeginHeight", typeof(decimal));
+            Resize.Columns.Add("EndWidth", typeof(decimal));
+            Resize.Columns.Add("EndHeight", typeof(decimal));
             Resize.Rows.Add(0, 0, 0, 0);
 
             string query1 = $"SELECT * FROM Restaurants WHERE Id = '{_restaurant}'";
@@ -105,14 +105,14 @@ namespace WindowsFormsApp4
 
         private void users_ResizeEnd(object sender, EventArgs e)
         {
-            float kw = 0;
-            float kh = 0;
+            decimal kw = 0;
+            decimal kh = 0;
             foreach (DataRow row in Resize.Rows)
             {
                 row["EndWidth"] = this.Width;
                 row["EndHeight"] = this.Height;
-                kw = float.Parse(row["EndWidth"].ToString()) / float.Parse(row["BeginWidth"].ToString());
-                kh = float.Parse(row["EndHeight"].ToString()) / float.Parse(row["BeginHeight"].ToString());
+                kw = decimal.Parse(row["EndWidth"].ToString()) / decimal.Parse(row["BeginWidth"].ToString());
+                kh = decimal.Parse(row["EndHeight"].ToString()) / decimal.Parse(row["BeginHeight"].ToString());
             }
             foreach (Control control in this.Controls)
             {
@@ -255,7 +255,7 @@ namespace WindowsFormsApp4
             SaveButton.Visible=false;
             connection.Close();
         }
-
+        private HelpDialogForm helpDialogForm;
         private void HelpButton_Click(object sender, EventArgs e)
         {
             string help = FindFolder.Folder("Help");
@@ -271,13 +271,20 @@ namespace WindowsFormsApp4
                 richTextBox1.Visible = true;
                 filePath = help+"\\User_"+_language+".txt";
                 string fileContent = File.ReadAllText(filePath);
-                richTextBox1.Text = fileContent;
 
+                if (helpDialogForm == null)
+                {
+                    helpDialogForm = new HelpDialogForm();
+                    helpDialogForm.FormClosed += (s, args) => helpDialogForm = null; // Reset the helpDialogForm reference when the form is closed
+                }
+
+                helpDialogForm.SetHelpContent(fileContent);
+                helpDialogForm.Show();
             }
             else
             {
-                richTextBox1.Visible = false;
                 HelpButton.Text = "?";
+                helpDialogForm?.Close(); // Close the help dialog form if it's open
             }
         }
     }
